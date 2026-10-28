@@ -21,7 +21,18 @@ func _ready() -> void:
 		_missions.target_changed.connect(_on_target_changed)
 	if _car.has_signal("vehicle_changed"):
 		_car.vehicle_changed.connect(_hud.set_vehicle_info)
-		_hud.set_vehicle_info(_car.profile_name(), _car.paint_name())
+		_car.vehicle_changed.connect(_on_vehicle_changed)
+	var gs := get_node_or_null("/root/GameSettings")
+	if gs and gs.has_method("apply_vehicle"):
+		gs.call("apply_vehicle", _car)
+	if _hud.has_method("sync_player_settings"):
+		_hud.sync_player_settings()
+
+
+func _on_vehicle_changed(_profile: String, _detail: String) -> void:
+	var gs := get_node_or_null("/root/GameSettings")
+	if gs and gs.has_method("sync_from_car"):
+		gs.call("sync_from_car", _car)
 
 
 func _on_map_ready(spawn_position: Vector3, spawn_heading: Vector2, anchors: Array) -> void:
@@ -32,7 +43,7 @@ func _on_map_ready(spawn_position: Vector3, spawn_heading: Vector2, anchors: Arr
 	if _missions.has_method("start_with_anchors"):
 		_missions.start_with_anchors(anchors)
 	# On-screen self-check summary after map wires up
-	var status := "OK map+%d anchors · vehicle ready · press G garage" % anchors.size()
+	var status := "OK map+%d anchors · vehicle ready · G or Customize" % anchors.size()
 	if _hud.has_method("set_test_status"):
 		_hud.set_test_status(status)
 

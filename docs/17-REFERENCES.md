@@ -4,7 +4,8 @@
 
 | Source | URL | Notes |
 |--------|-----|--------|
-| Geofabrik India Western Zone | https://download.geofabrik.de/asia/india/western-zone.html | Free OSM extract (~211 MB PBF). **Do not auto-download** unless regenerating; we already have Dhule clip JSON. ODbL. |
+| Geofabrik India Western Zone | https://download.geofabrik.de/asia/india/western-zone.html | Local files (gitignored): `western-zone-261027.osm.pbf`, `western-zone-shortbread-1.0.mbtiles`. Playable map uses a **Dhule clip only**. ODbL. |
+| Sky3D (optional) | https://github.com/TokisanGames/Sky3D | MIT day/night addon. **Not installed** this pass — it replaces WorldEnvironment and can change driving readability. |
 | OSM copyright | https://www.openstreetmap.org/copyright | Always credit © OpenStreetMap contributors |
 
 **Google Maps:** eyes-only. Never scrape tiles/3D/Street View into the game.
@@ -17,6 +18,8 @@
 | Orca AI for Godot | https://store.godotengine.org/asset/cold-atom/orca-ai-agent-for-godot/ | Local zip: `C:\Users\Admin\Downloads\orca-v1.3.0.zip` — optional editor helper; MIT; needs Godot 4.7.2 |
 
 ## Vehicles (Phase 2 only — do not import yet)
+
+Browse: https://sketchfab.com/3d-models
 
 | Model | URL | Licence caution |
 |-------|-----|-----------------|

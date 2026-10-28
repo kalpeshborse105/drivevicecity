@@ -36,17 +36,11 @@ func deactivate() -> void:
 
 
 func _apply_visuals() -> void:
+	# Invisible trigger only — no blue/yellow ground rings (HUD + minimap navigate).
 	if _label:
-		_label.text = label_text
-		_label.modulate = Color(zone_color.r, zone_color.g, zone_color.b, 1.0)
+		_label.visible = false
 	if _mesh:
-		var mat := StandardMaterial3D.new()
-		mat.albedo_color = zone_color
-		mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-		mat.emission_enabled = true
-		mat.emission = Color(zone_color.r, zone_color.g, zone_color.b)
-		mat.emission_energy_multiplier = 1.8
-		_mesh.material_override = mat
+		_mesh.visible = false
 	if _collision and _collision.shape is CylinderShape3D:
 		(_collision.shape as CylinderShape3D).radius = radius
 

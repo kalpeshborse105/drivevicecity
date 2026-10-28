@@ -6,10 +6,12 @@ export_presets.cfg
 .import/
 *.tmp
 
-# Large raw OSM downloads (regenerate with tools/ + Overpass); keep *_game.json
+# Large raw OSM downloads (regenerate with tools/); keep *_game.json
 assets/maps/*.osm.xml
 assets/maps/*.osm.json
 !assets/maps/*_game.json
+*.osm.pbf
+*.mbtiles
 
 # OS / IDE
 .DS_Store

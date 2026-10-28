@@ -7,7 +7,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "assets" / "maps" / "dhule_roads.osm.json"
+PBF = ROOT / "western-zone-261027.osm.pbf"
 OUT = ROOT / "assets" / "maps" / "dhule_roads_game.json"
+# Rough Dhule window so the western-zone PBF is not loaded as a playable map.
+DHULE_LAT = (20.888, 20.922)
+DHULE_LON = (74.752, 74.802)
 
 ORIGIN_LAT = 20.902
 ORIGIN_LON = 74.777
@@ -88,20 +92,167 @@ def heading_at(pts: list[list[float]], idx: int) -> list[float]:
 	return [round(dx / length, 4), round(dz / length, 4)]
 
 
-def main() -> None:
-	if not SRC.exists():
-		raise SystemExit(f"Missing source OSM JSON: {SRC}")
+def _way_latlon(way) -> list[tuple[float, float]]:
+	pts: list[tuple[float, float]] = []
+	for n in way.nodes:
+		if not n.location.valid():
+			return []
+		pts.append((n.lat, n.lon))
+	return pts
 
-	data = json.loads(SRC.read_text(encoding="utf-8"))
-	elements = data.get("elements", [])
+
+def _hits_dhule(pts: list[tuple[float, float]]) -> bool:
+	for lat, lon in pts:
+		if DHULE_LAT[0] <= lat <= DHULE_LAT[1] and DHULE_LON[0] <= lon <= DHULE_LON[1]:
+			return True
+	return False
+
+
+def load_pbf_elements(path: Path) -> list[dict]:
+	"""Dhule-only ways/nodes. Two streaming passes — no full-India location index."""
+	import osmium
+
+	class NodePass(osmium.SimpleHandler):
+		def __init__(self) -> None:
+			super().__init__()
+			self.coords: dict[int, tuple[float, float]] = {}
+			self.pois: list[dict] = []
+
+		def node(self, n) -> None:  # noqa: ANN001
+			if not n.location.valid():
+				return
+			lat, lon = n.lat, n.lon
+			if not (DHULE_LAT[0] <= lat <= DHULE_LAT[1] and DHULE_LON[0] <= lon <= DHULE_LON[1]):
+				return
+			self.coords[n.id] = (lat, lon)
+			tags = {t.k: t.v for t in n.tags}
+			if any(k in tags for k in ("amenity", "shop", "tourism", "railway")):
+				self.pois.append({"type": "node", "id": n.id, "lat": lat, "lon": lon, "tags": tags})
+
+	class WayPass(osmium.SimpleHandler):
+		def __init__(self, coords: dict[int, tuple[float, float]]) -> None:
+			super().__init__()
+			self.coords = coords
+			self.elements: list[dict] = []
+
+		def way(self, w) -> None:  # noqa: ANN001
+			tags = {t.k: t.v for t in w.tags}
+			interesting = (
+				tags.get("highway")
+				or tags.get("building")
+				or tags.get("natural") in ("water", "wood")
+				or tags.get("waterway")
+				or tags.get("landuse")
+			)
+			if not interesting:
+				return
+			geom: list[tuple[float, float]] = []
+			for nref in w.nodes:
+				hit = self.coords.get(nref.ref)
+				if hit:
+					geom.append(hit)
+			if len(geom) < 2 or not _hits_dhule(geom):
+				return
+			self.elements.append(
+				{
+					"type": "way",
+					"id": w.id,
+					"tags": tags,
+					"geometry": [{"lat": lat, "lon": lon} for lat, lon in geom],
+				}
+			)
+
+	nodes = NodePass()
+	nodes.apply_file(str(path))
+	print(f"dhule_nodes={len(nodes.coords)} pois_raw={len(nodes.pois)}", flush=True)
+	ways = WayPass(nodes.coords)
+	ways.apply_file(str(path))
+	print(f"dhule_ways={len(ways.elements)}", flush=True)
+	return nodes.pois + ways.elements
+
+
+def main() -> None:
+	source_name = "overpass-json"
+	if PBF.exists():
+		print(f"reading Dhule clip from {PBF.name} (not full western zone)")
+		elements = load_pbf_elements(PBF)
+		source_name = "geofabrik-western-zone-pbf-dhule-clip"
+	elif SRC.exists():
+		data = json.loads(SRC.read_text(encoding="utf-8"))
+		elements = data.get("elements", [])
+	else:
+		raise SystemExit(f"Missing OSM source: {PBF} or {SRC}")
 	roads: list[dict] = []
+	buildings: list[dict] = []
+	waters: list[dict] = []
+	landuses: list[dict] = []
+	pois: list[dict] = []
 	min_x = min_z = 1e9
 	max_x = max_z = -1e9
 
 	for el in elements:
+		if el.get("type") == "node":
+			tags = el.get("tags") or {}
+			kind = tags.get("amenity") or tags.get("shop") or tags.get("tourism") or tags.get("railway") or ""
+			if kind not in ("fuel", "hospital", "bus_station", "marketplace", "place_of_worship", "school", "bank"):
+				continue
+			xz = to_xz(float(el["lat"]), float(el["lon"]))
+			if not inside(xz, CLIP_RADIUS - 30):
+				continue
+			pois.append({"name": tags.get("name") or kind, "kind": kind, "x": xz[0], "z": xz[1]})
+			continue
 		if el.get("type") != "way":
 			continue
 		tags = el.get("tags") or {}
+		geom = el.get("geometry") or []
+		if tags.get("building") and len(geom) >= 4:
+			pts = [to_xz(float(g["lat"]), float(g["lon"])) for g in geom]
+			cx = sum(p[0] for p in pts) / len(pts)
+			cz = sum(p[1] for p in pts) / len(pts)
+			if inside([cx, cz], CLIP_RADIUS - 25):
+				xs = [p[0] for p in pts]
+				zs = [p[1] for p in pts]
+				w = max(xs) - min(xs)
+				d = max(zs) - min(zs)
+				if 4.0 <= w <= 80.0 and 4.0 <= d <= 80.0:
+					levels = tags.get("building:levels")
+					try:
+						height = max(4.0, float(levels) * 3.1)
+					except (TypeError, ValueError):
+						kind = tags.get("building") or "yes"
+						height = {"house": 7.0, "residential": 10.0, "apartments": 14.0, "commercial": 8.0, "retail": 6.5}.get(kind, 8.0)
+					buildings.append(
+						{
+							"id": el.get("id"),
+							"kind": tags.get("building") or "yes",
+							"x": round(cx, 2),
+							"z": round(cz, 2),
+							"w": round(w, 2),
+							"d": round(d, 2),
+							"h": round(min(height, 22.0), 2),
+						}
+					)
+		if tags.get("natural") == "water" or tags.get("waterway") in ("riverbank", "river"):
+			pts = [to_xz(float(g["lat"]), float(g["lon"])) for g in geom]
+			if len(pts) >= 3:
+				cx = sum(p[0] for p in pts) / len(pts)
+				cz = sum(p[1] for p in pts) / len(pts)
+				if inside([cx, cz], CLIP_RADIUS - 10):
+					xs = [p[0] for p in pts]
+					zs = [p[1] for p in pts]
+					waters.append({"x": round(cx, 2), "z": round(cz, 2), "w": round(max(xs) - min(xs), 2), "d": round(max(zs) - min(zs), 2)})
+		if tags.get("landuse") in ("residential", "commercial", "retail", "grass", "farmland"):
+			pts = [to_xz(float(g["lat"]), float(g["lon"])) for g in geom]
+			if len(pts) >= 3:
+				cx = sum(p[0] for p in pts) / len(pts)
+				cz = sum(p[1] for p in pts) / len(pts)
+				if inside([cx, cz], CLIP_RADIUS - 10):
+					xs = [p[0] for p in pts]
+					zs = [p[1] for p in pts]
+					ww = max(xs) - min(xs)
+					dd = max(zs) - min(zs)
+					if ww >= 18 and dd >= 18:
+						landuses.append({"kind": tags.get("landuse"), "x": round(cx, 2), "z": round(cz, 2), "w": round(min(ww, 120), 2), "d": round(min(dd, 120), 2)})
 		hw = tags.get("highway")
 		if hw not in KEEP:
 			continue
@@ -185,11 +336,18 @@ def main() -> None:
 	for r in roads:
 		r.pop("length", None)
 
+	buildings.sort(key=lambda b: math.hypot(b["x"], b["z"]))
+	buildings = buildings[:320]
+	waters = waters[:24]
+	landuses = landuses[:28]
+	pois = pois[:18]
+
 	# Spawn = best (lowest score) core anchor
 	spawn = filtered[0] if filtered else {"x": 0.0, "z": 0.0, "hx": 0.0, "hz": -1.0, "road": "center"}
 
 	payload = {
 		"attribution": "© OpenStreetMap contributors (ODbL)",
+		"source": source_name,
 		"origin_lat": ORIGIN_LAT,
 		"origin_lon": ORIGIN_LON,
 		"clip_radius_m": CLIP_RADIUS,
@@ -198,10 +356,18 @@ def main() -> None:
 		"spawn": spawn,
 		"roads": roads,
 		"delivery_anchors": filtered,
+		"buildings": buildings,
+		"water": waters,
+		"landuse": landuses,
+		"pois": pois,
 	}
 	OUT.write_text(json.dumps(payload, separators=(",", ":")), encoding="utf-8")
 	seg_est = sum(max(0, len(r["points"]) - 1) for r in roads)
-	print(f"roads={len(roads)} segments~{seg_est} anchors={len(filtered)} out_bytes={OUT.stat().st_size}")
+	print(
+		f"source={source_name} roads={len(roads)} segments~{seg_est} anchors={len(filtered)} "
+		f"buildings={len(buildings)} water={len(waters)} landuse={len(landuses)} pois={len(pois)} "
+		f"out_bytes={OUT.stat().st_size}"
+	)
 	print("spawn", spawn)
 	print("bbox", payload["bbox_m"])
 

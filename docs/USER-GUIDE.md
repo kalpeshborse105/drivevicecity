@@ -43,8 +43,12 @@ Job types (random):
 | **Space** | Handbrake |
 | **R** | Reset car to spawn |
 | **P** | Next paint color |
-| **V** | Switch Sedan ↔ Delivery Van |
-| **G** | Open / close Garage panel |
+| **V** | Next vehicle (Sedan → Van → Carnival → Safari → Rickshaw → Bus → Truck) |
+| **G** / **Esc** / **Customize** button | Open / close **Home** (Vehicles · Paint · Kits · Settings) |
+| **Right-mouse drag** (or left-drag empty view) | Orbit camera 360° — also finger-drag on Android |
+| **Minimap + / −** (or wheel over map) | Zoom map in / out |
+
+**Keys do nothing?** Click once inside the game view first — the editor's Play window needs focus. Home opens at start; press **G** or **Esc** to close it, then drive. Full guide: Home → Settings.
 
 ---
 
@@ -67,8 +71,9 @@ Job types (random):
 - Stay on the **dark grey roads** — that layout is real Dhule **OpenStreetMap** data (not Google).  
 - Look for green **street name signs** (e.g. Sakri Road, State Highway 14).
 - If stuck or flipped → press **R**.
-- Van is heavier / better for “delivery feel”; Sedan turns quicker.
-- Garage (**G**) is the same as **P** / **V**, with buttons.
+- Van / Bus / Truck are heavier; Sedan and Rickshaw turn quicker. Default body is the **Carnival** (kit mesh).
+- Home (**G**) is the same as **P** / **V**, with buttons; your last pick is remembered (`user://drivevicecity.cfg`).
+- Add new free GLB/FBX models: drop in `assets/incoming/`, copy into the matching `assets/kit/` folder, register in `scripts/asset_kit.gd`. Run `godot --headless --script res://tools/probe_kit.gd` to read real sizes before placing.
 
 ---
 
@@ -76,8 +81,8 @@ Job types (random):
 
 This is an **early playable prototype**, not a finished GTA-like product.
 
-**Already working:** drive, real road layout, jobs, paint, van, minimap, garage, denser shop streets near spawn.  
-**Still early:** stylized shops (not photoreal), simple car kits, no traffic/audio yet.
+**Already working:** drive, real road layout, jobs, paint, 7 bodies (5 from free kit meshes), minimap, Home dashboard, multi-storey facades on real OSM footprints, named hospitals/schools as landmark buildings, textured ground, kit street lights / sidewalks / carts / parked vehicles.  
+**Still early:** stylized (not photoreal), no traffic/audio yet, Google Maps is reference-only.
 
 Build order: **Map → Vehicle → Play** — see [13-BUILD-ORDER.md](13-BUILD-ORDER.md).  
 References (formula only): [11-DIRECTION-VS-REFERENCES.md](11-DIRECTION-VS-REFERENCES.md).

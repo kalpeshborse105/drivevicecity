@@ -1,67 +1,95 @@
 # 16 — Phase 1 audit (28 Oct 2026)
 
-## Confirmed bugs
+Baseline commit: `2d5701c` (audit). Validation pass continued after that commit.
+
+## Confirmed bugs (original)
 
 | Bug | Evidence | Fix priority |
 |-----|----------|--------------|
-| Yellow marker clips through car roof | Screenshot; `nav_arrow.gd` uses full `look_at` which can pitch prism vertical | P0 |
-| OSM `clip_polyline` keeps only longest in-bounds run | `tools/osm_to_game_json.py` | P0 |
-| Decorative props create too many `StaticBody3D` | `street_kit.gd` collisions on sheds/walls/shops | P1 |
-| New `StandardMaterial3D` per box | Every `StreetKit.mat()` / `add_box` | P1 |
-| Filled lots can sit on/near roads | Random placement with no road clearance | P1 |
-| Tall Label3D / sign posts feel like debug clutter | Road-name posts + zone labels | P1 |
+| Yellow marker clips through car roof | Screenshot; `look_at` pitch | P0 — fixed yaw-only |
+| OSM `clip_polyline` keeps only longest run | Converter | P0 — fixed (`clip_polyline_runs`) |
+| Too many decorative `StaticBody3D` | `street_kit.gd` | P1 — fixed (shells/walls only) |
+| New `StandardMaterial3D` per box | `StreetKit.mat` | P1 — fixed (cache) |
+| Filled lots on/near roads | Random lots | P1 — fixed (road samples) |
+| Tall Label3D clutter | Road-name posts | P1 — quieter signs |
 
-## Potential bugs (need F5 manual test)
+## Validation results (post-`2d5701c`)
 
-- Tire grip after last RWD fix (was improved; re-verify)
-- Junction gaps from multi-run clip after converter change
-- Minimap SubViewport cost on weak GPUs
-- Delivery zone torus hard to see on bright asphalt
+| Check | Result | How |
+|-------|--------|-----|
+| Git HEAD / audit commit | `2d5701c` present; working tree had follow-up fixes this session | `git log` |
+| Nav arrow yaw-only (no `look_at`) | **PASS** (code) | smoke + `nav_arrow.gd` |
+| OSM multi-run clip present | **PASS** (code) | `clip_polyline_runs` |
+| Multi-run needed in current Dhule clip? | **N/A impact** — 0 ways re-enter square clip; fix remains correct | Python count on raw OSM |
+| Regenerated JSON loads | **PASS** — 285 roads, 24 anchors, spawn (−13.09, −86.21) | smoke |
+| OSM attribution in JSON + HUD | **PASS** | smoke + `hud.gd` |
+| Material cache no cross-pollution | **PASS** after fix (alpha key + `mat_emissive`) | smoke |
+| Lots clear roads / spawn / anchors | **PASS** (code) — anchors clearance added this pass | `osm_road_builder.gd` |
+| Lighting / fog softened | **PASS** (scene values) | `main.tscn` — F5 look still pending |
+| Headless smoke | **PASS** | Godot 4.7.2 `godot.exe` via WinGet Links |
+| Map build mesh/body counts | **PASS** — meshes≈10998, StaticBody3D≈582 (~5%) | smoke `_check_map_build_counts` |
+| F5 visual / drive / jobs / FPS | **PENDING (you)** | see checklist below |
 
-## Visual weaknesses (screenshot)
+## Potential bugs (still need F5)
 
-- Flat box buildings, washed warm sky/fog
-- Floating thin poles / brown protrusions
-- Empty-looking lots vs busy Indian street
-- No textures (expected for Phase 1 procedural)
+- Tire grip / soft launch feel
+- Junction visual gaps / overlap
+- Minimap SubViewport cost while driving
+- Delivery zone visibility on bright asphalt
+- Dense-core hitch with ~11k MeshInstances
 
-## Performance risks
+## Visual weaknesses (still Phase 1)
 
-- Dense core: hundreds of shops × many child meshes + collisions
-- Per-call material allocation
-- No LODs / no mesh batching yet
+- Flat procedural boxes (expected until more facade variety)
+- Possible floating poles / thin props
+- Not photoreal — target = coherent Indian town drive
 
-## Missing / invalid resources
+## Performance note (automated, not FPS)
 
-- No Blender hero cars yet (Phase 2)
-- Raw Geofabrik western-zone not required (local Dhule JSON exists)
-- Sketchfab cars: Phase 2 only; licences often NC — verify before download
-- Cesium for Unreal: **not** for this Godot project
-- Orca zip present at Downloads — optional; not required for map work
+- Dense map build: **~11k meshes / ~582 static bodies**
+- Collision ratio is healthy; mesh count is the main risk for laptop/Android later
+- **FPS not measured** — requires your F5 run
 
-## Smallest safe plan (this pass)
+## Missing / out of scope
 
-1. Fix nav arrow yaw-only (stop roof clip)  
-2. Fix OSM clip → emit **all** continuous runs  
-3. Shared material cache + fewer decorative collisions  
-4. Safer lot placement (away from spawn road corridor)  
-5. Soften lighting/fog; quieter road-name signs  
-6. Save references doc + download guide for Phase 2  
-7. Smoke test  
+- No Sketchfab / Blender hero cars (Phase 2)
+- No Geofabrik full Western Zone download
+- No Cesium / Unreal
+- Orca optional (`C:\Users\Admin\Downloads\orca-v1.3.0.zip`) — not required for map work
 
-**Not in this pass:** Unreal/Cesium, Sketchfab import, full Western Zone download, Phase 2 vehicles.
+## This validation pass — code fixes
 
-## Implementation result (same day)
+1. Stop mutating shared materials (glass alpha in cache key; `mat_emissive` for lamps)
+2. Filled lots also clear **delivery anchors** (22 m)
+3. Smoke test expanded: attribution, nav yaw, material cache, map mesh/body counts
 
-| Item | Status |
-|------|--------|
-| Nav yaw-only | Done (`scripts/nav_arrow.gd`) |
-| Multi-run OSM clip + regen | Done — 285 ways / ~1554 segs / 24 anchors |
-| Material cache + fewer collisions | Done (`street_kit.gd`) |
-| Safer lots + quieter signs | Done (`osm_road_builder.gd`) |
-| Softer fog / sun | Done (`scenes/main.tscn`) |
-| Refs saved | Done (`docs/17-REFERENCES.md`) |
-| Headless smoke | See worklog / agent report |
-| F5 visual / delivery / FPS | Pending manual |
+## Manual F5 checklist (pending — please run)
 
-**Best next step:** F5 drive core streets; confirm nav arrow flat, no lot blocking roads, jobs still complete.
+Open `D:\drivevicecity` in Godot 4.7.2 → **F5** on `scenes/main.tscn`:
+
+1. [ ] Spawn on road, facing along road (not into wall)
+2. [ ] Drive 30 s through core — junctions feel connected
+3. [ ] No lot/shop blocking the carriageway
+4. [ ] Yellow GPS arrow flat above car (not through roof)
+5. [ ] W/S/A/D, brake, Space, **R** reset feel OK
+6. [ ] Complete 2+ pickup → drop-off jobs (cash updates)
+7. [ ] Minimap + “Target … m” update
+8. [ ] **G** garage, **P** paint, **V** van
+9. [ ] Note FPS / hitch in dense centre (Task Manager or Godot monitor)
+
+Reply with fails + any FPS note; Phase 1 stays open until this passes.
+
+## Phase 1 exit
+
+**Not met yet** — automated checks OK; manual drive-through still required (`docs/13-BUILD-ORDER.md` unchanged).
+
+## Development pass (same day, after validation)
+
+| Change | Notes |
+|--------|--------|
+| Mixed shop/home kits | Awnings, balconies, parapets, roof tanks — procedural |
+| Drive corridor | Wider setback; parked stubs only on wide majors |
+| Roads | Wear patches + longer segment overlap |
+| Density | shops~273 · meshes≈9192 · bodies≈487 (smoke PASS) |
+
+**Best next step:** F5 checklist; report what still looks wrong before Phase 2.
