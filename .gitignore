@@ -1,0 +1,27 @@
+# Godot 4
+.godot/
+*.translation
+export.cfg
+export_presets.cfg
+.import/
+*.tmp
+
+# Large raw OSM downloads (regenerate with tools/ + Overpass); keep *_game.json
+assets/maps/*.osm.xml
+assets/maps/*.osm.json
+!assets/maps/*_game.json
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# Exports
+build/
+*.apk
+*.aab
+*.ipa
+*.exe
+*.pck

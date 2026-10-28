@@ -1,0 +1,42 @@
+---
+description: DriveViceCity project plan, legal map rules, and build phases
+alwaysApply: true
+---
+
+# DriveViceCity — Agent memory
+
+## Product
+
+Free-roam delivery game in **Dhule, Maharashtra**. Engine: **Godot 4**. Folder: `D:\drivevicecity`.
+
+## Locked build order (do not reorder)
+
+1. **PHASE 1 — MAP** — own realistic city art on OSM roads  
+2. **PHASE 2 — VEHICLE** — hero meshes + full customization  
+3. **PHASE 3 — PLAY** — physics polish, traffic, audio, Android  
+
+Keep the game **playable as a test harness** while upgrading art. Do not delete drive/jobs.
+
+## Legal / maps (hard rules)
+
+- **Never** scrape, fetch, or ship Google Maps / Earth tiles, 3D, or Street View.  
+- Google Maps = **eyes-only** reference for “does this feel right.”  
+- Production roads/names = **OpenStreetMap** (ODbL — credit OSM). Data in `assets/maps/dhule_roads_game.json`.  
+- All meshes/textures = **original / free-licensed** — no paid city/car packs, no ripped GTA/BUSID assets.  
+- Learn **formula** from GTA / BUSID; never copy their IP.
+
+## References (formula only)
+
+- GTA Vice City / GTA V: city identity, free roam, short jobs, garage.  
+- BUSID: local roads, vehicle progression, mobile-friendly scope (better v1 target than GTA V fidelity).
+
+## Current tech notes
+
+- Map builder: `scripts/osm_road_builder.gd` + `scripts/street_kit.gd`  
+- Car: `VehicleBody3D` in `scripts/player_car.gd` — fix tire axis (spin around X) and grip before adding features.  
+- Road names: use OSM `name` fields already in JSON (e.g. Sakri Road, SH 14) — do not call Google APIs.  
+- Docs: `docs/13-BUILD-ORDER.md`, `docs/USER-GUIDE.md`, `docs/INDEX.md`
+
+## When user says “continue”
+
+Advance the **current phase** (map until they say start Phase 2). Fix reported bugs (tires, markers) immediately even mid-phase.

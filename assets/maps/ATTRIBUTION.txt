@@ -1,0 +1,6 @@
+Map data © OpenStreetMap contributors
+Licensed under the Open Data Commons Open Database License (ODbL).
+https://www.openstreetmap.org/copyright
+
+Source clip: Dhule, Maharashtra, India (approx. 20.888–20.920 N, 74.755–74.795 E)
+Processed into dhule_roads_game.json for DriveViceCity.
