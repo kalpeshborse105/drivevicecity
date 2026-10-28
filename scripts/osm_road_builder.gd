@@ -21,6 +21,7 @@ var _edge: StandardMaterial3D
 var _curb: StandardMaterial3D
 var _sidewalk: StandardMaterial3D
 var _palette: Array = []
+var _road_samples: Array[Vector3] = []
 
 
 func _ready() -> void:
@@ -56,12 +57,13 @@ func _anchor_from_dict(a: Dictionary) -> Dictionary:
 
 func _build(data: Dictionary) -> void:
 	var clip: float = float(data.get("clip_radius_m", 900.0))
-	_asphalt = _mat(Color(0.12, 0.12, 0.14), 0.96)
-	_major = _mat(Color(0.17, 0.17, 0.19), 0.92)
-	_paint = _mat(Color(0.92, 0.85, 0.45), 0.65)
-	_edge = _mat(Color(0.92, 0.92, 0.9), 0.7)
-	_curb = _mat(Color(0.52, 0.5, 0.46), 0.95)
-	_sidewalk = _mat(Color(0.6, 0.58, 0.52), 0.9)
+	# Slightly cooler asphalt + softer edge paint (less washed yellow)
+	_asphalt = _mat(Color(0.14, 0.14, 0.15), 0.94)
+	_major = _mat(Color(0.18, 0.18, 0.2), 0.9)
+	_paint = _mat(Color(0.88, 0.84, 0.55), 0.7)
+	_edge = _mat(Color(0.88, 0.88, 0.86), 0.75)
+	_curb = _mat(Color(0.5, 0.48, 0.44), 0.95)
+	_sidewalk = _mat(Color(0.58, 0.56, 0.5), 0.92)
 	_palette = [
 		_mat(Color(0.78, 0.62, 0.42)),
 		_mat(Color(0.72, 0.72, 0.68)),
@@ -71,6 +73,7 @@ func _build(data: Dictionary) -> void:
 		_mat(Color(0.85, 0.78, 0.62)),
 		_mat(Color(0.7, 0.55, 0.55)),
 	]
+	_road_samples.clear()
 
 	_add_ground(clip)
 
@@ -96,6 +99,7 @@ func _build(data: Dictionary) -> void:
 		if hw in ["primary", "secondary", "trunk", "tertiary"]:
 			_build_center_dashes(pts)
 			_build_curbs(pts, width)
+		_sample_road(pts, width)
 
 		var dens := _density_for_polyline(pts)
 		if dens <= 0.0:
@@ -256,28 +260,54 @@ func _add_ground(clip: float) -> void:
 		)
 
 
+func _sample_road(pts: Array, width: float) -> void:
+	var step := maxi(1, int(pts.size() / 8.0))
+	for i in range(0, pts.size(), step):
+		var p: Array = pts[i]
+		_road_samples.append(Vector3(float(p[0]), 0.0, float(p[1])))
+		# Inflate sample with half-width so lots stay off carriageway
+		if width > 0.0 and i + 1 < pts.size():
+			var b: Array = pts[i + 1]
+			var along := Vector3(float(b[0]) - float(p[0]), 0.0, float(b[1]) - float(p[1]))
+			if along.length() > 0.5:
+				along = along.normalized()
+				var side := Vector3(-along.z, 0, along.x) * (width * 0.5 + 4.0)
+				_road_samples.append(Vector3(float(p[0]), 0.0, float(p[1])) + side)
+				_road_samples.append(Vector3(float(p[0]), 0.0, float(p[1])) - side)
+
+
+func _near_road(pos: Vector3, clear_m: float) -> bool:
+	for s in _road_samples:
+		if pos.distance_to(s) < clear_m:
+			return true
+	return false
+
+
 func _fill_empty_lots(clip: float, rng: RandomNumberGenerator) -> int:
-	## Phase 1C — break open tan voids with plots near spawn/core.
+	## Phase 1C — plots near core, cleared off roads / spawn / mission pad.
 	var n := 0
-	var attempts := 70
+	var attempts := 90
 	for _i in attempts:
 		var ang := rng.randf() * TAU
-		var dist := rng.randf_range(35.0, mini(dense_radius + 40.0, clip * 0.7))
+		var dist := rng.randf_range(40.0, mini(dense_radius + 40.0, clip * 0.7))
 		var pos := Vector3(
 			spawn_position.x + cos(ang) * dist,
 			0.0,
 			spawn_position.z + sin(ang) * dist
 		)
-		# Keep lots off road center-ish (rough): skip if very near spawn pad
-		if pos.distance_to(Vector3(spawn_position.x, 0, spawn_position.z)) < 25.0:
+		if pos.distance_to(Vector3(spawn_position.x, 0, spawn_position.z)) < 30.0:
+			continue
+		if _near_road(pos, 14.0):
 			continue
 		StreetKit.filled_lot(self, pos, rng)
 		n += 1
+		if n >= 45:
+			break
 	return n
 
 
 func _add_road_name_signs(roads: Array) -> int:
-	## Real road names from OpenStreetMap (NOT Google). e.g. Sakri Road, SH 14.
+	## Real OSM names (not Google). Quieter labels — less debug clutter.
 	var placed_names: Dictionary = {}
 	var n := 0
 	for road_v in roads:
@@ -301,22 +331,21 @@ func _add_road_name_signs(roads: Array) -> int:
 		if along.length() < 0.1:
 			along = Vector3(0, 0, -1)
 		along = along.normalized()
-		var side := Vector3(-along.z, 0, along.x) * 6.5
+		var side := Vector3(-along.z, 0, along.x) * 7.2
 		var label := Label3D.new()
 		label.text = road_name
-		label.font_size = 48
-		label.pixel_size = 0.012
+		label.font_size = 36
+		label.pixel_size = 0.01
 		label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-		label.outline_size = 6
-		label.modulate = Color(0.98, 0.95, 0.85)
-		label.position = pos + side + Vector3(0, 3.2, 0)
+		label.outline_size = 4
+		label.modulate = Color(0.95, 0.93, 0.88, 0.92)
+		label.position = pos + side + Vector3(0, 2.4, 0)
 		add_child(label)
-		# Small sign post
-		StreetKit.add_box(self, Vector3(0.12, 3.0, 0.12), pos + side + Vector3(0, 1.5, 0), _mat(Color(0.35, 0.35, 0.38)))
-		StreetKit.add_box(self, Vector3(2.8, 0.7, 0.1), pos + side + Vector3(0, 3.2, 0), _mat(Color(0.12, 0.35, 0.2)))
+		StreetKit.add_box(self, Vector3(0.1, 2.2, 0.1), pos + side + Vector3(0, 1.1, 0), _mat(Color(0.35, 0.35, 0.38)))
+		StreetKit.add_box(self, Vector3(2.2, 0.55, 0.08), pos + side + Vector3(0, 2.4, 0), _mat(Color(0.1, 0.32, 0.18)))
 		placed_names[road_name] = true
 		n += 1
-		if n >= 14:
+		if n >= 10:
 			break
 	return n
 

@@ -205,4 +205,16 @@ Next: finish map polish or start **Phase 2 vehicle**.
 - Cursor always-on rule: `.cursor/rules/drivevicecity.mdc`  
 - Doc: `docs/15-MAP-NAMES-AND-TIRES.md`
 
+## 2026-10-28 — Phase 1 audit pass (map realism)
+
+- Audit: `docs/16-PHASE1-AUDIT.md` · refs: `docs/17-REFERENCES.md`
+- Fixed nav arrow **yaw-only** (stops yellow prism through roof)
+- OSM clip: keep **all** in-bounds runs → regen `dhule_roads_game.json` (285 ways)
+- Shared material cache + fewer decorative collisions in `street_kit.gd`
+- Safer filled lots (clear of road samples) · quieter road-name signs
+- Softer Maharashtra daylight (less orange fog / bloom)
+- Smoke: `godot --headless --path D:\drivevicecity -s res://tools/smoke_test.gd`
+
+**Still Phase 1:** F5 drive-through, delivery jobs, FPS note. No Phase 2 yet.
+
 When you finish a session, append a short dated block here (what changed + how to test).

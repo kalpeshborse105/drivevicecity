@@ -11,10 +11,10 @@
 [ext_resource type="Script" path="res://scripts/garage_ui.gd" id="9_garage"]
 
 [sub_resource type="ProceduralSkyMaterial" id="SkyMat"]
-sky_top_color = Color(0.22, 0.42, 0.78, 1)
-sky_horizon_color = Color(0.98, 0.72, 0.42, 1)
-ground_bottom_color = Color(0.28, 0.24, 0.18, 1)
-ground_horizon_color = Color(0.62, 0.5, 0.36, 1)
+sky_top_color = Color(0.28, 0.48, 0.82, 1)
+sky_horizon_color = Color(0.92, 0.78, 0.55, 1)
+ground_bottom_color = Color(0.3, 0.27, 0.22, 1)
+ground_horizon_color = Color(0.55, 0.48, 0.38, 1)
 sun_angle_max = 30.0
 sun_curve = 0.12
 
@@ -25,23 +25,23 @@ sky_material = SubResource("SkyMat")
 background_mode = 2
 sky = SubResource("Sky")
 ambient_light_source = 2
-ambient_light_color = Color(1, 0.86, 0.68, 1)
-ambient_light_energy = 0.42
+ambient_light_color = Color(0.95, 0.9, 0.82, 1)
+ambient_light_energy = 0.38
 tonemap_mode = 2
-tonemap_exposure = 1.05
+tonemap_exposure = 0.98
 ssao_enabled = true
-ssao_radius = 1.4
-ssao_intensity = 1.8
+ssao_radius = 1.2
+ssao_intensity = 1.4
 glow_enabled = true
-glow_intensity = 0.28
-glow_bloom = 0.08
+glow_intensity = 0.18
+glow_bloom = 0.04
 fog_enabled = true
-fog_light_color = Color(0.95, 0.78, 0.52, 1)
-fog_sun_scatter = 0.35
-fog_density = 0.00055
-fog_aerial_perspective = 0.35
+fog_light_color = Color(0.88, 0.84, 0.75, 1)
+fog_sun_scatter = 0.2
+fog_density = 0.00032
+fog_aerial_perspective = 0.22
 adjustment_enabled = true
-adjustment_saturation = 1.08
+adjustment_saturation = 1.02
 
 [sub_resource type="StyleBoxFlat" id="HudPanel"]
 bg_color = Color(0.08, 0.1, 0.09, 0.55)
@@ -62,11 +62,11 @@ environment = SubResource("Env")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.8, -0.45, 0.4, 0, 0.66, 0.75, -0.6, -0.6, 0.53, 50, 90, 30)
-light_color = Color(1, 0.88, 0.65, 1)
-light_energy = 1.55
+light_color = Color(1, 0.92, 0.78, 1)
+light_energy = 1.35
 shadow_enabled = true
 directional_shadow_mode = 1
-shadow_blur = 1.2
+shadow_blur = 1.0
 
 [node name="DhuleMap" type="Node3D" parent="."]
 script = ExtResource("3_map")

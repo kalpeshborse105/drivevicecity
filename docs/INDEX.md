@@ -2,12 +2,14 @@
 
 Workspace: `D:\drivevicecity`  
 Engine: **Godot 4.7.2**  
-Status: **PHASE 1 MAP** — lots + India sky + landmarks done; vehicle phase next after map polish
+Status: **PHASE 1 MAP** — audit pass done (clip/nav/mats/lots/fog); F5 polish still open before Phase 2
 
 | Doc | What it covers |
 |-----|----------------|
 | **[USER-GUIDE.md](USER-GUIDE.md)** | **How to play (for you / testers)** |
 | **[13 — Build order](13-BUILD-ORDER.md)** | **Map → Vehicle → Play (locked plan)** |
+| [16 — Phase 1 audit](16-PHASE1-AUDIT.md) | Bugs, plan, this-pass scope |
+| [17 — References](17-REFERENCES.md) | Geofabrik, Sketchfab, Cesium (not used), Orca, download guide |
 | [14 — Phase 1 lots/sky](14-PHASE1-LOTS-SKY.md) | Filled lots, lighting, landmarks |
 | [15 — Road names + tires](15-MAP-NAMES-AND-TIRES.md) | OSM names (not Google) + tire physics fix |
 | [11 — Direction vs GTA / BUSID](11-DIRECTION-VS-REFERENCES.md) | Screenshot truth + correct next steps |

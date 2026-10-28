@@ -59,20 +59,20 @@ def path_length(pts: list[list[float]]) -> float:
 	return total
 
 
-def clip_polyline(pts: list[list[float]]) -> list[list[float]]:
+def clip_polyline_runs(pts: list[list[float]]) -> list[list[list[float]]]:
+	"""Preserve every continuous in-bounds run (not only the longest)."""
 	runs: list[list[list[float]]] = []
 	cur: list[list[float]] = []
 	for p in pts:
 		if inside(p):
 			cur.append(p)
 		elif cur:
-			runs.append(cur)
+			if len(cur) >= 2:
+				runs.append(cur)
 			cur = []
-	if cur:
+	if len(cur) >= 2:
 		runs.append(cur)
-	if not runs:
-		return []
-	return max(runs, key=len)
+	return runs
 
 
 def heading_at(pts: list[list[float]], idx: int) -> list[float]:
@@ -108,34 +108,35 @@ def main() -> None:
 		geom = el.get("geometry") or []
 		if len(geom) < 2:
 			continue
-		pts = [to_xz(float(g["lat"]), float(g["lon"])) for g in geom]
-		pts = clip_polyline(pts)
-		if len(pts) < 2:
-			continue
-		if hw in ("residential", "service", "living_street") and len(pts) > 8:
-			step = 2
-			dec = pts[::step]
-			if dec[-1] != pts[-1]:
-				dec.append(pts[-1])
-			pts = dec
-		length = path_length(pts)
-		if length < 18.0:
-			continue
-		for xz in pts:
-			min_x = min(min_x, xz[0])
-			max_x = max(max_x, xz[0])
-			min_z = min(min_z, xz[1])
-			max_z = max(max_z, xz[1])
-		roads.append(
-			{
-				"id": el.get("id"),
-				"name": tags.get("name") or tags.get("name:en") or "",
-				"highway": hw,
-				"width": WIDTH[hw],
-				"points": pts,
-				"length": round(length, 1),
-			}
-		)
+		pts_full = [to_xz(float(g["lat"]), float(g["lon"])) for g in geom]
+		for run_i, pts in enumerate(clip_polyline_runs(pts_full)):
+			if len(pts) < 2:
+				continue
+			if hw in ("residential", "service", "living_street") and len(pts) > 8:
+				step = 2
+				dec = pts[::step]
+				if dec[-1] != pts[-1]:
+					dec.append(pts[-1])
+				pts = dec
+			length = path_length(pts)
+			if length < 18.0:
+				continue
+			for xz in pts:
+				min_x = min(min_x, xz[0])
+				max_x = max(max_x, xz[0])
+				min_z = min(min_z, xz[1])
+				max_z = max(max_z, xz[1])
+			roads.append(
+				{
+					"id": el.get("id"),
+					"run": run_i,
+					"name": tags.get("name") or tags.get("name:en") or "",
+					"highway": hw,
+					"width": WIDTH[hw],
+					"points": pts,
+					"length": round(length, 1),
+				}
+			)
 
 	roads.sort(key=lambda r: (PRIORITY.get(r["highway"], 9), -r["length"]))
 	major = [r for r in roads if PRIORITY.get(r["highway"], 9) <= 5]
