@@ -248,15 +248,18 @@ func _dress_road_sides(pts: Array, width: float, dens: float, hw: String, rng: R
 		var side_signs: Array[float] = [-1.0, 1.0]
 		for side_sign in side_signs:
 			var side: Vector3 = outward * side_sign
-			var walk_pos: Vector3 = mid_pt + side * (width * 0.5 + 1.15)
-			StreetKit.add_box(
-				self,
-				Vector3(2.3, 0.1, maxf(seg_len, 3.0)),
-				walk_pos + Vector3(0, 0.05, 0),
-				_sidewalk,
-				false,
-				yaw
-			)
+			# Cap strip length + reject junction crossings (brown slab across asphalt).
+			var strip_len := clampf(seg_len, 3.0, 12.0)
+			var walk_pos: Vector3 = mid_pt + side * (width * 0.5 + 1.35)
+			if _sidewalk_strip_clear(walk_pos, along, strip_len):
+				StreetKit.add_box(
+					self,
+					Vector3(2.0, 0.1, strip_len),
+					walk_pos + Vector3(0, 0.05, 0),
+					_sidewalk,
+					false,
+					yaw
+				)
 			# Street-food cart — sidewalk only, rare (never on asphalt)
 			if has_cart and dens > 0.75 and rng.randf() < 0.06:
 				var cp := _off_carriageway(p0, along, 1.0 if side.dot(Vector3(-along.z, 0, along.x)) > 0.0 else -1.0, 4.0)
@@ -312,11 +315,9 @@ func _dress_road_props(pts: Array, width: float, dens: float, hw: String, rng: R
 	var n := 0
 	var stride := 3 if dens > 0.8 else 5
 	var wide_enough := width >= 7.5
-	var light_path := AssetKit.prop_path("street_light")
 	var barrier_path := AssetKit.prop_path("barrier")
 	var rick_path := AssetKit.vehicle_path("autorickshaw")
 	var heavy_ok := hw in ["primary", "secondary", "tertiary"] and dens > 0.55
-	var sw_count := 0
 	for i in range(0, pts.size() - 1, stride):
 		var a: Array = pts[i]
 		var b: Array = pts[mini(i + 1, pts.size() - 1)]
@@ -329,20 +330,6 @@ func _dress_road_props(pts: Array, width: float, dens: float, hw: String, rng: R
 		var outward := Vector3(-along.z, 0, along.x)
 		var yaw := atan2(along.x, along.z)
 		var spawn_soft := _near_spawn(p0, 18.0)
-		# Sidewalk kit strip (grounded); HQ mesh on densest stretches, tiles every 3rd in core
-		if dens > 0.45 and i % (stride * 2) == 0:
-			var sw_key := "sidewalk_8m"
-			if dens > 0.85 and AssetKit.exists(AssetKit.sidewalk_path("sidewalk_8m_hq")):
-				sw_key = "sidewalk_8m_hq"
-			if dens > 0.8 and sw_count % 3 == 2 and AssetKit.exists(AssetKit.sidewalk_path("tiles")):
-				sw_key = "tiles"
-			sw_count += 1
-			var sw := AssetKit.sidewalk_path(sw_key)
-			if AssetKit.exists(sw):
-				var sw_n := AssetKit.place_at(self, sw, _ground_pos(p0 + outward * (width * 0.5 + 2.0)), yaw, 1.0)
-				if sw_n and spawn_soft:
-					_strip_physics(sw_n)
-				n += 1
 		# Parked bus / truck (visual only) on major roads in the core
 		if heavy_ok and _parked_heavy < PARKED_HEAVY_MAX:
 			var roll := rng.randf()
@@ -361,29 +348,25 @@ func _dress_road_props(pts: Array, width: float, dens: float, hw: String, rng: R
 						_parked_heavy += 1
 						n += 1
 		if rng.randf() < dens * 0.4 or (spawn_soft and rng.randf() < 0.55):
-			var light_use := light_path
-			var light_b := AssetKit.prop_path("street_light_b")
-			if AssetKit.exists(light_b) and rng.randf() < 0.45:
-				light_use = light_b
-			if AssetKit.exists(light_use):
-				var ln := AssetKit.place_at(self, light_use, _ground_pos(p0 + outward * (width * 0.5 + 1.7)), yaw, 1.0)
-				if ln and spawn_soft:
-					_strip_physics(ln)
-			else:
-				StreetKit.lamp(self, p0 + outward * (width * 0.5 + 1.55))
-			n += 1
+			# Procedural 6 m lamp on kerb — never GLB (overscale / rooftop look).
+			var lp := _ground_pos(p0 + outward * (width * 0.5 + 1.55))
+			if _asphalt_depth(lp) < -0.4:
+				StreetKit.lamp(self, lp)
+				n += 1
 		elif dens > 0.7 and rng.randf() < 0.2 and not spawn_soft:
-			StreetKit.utility_pole(self, p0 - outward * (width * 0.5 + 1.6))
-			n += 1
+			var up := _ground_pos(p0 - outward * (width * 0.5 + 1.6))
+			if _asphalt_depth(up) < -0.4:
+				StreetKit.utility_pole(self, up)
+				n += 1
 		if rng.randf() < dens * 0.55 and not spawn_soft:
-			# Trees sit well off the carriageway so they don't punch through shopfronts
-			var t1 := _ground_pos(p0 - outward * (width * 0.5 + rng.randf_range(9.0, 13.0)))
-			if not _near_road(t1, 7.5) and not _near_spawn(t1, 12.0):
+			# Trees on outer verge only (canopy ~3 m — keep trunks clear of lanes).
+			var t1 := _ground_pos(p0 - outward * (width * 0.5 + rng.randf_range(5.5, 8.5)))
+			if _tree_site_ok(t1):
 				StreetKit.tree(self, t1, rng)
 				n += 1
 			if dens > 0.8 and rng.randf() < 0.4:
-				var t2 := _ground_pos(p0 + outward * (width * 0.5 + rng.randf_range(9.5, 14.0)))
-				if not _near_road(t2, 7.5) and not _near_spawn(t2, 12.0):
+				var t2 := _ground_pos(p0 + outward * (width * 0.5 + rng.randf_range(5.5, 8.5)))
+				if _tree_site_ok(t2):
 					StreetKit.tree(self, t2, rng)
 					n += 1
 		if dens > 0.7 and wide_enough and hw in ["primary", "secondary", "tertiary"] and rng.randf() < 0.14:
@@ -593,20 +576,70 @@ func _add_osm_context(data: Dictionary, rng: RandomNumberGenerator) -> int:
 
 
 func _sample_road(pts: Array, width: float) -> void:
-	## Centerline samples only (plus half-width) so sidewalk props are not false-flagged.
-	var step := maxi(1, int(pts.size() / 8.0))
-	var half := maxf(width * 0.5, 4.0)
-	for i in range(0, pts.size(), step):
-		var p: Array = pts[i]
-		# Encode half-width in Y so _near_road can clear the full carriageway
-		_road_samples.append(Vector3(float(p[0]), half, float(p[1])))
+	## Dense centerline samples (~10 m) so trees/lots cannot slip onto unsampled asphalt.
+	var half := maxf(width * 0.5, 3.5)
+	var i := 0
+	while i < pts.size() - 1:
+		var a: Array = pts[i]
+		var b: Array = pts[i + 1]
+		var p0 := Vector3(float(a[0]), 0.0, float(a[1]))
+		var p1 := Vector3(float(b[0]), 0.0, float(b[1]))
+		var seg := p1 - p0
+		var seg_len := seg.length()
+		if seg_len < 0.4:
+			i += 1
+			continue
+		var n_steps := maxi(1, int(ceil(seg_len / 10.0)))
+		for s in range(n_steps + 1):
+			var p := p0.lerp(p1, float(s) / float(n_steps))
+			_road_samples.append(Vector3(p.x, half, p.z))
+		i += 1
+
+
+func _asphalt_depth(pos: Vector3) -> float:
+	## Positive = metres inside asphalt (past edge toward center). Negative = clear of roads.
+	var flat := Vector3(pos.x, 0.0, pos.z)
+	var best := -100000.0
+	for s in _road_samples:
+		var half: float = maxf(s.y, 3.5)
+		var d := flat.distance_to(Vector3(s.x, 0.0, s.z))
+		var pen := half - d
+		if pen > best:
+			best = pen
+	return best
+
+
+func _sidewalk_strip_clear(center: Vector3, along: Vector3, strip_len: float) -> bool:
+	## Reject strips that would paint beige onto a crossing carriageway (junction slabs).
+	var a := Vector3(along.x, 0.0, along.z)
+	if a.length() < 0.01:
+		return false
+	a = a.normalized()
+	var half_l := strip_len * 0.5
+	var samples: Array[float] = [-0.9, -0.45, 0.0, 0.45, 0.9]
+	for t in samples:
+		var p: Vector3 = center + a * (half_l * t)
+		if _asphalt_depth(p) > 0.35:
+			return false
+	return true
+
+
+func _tree_site_ok(pos: Vector3) -> bool:
+	## Trunk clear of asphalt + spawn; canopy (~3 m) must not sit in the drive lane.
+	if _near_spawn(pos, 12.0):
+		return false
+	if _asphalt_depth(pos) > -3.2:
+		return false
+	if _near_road(pos, 3.0):
+		return false
+	return true
 
 
 func _near_road(pos: Vector3, clear_m: float) -> bool:
 	## True if pos is on/near the driveable asphalt (centerline ± half-width + clear_m).
 	var flat := Vector3(pos.x, 0.0, pos.z)
 	for s in _road_samples:
-		var half: float = maxf(s.y, 4.0)
+		var half: float = maxf(s.y, 3.5)
 		var center := Vector3(s.x, 0.0, s.z)
 		if flat.distance_to(center) < half + clear_m:
 			return true
@@ -742,7 +775,8 @@ func _fill_empty_lots(clip: float, rng: RandomNumberGenerator) -> int:
 		)
 		if _near_spawn(pos, 40.0):
 			continue
-		if _near_road(pos, 12.0):
+		# Lot floors must never sit on asphalt (brown square across lane).
+		if _near_road(pos, 14.0) or _asphalt_depth(pos) > -6.0:
 			continue
 		if _near_delivery_anchor(pos, 18.0):
 			continue
@@ -760,12 +794,28 @@ func _fill_empty_lots(clip: float, rng: RandomNumberGenerator) -> int:
 			0.0,
 			spawn_position.z + sin(ang2) * dist2
 		)
-		if _near_spawn(p2, 18.0) or _near_road(p2, 7.0):
+		if _near_spawn(p2, 18.0) or _near_road(p2, 10.0) or _asphalt_depth(p2) > -5.0:
 			continue
 		var col := Color(0.3, 0.4, 0.24) if rng.randf() < 0.45 else Color(0.48, 0.4, 0.3)
+		var scrub_w := rng.randf_range(6.0, 12.0)
+		var scrub_d := rng.randf_range(6.0, 11.0)
+		# Corner probes — reject if the patch footprint reaches asphalt.
+		var scrub_ok := true
+		var corners: Array[Vector3] = [
+			Vector3(scrub_w * 0.45, 0, scrub_d * 0.45),
+			Vector3(-scrub_w * 0.45, 0, scrub_d * 0.45),
+			Vector3(scrub_w * 0.45, 0, -scrub_d * 0.45),
+			Vector3(-scrub_w * 0.45, 0, -scrub_d * 0.45),
+		]
+		for corner in corners:
+			if _asphalt_depth(p2 + corner) > -1.5:
+				scrub_ok = false
+				break
+		if not scrub_ok:
+			continue
 		StreetKit.add_box(
 			self,
-			Vector3(rng.randf_range(8.0, 18.0), 0.05, rng.randf_range(8.0, 16.0)),
+			Vector3(scrub_w, 0.05, scrub_d),
 			p2 + Vector3(0, 0.02, 0),
 			_mat(col),
 			false
@@ -826,8 +876,6 @@ func _dress_spawn_street(_roads: Array, rng: RandomNumberGenerator) -> int:
 	## First-camera frontage: mixed kit + procedural shops (not one repeated stall).
 	var n := 0
 	var shop_path := AssetKit.building_path("bhelpuri")
-	var sw := AssetKit.sidewalk_path("sidewalk_8m")
-	var light := AssetKit.prop_path("street_light")
 	var barrier := AssetKit.prop_path("barrier")
 	var bullock := AssetKit.prop_path("bullock")
 	var forward := Vector3(spawn_heading.x, 0.0, spawn_heading.y).normalized()
@@ -846,25 +894,17 @@ func _dress_spawn_street(_roads: Array, rng: RandomNumberGenerator) -> int:
 			var bkind := "commercial" if i % 2 == 0 else "residential"
 			BuildingKit.footprint(self, bpos, Vector2(rng.randf_range(8.0, 11.0), rng.randf_range(7.0, 8.0)), bkind, _pos_seed(bpos), toward_road)
 			n += 1
-			# Cart / sidewalk / light on footpath only
+			# Cart / procedural lamp on footpath only (no sidewalk GLB / no overscale light GLB)
 			var foot := _off_carriageway(row_c, forward, side_sign, 5.5)
 			if AssetKit.exists(shop_path) and i % 2 == 0 and not _near_road(foot, 5.0):
 				var node := AssetKit.place_at(self, shop_path, foot, atan2(toward_road.x, toward_road.z), 1.0)
 				if node:
 					_strip_physics(node)
 					n += 1
-			if AssetKit.exists(sw) and i % 2 == 0 and not _near_road(foot, 4.5):
-				var sw_n := AssetKit.place_at(self, sw, foot + toward_road * 1.2, atan2(forward.x, forward.z), 1.0)
-				if sw_n:
-					_strip_physics(sw_n)
-					n += 1
-			if AssetKit.exists(light):
-				var lp := _off_carriageway(row_c + forward * 2.0, forward, side_sign, 5.0)
-				if not _near_road(lp, 4.5):
-					var ln := AssetKit.place_at(self, light, lp, atan2(forward.x, forward.z), 1.0)
-					if ln:
-						_strip_physics(ln)
-						n += 1
+			var lp := _off_carriageway(row_c + forward * 2.0, forward, side_sign, 4.5)
+			if _asphalt_depth(lp) < -0.4:
+				StreetKit.lamp(self, lp)
+				n += 1
 	if AssetKit.exists(barrier):
 		var bpos2 := _off_carriageway(spawn_position + forward * 14.0, forward, 1.0, 5.0)
 		if not _near_road(bpos2, 4.5):
@@ -984,7 +1024,8 @@ func _add_landmarks(rng: RandomNumberGenerator) -> int:
 				if not _near_road(hp, 6.5):
 					StreetKit.hoarding(self, hp, -Vector3(-along.z, 0, along.x) * sign, rng)
 			_:
-				StreetKit.tree(self, spot, rng)
+				if _tree_site_ok(spot):
+					StreetKit.tree(self, spot, rng)
 				var park := _off_carriageway(p + along * 3.0, along, sign, 7.0)
 				if not _near_road(park, 5.0):
 					StreetKit.parked_stub(self, park, along, rng)

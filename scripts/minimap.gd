@@ -90,12 +90,12 @@ func _draw_player_marker() -> void:
 		# Car forward = MODEL_FRONT (+Z local → basis.z)
 		var f := _car.global_transform.basis.z
 		yaw = atan2(f.x, f.z)
-	var tip := c + Vector2(sin(yaw), -cos(yaw)) * 14.0
-	var left := c + Vector2(sin(yaw + 2.5), -cos(yaw + 2.5)) * 10.0
-	var right := c + Vector2(sin(yaw - 2.5), -cos(yaw - 2.5)) * 10.0
-	# Direction wedge only — no blue ring under the player icon
+	# Compact car marker — roughly road-scale on the ortho map (was oversized wedge).
+	var tip := c + Vector2(sin(yaw), -cos(yaw)) * 7.0
+	var left := c + Vector2(sin(yaw + 2.5), -cos(yaw + 2.5)) * 5.0
+	var right := c + Vector2(sin(yaw - 2.5), -cos(yaw - 2.5)) * 5.0
 	_marker.draw_colored_polygon(PackedVector2Array([tip, left, right]), Color(1.0, 0.92, 0.2, 0.98))
-	_marker.draw_circle(c, 3.5, Color(0.12, 0.12, 0.14, 0.95))
+	_marker.draw_circle(c, 2.2, Color(0.12, 0.12, 0.14, 0.95))
 
 
 func _process(_delta: float) -> void:

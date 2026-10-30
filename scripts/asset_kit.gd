@@ -86,7 +86,13 @@ const NORMALIZE := {
 	"res://assets/kit/props/bullock_cart.glb": {"len": 4.0, "yaw": 0.0},
 	"res://assets/kit/props/barriers.glb": {"len": 5.9, "yaw": 0.0},
 	"res://assets/models/props/traffic_barrier_mh.glb": {"len": 1.35, "yaw": 0.0},
-	"res://assets/models/props/street_light_mh.glb": {"len": 6.2, "yaw": 0.0},
+	# Poles: scale by HEIGHT (not XZ len — that blew poles to rooftop scale).
+	"res://assets/models/props/street_light_mh.glb": {"height": 6.0, "yaw": 0.0},
+	"res://assets/kit/props/street_light.fbx": {"height": 6.0, "yaw": 0.0},
+	"res://assets/kit/props/street_light_b.fbx": {"height": 6.0, "yaw": 0.0},
+	# Sidewalk strips: fixed length/width so raw diorama scale never spans the lane.
+	"res://assets/kit/sidewalks/sidewalk_8m.glb": {"len": 8.0, "width": 2.2, "yaw": 0.0},
+	"res://assets/kit/sidewalks/sidewalk_8m_hq.glb": {"len": 8.0, "width": 2.2, "yaw": 0.0},
 	"res://assets/models/props/bus_stop_shelter_mh.glb": {"len": 3.4, "yaw": 0.0},
 	"res://assets/models/props/concrete_planter_mh.glb": {"len": 1.1, "yaw": 0.0},
 	"res://demo/assets/models/RockA.glb": {"len": 4.5, "yaw": 0.0},
@@ -147,8 +153,8 @@ static func _ensure_mats_recursive(n: Node) -> void:
 
 
 static func normalized(path: String) -> Node3D:
-	## Wrapper Node3D: longest horizontal axis along Z, scaled to NORMALIZE.len,
-	## bottom at y=0, origin at footprint centre. Falls back to raw instance.
+	## Wrapper Node3D: longest horizontal axis along Z, scaled to NORMALIZE.len /
+	## width / height, bottom at y=0, origin at footprint centre.
 	var raw := instance(path)
 	if raw == null:
 		return null
@@ -162,16 +168,23 @@ static func normalized(path: String) -> Node3D:
 	var spec: Dictionary = NORMALIZE.get(path, {})
 	var target_len := float(spec.get("len", 0.0))
 	var target_width := float(spec.get("width", 0.0))
+	var target_height := float(spec.get("height", 0.0))
 	var extra_yaw := float(spec.get("yaw", 0.0))
-	# Align longest XZ axis to Z
-	if a.size.x > a.size.z * 1.15:
+	# Align longest XZ axis to Z (skip for height-driven poles — keep upright).
+	if target_height <= 0.0 and a.size.x > a.size.z * 1.15:
 		raw.rotation.y = PI * 0.5
 	raw.rotation.y += extra_yaw
 	a = mesh_aabb(wrap)
 	var longest := maxf(a.size.x, a.size.z)
 	var shortest := minf(a.size.x, a.size.z)
 	var sc := 1.0
-	if target_width > 0.0 and shortest > 0.001:
+	if target_height > 0.0 and a.size.y > 0.001:
+		# Street lights / poles: uniform scale from vertical extent only.
+		sc = target_height / a.size.y
+	elif target_width > 0.0 and target_len > 0.0 and longest > 0.001 and shortest > 0.001:
+		# Sidewalk strips: fit both axes (pick the tighter scale so neither overflows).
+		sc = minf(target_len / longest, target_width / shortest)
+	elif target_width > 0.0 and shortest > 0.001:
 		sc = target_width / shortest
 	elif target_len > 0.0 and longest > 0.001:
 		sc = target_len / longest

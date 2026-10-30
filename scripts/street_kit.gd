@@ -113,13 +113,18 @@ static func add_road_deck(
 	material: Material,
 	tile_m: float = 12.0,
 	_along_u: bool = true,
-	edge_mat: Material = null
+	edge_mat: Material = null,
+	sidewalk_mat: Material = null,
+	sidewalk_w: float = 0.0,
+	kerb_h: float = 0.14,
+	center_line: bool = false
 ) -> void:
 	## Flat road slab. Local Z = along road, local X = across width.
 	## Kit albedos are normalized so dashes run along U — U maps to length.
 	## Never world-triplanar (that put center dashes across the carriageway).
-	## edge_mat != null paints crisp lane-edge lines into a second surface of the
-	## SAME mesh — clear road edges with zero extra MeshInstance3D nodes (Android-safe).
+	## edge_mat != null paints crisp lane-edge lines into a second surface.
+	## sidewalk_mat + sidewalk_w bake raised kerb + sidewalk strips into the SAME
+	## mesh — clear road/pedestrian separation with zero extra MeshInstance3D nodes.
 	var hw := width * 0.5
 	var hl := length * 0.5
 	var span := maxf(length / maxf(tile_m, 1.0), 0.01)
@@ -155,8 +160,33 @@ static func add_road_deck(
 		for sx in [-1.0, 1.0]:
 			var cx: float = sx * inset
 			_flat_quad(es, Vector3(cx - ew * 0.5, 0.013, -hl), Vector3(cx + ew * 0.5, 0.013, -hl), Vector3(cx + ew * 0.5, 0.013, hl), Vector3(cx - ew * 0.5, 0.013, hl))
+		if center_line:
+			# Dashed centre line, baked into the same edge surface (no extra nodes).
+			var dash := 2.6
+			var gap := 3.6
+			var z := -hl + dash
+			while z + dash <= hl:
+				_flat_quad(es, Vector3(-0.075, 0.014, z), Vector3(0.075, 0.014, z), Vector3(0.075, 0.014, z + dash), Vector3(-0.075, 0.014, z + dash))
+				z += dash + gap
 		es.commit(mesh)
 		mesh.surface_set_material(mesh.get_surface_count() - 1, edge_mat)
+	if sidewalk_mat != null and sidewalk_w > 0.05:
+		# Both sides: kerb face + kerb coping + sidewalk deck, all one surface.
+		var ss := SurfaceTool.new()
+		ss.begin(Mesh.PRIMITIVE_TRIANGLES)
+		var kerb_w := 0.18
+		for sx in [-1.0, 1.0]:
+			var xr: float = sx * hw
+			var xk: float = sx * (hw + kerb_w)
+			var xs: float = sx * (hw + sidewalk_w)
+			# Sidewalk deck (raised, flat)
+			_quad_n(ss, Vector3(xk, kerb_h, -hl), Vector3(xs, kerb_h, -hl), Vector3(xs, kerb_h, hl), Vector3(xk, kerb_h, hl), Vector3.UP)
+			# Kerb coping top (flat strip at road-edge level)
+			_quad_n(ss, Vector3(xr, kerb_h, -hl), Vector3(xk, kerb_h, -hl), Vector3(xk, kerb_h, hl), Vector3(xr, kerb_h, hl), Vector3.UP)
+			# Kerb vertical face toward the carriageway
+			_quad_n(ss, Vector3(xr, 0.0, -hl), Vector3(xr, kerb_h, -hl), Vector3(xr, kerb_h, hl), Vector3(xr, 0.0, hl), Vector3(-sx, 0, 0))
+		ss.commit(mesh)
+		mesh.surface_set_material(mesh.get_surface_count() - 1, sidewalk_mat)
 	var mi := MeshInstance3D.new()
 	mi.mesh = mesh
 	mi.position = pos
@@ -166,7 +196,16 @@ static func add_road_deck(
 
 static func _flat_quad(st: SurfaceTool, a: Vector3, b: Vector3, c: Vector3, d: Vector3) -> void:
 	## Upward-facing quad (a-b-c / a-c-d), matching the road-deck winding.
-	st.set_normal(Vector3.UP)
+	_quad_n(st, a, b, c, d, Vector3.UP)
+
+
+static func _quad_n(st: SurfaceTool, a: Vector3, b: Vector3, c: Vector3, d: Vector3, n: Vector3) -> void:
+	## Quad with explicit outward normal; winding is fixed to match it.
+	if (b - a).cross(c - a).dot(n) < 0.0:
+		var tmp := b
+		b = d
+		d = tmp
+	st.set_normal(n)
 	st.set_uv(Vector2(0, 0))
 	st.add_vertex(a)
 	st.set_uv(Vector2(1, 0))
@@ -341,12 +380,14 @@ static func lamp(parent: Node3D, pos: Vector3) -> void:
 static var _tree_trunks: Array[Transform3D] = []
 static var _tree_canopies: Array[Transform3D] = []
 static var _tree_canopy_cols: Array[Color] = []
+static var _tree_cols: Array[Transform3D] = [] ## trunk collision capsules (sparse)
 static var _tree_trunk_mat: StandardMaterial3D
 static var _tree_canopy_mat: StandardMaterial3D
+const TREE_COL_CAP := 96
 
 
 static func tree(_parent: Node3D, pos: Vector3, rng: RandomNumberGenerator) -> void:
-	## Neem / peepal / dusty roadside tree, or a tall slim ashoka (25%). No collision.
+	## Neem / peepal / dusty roadside tree, or a tall slim ashoka (25%).
 	## Queued for batching — call StreetKit.flush_trees(map) after the map build.
 	_queue_tree(pos, rng)
 
@@ -362,6 +403,8 @@ static func _queue_tree(pos: Vector3, rng: RandomNumberGenerator) -> void:
 		var ashoka_h := rng.randf_range(3.8, 4.4)
 		var atr := rng.randf_range(0.14, 0.2)
 		_tree_trunks.append(Transform3D(Basis().scaled(Vector3(atr, ashoka_h, atr)), pos + Vector3(0, ashoka_h * 0.5, 0)))
+		if _tree_cols.size() < TREE_COL_CAP:
+			_tree_cols.append(Transform3D(Basis().scaled(Vector3(atr * 1.15, ashoka_h * 0.85, atr * 1.15)), pos + Vector3(0, ashoka_h * 0.42, 0)))
 		var ar := rng.randf_range(1.0, 1.35)
 		var asc := Vector3(ar, ar * 2.2, ar)
 		_tree_canopies.append(Transform3D(Basis(Vector3.UP, yaw).scaled(asc), pos + Vector3(0, ashoka_h * 0.7 + ar * 1.1, 0)))
@@ -370,6 +413,8 @@ static func _queue_tree(pos: Vector3, rng: RandomNumberGenerator) -> void:
 	var trunk_h := rng.randf_range(2.4, 3.6)
 	var trr := rng.randf_range(0.18, 0.28)
 	_tree_trunks.append(Transform3D(Basis().scaled(Vector3(trr, trunk_h, trr)), pos + Vector3(0, trunk_h * 0.5, 0)))
+	if _tree_cols.size() < TREE_COL_CAP:
+		_tree_cols.append(Transform3D(Basis().scaled(Vector3(trr * 1.2, trunk_h * 0.9, trr * 1.2)), pos + Vector3(0, trunk_h * 0.45, 0)))
 	var canopy_c: Color = greens[rng.randi_range(0, greens.size() - 1)]
 	var base_r := rng.randf_range(1.6, 2.7)
 	var blobs := rng.randi_range(2, 3)
@@ -384,8 +429,9 @@ static func _queue_tree(pos: Vector3, rng: RandomNumberGenerator) -> void:
 
 
 static func flush_trees(parent: Node3D) -> void:
-	## Commit every queued tree as two multi-mesh batches (trunk + canopy).
+	## Commit every queued tree as two multi-mesh batches (trunk + canopy) + trunk colliders.
 	if _tree_trunks.is_empty() and _tree_canopies.is_empty():
+		_tree_cols.clear()
 		return
 	if _tree_trunk_mat == null:
 		_tree_trunk_mat = mat(Color(0.36, 0.24, 0.14), 0.95)
@@ -396,9 +442,26 @@ static func flush_trees(parent: Node3D) -> void:
 		_tree_canopy_mat.vertex_color_use_as_albedo = true
 	_commit_batch(parent, _unit_cylinder(), _tree_trunks, [], _tree_trunk_mat)
 	_commit_batch(parent, _unit_ball(), _tree_canopies, _tree_canopy_cols, _tree_canopy_mat)
+	# Thin trunk StaticBodies so cars bump trees (capped for Android).
+	if not _tree_cols.is_empty():
+		var holder := Node3D.new()
+		holder.name = "TreeColliders"
+		parent.add_child(holder)
+		for xf in _tree_cols:
+			var sc := xf.basis.get_scale()
+			var body := StaticBody3D.new()
+			body.position = xf.origin
+			var col := CollisionShape3D.new()
+			var shape := CylinderShape3D.new()
+			shape.radius = maxf(sc.x, 0.22)
+			shape.height = maxf(sc.y, 1.6)
+			col.shape = shape
+			body.add_child(col)
+			holder.add_child(body)
 	_tree_trunks.clear()
 	_tree_canopies.clear()
 	_tree_canopy_cols.clear()
+	_tree_cols.clear()
 
 
 static func _commit_batch(parent: Node3D, mesh: Mesh, xforms: Array, cols: Array, material: Material) -> void:
