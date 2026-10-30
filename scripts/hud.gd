@@ -28,7 +28,7 @@ func _ready() -> void:
 	if _settings == null:
 		_settings = get_node_or_null("/root/GameSettings")
 	_title_label.text = "DriveViceCity — Dhule"
-	_hint_label.text = "WASD drive · RMB/drag look 360° · Map +/− zoom · G Home · V vehicle · R reset"
+	_hint_label.text = "WASD · RMB look · H horn · T weather · Map +/- · G Home · V car · R reset"
 	_mission_label.text = "Loading Dhule OSM roads…"
 	_stats_label.text = "₹0  ·  0 jobs"
 	_vehicle_label.text = "Loading vehicle…"

@@ -19,12 +19,21 @@ const SIDEWALKS := {
 	"tiles": "res://assets/kit/sidewalks/sidewalk_8m.glb",
 }
 const BUILDINGS := {
+	## Street-food cart (small) — sidewalk prop, not a full footprint.
 	"bhelpuri": "res://assets/kit/buildings/bhelpuri_shop.glb",
+	## Optional OSM commercial shopfront (same mesh, footprint-scaled). Prefer models/ path.
+	"shop": "res://assets/models/buildings/shops/bhelpuri_shop.glb",
+	"shop_kit": "res://assets/kit/buildings/bhelpuri_shop.glb",
 }
 const PROPS := {
-	"barrier": "res://assets/kit/props/barriers.glb",
-	"street_light": "res://assets/kit/props/street_light.fbx",
+	## Original modular MH props (preferred) + kit fallbacks
+	"barrier": "res://assets/models/props/traffic_barrier_mh.glb",
+	"barrier_kit": "res://assets/kit/props/barriers.glb",
+	"street_light": "res://assets/models/props/street_light_mh.glb",
+	"street_light_kit": "res://assets/kit/props/street_light.fbx",
 	"street_light_b": "res://assets/kit/props/street_light_b.fbx",
+	"bus_stop": "res://assets/models/props/bus_stop_shelter_mh.glb",
+	"planter": "res://assets/models/props/concrete_planter_mh.glb",
 	# bullock_cart.glb has a ~95 m skinned-bone AABB spike (see tools/probe_kit.gd);
 	# disabled until re-exported without armature. Empty path → exists() is false.
 	"bullock": "",
@@ -35,6 +44,11 @@ const VEHICLES := {
 	"autorickshaw": "res://assets/kit/vehicles/autorickshaw.glb",
 	"bus": "res://assets/kit/vehicles/bus.glb",
 	"truck": "res://assets/kit/vehicles/tata_truck.glb",
+	## Original MH premium sedan (Phase 2 hero candidate — registered, not wired yet)
+	"premium_sedan": "res://assets/models/vehicles/premium_sedan_mh.glb",
+}
+const ENVIRONMENTS := {
+	"dhule_junction": "res://assets/models/environments/dhule_junction_streetscape.glb",
 }
 ## Terrain3D demo meshes + kit barriers (road_demos edge CSG needs Path3D — use GLB instead).
 const SCENERY := {
@@ -49,13 +63,18 @@ const SCENERY := {
 ## len = target longest horizontal extent in metres; yaw = extra Y rotation after
 ## aligning the longest axis to Z (glTF fronts are usually +Z; Godot forward is -Z).
 const NORMALIZE := {
+	# Cart prop (~2.6 m). Full shop footprints use place_shop_footprint() instead.
 	"res://assets/kit/buildings/bhelpuri_shop.glb": {"len": 2.6, "yaw": 0.0},
-	# yaw π → nose toward Godot −Z (away from chase cam at +Z)
-	"res://assets/kit/vehicles/carnival.glb": {"len": 5.1, "yaw": PI},
-	"res://assets/kit/vehicles/tata_safari.glb": {"len": 4.7, "yaw": PI},
-	"res://assets/kit/vehicles/autorickshaw.glb": {"len": 2.9, "yaw": PI},
-	"res://assets/kit/vehicles/bus.glb": {"len": 11.0, "yaw": PI},
-	"res://assets/kit/vehicles/tata_truck.glb": {"len": 12.0, "yaw": PI},
+	"res://assets/models/buildings/shops/bhelpuri_shop.glb": {"len": 10.0, "yaw": 0.0},
+	# VehicleBody3D / glTF front = MODEL_FRONT (+Z). Longest axis → Z; yaw 0 keeps nose +Z.
+	# Chase cam sits on −Z so you see the rear (truck_town / GTA-style).
+	"res://assets/kit/vehicles/carnival.glb": {"len": 5.1, "yaw": 0.0},
+	"res://assets/kit/vehicles/tata_safari.glb": {"len": 4.7, "yaw": 0.0},
+	"res://assets/kit/vehicles/autorickshaw.glb": {"len": 2.9, "yaw": 0.0},
+	"res://assets/kit/vehicles/bus.glb": {"len": 11.0, "yaw": 0.0},
+	"res://assets/kit/vehicles/tata_truck.glb": {"len": 12.0, "yaw": 0.0},
+	"res://assets/models/vehicles/premium_sedan_mh.glb": {"len": 4.65, "yaw": 0.0},
+	"res://assets/models/environments/dhule_junction_streetscape.glb": {"len": 48.0, "yaw": 0.0},
 	# Diorama meshes scaled down to ~12 m tiles for OSM strip overlays.
 	"res://assets/kit/roads/avenue_street.glb": {"len": 12.0, "yaw": 0.0},
 	"res://assets/kit/roads/avenue_street_b.glb": {"len": 14.0, "yaw": 0.0},
@@ -64,6 +83,10 @@ const NORMALIZE := {
 	"res://assets/kit/roads/india_street.glb": {"len": 8.0, "yaw": 0.0},
 	"res://assets/kit/props/bullock_cart.glb": {"len": 4.0, "yaw": 0.0},
 	"res://assets/kit/props/barriers.glb": {"len": 5.9, "yaw": 0.0},
+	"res://assets/models/props/traffic_barrier_mh.glb": {"len": 1.35, "yaw": 0.0},
+	"res://assets/models/props/street_light_mh.glb": {"len": 6.2, "yaw": 0.0},
+	"res://assets/models/props/bus_stop_shelter_mh.glb": {"len": 3.4, "yaw": 0.0},
+	"res://assets/models/props/concrete_planter_mh.glb": {"len": 1.1, "yaw": 0.0},
 	"res://demo/assets/models/RockA.glb": {"len": 4.5, "yaw": 0.0},
 	"res://demo/assets/models/RockB.glb": {"len": 3.8, "yaw": 0.0},
 	"res://demo/assets/models/RockC.glb": {"len": 5.0, "yaw": 0.0},
@@ -263,11 +286,84 @@ static func sidewalk_path(key: String = "sidewalk_8m") -> String:
 
 
 static func building_path(key: String = "bhelpuri") -> String:
-	return str(BUILDINGS.get(key, BUILDINGS["bhelpuri"]))
+	var p := str(BUILDINGS.get(key, BUILDINGS["bhelpuri"]))
+	# Fall back to kit if models/shops copy is not imported yet
+	if key == "shop" and not exists(p):
+		return str(BUILDINGS["shop_kit"])
+	return p
+
+
+static func place_shop_footprint(
+	parent: Node3D,
+	world_pos: Vector3,
+	size_xz: Vector2,
+	yaw: float,
+	with_collision: bool = false
+) -> Node3D:
+	## Scale the shop GLB to an OSM footprint (front faces +yaw / toward road). Sparse use only.
+	var path := building_path("shop")
+	if not exists(path):
+		return null
+	var n := instance(path)
+	if n == null:
+		return null
+	var wrap := Node3D.new()
+	wrap.name = "ShopFootprint"
+	wrap.add_child(n)
+	var a := mesh_aabb(n)
+	if a.size.length() < 0.01:
+		wrap.queue_free()
+		return null
+	# Align longest plan axis to local Z (road-facing depth after yaw)
+	if a.size.x > a.size.z * 1.15:
+		n.rotation.y = PI * 0.5
+		a = mesh_aabb(wrap)
+	var target_w := clampf(size_xz.x, 5.5, 14.0)
+	var target_d := clampf(size_xz.y, 5.0, 12.0)
+	var sx := target_w / maxf(a.size.x, 0.01)
+	var sz := target_d / maxf(a.size.z, 0.01)
+	var sy := clampf((sx + sz) * 0.5, 0.45, 2.2)
+	n.scale = Vector3(sx, sy, sz)
+	a = mesh_aabb(wrap)
+	var centre := a.position + a.size * 0.5
+	n.position -= Vector3(centre.x, a.position.y, centre.z)
+	parent.add_child(wrap)
+	wrap.rotation.y = yaw
+	wrap.position = world_pos
+	a = mesh_aabb(wrap)
+	wrap.position.y = world_pos.y - a.position.y
+	if with_collision:
+		var body := StaticBody3D.new()
+		var col := CollisionShape3D.new()
+		var shape := BoxShape3D.new()
+		shape.size = Vector3(a.size.x * 0.92, a.size.y * 0.9, a.size.z * 0.92)
+		col.shape = shape
+		col.position = Vector3(0, a.size.y * 0.45, 0)
+		body.add_child(col)
+		wrap.add_child(body)
+	else:
+		# Visual-only — strip any imported static bodies from the GLB
+		_strip_physics_recursive(wrap)
+	return wrap
+
+
+static func _strip_physics_recursive(n: Node) -> void:
+	for c in n.get_children():
+		_strip_physics_recursive(c)
+	if n is StaticBody3D or n is RigidBody3D or n is CollisionShape3D:
+		n.queue_free()
 
 
 static func prop_path(key: String) -> String:
-	return str(PROPS.get(key, ""))
+	var p := str(PROPS.get(key, ""))
+	if p != "" and exists(p):
+		return p
+	# Fallbacks when modular GLBs not imported yet
+	if key == "barrier":
+		return str(PROPS.get("barrier_kit", ""))
+	if key == "street_light":
+		return str(PROPS.get("street_light_kit", ""))
+	return p
 
 
 static func vehicle_path(key: String) -> String:

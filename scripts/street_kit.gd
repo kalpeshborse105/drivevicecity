@@ -552,6 +552,28 @@ static func osm_patch(parent: Node3D, pos: Vector3, size_xz: Vector2, surface: M
 	add_box(parent, Vector3(size_xz.x, 0.05, size_xz.y), pos + Vector3(0, 0.02, 0), surface, false)
 
 
+static func water_body(parent: Node3D, pos: Vector3, size_xz: Vector2) -> void:
+	## River/pond with soft shore — not a bright blue floating slab.
+	var w := clampf(size_xz.x, 10.0, 96.0)
+	var d := clampf(size_xz.y, 10.0, 96.0)
+	var water := mat(Color(0.18, 0.32, 0.38, 0.88), 0.22, 0.15)
+	var deep := mat(Color(0.12, 0.24, 0.3, 0.92), 0.18, 0.2)
+	var mud := mat(Color(0.38, 0.34, 0.26), 0.92)
+	var reed := mat(Color(0.28, 0.38, 0.2), 0.9)
+	# Slightly sunk so wheels don't look like they float on paint
+	add_box(parent, Vector3(w + 4.0, 0.06, d + 4.0), pos + Vector3(0, -0.02, 0), mud, false)
+	add_box(parent, Vector3(w, 0.04, d), pos + Vector3(0, 0.01, 0), water, false)
+	add_box(parent, Vector3(w * 0.72, 0.03, d * 0.72), pos + Vector3(0, 0.02, 0), deep, false)
+	# Sparse reed clumps on shore (visual only)
+	var rng := RandomNumberGenerator.new()
+	rng.seed = int(absf(pos.x * 17.0 + pos.z * 31.0)) % 999983
+	for i in rng.randi_range(2, 5):
+		var ang := rng.randf() * TAU
+		var r := maxf(w, d) * 0.48
+		var rp := pos + Vector3(cos(ang) * r, 0.0, sin(ang) * r)
+		add_box(parent, Vector3(0.35, 0.55, 0.35), rp + Vector3(0, 0.28, 0), reed, false)
+
+
 static func utility_pole(parent: Node3D, pos: Vector3) -> void:
 	## Short concrete pole — grounded, no floating tip.
 	add_box(parent, Vector3(0.18, 5.2, 0.18), pos + Vector3(0, 2.6, 0), mat(Color(0.55, 0.52, 0.48), 0.85), false)

@@ -9,17 +9,24 @@ ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "assets" / "maps" / "dhule_roads.osm.json"
 PBF = ROOT / "western-zone-261027.osm.pbf"
 OUT = ROOT / "assets" / "maps" / "dhule_roads_game.json"
-# Rough Dhule window so the western-zone PBF is not loaded as a playable map.
-DHULE_LAT = (20.888, 20.922)
-DHULE_LON = (74.752, 74.802)
+# Ring 1 window — wider than playable clip so edge ways have full node coords.
+# Still a tiny Dhule extract from western-zone PBF (not all of India).
+DHULE_LAT = (20.880, 20.930)
+DHULE_LON = (74.742, 74.812)
 
 ORIGIN_LAT = 20.902
 ORIGIN_LON = 74.777
 METERS_PER_DEG_LAT = 111320.0
 METERS_PER_DEG_LON = 111320.0 * math.cos(math.radians(ORIGIN_LAT))
-CLIP_RADIUS = 900.0
+# Approved Ring 1 expand (~1.6 km half-extent). Keep origin fixed.
+CLIP_RADIUS = 1600.0
 # Prefer anchors inside this soft radius so spawn isn't on the map edge
 CORE_RADIUS = 420.0
+# Pin playtest spawn + jobs (from pre-expand JSON). Do not reshuffle deliveries.
+PIN_SPAWN = True
+PIN_ANCHORS = True
+MINOR_ROAD_CAP = 280
+BUILDING_CAP = 200  # MBTiles merge supplies most footprints
 
 WIDTH = {
 	"motorway": 14.0,
@@ -291,8 +298,20 @@ def main() -> None:
 
 	roads.sort(key=lambda r: (PRIORITY.get(r["highway"], 9), -r["length"]))
 	major = [r for r in roads if PRIORITY.get(r["highway"], 9) <= 5]
-	minor = [r for r in roads if PRIORITY.get(r["highway"], 9) > 5][:220]
+	# Outer residential: keep longer runs only so mesh count stays sane at 1.6 km
+	minor_all = [r for r in roads if PRIORITY.get(r["highway"], 9) > 5]
+	minor_core = [r for r in minor_all if any(math.hypot(p[0], p[1]) <= CORE_RADIUS + 80 for p in r["points"])]
+	core_ids = {id(r) for r in minor_core}
+	minor_outer = [r for r in minor_all if id(r) not in core_ids and float(r.get("length", 0)) >= 40.0]
+	minor = (minor_core + minor_outer)[:MINOR_ROAD_CAP]
 	roads = major + minor
+
+	prev: dict = {}
+	if OUT.exists():
+		try:
+			prev = json.loads(OUT.read_text(encoding="utf-8"))
+		except json.JSONDecodeError:
+			prev = {}
 
 	# Build well-mapped anchors: mid-segments on longer roads, prefer city core
 	candidates: list[dict] = []
@@ -333,17 +352,25 @@ def main() -> None:
 		if len(filtered) >= 24:
 			break
 
+	# Preserve delivery jobs from previous JSON when expanding the clip
+	if PIN_ANCHORS:
+		old_anchors = prev.get("delivery_anchors") or []
+		if isinstance(old_anchors, list) and len(old_anchors) >= 8:
+			filtered = old_anchors
+
 	for r in roads:
 		r.pop("length", None)
 
 	buildings.sort(key=lambda b: math.hypot(b["x"], b["z"]))
-	buildings = buildings[:320]
-	waters = waters[:24]
-	landuses = landuses[:28]
-	pois = pois[:18]
+	buildings = buildings[:BUILDING_CAP]
+	waters = waters[:40]
+	landuses = landuses[:48]
+	pois = pois[:28]
 
-	# Spawn = best (lowest score) core anchor
+	# Spawn = best (lowest score) core anchor — unless pinned for playtest continuity
 	spawn = filtered[0] if filtered else {"x": 0.0, "z": 0.0, "hx": 0.0, "hz": -1.0, "road": "center"}
+	if PIN_SPAWN and isinstance(prev.get("spawn"), dict):
+		spawn = prev["spawn"]
 
 	payload = {
 		"attribution": "© OpenStreetMap contributors (ODbL)",

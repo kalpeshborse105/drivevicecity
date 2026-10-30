@@ -20,16 +20,23 @@ config/icon="res://icon.svg"
 
 GameSettings="*res://scripts/game_settings.gd"
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/road-generator/plugin.cfg")
-
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/orca/plugin.cfg", "res://addons/road-generator/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
+
+[importer_defaults]
+
+animation_library={
+&"blender/nodes/active_collection_only": true,
+&"fbx/allow_geometry_helper_nodes": true
+}
 
 [input]
 

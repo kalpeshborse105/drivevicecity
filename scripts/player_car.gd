@@ -51,14 +51,16 @@ var _rim_index: int = 0
 var _body_mat: StandardMaterial3D
 var _wheels: Array[VehicleWheel3D] = []
 ## Chase cam behind the rear; W = into the world (away from the player).
-## +1 = Godot forward (−Z); kit meshes use NORMALIZE yaw PI so nose also faces −Z.
-var _drive_sign: float = 1.0
+## VehicleBody3D / glTF forward = MODEL_FRONT (+Z). Chase sits on MODEL_REAR (−Z).
+## See godot-demo-projects 3d/truck_town (steering wheels +Z, camera −Z).
 var _look_yaw: float = 0.0
 var _look_pitch: float = 0.12
 var _look_dragging: bool = false
 var _look_touch_id: int = -1
 var _look_touch_last: Vector2 = Vector2.ZERO
 var _orbit_return_t: float = 0.0
+var _driving_fx: Node
+var _vehicle_audio: Node
 
 
 func _ready() -> void:
@@ -77,8 +79,32 @@ func _ready() -> void:
 	_body_mat = VehicleMeshBuilder.mat(PAINTS[0], 0.42, 0.18)
 	_apply_paint(0)
 	_apply_profile(0)
+	_setup_fx_and_audio()
 	# Embedded editor Play often needs the game window focused for WASD
 	call_deferred("_grab_play_focus")
+
+
+func _setup_fx_and_audio() -> void:
+	## Incremental VFX/audio children — do not alter VehicleBody3D physics.
+	if get_node_or_null("DrivingFX") == null:
+		_driving_fx = Node3D.new()
+		_driving_fx.name = "DrivingFX"
+		_driving_fx.set_script(load("res://scripts/vehicle_driving_fx.gd"))
+		add_child(_driving_fx)
+	else:
+		_driving_fx = $DrivingFX
+	if get_node_or_null("VehicleAudio") == null:
+		_vehicle_audio = Node3D.new()
+		_vehicle_audio.name = "VehicleAudio"
+		_vehicle_audio.set_script(load("res://scripts/vehicle_audio.gd"))
+		add_child(_vehicle_audio)
+	else:
+		_vehicle_audio = $VehicleAudio
+
+
+func play_collision_sound() -> void:
+	if _vehicle_audio and _vehicle_audio.has_method("play_collision"):
+		_vehicle_audio.call("play_collision")
 
 
 func _grab_play_focus() -> void:
@@ -121,9 +147,11 @@ func _configure_wheels_base() -> void:
 func set_spawn(pos: Vector3, heading_xz: Vector2 = Vector2(0, -1)) -> void:
 	var forward := Vector3(heading_xz.x, 0.0, heading_xz.y)
 	if forward.length() < 0.01:
-		forward = Vector3(0, 0, -1)
+		forward = Vector3.MODEL_FRONT
 	forward = forward.normalized()
-	var basis := Basis.looking_at(forward, Vector3.UP)
+	# Basis.looking_at aims local −Z at the target (camera convention). Aim −forward so
+	# local +Z (MODEL_FRONT) points along the road heading.
+	var basis := Basis.looking_at(-forward, Vector3.UP)
 	# Sit low so wheels touch ground collision (y≈0) immediately
 	var grounded := Vector3(pos.x, 0.42, pos.z)
 	_spawn = Transform3D(basis, grounded)
@@ -176,16 +204,16 @@ func _physics_process(delta: float) -> void:
 	var speed := linear_velocity.length()
 	var speed_kph := speed * 3.6
 	var top := clampf(1.05 - (speed_kph / max_speed_kph), 0.4, 1.0)
-	# Godot VehicleBody3D forward = -Z. Kit nose also -Z. W = away from chase cam.
-	engine_force = throttle * engine_force_value * top * _drive_sign
+	# Positive engine_force → MODEL_FRONT (+Z). W drives away from chase cam (rear).
+	engine_force = throttle * engine_force_value * top
 	brake = 0.0
 
-	var forward_dir := -global_transform.basis.z * _drive_sign
+	var forward_dir := global_transform.basis.z # MODEL_FRONT in world space
 	if brake_in > 0.0:
 		var going_forward := linear_velocity.dot(forward_dir) > 0.35
 		if speed_kph < 22.0 and not going_forward:
 			# Reverse: strong push so S backs toward the chase cam clearly
-			engine_force = -brake_in * engine_force_value * 1.35 * _drive_sign
+			engine_force = -brake_in * engine_force_value * 1.35
 		else:
 			brake = brake_in * brake_force_value
 
@@ -442,12 +470,12 @@ func _apply_rim_visuals() -> void:
 
 
 func _set_wheel_base(half_length: float, half_width: float) -> void:
-	## Godot VehicleBody3D forward is -Z → front axle at negative Z.
+	## MODEL_FRONT = +Z (matches truck_town steering wheels on +Z).
 	var y := 0.36
-	_fl.position = Vector3(half_width, y, -half_length)
-	_fr.position = Vector3(-half_width, y, -half_length)
-	_rl.position = Vector3(half_width, y, half_length)
-	_rr.position = Vector3(-half_width, y, half_length)
+	_fl.position = Vector3(half_width, y, half_length)
+	_fr.position = Vector3(-half_width, y, half_length)
+	_rl.position = Vector3(half_width, y, -half_length)
+	_rr.position = Vector3(-half_width, y, -half_length)
 
 
 func _reset_to_spawn() -> void:
@@ -533,15 +561,14 @@ func _update_chase_camera(delta: float, speed_kph: float) -> void:
 	var pull := clampf(speed_kph / 120.0, 0.0, 1.0)
 	var dist := 8.0 + pull * 2.8
 	var height := 3.0 + pull * 0.45
-	# Behind the car: local +Z = rear when drive_sign=+1 (W = −Z = away from cam).
+	# Chase from MODEL_REAR (−Z), GTA-style — truck_town camera also sits on −Z.
 	# RMB/drag orbits 360° so you can swing around and see the nose.
 	var yaw := _look_yaw
 	var pitch := _look_pitch
-	var back := _drive_sign
 	var offset := Vector3(
 		sin(yaw) * dist * cos(pitch),
 		height + sin(pitch) * dist * 0.85,
-		cos(yaw) * dist * cos(pitch) * back
+		-cos(yaw) * dist * cos(pitch)
 	)
 	# Pull camera in if a building/wall sits between car and chase point (crash into home)
 	var eye := global_position + Vector3(0, 1.35, 0)
@@ -558,7 +585,7 @@ func _update_chase_camera(delta: float, speed_kph: float) -> void:
 			var safe_len := maxf(eye.distance_to(hit_pos) - 0.55, 2.2)
 			desired = eye + dir.normalized() * safe_len
 	_camera_pivot.global_position = desired
-	var look_ahead := global_position + (-global_transform.basis.z * _drive_sign * 10.0) + Vector3.UP * 1.1
+	var look_ahead := global_position + (global_transform.basis.z * 10.0) + Vector3.UP * 1.1
 	if absf(_look_yaw) > 0.55:
 		look_ahead = global_position + Vector3.UP * 1.2
 	_camera.look_at(look_ahead, Vector3.UP)

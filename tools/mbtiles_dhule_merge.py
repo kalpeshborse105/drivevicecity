@@ -21,9 +21,20 @@ ORIGIN_LAT = 20.902
 ORIGIN_LON = 74.777
 MPL = 111320.0
 MPLON = 111320.0 * math.cos(math.radians(ORIGIN_LAT))
-CLIP = 900.0
+# Match Ring 1 clip in osm_to_game_json.py
+CLIP = 1600.0
 Z = 14
 EXTENT = 4096
+# Tile ring: z14 ~2.4 km — ±3 covers ~1.6 km clip with margin
+TILE_RANGE = range(-3, 4)
+BUILDING_CAP = 520
+WATER_CAP = 56
+LANDUSE_CAP = 96
+POI_CAP = 40
+FLYOVER_CAP = 14
+ROAD_CLEAR_M = 10.0
+# Footprint AABB also rejected if any corner sits on asphalt
+BUILDING_CORNER_CLEAR_M = 7.5
 
 
 def to_xz(lat: float, lon: float) -> tuple[float, float]:
@@ -71,9 +82,42 @@ def walk_rings(geom) -> list[list[tuple[float, float]]]:
 	return rings
 
 
+def _seg_dist2(px: float, pz: float, ax: float, az: float, bx: float, bz: float) -> float:
+	abx, abz = bx - ax, bz - az
+	apx, apz = px - ax, pz - az
+	ab2 = abx * abx + abz * abz
+	if ab2 < 1e-6:
+		return apx * apx + apz * apz
+	t = max(0.0, min(1.0, (apx * abx + apz * abz) / ab2))
+	dx, dz = ax + abx * t - px, az + abz * t - pz
+	return dx * dx + dz * dz
+
+
+def build_road_index(roads: list) -> list[tuple[float, float, float, float, float]]:
+	"""Flat list of (ax, az, bx, bz, half_w + clear) segments for carriageway reject."""
+	segs: list[tuple[float, float, float, float, float]] = []
+	for r in roads:
+		pts = r.get("points") or []
+		half = float(r.get("width", 7.0)) * 0.5 + ROAD_CLEAR_M
+		for i in range(len(pts) - 1):
+			a, b = pts[i], pts[i + 1]
+			segs.append((float(a[0]), float(a[1]), float(b[0]), float(b[1]), half))
+	return segs
+
+
+def on_carriageway(x: float, z: float, segs: list[tuple[float, float, float, float, float]]) -> bool:
+	for ax, az, bx, bz, clear in segs:
+		if _seg_dist2(x, z, ax, az, bx, bz) <= clear * clear:
+			return True
+	return False
+
+
 def main() -> None:
 	game = json.loads(GAME.read_text(encoding="utf-8"))
-	# Cover the 900 m clip with z14 tiles (~1.5 km each).
+	# Never overwrite roads / spawn / delivery jobs
+	roads = game.get("roads") or []
+	road_segs = build_road_index(roads)
+
 	cx, cy = tile_xy(ORIGIN_LAT, ORIGIN_LON)
 	con = sqlite3.connect(MBTILES)
 	buildings: list[dict] = []
@@ -82,8 +126,8 @@ def main() -> None:
 	pois: list[dict] = []
 	flyovers: list[dict] = []
 	tiles = 0
-	for dx in range(-2, 3):
-		for dy in range(-2, 3):
+	for dx in TILE_RANGE:
+		for dy in TILE_RANGE:
 			tx, ty = cx + dx, cy + dy
 			tms_y = (2**Z - 1) - ty
 			row = con.execute(
@@ -97,25 +141,98 @@ def main() -> None:
 			if blob[:2] == b"\x1f\x8b":
 				blob = gzip.decompress(blob)
 			decoded = mapbox_vector_tile.decode(blob)
-			_collect(decoded, tx, ty, buildings, waters, landuses, pois, flyovers)
+			_collect(decoded, tx, ty, buildings, waters, landuses, pois, flyovers, road_segs)
 	con.close()
 
+	# Prefer denser / closer footprints; drop center OR corners on asphalt
+	def _building_ok(b: dict) -> bool:
+		x, z, hw, hd = b["x"], b["z"], b["w"] * 0.45, b["d"] * 0.45
+		pts = [
+			(x, z),
+			(x + hw, z),
+			(x - hw, z),
+			(x, z + hd),
+			(x, z - hd),
+			(x + hw, z + hd),
+			(x - hw, z - hd),
+		]
+		# Tighter clear on corners so facades never sit in the lane
+		tight = [(a, bz, c, d, max(BUILDING_CORNER_CLEAR_M, e - 2.0)) for a, bz, c, d, e in road_segs]
+		return all(not on_carriageway(px, pz, tight) for px, pz in pts)
+
+	buildings = [b for b in buildings if _building_ok(b)]
 	buildings.sort(key=lambda b: math.hypot(b["x"], b["z"]))
-	game["buildings"] = buildings[:320]
-	game["water"] = waters[:24]
-	game["landuse"] = landuses[:28]
-	game["pois"] = pois[:18]
+	# Dedup near-identical footprints (tile overlap)
+	deduped: list[dict] = []
+	for b in buildings:
+		if all(math.hypot(b["x"] - o["x"], b["z"] - o["z"]) > 6.0 for o in deduped):
+			deduped.append(b)
+		if len(deduped) >= BUILDING_CAP:
+			break
+	game["buildings"] = deduped
+
+	# Dedup overlapping water patches
+	waters.sort(key=lambda w: -(w["w"] * w["d"]))
+	water_out: list[dict] = []
+	for w in waters:
+		if all(math.hypot(w["x"] - o["x"], w["z"] - o["z"]) > 40.0 for o in water_out):
+			water_out.append(w)
+		if len(water_out) >= WATER_CAP:
+			break
+	game["water"] = water_out
+
+	landuses.sort(key=lambda lu: -(lu["w"] * lu["d"]))
+	# Prefer variety: keep at most ~half residential patches
+	spawn = game.get("spawn") or {}
+	sx = float(spawn.get("x", 0.0))
+	sz = float(spawn.get("z", 0.0))
+	lu_out: list[dict] = []
+	res_n = 0
+	for lu in landuses:
+		if lu["kind"] == "residential":
+			if res_n >= LANDUSE_CAP // 2:
+				continue
+			res_n += 1
+		# Skip landuse that covers the spawn pad
+		if math.hypot(lu["x"] - sx, lu["z"] - sz) < 40.0:
+			continue
+		lu_out.append(lu)
+		if len(lu_out) >= LANDUSE_CAP:
+			break
+	game["landuse"] = lu_out
+
+	# Diversify POIs — soft carriageway reject; cap hospitals so other kinds appear
+	pois.sort(key=lambda p: math.hypot(p["x"], p["z"]))
+	poi_out: list[dict] = []
+	kind_counts: dict[str, int] = {}
+	kind_caps = {"hospital": 8, "school": 6, "place_of_worship": 6, "fuel": 4, "marketplace": 4, "bank": 4, "bus_station": 4}
+	for p in pois:
+		k = str(p.get("kind") or "")
+		if on_carriageway(p["x"], p["z"], [(a, b, c, d, max(0.0, e - 4.0)) for a, b, c, d, e in road_segs]):
+			continue
+		cap = kind_caps.get(k, 5)
+		if kind_counts.get(k, 0) >= cap:
+			continue
+		kind_counts[k] = kind_counts.get(k, 0) + 1
+		poi_out.append(p)
+		if len(poi_out) >= POI_CAP:
+			break
+	game["pois"] = poi_out
+
 	flyovers.sort(key=lambda f: -f["length"])
 	for item in flyovers:
 		item.pop("length", None)
-	game["flyovers"] = flyovers[:10]
+	game["flyovers"] = flyovers[:FLYOVER_CAP]
 	game["attribution"] = "© OpenStreetMap contributors (ODbL)"
-	game["source"] = "osm-roads+geofabrik-shortbread-mbtiles-dhule-z14"
+	game["source"] = "osm-roads+geofabrik-shortbread-mbtiles-dhule-z14-ring1"
+	# Preserve clip from roads converter if present
+	if "clip_radius_m" not in game:
+		game["clip_radius_m"] = CLIP
 	GAME.write_text(json.dumps(game, separators=(",", ":")), encoding="utf-8")
 	print(
 		f"tiles={tiles} buildings={len(game['buildings'])} water={len(game['water'])} "
 		f"landuse={len(game['landuse'])} pois={len(game['pois'])} flyovers={len(game['flyovers'])} "
-		f"bytes={GAME.stat().st_size}"
+		f"bytes={GAME.stat().st_size} clip={game.get('clip_radius_m')}"
 	)
 
 
@@ -131,7 +248,7 @@ def _lines(geom) -> list[list[tuple[float, float]]]:
 	return []
 
 
-def _collect(decoded, tx, ty, buildings, waters, landuses, pois, flyovers) -> None:
+def _collect(decoded, tx, ty, buildings, waters, landuses, pois, flyovers, road_segs) -> None:
 	for feat in decoded.get("buildings", {}).get("features", []):
 		for ring in walk_rings(feat.get("geometry")):
 			if len(ring) < 4:
@@ -142,6 +259,8 @@ def _collect(decoded, tx, ty, buildings, waters, landuses, pois, flyovers) -> No
 			cx = sum(xs) / len(xs)
 			cz = sum(zs) / len(zs)
 			if not inside(cx, cz):
+				continue
+			if on_carriageway(cx, cz, road_segs):
 				continue
 			w = max(xs) - min(xs)
 			d = max(zs) - min(zs)
@@ -162,18 +281,61 @@ def _collect(decoded, tx, ty, buildings, waters, landuses, pois, flyovers) -> No
 				continue
 			xs = [p[0] for p in xz]
 			zs = [p[1] for p in xz]
+			ww = max(xs) - min(xs)
+			dd = max(zs) - min(zs)
+			if ww < 8 and dd < 8:
+				continue
 			waters.append(
 				{
 					"x": round(cx, 2),
 					"z": round(cz, 2),
-					"w": round(min(max(xs) - min(xs), 160), 2),
-					"d": round(min(max(zs) - min(zs), 160), 2),
+					"w": round(min(max(ww, 12), 220), 2),
+					"d": round(min(max(dd, 12), 220), 2),
 				}
 			)
+	# Rivers/canals as elongated patches (Panzara often tagged as water_lines)
+	for feat in decoded.get("water_lines", {}).get("features", []):
+		for line in _lines(feat.get("geometry")):
+			if len(line) < 2:
+				continue
+			xz = [to_xz(*lonlat_from_tile(tx, ty, px, py)) for px, py in line]
+			xs = [p[0] for p in xz]
+			zs = [p[1] for p in xz]
+			cx = sum(xs) / len(xs)
+			cz = sum(zs) / len(zs)
+			if not inside(cx, cz, CLIP):
+				continue
+			ww = max(max(xs) - min(xs), 14.0)
+			dd = max(max(zs) - min(zs), 10.0)
+			if ww * dd < 200:
+				continue
+			waters.append(
+				{
+					"x": round(cx, 2),
+					"z": round(cz, 2),
+					"w": round(min(ww, 220), 2),
+					"d": round(min(dd, 80), 2),
+				}
+			)
+	_LAND_MAP = {
+		"residential": "residential",
+		"commercial": "commercial",
+		"retail": "retail",
+		"industrial": "commercial",
+		"grass": "grass",
+		"farmland": "farmland",
+		"park": "grass",
+		"forest": "grass",
+		"cemetery": "grass",
+		"playground": "grass",
+		"quarry": "farmland",
+		"railway": "commercial",
+	}
 	for feat in decoded.get("land", {}).get("features", []):
 		props = feat.get("properties") or {}
-		kind = str(props.get("kind") or "")
-		if kind not in ("residential", "commercial", "retail", "grass", "farmland", "park"):
+		raw = str(props.get("kind") or "")
+		kind = _LAND_MAP.get(raw)
+		if not kind:
 			continue
 		for ring in walk_rings(feat.get("geometry")):
 			if len(ring) < 3:
@@ -186,15 +348,34 @@ def _collect(decoded, tx, ty, buildings, waters, landuses, pois, flyovers) -> No
 			xs = [p[0] for p in xz]
 			zs = [p[1] for p in xz]
 			ww, dd = max(xs) - min(xs), max(zs) - min(zs)
-			if ww < 18 or dd < 18:
+			if ww < 12 or dd < 12:
 				continue
 			landuses.append(
-				{"kind": kind if kind != "park" else "grass", "x": round(cx, 2), "z": round(cz, 2), "w": round(min(ww, 120), 2), "d": round(min(dd, 120), 2)}
+				{"kind": kind, "x": round(cx, 2), "z": round(cz, 2), "w": round(min(ww, 160), 2), "d": round(min(dd, 160), 2)}
 			)
+	_POI_KEEP = {
+		"fuel": "fuel",
+		"hospital": "hospital",
+		"clinic": "hospital",
+		"doctors": "hospital",
+		"bus_station": "bus_station",
+		"marketplace": "marketplace",
+		"place_of_worship": "place_of_worship",
+		"school": "school",
+		"college": "school",
+		"university": "school",
+		"bank": "bank",
+		"police": "bank",
+		"hotel": "marketplace",
+		"cinema": "marketplace",
+		"supermarket": "marketplace",
+		"courthouse": "bank",
+	}
 	for feat in decoded.get("pois", {}).get("features", []):
 		props = feat.get("properties") or {}
-		kind = props.get("amenity") or props.get("shop") or props.get("tourism") or ""
-		if kind not in ("fuel", "hospital", "bus_station", "marketplace", "place_of_worship", "school", "bank"):
+		raw = props.get("amenity") or props.get("shop") or props.get("tourism") or ""
+		kind = _POI_KEEP.get(str(raw))
+		if not kind:
 			continue
 		rings = walk_rings(feat.get("geometry"))
 		if not rings or not rings[0]:
@@ -204,6 +385,24 @@ def _collect(decoded, tx, ty, buildings, waters, landuses, pois, flyovers) -> No
 		if not inside(x, z):
 			continue
 		pois.append({"name": props.get("name") or props.get("name_en") or kind, "kind": kind, "x": round(x, 2), "z": round(z, 2)})
+	# Bus stops / stations from public_transport layer when present
+	for feat in decoded.get("public_transport", {}).get("features", []):
+		props = feat.get("properties") or {}
+		rings = walk_rings(feat.get("geometry"))
+		if not rings or not rings[0]:
+			continue
+		px, py = rings[0][0]
+		x, z = to_xz(*lonlat_from_tile(tx, ty, px, py))
+		if not inside(x, z):
+			continue
+		pois.append(
+			{
+				"name": props.get("name") or props.get("name_en") or "Bus stop",
+				"kind": "bus_station",
+				"x": round(x, 2),
+				"z": round(z, 2),
+			}
+		)
 	for feat in decoded.get("streets", {}).get("features", []):
 		props = feat.get("properties") or {}
 		if props.get("bridge") not in (1, True, "yes", "1"):

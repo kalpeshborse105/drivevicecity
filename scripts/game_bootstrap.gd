@@ -1,5 +1,8 @@
 extends Node3D
 ## Wires OSM map spawn, missions, nav arrow, vehicle HUD (P2).
+## Optional VFX presets from reviewed patch (T cycles weather) — no Google Maps UI.
+
+const VFXControllerScript = preload("res://scripts/vfx_environment_controller.gd")
 
 @onready var _map: Node3D = $DhuleMap
 @onready var _car: VehicleBody3D = $PlayerCar
@@ -9,6 +12,11 @@ extends Node3D
 
 
 func _ready() -> void:
+	if get_node_or_null("VFXEnvironmentController") == null:
+		var vfx := Node3D.new()
+		vfx.name = "VFXEnvironmentController"
+		vfx.set_script(VFXControllerScript)
+		add_child(vfx)
 	if _nav.has_method("setup"):
 		_nav.setup(_car)
 	if _map.has_signal("map_ready"):
@@ -43,7 +51,7 @@ func _on_map_ready(spawn_position: Vector3, spawn_heading: Vector2, anchors: Arr
 	if _missions.has_method("start_with_anchors"):
 		_missions.start_with_anchors(anchors)
 	# On-screen self-check summary after map wires up
-	var status := "OK map+%d anchors · vehicle ready · G or Customize" % anchors.size()
+	var status := "OK map+%d anchors · T weather · G garage · Customize" % anchors.size()
 	if _hud.has_method("set_test_status"):
 		_hud.set_test_status(status)
 

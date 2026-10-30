@@ -9,6 +9,7 @@ Status: **PHASE 1 MAP** — audit pass done (clip/nav/mats/lots/fog); F5 polish 
 | **[USER-GUIDE.md](USER-GUIDE.md)** | **How to play (for you / testers)** |
 | **[13 — Build order](13-BUILD-ORDER.md)** | **Map → Vehicle → Play (locked plan)** |
 | [16 — Phase 1 audit](16-PHASE1-AUDIT.md) | Bugs, plan, this-pass scope |
+| [20 — Dhule map expand audit](20-DHULE-MAP-EXPAND-AUDIT.md) | Bounds, PBF/MBTiles, safe clip expand plan |
 | [17 — References](17-REFERENCES.md) | Geofabrik, Sketchfab, Cesium (not used), Orca, download guide |
 | [18 — Asset credits](18-ASSET-CREDITS.md) | Kit / demo / road_demos credits + garage vehicles |
 | [19 — Cesium / Scenario](19-CESIUM-SCENARIO.md) | Why Unreal/Unity Cesium + Google 3D Tiles are not used; Scenario optional later |

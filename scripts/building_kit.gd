@@ -44,7 +44,8 @@ static func footprint(
 	size_xz: Vector2,
 	kind: String,
 	seed: int,
-	face_dir: Vector3 = Vector3(0, 0, 1)
+	face_dir: Vector3 = Vector3(0, 0, 1),
+	with_collision: bool = true
 ) -> float:
 	## Builds a building at pos (bottom on pos.y) whose +Z front faces face_dir. Returns height.
 	var rng := RandomNumberGenerator.new()
@@ -70,7 +71,7 @@ static func footprint(
 
 	var wall_c: Color = WALLS[rng.randi_range(0, WALLS.size() - 1)]
 	var accent_c: Color = ACCENTS[rng.randi_range(0, ACCENTS.size() - 1)]
-	_build(parent, pos, face_dir, w, d, h, floors, ground_h, floor_h, commercial, wall_c, accent_c, rng, "")
+	_build(parent, pos, face_dir, w, d, h, floors, ground_h, floor_h, commercial, wall_c, accent_c, rng, "", with_collision)
 	return h
 
 
@@ -108,7 +109,7 @@ static func landmark(parent: Node3D, pos: Vector3, poi_name: String, kind: Strin
 	var ground_h := 3.8
 	var floor_h := 3.2
 	var h := ground_h + float(floors - 1) * floor_h
-	var node := _build(parent, pos, face_dir, w, d, h, floors, ground_h, floor_h, true, wall_c, accent_c, rng, poi_name)
+	var node := _build(parent, pos, face_dir, w, d, h, floors, ground_h, floor_h, true, wall_c, accent_c, rng, poi_name, true)
 	if kind in ["place_of_worship", "temple"] and node:
 		# Stacked shikhara on roof (stylized)
 		var tiers := [Vector3(5.0, 2.2, 5.0), Vector3(3.6, 2.0, 3.6), Vector3(2.2, 1.8, 2.2), Vector3(1.0, 1.4, 1.0)]
@@ -134,7 +135,8 @@ static func _build(
 	wall_c: Color,
 	accent_c: Color,
 	rng: RandomNumberGenerator,
-	sign_text: String
+	sign_text: String,
+	with_collision: bool = true
 ) -> MeshInstance3D:
 	var wall := _Surf.new(StreetKit.mat(wall_c, 0.92))
 	var trim := _Surf.new(StreetKit.mat(wall_c.darkened(0.28), 0.9))
@@ -251,14 +253,16 @@ static func _build(
 	mi.rotation.y = atan2(face_dir.x, face_dir.z)
 	parent.add_child(mi)
 
-	var body := StaticBody3D.new()
-	var col := CollisionShape3D.new()
-	var shape := BoxShape3D.new()
-	shape.size = Vector3(w, h, d)
-	col.shape = shape
-	col.position = Vector3(0, h * 0.5, 0)
-	body.add_child(col)
-	mi.add_child(body)
+	# Outer Ring 1 footprints stay visual-only to keep StaticBody count down
+	if with_collision:
+		var body := StaticBody3D.new()
+		var col := CollisionShape3D.new()
+		var shape := BoxShape3D.new()
+		shape.size = Vector3(w, h, d)
+		col.shape = shape
+		col.position = Vector3(0, h * 0.5, 0)
+		body.add_child(col)
+		mi.add_child(body)
 
 	if sign_text != "":
 		var label := Label3D.new()

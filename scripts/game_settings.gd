@@ -9,6 +9,9 @@ const CFG_PATH := "user://drivevicecity.cfg"
 var minimap_enabled: bool = true
 ## 0 = quiet, 1 = normal, 2 = more road-name signs (next map load).
 var road_sign_density: int = 1
+## Driving VFX: 0=off (Android safe), 1=smoke+lights, 2=full (skids).
+var fx_quality: int = 1
+var audio_enabled: bool = true
 ## Default body = Carnival (kit GLB) so Play shows an incoming vehicle immediately.
 var profile_index: int = 2
 var paint_index: int = 0
@@ -17,7 +20,13 @@ var rim_index: int = 0
 
 
 func _ready() -> void:
+	# Android / mobile: prefer cheaper defaults before cfg overrides
+	if OS.has_feature("android") or OS.has_feature("mobile"):
+		fx_quality = 0
 	load_cfg()
+	if OS.has_feature("android") or OS.has_feature("mobile"):
+		# Cap even if cfg asked for high
+		fx_quality = mini(fx_quality, 1)
 
 
 func road_sign_max() -> int:
@@ -37,11 +46,14 @@ func load_cfg() -> void:
 		return
 	minimap_enabled = bool(cf.get_value("settings", "minimap_enabled", true))
 	road_sign_density = int(cf.get_value("settings", "road_sign_density", 1))
+	fx_quality = int(cf.get_value("settings", "fx_quality", fx_quality))
+	audio_enabled = bool(cf.get_value("settings", "audio_enabled", true))
 	profile_index = int(cf.get_value("vehicle", "profile_index", 2))
 	paint_index = int(cf.get_value("vehicle", "paint_index", 0))
 	kit_index = int(cf.get_value("vehicle", "kit_index", 0))
 	rim_index = int(cf.get_value("vehicle", "rim_index", 0))
 	road_sign_density = clampi(road_sign_density, 0, 2)
+	fx_quality = clampi(fx_quality, 0, 2)
 	profile_index = clampi(profile_index, 0, 6)
 	paint_index = clampi(paint_index, 0, 9)
 	kit_index = clampi(kit_index, 0, 3)
@@ -58,6 +70,8 @@ func save_cfg() -> void:
 	cf.set_value("meta", "ver", 1)
 	cf.set_value("settings", "minimap_enabled", minimap_enabled)
 	cf.set_value("settings", "road_sign_density", road_sign_density)
+	cf.set_value("settings", "fx_quality", fx_quality)
+	cf.set_value("settings", "audio_enabled", audio_enabled)
 	cf.set_value("vehicle", "profile_index", profile_index)
 	cf.set_value("vehicle", "paint_index", paint_index)
 	cf.set_value("vehicle", "kit_index", kit_index)

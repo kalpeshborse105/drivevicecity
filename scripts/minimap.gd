@@ -87,8 +87,8 @@ func _draw_player_marker() -> void:
 	c.y -= 10.0 # sit above zoom row
 	var yaw := 0.0
 	if _car:
-		# Car forward in XZ (account for drive sign via -Z * sign is done in car; marker uses -Z)
-		var f := -_car.global_transform.basis.z
+		# Car forward = MODEL_FRONT (+Z local → basis.z)
+		var f := _car.global_transform.basis.z
 		yaw = atan2(f.x, f.z)
 	var tip := c + Vector2(sin(yaw), -cos(yaw)) * 14.0
 	var left := c + Vector2(sin(yaw + 2.5), -cos(yaw + 2.5)) * 10.0
