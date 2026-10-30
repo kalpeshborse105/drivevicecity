@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/incoming/city_map_free.glb" id="1_city"]
+
+[sub_resource type="Environment" id="Environment_test"]
+background_mode = 1
+background_color = Color(0.12, 0.16, 0.21, 1)
+ambient_light_source = 3
+ambient_light_color = Color(0.78, 0.82, 0.9, 1)
+ambient_light_energy = 0.8
+
+[node name="CityMapFreeInspection" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_test")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation = Vector3(-0.8, -0.55, 0)
+light_color = Color(1, 0.9, 0.75, 1)
+light_energy = 1.2
+shadow_enabled = true
+
+[node name="CityModel" parent="." instance=ExtResource("1_city")]
+
+[node name="InspectionCamera" type="Camera3D" parent="."]
+transform = Transform3D(0.708118, -0.264852, 0.65454, 0, 0.926987, 0.375095, -0.706094, -0.265611, 0.656416, 433, 315, 340)
+current = true
+fov = 65.0
+far = 2000.0

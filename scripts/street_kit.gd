@@ -112,11 +112,14 @@ static func add_road_deck(
 	yaw: float,
 	material: Material,
 	tile_m: float = 12.0,
-	_along_u: bool = true
+	_along_u: bool = true,
+	edge_mat: Material = null
 ) -> void:
 	## Flat road slab. Local Z = along road, local X = across width.
 	## Kit albedos are normalized so dashes run along U — U maps to length.
 	## Never world-triplanar (that put center dashes across the carriageway).
+	## edge_mat != null paints crisp lane-edge lines into a second surface of the
+	## SAME mesh — clear road edges with zero extra MeshInstance3D nodes (Android-safe).
 	var hw := width * 0.5
 	var hl := length * 0.5
 	var span := maxf(length / maxf(tile_m, 1.0), 0.01)
@@ -142,13 +145,40 @@ static func add_road_deck(
 	st.add_vertex(v2)
 	st.set_uv(Vector2(span, 0.0))
 	st.add_vertex(v3)
-	var mesh := st.commit()
+	var mesh: ArrayMesh = st.commit()
+	mesh.surface_set_material(0, material)
+	if edge_mat != null and width >= 5.0:
+		var es := SurfaceTool.new()
+		es.begin(Mesh.PRIMITIVE_TRIANGLES)
+		var ew := 0.15
+		var inset := hw - 0.45
+		for sx in [-1.0, 1.0]:
+			var cx: float = sx * inset
+			_flat_quad(es, Vector3(cx - ew * 0.5, 0.013, -hl), Vector3(cx + ew * 0.5, 0.013, -hl), Vector3(cx + ew * 0.5, 0.013, hl), Vector3(cx - ew * 0.5, 0.013, hl))
+		es.commit(mesh)
+		mesh.surface_set_material(mesh.get_surface_count() - 1, edge_mat)
 	var mi := MeshInstance3D.new()
 	mi.mesh = mesh
-	mi.material_override = material
 	mi.position = pos
 	mi.rotation.y = yaw
 	parent.add_child(mi)
+
+
+static func _flat_quad(st: SurfaceTool, a: Vector3, b: Vector3, c: Vector3, d: Vector3) -> void:
+	## Upward-facing quad (a-b-c / a-c-d), matching the road-deck winding.
+	st.set_normal(Vector3.UP)
+	st.set_uv(Vector2(0, 0))
+	st.add_vertex(a)
+	st.set_uv(Vector2(1, 0))
+	st.add_vertex(b)
+	st.set_uv(Vector2(1, 1))
+	st.add_vertex(c)
+	st.set_uv(Vector2(0, 0))
+	st.add_vertex(a)
+	st.set_uv(Vector2(1, 1))
+	st.add_vertex(c)
+	st.set_uv(Vector2(0, 1))
+	st.add_vertex(d)
 
 
 static func shop_row(
@@ -306,10 +336,23 @@ static func lamp(parent: Node3D, pos: Vector3) -> void:
 	)
 
 
-static func tree(parent: Node3D, pos: Vector3, rng: RandomNumberGenerator) -> void:
+## Trees are batched into two MultiMeshInstance3D (trunk + canopy) — hundreds of
+## trees cost 2 draw calls instead of thousands of MeshInstance3D nodes (Android win).
+static var _tree_trunks: Array[Transform3D] = []
+static var _tree_canopies: Array[Transform3D] = []
+static var _tree_canopy_cols: Array[Color] = []
+static var _tree_trunk_mat: StandardMaterial3D
+static var _tree_canopy_mat: StandardMaterial3D
+
+
+static func tree(_parent: Node3D, pos: Vector3, rng: RandomNumberGenerator) -> void:
 	## Neem / peepal / dusty roadside tree, or a tall slim ashoka (25%). No collision.
+	## Queued for batching — call StreetKit.flush_trees(map) after the map build.
+	_queue_tree(pos, rng)
+
+
+static func _queue_tree(pos: Vector3, rng: RandomNumberGenerator) -> void:
 	var yaw := rng.randf() * TAU
-	var trunk_mat := mat(Color(0.36, 0.24, 0.14), 0.95)
 	var greens: Array[Color] = [
 		Color(0.11, 0.3, 0.13), # neem — dark green
 		Color(0.27, 0.5, 0.2), # peepal — lighter green
@@ -317,20 +360,17 @@ static func tree(parent: Node3D, pos: Vector3, rng: RandomNumberGenerator) -> vo
 	]
 	if rng.randf() < 0.25:
 		var ashoka_h := rng.randf_range(3.8, 4.4)
-		_cylinder(parent, rng.randf_range(0.14, 0.2), ashoka_h, pos, trunk_mat)
+		var atr := rng.randf_range(0.14, 0.2)
+		_tree_trunks.append(Transform3D(Basis().scaled(Vector3(atr, ashoka_h, atr)), pos + Vector3(0, ashoka_h * 0.5, 0)))
 		var ar := rng.randf_range(1.0, 1.35)
-		_add_mesh(
-			parent,
-			_unit_ball(),
-			pos + Vector3(0, ashoka_h * 0.7 + ar * 1.1, 0),
-			mat(greens[rng.randi_range(0, 1)], 0.95),
-			Vector3(ar, ar * 2.2, ar),
-			yaw
-		)
+		var asc := Vector3(ar, ar * 2.2, ar)
+		_tree_canopies.append(Transform3D(Basis(Vector3.UP, yaw).scaled(asc), pos + Vector3(0, ashoka_h * 0.7 + ar * 1.1, 0)))
+		_tree_canopy_cols.append(greens[rng.randi_range(0, 1)])
 		return
 	var trunk_h := rng.randf_range(2.4, 3.6)
-	_cylinder(parent, rng.randf_range(0.18, 0.28), trunk_h, pos, trunk_mat)
-	var canopy_mat := mat(greens[rng.randi_range(0, greens.size() - 1)], 0.95)
+	var trr := rng.randf_range(0.18, 0.28)
+	_tree_trunks.append(Transform3D(Basis().scaled(Vector3(trr, trunk_h, trr)), pos + Vector3(0, trunk_h * 0.5, 0)))
+	var canopy_c: Color = greens[rng.randi_range(0, greens.size() - 1)]
 	var base_r := rng.randf_range(1.6, 2.7)
 	var blobs := rng.randi_range(2, 3)
 	for i in blobs:
@@ -339,7 +379,44 @@ static func tree(parent: Node3D, pos: Vector3, rng: RandomNumberGenerator) -> vo
 		if i > 0:
 			off = Vector3(rng.randf_range(-0.9, 0.9), rng.randf_range(-0.3, 0.5), rng.randf_range(-0.9, 0.9))
 		var sc := Vector3(r * rng.randf_range(0.9, 1.1), r * rng.randf_range(0.7, 0.9), r * rng.randf_range(0.9, 1.1))
-		_add_mesh(parent, _unit_ball(), pos + off + Vector3(0, trunk_h + sc.y * 0.55, 0), canopy_mat, sc, yaw)
+		_tree_canopies.append(Transform3D(Basis(Vector3.UP, yaw).scaled(sc), pos + off + Vector3(0, trunk_h + sc.y * 0.55, 0)))
+		_tree_canopy_cols.append(canopy_c)
+
+
+static func flush_trees(parent: Node3D) -> void:
+	## Commit every queued tree as two multi-mesh batches (trunk + canopy).
+	if _tree_trunks.is_empty() and _tree_canopies.is_empty():
+		return
+	if _tree_trunk_mat == null:
+		_tree_trunk_mat = mat(Color(0.36, 0.24, 0.14), 0.95)
+	if _tree_canopy_mat == null:
+		_tree_canopy_mat = StandardMaterial3D.new()
+		_tree_canopy_mat.albedo_color = Color.WHITE
+		_tree_canopy_mat.roughness = 0.95
+		_tree_canopy_mat.vertex_color_use_as_albedo = true
+	_commit_batch(parent, _unit_cylinder(), _tree_trunks, [], _tree_trunk_mat)
+	_commit_batch(parent, _unit_ball(), _tree_canopies, _tree_canopy_cols, _tree_canopy_mat)
+	_tree_trunks.clear()
+	_tree_canopies.clear()
+	_tree_canopy_cols.clear()
+
+
+static func _commit_batch(parent: Node3D, mesh: Mesh, xforms: Array, cols: Array, material: Material) -> void:
+	if xforms.is_empty():
+		return
+	var mm := MultiMesh.new()
+	mm.transform_format = MultiMesh.TRANSFORM_3D
+	mm.mesh = mesh
+	mm.use_colors = not cols.is_empty()
+	mm.instance_count = xforms.size()
+	for i in xforms.size():
+		mm.set_instance_transform(i, xforms[i])
+		if mm.use_colors:
+			mm.set_instance_color(i, cols[i])
+	var mmi := MultiMeshInstance3D.new()
+	mmi.multimesh = mm
+	mmi.material_override = material
+	parent.add_child(mmi)
 
 
 static func parked_stub(parent: Node3D, pos: Vector3, along: Vector3, rng: RandomNumberGenerator) -> void:

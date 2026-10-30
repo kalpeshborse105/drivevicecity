@@ -104,11 +104,12 @@ func _anchor_from_dict(a: Dictionary) -> Dictionary:
 func _build(data: Dictionary) -> void:
 	var clip: float = float(data.get("clip_radius_m", 900.0))
 	# Strict 2 kit sources: street_road = sub, avenue_street = main (asphalt crop, no yellow gutter)
-	_asphalt = _kit_road_mat("street_road", Color(0.95, 0.95, 0.95), 0.92)
-	_major = _kit_road_mat("avenue_street", Color(0.9, 0.9, 0.92), 0.86)
+	_asphalt = _kit_road_mat("street_road", Color(0.86, 0.86, 0.89), 0.9)
+	_major = _kit_road_mat("avenue_street", Color(0.83, 0.83, 0.87), 0.84)
 	_paint = _mat(Color(0.92, 0.86, 0.35), 0.65)
-	_edge = _mat(Color(0.9, 0.9, 0.88), 0.72)
-	_curb = _mat(Color(0.48, 0.46, 0.42), 0.95)
+	# Road-edge line paint: off-white, slightly rough (worn thermoplastic look).
+	_edge = _mat(Color(0.93, 0.93, 0.9), 0.7)
+	_curb = _mat(Color(0.6, 0.58, 0.54), 0.95)
 	_sidewalk = _road_mat(Color(0.62, 0.58, 0.5), 0.92, 33)
 	_palette = [
 		_mat(Color(0.82, 0.7, 0.5)),   # cream / ochre house
@@ -122,6 +123,12 @@ func _build(data: Dictionary) -> void:
 	]
 	_road_samples.clear()
 	_parked_heavy = 0
+	# Shopfront nameplate budget (Dhule high-street feel); lighter when quieted.
+	var sign_budget := 64
+	var gs := get_node_or_null("/root/GameSettings")
+	if gs and gs.get("road_sign_density") != null and int(gs.get("road_sign_density")) == 0:
+		sign_budget = 24
+	BuildingKit.signature_budget = sign_budget
 
 	_add_ground(clip)
 
@@ -167,6 +174,8 @@ func _build(data: Dictionary) -> void:
 	landmarks += spawn_dress
 	var signs := _add_road_name_signs(roads)
 	var demo_scenery := _add_demo_scenery(rng)
+	# Commit every queued roadside tree as 2 MultiMesh batches (Android node-count win).
+	StreetKit.flush_trees(self)
 
 	print(
 		"PHASE1 map: %d ways, shops~%d props~%d lots~%d landmarks~%d road_signs~%d osm_features~%d flyovers~%d demo_scenery~%d spawn=(%.1f,%.1f)"
@@ -1044,7 +1053,8 @@ func _build_road_strip(pts: Array, width: float, mat: Material, hw: String = "re
 		var yaw := atan2(delta.x, delta.z)
 		var deck_len := length + 1.2  # slight overlap into next run
 		var deck_pos := Vector3(mid.x, road_y + 0.01, mid.z)
-		StreetKit.add_road_deck(self, width, deck_len, deck_pos, yaw, mat, tile_m, along_u)
+		# Painted lane-edge lines are baked into the deck mesh (no extra nodes).
+		StreetKit.add_road_deck(self, width, deck_len, deck_pos, yaw, mat, tile_m, along_u, _edge)
 		if width >= 7.0:
 			var sh_y := road_y - 0.02
 			StreetKit.add_box(

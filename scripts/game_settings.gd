@@ -5,6 +5,9 @@ extends Node
 signal settings_changed
 
 const CFG_PATH := "user://drivevicecity.cfg"
+## Highest selectable vehicle profile (see player_car.gd PROFILE_NAMES).
+const MAX_PROFILE_INDEX := 8
+const MAX_PAINT_INDEX := 9
 
 var minimap_enabled: bool = true
 ## 0 = quiet, 1 = normal, 2 = more road-name signs (next map load).
@@ -12,6 +15,8 @@ var road_sign_density: int = 1
 ## Driving VFX: 0=off (Android safe), 1=smoke+lights, 2=full (skids).
 var fx_quality: int = 1
 var audio_enabled: bool = true
+## On-screen touch pad: 0=auto (touch devices), 1=always, 2=off.
+var touch_controls_mode: int = 0
 ## Default body = Carnival (kit GLB) so Play shows an incoming vehicle immediately.
 var profile_index: int = 2
 var paint_index: int = 0
@@ -48,14 +53,16 @@ func load_cfg() -> void:
 	road_sign_density = int(cf.get_value("settings", "road_sign_density", 1))
 	fx_quality = int(cf.get_value("settings", "fx_quality", fx_quality))
 	audio_enabled = bool(cf.get_value("settings", "audio_enabled", true))
+	touch_controls_mode = int(cf.get_value("settings", "touch_controls_mode", touch_controls_mode))
 	profile_index = int(cf.get_value("vehicle", "profile_index", 2))
 	paint_index = int(cf.get_value("vehicle", "paint_index", 0))
 	kit_index = int(cf.get_value("vehicle", "kit_index", 0))
 	rim_index = int(cf.get_value("vehicle", "rim_index", 0))
 	road_sign_density = clampi(road_sign_density, 0, 2)
 	fx_quality = clampi(fx_quality, 0, 2)
-	profile_index = clampi(profile_index, 0, 6)
-	paint_index = clampi(paint_index, 0, 9)
+	touch_controls_mode = clampi(touch_controls_mode, 0, 2)
+	profile_index = clampi(profile_index, 0, MAX_PROFILE_INDEX)
+	paint_index = clampi(paint_index, 0, MAX_PAINT_INDEX)
 	kit_index = clampi(kit_index, 0, 3)
 	rim_index = clampi(rim_index, 0, 3)
 	# One-time bump: older saves defaulted to box sedan — switch to Carnival kit
@@ -72,6 +79,7 @@ func save_cfg() -> void:
 	cf.set_value("settings", "road_sign_density", road_sign_density)
 	cf.set_value("settings", "fx_quality", fx_quality)
 	cf.set_value("settings", "audio_enabled", audio_enabled)
+	cf.set_value("settings", "touch_controls_mode", touch_controls_mode)
 	cf.set_value("vehicle", "profile_index", profile_index)
 	cf.set_value("vehicle", "paint_index", paint_index)
 	cf.set_value("vehicle", "kit_index", kit_index)
@@ -91,13 +99,31 @@ func set_road_sign_density(level: int) -> void:
 	settings_changed.emit()
 
 
+func set_fx_quality(level: int) -> void:
+	fx_quality = clampi(level, 0, 2)
+	save_cfg()
+	settings_changed.emit()
+
+
+func set_audio(enabled: bool) -> void:
+	audio_enabled = enabled
+	save_cfg()
+	settings_changed.emit()
+
+
+func set_touch_controls(mode: int) -> void:
+	touch_controls_mode = clampi(mode, 0, 2)
+	save_cfg()
+	settings_changed.emit()
+
+
 func record_paint(index: int) -> void:
-	paint_index = clampi(index, 0, 9)
+	paint_index = clampi(index, 0, MAX_PAINT_INDEX)
 	save_cfg()
 
 
 func record_profile(index: int) -> void:
-	profile_index = clampi(index, 0, 6)
+	profile_index = clampi(index, 0, MAX_PROFILE_INDEX)
 	save_cfg()
 
 
@@ -115,9 +141,9 @@ func sync_from_car(car: Node) -> void:
 	if car == null:
 		return
 	if car.has_method("profile_index"):
-		profile_index = clampi(int(car.profile_index()), 0, 6)
+		profile_index = clampi(int(car.profile_index()), 0, MAX_PROFILE_INDEX)
 	if car.has_method("paint_index"):
-		paint_index = clampi(int(car.paint_index()), 0, 9)
+		paint_index = clampi(int(car.paint_index()), 0, MAX_PAINT_INDEX)
 	if car.has_method("kit_index"):
 		kit_index = clampi(int(car.kit_index()), 0, 3)
 	if car.has_method("rim_index"):

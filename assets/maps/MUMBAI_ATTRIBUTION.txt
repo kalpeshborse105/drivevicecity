@@ -1,0 +1,9 @@
+Map data © OpenStreetMap contributors
+Licensed under the Open Data Commons Open Database License (ODbL).
+https://www.openstreetmap.org/copyright
+
+Mumbai Fort / Colaba prototype clip (~±900 m) around
+18.9322 N, 72.8264 E from Geofabrik western-zone OSM PBF.
+Processed into mumbai_fort_roads_game.json for DriveViceCity isolated scene.
+The visual asset assets/incoming/mumbai_city.glb is CC-BY-4.0 (suveer__10) and is
+NOT used as the playable road network.

@@ -36,6 +36,9 @@ const RIM_NAMES := ["Steel", "Chrome", "Gold", "Black"]
 var _tabs: TabContainer
 var _minimap_toggle: CheckButton
 var _sign_density: OptionButton
+var _fx_quality: OptionButton
+var _audio_toggle: CheckButton
+var _touch_mode: OptionButton
 @onready var _settings: Node = get_node_or_null("/root/GameSettings")
 
 
@@ -85,7 +88,7 @@ func _build_home_tab() -> void:
 	for entry in HomeDashboard.BODY_QUICK_PICK:
 		var btn := Button.new()
 		btn.text = str(entry[0])
-		btn.custom_minimum_size = Vector2(72, 40)
+		btn.custom_minimum_size = Vector2(58, 40)
 		var pi: int = int(entry[1])
 		btn.pressed.connect(func() -> void: profile_requested.emit(pi))
 		quick.add_child(btn)
@@ -117,7 +120,7 @@ func _build_vehicles_tab() -> void:
 	for entry in bodies:
 		var btn := Button.new()
 		btn.text = str(entry[0])
-		btn.custom_minimum_size = Vector2(72, 36)
+		btn.custom_minimum_size = Vector2(58, 36)
 		var pi: int = int(entry[1])
 		btn.pressed.connect(func() -> void: profile_requested.emit(pi))
 		_profile_row.add_child(btn)
@@ -224,6 +227,40 @@ func _build_settings_tab() -> void:
 	sign_row.add_child(_sign_density)
 	page.add_child(sign_row)
 
+	var fx_row := HBoxContainer.new()
+	fx_row.add_theme_constant_override("separation", 8)
+	var fx_lbl := Label.new()
+	fx_lbl.text = "Driving effects"
+	fx_row.add_child(fx_lbl)
+	_fx_quality = OptionButton.new()
+	for label in HomeDashboard.FX_QUALITY_LABELS:
+		_fx_quality.add_item(label)
+	var fx_now := int(_settings.get("fx_quality")) if _settings else 1
+	_fx_quality.select(clampi(fx_now, 0, 2))
+	_fx_quality.item_selected.connect(_on_fx_selected)
+	fx_row.add_child(_fx_quality)
+	page.add_child(fx_row)
+
+	_audio_toggle = CheckButton.new()
+	_audio_toggle.text = "Engine & traffic audio"
+	_audio_toggle.button_pressed = bool(_settings.get("audio_enabled")) if _settings else true
+	_audio_toggle.toggled.connect(_on_audio_toggled)
+	page.add_child(_audio_toggle)
+
+	var touch_row := HBoxContainer.new()
+	touch_row.add_theme_constant_override("separation", 8)
+	var touch_lbl := Label.new()
+	touch_lbl.text = "On-screen touch pad"
+	touch_row.add_child(touch_lbl)
+	_touch_mode = OptionButton.new()
+	for label in HomeDashboard.TOUCH_MODE_LABELS:
+		_touch_mode.add_item(label)
+	var touch_now := int(_settings.get("touch_controls_mode")) if _settings else 0
+	_touch_mode.select(clampi(touch_now, 0, 2))
+	_touch_mode.item_selected.connect(_on_touch_selected)
+	touch_row.add_child(_touch_mode)
+	page.add_child(touch_row)
+
 	var note := Label.new()
 	note.text = "Sign density applies on next game launch (map rebuild)."
 	note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -235,7 +272,7 @@ func _build_settings_tab() -> void:
 		+ "PC: W/S drive · A/D steer · Space handbrake · R reset · V next car · P paint\n"
 		+ "Look: hold Right-Mouse (or Left-drag empty view) and move — 360° orbit\n"
 		+ "Map: + / − on minimap (or mouse wheel over it)\n"
-		+ "Android: on-screen drive pad · drag finger on empty view to look · tap +/− on map\n"
+		+ "Android: ◀ ▶ steer · ▲ gas · ▼ brake · HB handbrake (touch pad, bottom of screen)\n"
 		+ "Menus: G / Customize / Esc = Home (Vehicles · Paint · Kits · Settings)"
 	)
 	guide.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -251,6 +288,21 @@ func _on_minimap_toggled(on: bool) -> void:
 func _on_sign_density_selected(index: int) -> void:
 	if _settings and _settings.has_method("set_road_sign_density"):
 		_settings.call("set_road_sign_density", index)
+
+
+func _on_fx_selected(index: int) -> void:
+	if _settings and _settings.has_method("set_fx_quality"):
+		_settings.call("set_fx_quality", index)
+
+
+func _on_audio_toggled(on: bool) -> void:
+	if _settings and _settings.has_method("set_audio"):
+		_settings.call("set_audio", on)
+
+
+func _on_touch_selected(index: int) -> void:
+	if _settings and _settings.has_method("set_touch_controls"):
+		_settings.call("set_touch_controls", index)
 
 
 func set_info(profile_name: String, detail: String) -> void:

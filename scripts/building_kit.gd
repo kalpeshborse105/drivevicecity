@@ -27,6 +27,17 @@ const GLASS := Color(0.26, 0.36, 0.46)
 const DARK := Color(0.13, 0.13, 0.14)
 const ROOF := Color(0.46, 0.44, 0.42)
 
+## Dhule / Maharashtra shopfront signage bank (Roman script — renders on the
+## default Godot font, and is exactly how much Indian signage is painted).
+const SIGN_WORDS: Array[String] = [
+	"KIRANA", "MEDICAL", "HOTEL", "GENERAL STORE", "MOBILE", "SARAF JEWELLERS",
+	"CHAI", "BAKERY", "CLOTH", "ELECTRICAL", "FURNITURE", "BOOKS",
+	"AGRI KENDRA", "TYRE", "GARAGE", "SALOON", "PHOTO STUDIO", "SWEETS",
+	"PANSARI", "MEDICO", "HARDWARE", "STATIONERY", "TAILOR", "OPTICAL",
+]
+## How many shopfront name labels the current map build may still place.
+static var signature_budget: int = 0
+
 
 class _Surf:
 	var st := SurfaceTool.new()
@@ -71,7 +82,12 @@ static func footprint(
 
 	var wall_c: Color = WALLS[rng.randi_range(0, WALLS.size() - 1)]
 	var accent_c: Color = ACCENTS[rng.randi_range(0, ACCENTS.size() - 1)]
-	_build(parent, pos, face_dir, w, d, h, floors, ground_h, floor_h, commercial, wall_c, accent_c, rng, "", with_collision)
+	# A shopfront name on some commercial fronts — reads as a real Dhule high-street.
+	var sign_text := ""
+	if commercial and signature_budget > 0 and rng.randf() < 0.42:
+		signature_budget -= 1
+		sign_text = SIGN_WORDS[rng.randi() % SIGN_WORDS.size()]
+	_build(parent, pos, face_dir, w, d, h, floors, ground_h, floor_h, commercial, wall_c, accent_c, rng, sign_text, with_collision)
 	return h
 
 
@@ -118,6 +134,31 @@ static func landmark(parent: Node3D, pos: Vector3, poi_name: String, kind: Strin
 			var ts: Vector3 = t
 			StreetKit.add_box(node, ts, Vector3(0, y + ts.y * 0.5, 0), StreetKit.mat(accent_c, 0.8), false)
 			y += ts.y
+	if node == null:
+		return h
+	# Per-kind civic detailing — reads as Dhule's real hospitals, bus stand, market, colleges.
+	match kind:
+		"hospital", "clinic", "doctors":
+			var cross := StreetKit.mat(Color(0.88, 0.12, 0.12), 0.7)
+			var cy := h + 1.3
+			var cf := d * 0.5 + 0.08
+			StreetKit.add_box(node, Vector3(1.9, 0.55, 0.14), Vector3(0, cy, cf), cross, false)
+			StreetKit.add_box(node, Vector3(0.55, 1.9, 0.14), Vector3(0, cy, cf), cross, false)
+		"bus_station":
+			var canopy := StreetKit.mat(Color(0.86, 0.76, 0.36), 0.8)
+			StreetKit.add_box(node, Vector3(w + 3.0, 0.22, 4.6), Vector3(0, 3.7, d * 0.5 + 2.4), canopy, false)
+			for sx in [-1.0, 1.0]:
+				StreetKit.add_box(node, Vector3(0.26, 3.7, 0.26), Vector3(sx * (w * 0.5), 1.85, d * 0.5 + 4.3), canopy, false)
+		"marketplace", "retail":
+			var canopy2 := StreetKit.mat(Color(0.72, 0.2, 0.18), 0.8)
+			StreetKit.add_box(node, Vector3(w + 4.0, 0.18, 5.0), Vector3(0, 3.5, d * 0.5 + 2.6), canopy2, false)
+			for sx in [-1.0, 1.0]:
+				StreetKit.add_box(node, Vector3(0.24, 3.5, 0.24), Vector3(sx * (w * 0.5 + 1.6), 1.75, d * 0.5 + 4.6), canopy2, false)
+		"school", "college", "university":
+			var gate := StreetKit.mat(Color(0.55, 0.35, 0.2), 0.85)
+			for sx in [-1.0, 1.0]:
+				StreetKit.add_box(node, Vector3(0.8, 4.2, 0.8), Vector3(sx * 3.2, 2.1, d * 0.5 + 3.0), gate, false)
+			StreetKit.add_box(node, Vector3(7.2, 0.7, 0.7), Vector3(0, 4.2, d * 0.5 + 3.0), gate, false)
 	return h
 
 
@@ -140,7 +181,9 @@ static func _build(
 ) -> MeshInstance3D:
 	var wall := _Surf.new(StreetKit.mat(wall_c, 0.92))
 	var trim := _Surf.new(StreetKit.mat(wall_c.darkened(0.28), 0.9))
-	var glass := _Surf.new(StreetKit.mat(GLASS, 0.18, 0.35))
+	# Glass tint drifts toward the wall tone so no two facades read identical.
+	var glass_c := GLASS.lerp(wall_c.darkened(0.15), rng.randf_range(0.0, 0.3))
+	var glass := _Surf.new(StreetKit.mat(glass_c, 0.18, 0.35))
 	var accent := _Surf.new(StreetKit.mat(accent_c, 0.75))
 	var dark := _Surf.new(StreetKit.mat(DARK, 0.85))
 	var roof := _Surf.new(StreetKit.mat(ROOF, 0.95))
@@ -155,6 +198,8 @@ static func _build(
 		_box(trim, Vector3(0, y, 0), Vector3(w + 0.14, 0.2, d + 0.14))
 	# Roof slab + parapet ring
 	_box(roof, Vector3(0, h + 0.04, 0), Vector3(w - 0.3, 0.08, d - 0.3))
+	# Projecting concrete cornice just below the parapet — reads as a real slab edge.
+	_box(trim, Vector3(0, h + 0.24, 0), Vector3(w + 0.22, 0.4, d + 0.22))
 	var par_h := 0.75
 	_box(trim, Vector3(0, h + par_h * 0.5, d * 0.5 - 0.1), Vector3(w + 0.1, par_h, 0.2))
 	_box(trim, Vector3(0, h + par_h * 0.5, -d * 0.5 + 0.1), Vector3(w + 0.1, par_h, 0.2))
@@ -197,6 +242,9 @@ static func _build(
 				var frame_size := win_size + (Vector3(0.22, 0.22, 0.0) if absf(fn.z) > 0.5 else Vector3(0.0, 0.22, 0.22))
 				_box(trim, center - fn * 0.015, frame_size)
 				_box(glass, center, win_size)
+				# Projecting window sill (chhajja-style ledge) under every window.
+				var sill_size := Vector3(win_size.x + 0.3, 0.09, 0.22) if absf(fn.z) > 0.5 else Vector3(0.22, 0.09, win_size.z + 0.3)
+				_box(trim, center + fn * 0.06 + Vector3(0, -win_size.y * 0.5 - 0.05, 0), sill_size)
 				# Balcony on front/back for residential upper floors, every other column
 				if residential and f >= 1 and absf(fn.z) > 0.5 and c % 2 == 0 and rng.randf() < 0.7:
 					var by := yc - 0.75

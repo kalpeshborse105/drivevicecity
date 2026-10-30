@@ -32,6 +32,8 @@ const PAINT_NAMES: Array[String] = [
 
 const KIT_NAMES: Array[String] = ["Stock", "Spoiler", "Roof Rack", "Sport"]
 const RIM_NAMES: Array[String] = ["Steel", "Chrome", "Gold", "Black"]
+## Sedan, Van, Carnival, Safari, Rickshaw, Bus, Truck, Camry, Premium Sedan.
+const PROFILE_COUNT := 9
 
 @onready var _fl: VehicleWheel3D = $WheelFL
 @onready var _fr: VehicleWheel3D = $WheelFR
@@ -186,7 +188,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("cycle_paint"):
 		_apply_paint((_paint_index + 1) % PAINTS.size())
 	if Input.is_action_just_pressed("cycle_vehicle"):
-		_apply_profile((_profile_index + 1) % 7)
+		_apply_profile((_profile_index + 1) % PROFILE_COUNT)
 
 	var drive := _drive_input()
 	var throttle: float = drive["throttle"]
@@ -254,6 +256,10 @@ func profile_name() -> String:
 			return "Bus"
 		6:
 			return "Cargo Truck"
+		7:
+			return "Camry"
+		8:
+			return "Premium Sedan"
 		_:
 			return "Sedan"
 
@@ -287,7 +293,7 @@ func apply_paint_index(index: int) -> void:
 
 
 func apply_profile_index(index: int) -> void:
-	_apply_profile(clampi(index, 0, 6))
+	_apply_profile(clampi(index, 0, PROFILE_COUNT - 1))
 
 
 func apply_kit_index(index: int) -> void:
@@ -358,6 +364,18 @@ func _apply_profile(index: int) -> void:
 			max_speed_kph = 100.0
 			steer_limit = 0.42
 			_set_wheel_base(2.0, 1.1)
+		7:
+			mass = 1500.0
+			engine_force_value = 520.0
+			max_speed_kph = 140.0
+			steer_limit = 0.5
+			_set_wheel_base(1.5, 0.92)
+		8:
+			mass = 1550.0
+			engine_force_value = 560.0
+			max_speed_kph = 150.0
+			steer_limit = 0.5
+			_set_wheel_base(1.5, 0.93)
 		_:
 			mass = 950.0
 			engine_force_value = 640.0
@@ -394,6 +412,10 @@ func _rebuild_visuals() -> void:
 			kit_key = "bus"
 		6:
 			kit_key = "truck"
+		7:
+			kit_key = "camry"
+		8:
+			kit_key = "premium_sedan"
 	var path := AssetKit.vehicle_path(kit_key) if kit_key != "" else ""
 	if path != "" and AssetKit.exists(path):
 		VehicleMeshBuilder.clear_children(_visual_root)

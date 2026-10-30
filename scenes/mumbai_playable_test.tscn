@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/mumbai_playable_bootstrap.gd" id="1_boot"]
+[ext_resource type="PackedScene" path="res://scenes/player_car.tscn" id="2_car"]
+[ext_resource type="Script" path="res://scripts/mumbai_city_builder.gd" id="3_map"]
+
+[sub_resource type="Environment" id="Env"]
+background_mode = 1
+background_color = Color(0.55, 0.62, 0.72, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.85, 0.88, 0.92, 1)
+ambient_light_energy = 0.45
+tonemap_mode = 2
+fog_enabled = true
+fog_light_color = Color(0.7, 0.75, 0.8, 1)
+fog_density = 0.00025
+
+[node name="MumbaiPlayableTest" type="Node3D"]
+script = ExtResource("1_boot")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.8, -0.4, 0.45, 0, 0.75, 0.66, -0.6, -0.53, 0.6, 20, 60, 10)
+light_color = Color(1, 0.95, 0.88, 1)
+light_energy = 1.25
+shadow_enabled = true
+
+[node name="MumbaiMap" type="Node3D" parent="."]
+script = ExtResource("3_map")
+map_json_path = "res://assets/maps/mumbai_fort_roads_game.json"
+
+[node name="PlayerCar" parent="." instance=ExtResource("2_car")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

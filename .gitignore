@@ -10,8 +10,13 @@ export_presets.cfg
 assets/maps/*.osm.xml
 assets/maps/*.osm.json
 !assets/maps/*_game.json
+!assets/maps/MUMBAI_ATTRIBUTION.txt
 *.osm.pbf
 *.mbtiles
+
+# Blender MCP clone / local tooling (optional large)
+tools/blender_mcp/
+tools/blender_mcp_1.0.3/
 
 # OS / IDE
 .DS_Store
@@ -27,3 +32,4 @@ build/
 *.ipa
 *.exe
 *.pck
+addons/ziva/

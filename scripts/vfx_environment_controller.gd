@@ -56,14 +56,17 @@ func _apply_base_vfx() -> void:
 	env.ssao_radius = 1.2
 	env.ssao_intensity = 1.35
 	env.ssil_enabled = false
+	# Aerial haze gives distant Dhule depth without volumetric (mobile-safe).
+	env.fog_aerial_perspective = 0.3
+	env.fog_sky_affect = 0.4
 	env.glow_enabled = true
 	env.glow_normalized = true
 	env.glow_intensity = 0.32
 	env.glow_bloom = 0.08
 	env.glow_blend_mode = Environment.GLOW_BLEND_MODE_SOFTLIGHT
 	env.adjustment_enabled = true
-	env.adjustment_contrast = 1.05
-	env.adjustment_saturation = 1.08
+	env.adjustment_contrast = 1.06
+	env.adjustment_saturation = 1.1
 
 
 func apply_preset(index: int) -> void:
@@ -74,16 +77,16 @@ func apply_preset(index: int) -> void:
 	if env.sky:
 		sky_mat = env.sky.sky_material as ProceduralSkyMaterial
 	match index:
-		0: # Golden hour
+		0: # Golden hour (late-afternoon Dhule: warm sun, deep-blue sky, no blowout)
 			if sky_mat:
-				sky_mat.sky_top_color = Color(0.22, 0.42, 0.72)
-				sky_mat.sky_horizon_color = Color(0.94, 0.66, 0.38)
+				sky_mat.sky_top_color = Color(0.17, 0.36, 0.68)
+				sky_mat.sky_horizon_color = Color(0.9, 0.64, 0.36)
 			if _sun:
-				_sun.light_color = Color(1.0, 0.84, 0.62)
-				_sun.light_energy = 1.28
-			env.fog_light_color = Color(0.9, 0.72, 0.52)
-			env.fog_density = 0.00032
-			env.glow_intensity = 0.32
+				_sun.light_color = Color(1.0, 0.87, 0.68)
+				_sun.light_energy = 1.34
+			env.fog_light_color = Color(0.88, 0.7, 0.52)
+			env.fog_density = 0.00026
+			env.glow_intensity = 0.28
 		1: # Noon
 			if sky_mat:
 				sky_mat.sky_top_color = Color(0.2, 0.5, 0.88)

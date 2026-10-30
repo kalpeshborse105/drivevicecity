@@ -44,7 +44,8 @@ const VEHICLES := {
 	"autorickshaw": "res://assets/kit/vehicles/autorickshaw.glb",
 	"bus": "res://assets/kit/vehicles/bus.glb",
 	"truck": "res://assets/kit/vehicles/tata_truck.glb",
-	## Original MH premium sedan (Phase 2 hero candidate — registered, not wired yet)
+	"camry": "res://assets/kit/vehicles/camry.glb",
+	## Original MH premium sedan (hero car)
 	"premium_sedan": "res://assets/models/vehicles/premium_sedan_mh.glb",
 }
 const ENVIRONMENTS := {
@@ -73,6 +74,7 @@ const NORMALIZE := {
 	"res://assets/kit/vehicles/autorickshaw.glb": {"len": 2.9, "yaw": 0.0},
 	"res://assets/kit/vehicles/bus.glb": {"len": 11.0, "yaw": 0.0},
 	"res://assets/kit/vehicles/tata_truck.glb": {"len": 12.0, "yaw": 0.0},
+	"res://assets/kit/vehicles/camry.glb": {"len": 4.9, "yaw": 0.0},
 	"res://assets/models/vehicles/premium_sedan_mh.glb": {"len": 4.65, "yaw": 0.0},
 	"res://assets/models/environments/dhule_junction_streetscape.glb": {"len": 48.0, "yaw": 0.0},
 	# Diorama meshes scaled down to ~12 m tiles for OSM strip overlays.
