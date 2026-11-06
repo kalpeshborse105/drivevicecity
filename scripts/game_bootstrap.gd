@@ -4,7 +4,7 @@ extends Node3D
 
 const VFXControllerScript = preload("res://scripts/vfx_environment_controller.gd")
 
-@onready var _map: Node3D = $DhuleMap
+var _map: Node3D
 @onready var _car: VehicleBody3D = $PlayerCar
 @onready var _missions: Node = $DeliveryMission
 @onready var _hud: CanvasLayer = $HUD
@@ -12,6 +12,9 @@ const VFXControllerScript = preload("res://scripts/vfx_environment_controller.gd
 
 
 func _ready() -> void:
+	_map = get_node_or_null("DhuleMap") as Node3D
+	if _map == null:
+		push_error("Main is missing DhuleMap. Expected a Node3D with res://scripts/osm_road_builder.gd so map_ready can place the car and start deliveries.")
 	if get_node_or_null("VFXEnvironmentController") == null:
 		var vfx := Node3D.new()
 		vfx.name = "VFXEnvironmentController"
@@ -19,7 +22,7 @@ func _ready() -> void:
 		add_child(vfx)
 	if _nav.has_method("setup"):
 		_nav.setup(_car)
-	if _map.has_signal("map_ready"):
+	if _map != null and _map.has_signal("map_ready"):
 		_map.map_ready.connect(_on_map_ready)
 	if _missions.has_signal("mission_updated"):
 		_missions.mission_updated.connect(_hud.set_mission_text)
