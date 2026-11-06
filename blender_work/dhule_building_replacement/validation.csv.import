@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b51ox2ilh60kt"
+
+[deps]
+
+files=["res://blender_work/dhule_building_replacement/validation.role.translation", "res://blender_work/dhule_building_replacement/validation.footprint.translation", "res://blender_work/dhule_building_replacement/validation.blosm.translation", "res://blender_work/dhule_building_replacement/validation.blosm.translation", "res://blender_work/dhule_building_replacement/validation.road.translation", "res://blender_work/dhule_building_replacement/validation.nearest.translation", "res://blender_work/dhule_building_replacement/validation.ground.translation", "res://blender_work/dhule_building_replacement/validation.roof.translation", "res://blender_work/dhule_building_replacement/validation.height.translation", "res://blender_work/dhule_building_replacement/validation.collision.translation", "res://blender_work/dhule_building_replacement/validation.mesh.translation", "res://blender_work/dhule_building_replacement/validation.note.translation"]
+
+source_file="res://blender_work/dhule_building_replacement/validation.csv"
+dest_files=["res://blender_work/dhule_building_replacement/validation.role.translation", "res://blender_work/dhule_building_replacement/validation.footprint.translation", "res://blender_work/dhule_building_replacement/validation.blosm.translation", "res://blender_work/dhule_building_replacement/validation.blosm.translation", "res://blender_work/dhule_building_replacement/validation.road.translation", "res://blender_work/dhule_building_replacement/validation.nearest.translation", "res://blender_work/dhule_building_replacement/validation.ground.translation", "res://blender_work/dhule_building_replacement/validation.roof.translation", "res://blender_work/dhule_building_replacement/validation.height.translation", "res://blender_work/dhule_building_replacement/validation.collision.translation", "res://blender_work/dhule_building_replacement/validation.mesh.translation", "res://blender_work/dhule_building_replacement/validation.note.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

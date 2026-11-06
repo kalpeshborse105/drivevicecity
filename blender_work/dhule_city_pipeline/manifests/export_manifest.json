@@ -1,0 +1,54 @@
+{
+  "source_glb": "assets/models/environments/dhule_blosm_city.glb",
+  "source_sha256": "fe778f2ebfab9bad67e43027e488b7b15dcc817c62cc572d1b66725d1bd7393d",
+  "projection": {
+    "lat": 20.902,
+    "lon": 74.777,
+    "x": "east",
+    "y": "up",
+    "z": "south"
+  },
+  "source_building_triangles": 25251,
+  "assigned_triangles": 20329,
+  "unresolved_triangles": 4922,
+  "unresolved_reasons": {
+    "crosses_boundary": 2476,
+    "unmatched": 2412,
+    "ambiguous_multi_footprint": 28,
+    "ambiguous_margin": 6
+  },
+  "reason_counts": {
+    "nearest_edge": 7396,
+    "boundary": 11499,
+    "crosses_boundary": 2476,
+    "unmatched": 2412,
+    "inside": 1434,
+    "ambiguous_multi_footprint": 28,
+    "ambiguous_margin": 6
+  },
+  "water_triangles": 830,
+  "triangle_sum_matches_source": true,
+  "footprints": 1866,
+  "duplicate_osm_ids_in_source": [],
+  "exported_building_ids": 1730,
+  "duplicate_exported_ids": 0,
+  "footprints_without_confident_triangles": 136,
+  "split_policy": "Boundary-crossing triangles are kept whole in unresolved_geometry.glb. They are not cut.",
+  "assignment": "All vertices inside one way, or within 0.20 m of that way and 0.50 m farther from every other way. Way id is the only key.",
+  "neighbour_of_1337953905": {
+    "osm_id": "1337953919",
+    "godot_bounds": {
+      "min_x": -619.1,
+      "max_x": -610.45,
+      "min_z": 910.35,
+      "max_z": 922.91
+    },
+    "target_bounds": {
+      "min_x": -629.86,
+      "max_x": -620.94
+    },
+    "gap_m": 1.84,
+    "note": "The east approach hits 1337953919 before 1337953905. The gap between their footprints is under 2 m. Spawning inside 1337953919 throws the vehicle."
+  },
+  "runtime_note": "buildings/<id>.glb is the archive. grouped_joined.glb is one mesh. grouped_by_id.glb keeps one node per way id. The preview uses neighbourhood_replaced.glb."
+}

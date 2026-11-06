@@ -2,7 +2,7 @@
 
 Workspace: `D:\drivevicecity`  
 Engine: **Godot 4.7.2**  
-Status: **PHASE 1 MAP** — audit pass done (clip/nav/mats/lots/fog); F5 polish still open before Phase 2
+Status: **PHASE 1 MAP** — free world is OpenStreetMap through Blender blosm, one Dhule district at a time. Google satellite stays optional and billed.
 
 | Doc | What it covers |
 |-----|----------------|

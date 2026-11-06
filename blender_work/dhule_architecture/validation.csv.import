@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b70kb5h0gfhhb"
+
+[deps]
+
+files=["res://blender_work/dhule_architecture/validation.footprint.translation", "res://blender_work/dhule_architecture/validation.height.translation", "res://blender_work/dhule_architecture/validation.status.translation", "res://blender_work/dhule_architecture/validation.osm.translation", "res://blender_work/dhule_architecture/validation.osm.translation", "res://blender_work/dhule_architecture/validation.road.translation", "res://blender_work/dhule_architecture/validation.nearest.translation", "res://blender_work/dhule_architecture/validation.collision.translation", "res://blender_work/dhule_architecture/validation.mesh.translation", "res://blender_work/dhule_architecture/validation.included.translation", "res://blender_work/dhule_architecture/validation.note.translation"]
+
+source_file="res://blender_work/dhule_architecture/validation.csv"
+dest_files=["res://blender_work/dhule_architecture/validation.footprint.translation", "res://blender_work/dhule_architecture/validation.height.translation", "res://blender_work/dhule_architecture/validation.status.translation", "res://blender_work/dhule_architecture/validation.osm.translation", "res://blender_work/dhule_architecture/validation.osm.translation", "res://blender_work/dhule_architecture/validation.road.translation", "res://blender_work/dhule_architecture/validation.nearest.translation", "res://blender_work/dhule_architecture/validation.collision.translation", "res://blender_work/dhule_architecture/validation.mesh.translation", "res://blender_work/dhule_architecture/validation.included.translation", "res://blender_work/dhule_architecture/validation.note.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

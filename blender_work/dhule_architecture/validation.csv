@@ -1,0 +1,24 @@
+osm_id,footprint_area_m2,height_m,status,osm_building,osm_name,road_clearance_m,nearest_road,collision_status,mesh_status,included,note
+482794524,17177.82,8.24,estimated,yes,Dhule District & Sessions Court,3.93,278083125,trimesh_prism,built,yes,large OSM outline built as a 14 m courtyard wing; interior left open; height estimated
+1337951722,66.87,4.39,estimated,yes,,42.13,887431550,trimesh_prism,built,yes,house1
+1337951723,66.97,4.39,estimated,yes,,62.34,887431550,trimesh_prism,built,yes,house1
+1337951724,66.93,4.39,estimated,yes,,19.62,887431550,trimesh_prism,built,yes,house1
+1337951725,66.9,4.39,estimated,yes,,1.56,887431550,trimesh_prism,built,yes,house1
+1337952467,76.69,7.44,estimated,yes,,8.88,887431550,trimesh_prism,built,yes,house2
+1337952468,76.69,7.44,estimated,yes,,27.27,887431550,trimesh_prism,built,yes,house2
+1337952469,76.69,7.44,estimated,yes,,51.47,887431550,trimesh_prism,built,yes,house2
+1337952470,76.69,7.44,estimated,yes,,70.29,887431550,trimesh_prism,built,yes,house2
+1337953900,84.01,7.44,estimated,yes,,44.88,887431549,trimesh_prism,built,yes,house2
+1337953901,84.01,7.44,estimated,yes,,68.9,887431549,trimesh_prism,built,yes,house2
+1337953902,83.96,,estimated,yes,,27.33,887431550,not_built,not_built,no,not in the 15-building prototype set
+1337953903,83.92,,estimated,yes,,10.83,887431550,not_built,not_built,no,not in the 15-building prototype set
+1337953904,83.98,,estimated,yes,,23.67,887431550,not_built,not_built,no,not in the 15-building prototype set
+1337953905,84.01,7.44,estimated,yes,,11.82,887431550,trimesh_prism,built,yes,house2
+1337953917,75.39,,estimated,yes,,58.97,887431549,not_built,not_built,no,not in the 15-building prototype set
+1337953918,75.38,,estimated,yes,,17.52,887431550,not_built,not_built,no,not in the 15-building prototype set
+1337953920,75.34,,estimated,yes,,3.84,887431550,not_built,not_built,no,not in the 15-building prototype set
+1337953921,75.41,7.44,estimated,yes,,20.66,887431550,trimesh_prism,built,yes,house2
+1337953922,75.33,,estimated,yes,,4.77,887431546,not_built,not_built,no,not in the 15-building prototype set
+1337953923,75.36,,estimated,yes,,4.77,887431546,not_built,not_built,no,not in the 15-building prototype set
+1337953926,83.94,,estimated,yes,,5.03,887431546,not_built,not_built,no,not in the 15-building prototype set
+1337953927,83.91,,estimated,yes,,4.57,887431546,not_built,not_built,no,not in the 15-building prototype set

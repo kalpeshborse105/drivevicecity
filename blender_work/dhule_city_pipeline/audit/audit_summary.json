@@ -1,0 +1,59 @@
+{
+  "missing_footprints": 136,
+  "unresolved_triangles": 4922,
+  "assigned_triangles": 20329,
+  "source_triangles": 25251,
+  "water_triangles": 830,
+  "classification": {
+    "B": 136
+  },
+  "diagnostics": {
+    "real_building_wall": 2930,
+    "geometry_between_adjoining_buildings": 34,
+    "real_building_roof": 1923,
+    "roof_overhang": 35
+  },
+  "reason_counts": {
+    "nearest_edge": 7396,
+    "boundary": 11499,
+    "crosses_boundary": 2476,
+    "unmatched": 2412,
+    "inside": 1434,
+    "ambiguous_multi_footprint": 28,
+    "ambiguous_margin": 6
+  },
+  "duplicate_ids": [],
+  "source_identity": "not_proven",
+  "class_d_count": 0,
+  "recommendations_applied": false,
+  "cameras": {
+    "missing": {
+      "osm_id": "829189455",
+      "look": [
+        2682.86,
+        1.0,
+        4074.16
+      ]
+    },
+    "unresolved": {
+      "look": [
+        -3940.0,
+        2.0,
+        1300.0
+      ]
+    },
+    "overview": {
+      "look": [
+        -909.3631462488163,
+        0.0,
+        -580.0269869781604
+      ]
+    }
+  },
+  "missing_overhang_m": {
+    "p10": 0.3430616106084871,
+    "p50": 0.38967001295842313,
+    "p90": 0.4273684011478431,
+    "max": 0.683136178361655
+  }
+}

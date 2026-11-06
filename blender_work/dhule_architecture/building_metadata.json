@@ -1,0 +1,216 @@
+{
+  "projection": {
+    "lat": 20.902,
+    "lon": 74.777,
+    "metres_per_degree": 111320.0,
+    "x": "east",
+    "y": "up",
+    "z": "south"
+  },
+  "court_osm_id": "482794524",
+  "spawn_road": "887431550",
+  "court_godot": {
+    "x": -745.31,
+    "z": 946.96
+  },
+  "shops_not_placed": [
+    {
+      "id": 7330998411,
+      "name": "Exide Battery",
+      "distance_to_court_m": 698.6
+    },
+    {
+      "id": 7655988175,
+      "name": "INVESTMENTVALA",
+      "distance_to_court_m": 2204.3
+    },
+    {
+      "id": 10062229423,
+      "name": "multiple local newspaper vendors",
+      "distance_to_court_m": 1005.1
+    },
+    {
+      "id": 12401569297,
+      "name": "New Suranan Kirana Stores",
+      "distance_to_court_m": 3017.3
+    },
+    {
+      "id": 14214421139,
+      "name": "Vishakha Dusane makeover",
+      "distance_to_court_m": 727.8
+    }
+  ],
+  "buildings": [
+    {
+      "osm_id": "482794524",
+      "kind": "civic",
+      "floors": 2,
+      "height_m": 8.24,
+      "status": "estimated",
+      "osm_building": "yes",
+      "osm_name": "Dhule District & Sessions Court",
+      "godot_x": -745.31,
+      "godot_z": 946.96,
+      "area_m2": 17177.82,
+      "clearance_m": 3.93
+    },
+    {
+      "osm_id": "1337951722",
+      "kind": "house1",
+      "floors": 1,
+      "height_m": 4.39,
+      "status": "estimated",
+      "osm_building": "yes",
+      "osm_name": "",
+      "godot_x": -663.39,
+      "godot_z": 928.32,
+      "area_m2": 66.87,
+      "clearance_m": 42.13
+    },
+    {
+      "osm_id": "1337951723",
+      "kind": "house1",
+      "floors": 1,
+      "height_m": 4.39,
+      "status": "estimated",
+      "osm_building": "yes",
+      "osm_name": "",
+      "godot_x": -663.95,
+      "godot_z": 953.84,
+      "area_m2": 66.97,
+      "clearance_m": 62.34
+    },
+    {
+      "osm_id": "1337951724",
+      "kind": "house1",
+      "floors": 1,
+      "height_m": 4.39,
+      "status": "estimated",
+      "osm_building": "yes",
+      "osm_name": "",
+      "godot_x": -687.38,
+      "godot_z": 873.92,
+      "area_m2": 66.93,
+      "clearance_m": 19.62
+    },
+    {
+      "osm_id": "1337951725",
+      "kind": "house1",
+      "floors": 1,
+      "height_m": 4.39,
+      "status": "estimated",
+      "osm_building": "yes",
+      "osm_name": "",
+      "godot_x": -686.82,
+      "godot_z": 849.37,
+      "area_m2": 66.9,
+      "clearance_m": 1.56
+    },
+    {
+      "osm_id": "1337952467",
+      "kind": "house2",
+      "floors": 2,
+      "height_m": 7.44,
+      "status": "estimated",
+      "osm_building": "yes",
+      "osm_name": "",
+      "godot_x": -685.8,
+      "godot_z": 859.6,
+      "area_m2": 76.69,
+      "clearance_m": 8.88
+    },
+    {
+      "osm_id": "1337952468",
+      "kind": "house2",
+      "floors": 2,
+      "height_m": 7.44,
+      "status": "estimated",
+      "osm_building": "yes",
+      "osm_name": "",
+      "godot_x": -686.71,
+      "godot_z": 884.26,
+      "area_m2": 76.69,
+      "clearance_m": 27.27
+    },
+    {
+      "osm_id": "1337952469",
+      "kind": "house2",
+      "floors": 2,
+      "height_m": 7.44,
+      "status": "estimated",
+      "osm_building": "yes",
+      "osm_name": "",
+      "godot_x": -663.89,
+      "godot_z": 939.66,
+      "area_m2": 76.69,
+      "clearance_m": 51.47
+    },
+    {
+      "osm_id": "1337952470",
+      "kind": "house2",
+      "floors": 2,
+      "height_m": 7.44,
+      "status": "estimated",
+      "osm_building": "yes",
+      "osm_name": "",
+      "godot_x": -663.16,
+      "godot_z": 962.66,
+      "area_m2": 76.69,
+      "clearance_m": 70.29
+    },
+    {
+      "osm_id": "1337953900",
+      "kind": "house2",
+      "floors": 2,
+      "height_m": 7.44,
+      "status": "estimated",
+      "osm_building": "yes",
+      "osm_name": "",
+      "godot_x": -626.42,
+      "godot_z": 977.07,
+      "area_m2": 84.01,
+      "clearance_m": 44.88
+    },
+    {
+      "osm_id": "1337953901",
+      "kind": "house2",
+      "floors": 2,
+      "height_m": 7.44,
+      "status": "estimated",
+      "osm_building": "yes",
+      "osm_name": "",
+      "godot_x": -650.68,
+      "godot_z": 975.95,
+      "area_m2": 84.01,
+      "clearance_m": 68.9
+    },
+    {
+      "osm_id": "1337953905",
+      "kind": "house2",
+      "floors": 2,
+      "height_m": 7.44,
+      "status": "estimated",
+      "osm_building": "yes",
+      "osm_name": "",
+      "godot_x": -625.04,
+      "godot_z": 916.21,
+      "area_m2": 84.01,
+      "clearance_m": 11.82
+    },
+    {
+      "osm_id": "1337953921",
+      "kind": "house2",
+      "floors": 2,
+      "height_m": 7.44,
+      "status": "estimated",
+      "osm_building": "yes",
+      "osm_name": "",
+      "godot_x": -663.67,
+      "godot_z": 897.78,
+      "area_m2": 75.41,
+      "clearance_m": 20.66
+    }
+  ],
+  "library_godot_origin_x": 4500,
+  "note": "Library meshes are not placed on OSM footprints. building=yes stays estimated and is not treated as a shop."
+}

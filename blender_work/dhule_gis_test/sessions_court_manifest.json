@@ -1,0 +1,20 @@
+{
+  "origin_lat": 20.902,
+  "origin_lon": 74.777,
+  "metres_per_degree": 111320.0,
+  "window_godot_xz": [
+    -820.0,
+    -420.0,
+    680.0,
+    1080.0
+  ],
+  "footprints": 88,
+  "named_landmarks": 1,
+  "roads": 17,
+  "kit_objects": 10,
+  "extruded_buildings": 0,
+  "dem": "not loaded",
+  "city_glb": "D:\\drivevicecity\\blender_work\\dhule_gis_test\\export\\sessions_court_reference.glb",
+  "kit_glb": "D:\\drivevicecity\\blender_work\\dhule_gis_test\\export\\indian_city_kit.glb",
+  "blend": "D:\\drivevicecity\\blender_work\\dhule_gis_test\\sessions_court_test.blend"
+}

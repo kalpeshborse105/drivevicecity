@@ -1,0 +1,618 @@
+{
+  "scale_note": {
+    "tool_metres_per_deg_lat": 111320.0,
+    "tool_metres_per_deg_lon": 103994.256,
+    "godot_latlon_to_xz_lat": 111194.927,
+    "godot_latlon_to_xz_lon": 103877.413,
+    "delta_at_0_04_deg_m": [
+      4.67,
+      -5.0
+    ],
+    "shared_road_samples": [
+      {
+        "id": 102664420,
+        "first_point_delta_m": 0.006,
+        "game_points": 41,
+        "geojson_points": 41
+      },
+      {
+        "id": 102664422,
+        "first_point_delta_m": 0.003,
+        "game_points": 50,
+        "geojson_points": 50
+      },
+      {
+        "id": 102664423,
+        "first_point_delta_m": 0.005,
+        "game_points": 20,
+        "geojson_points": 20
+      },
+      {
+        "id": 102664424,
+        "first_point_delta_m": 0.002,
+        "game_points": 15,
+        "geojson_points": 15
+      },
+      {
+        "id": 103496270,
+        "first_point_delta_m": 0.004,
+        "game_points": 8,
+        "geojson_points": 8
+      },
+      {
+        "id": 103623457,
+        "first_point_delta_m": 0.005,
+        "game_points": 146,
+        "geojson_points": 146
+      },
+      {
+        "id": 104116551,
+        "first_point_delta_m": 0.005,
+        "game_points": 21,
+        "geojson_points": 21
+      },
+      {
+        "id": 157372210,
+        "first_point_delta_m": 0.005,
+        "game_points": 38,
+        "geojson_points": 38
+      }
+    ],
+    "game_clip_radius_m": 2000.0,
+    "game_bbox_m": {
+      "min_x": -3773.5,
+      "max_x": 2370.13,
+      "min_z": -1682.45,
+      "max_z": 3363.14
+    },
+    "game_origin": [
+      20.902,
+      74.777
+    ]
+  },
+  "roads_game": 796,
+  "segments": 5101,
+  "components_snap_1m": 6,
+  "components_snap_3m": 6,
+  "components_snap_8m": 6,
+  "main_component_length_m": 183070.0,
+  "component_lengths_m": [
+    183070.0,
+    171.3,
+    112.0,
+    62.1,
+    50.7,
+    41.6
+  ],
+  "orphan_components": [
+    {
+      "length_m": 171.3,
+      "road_ids": [
+        884985299
+      ]
+    },
+    {
+      "length_m": 112.0,
+      "road_ids": [
+        881944742
+      ]
+    },
+    {
+      "length_m": 62.1,
+      "road_ids": [
+        885874501
+      ]
+    },
+    {
+      "length_m": 50.7,
+      "road_ids": [
+        885874500
+      ]
+    },
+    {
+      "length_m": 41.6,
+      "road_ids": [
+        885874499
+      ]
+    }
+  ],
+  "duplicate_road_ids": [],
+  "endpoint_duplicate_groups": 0,
+  "duplicate_building_ids": [],
+  "bands": {
+    "no_road_access": 1421,
+    "within_5m": 92,
+    "carriageway_overlap": 48,
+    "frontage": 101,
+    "within_1m": 46,
+    "nearby_access": 119,
+    "within_2m": 39
+  },
+  "centerline_inside_ids": [],
+  "class_counts": {
+    "buildings_no_playable_road": 83,
+    "dense_footprints": 16,
+    "buildings_near_edge": 2,
+    "mixed_shop_street": 4,
+    "sparse_street": 44,
+    "roads_no_buildings": 154
+  },
+  "canonical_roads": 799,
+  "canonical_not_in_game": 3,
+  "game_not_in_canonical": 0,
+  "missing_roads": [
+    {
+      "id": 880887781,
+      "in_canonical_geojson": true,
+      "in_game_json": false,
+      "highway": "tertiary",
+      "name": "",
+      "bridge": "yes",
+      "layer": "1",
+      "points": 2,
+      "length_m": 7.82,
+      "ends": [
+        {
+          "x": 871.21,
+          "z": 1322.43,
+          "nearest_playable_road": 880958590,
+          "distance_m": 0.0
+        },
+        {
+          "x": 866.99,
+          "z": 1315.85,
+          "nearest_playable_road": 880887782,
+          "distance_m": 0.0
+        }
+      ]
+    },
+    {
+      "id": 887725190,
+      "in_canonical_geojson": true,
+      "in_game_json": false,
+      "highway": "primary_link",
+      "name": "",
+      "bridge": "",
+      "layer": "",
+      "points": 2,
+      "length_m": 6.82,
+      "ends": [
+        {
+          "x": 500.17,
+          "z": -205.02,
+          "nearest_playable_road": 883678050,
+          "distance_m": 0.0
+        },
+        {
+          "x": 494.89,
+          "z": -200.7,
+          "nearest_playable_road": 883678048,
+          "distance_m": 0.0
+        }
+      ]
+    },
+    {
+      "id": 1426345742,
+      "in_canonical_geojson": true,
+      "in_game_json": false,
+      "highway": "residential",
+      "name": "",
+      "bridge": "",
+      "layer": "",
+      "points": 2,
+      "length_m": 7.92,
+      "ends": [
+        {
+          "x": -324.39,
+          "z": 1149.02,
+          "nearest_playable_road": 414759290,
+          "distance_m": 0.0
+        },
+        {
+          "x": -316.69,
+          "z": 1150.9,
+          "nearest_playable_road": 102664422,
+          "distance_m": 0.0
+        }
+      ]
+    }
+  ],
+  "unmatched": [
+    {
+      "id": 1485903708,
+      "in_city_osm": true,
+      "kind": "yes",
+      "name": "",
+      "area_m2": 77.7,
+      "x": -1662.41,
+      "z": 458.15,
+      "relation": "within_2m",
+      "dist_to_road_edge_m": 1.62,
+      "nearest_road_id": 888082596,
+      "mesh_vertices_inside": 0,
+      "nearest_tested_vertex_m": 6.6
+    },
+    {
+      "id": 1527760215,
+      "in_city_osm": true,
+      "kind": "yes",
+      "name": "",
+      "area_m2": 78.85,
+      "x": 17.28,
+      "z": 1949.6,
+      "relation": "no_road_access",
+      "dist_to_road_edge_m": 227.06,
+      "nearest_road_id": 880554966,
+      "mesh_vertices_inside": 0,
+      "nearest_tested_vertex_m": 4.21
+    },
+    {
+      "id": 1527760232,
+      "in_city_osm": true,
+      "kind": "yes",
+      "name": "",
+      "area_m2": 319.74,
+      "x": 18.47,
+      "z": 1986.38,
+      "relation": "no_road_access",
+      "dist_to_road_edge_m": 228.49,
+      "nearest_road_id": 880554966,
+      "mesh_vertices_inside": 0,
+      "nearest_tested_vertex_m": 13.78
+    },
+    {
+      "id": 1527760270,
+      "in_city_osm": true,
+      "kind": "yes",
+      "name": "",
+      "area_m2": 101.93,
+      "x": 31.45,
+      "z": 1762.11,
+      "relation": "no_road_access",
+      "dist_to_road_edge_m": 163.96,
+      "nearest_road_id": 880554966,
+      "mesh_vertices_inside": 0,
+      "nearest_tested_vertex_m": 7.44
+    },
+    {
+      "id": 1527760283,
+      "in_city_osm": true,
+      "kind": "yes",
+      "name": "",
+      "area_m2": 254.73,
+      "x": -281.64,
+      "z": 1756.82,
+      "relation": "nearby_access",
+      "dist_to_road_edge_m": 21.07,
+      "nearest_road_id": 414759302,
+      "mesh_vertices_inside": 0,
+      "nearest_tested_vertex_m": 12.7
+    },
+    {
+      "id": 1527816133,
+      "in_city_osm": true,
+      "kind": "yes",
+      "name": "",
+      "area_m2": 172.64,
+      "x": 19.41,
+      "z": 1727.2,
+      "relation": "no_road_access",
+      "dist_to_road_edge_m": 163.28,
+      "nearest_road_id": 880554966,
+      "mesh_vertices_inside": 0,
+      "nearest_tested_vertex_m": 9.78
+    },
+    {
+      "id": 1527858168,
+      "in_city_osm": true,
+      "kind": "yes",
+      "name": "",
+      "area_m2": 130.48,
+      "x": -516.32,
+      "z": -2704.99,
+      "relation": "no_road_access",
+      "dist_to_road_edge_m": 1242.52,
+      "nearest_road_id": 441423781,
+      "mesh_vertices_inside": 0,
+      "nearest_tested_vertex_m": 8.68
+    },
+    {
+      "id": 1527858172,
+      "in_city_osm": true,
+      "kind": "yes",
+      "name": "",
+      "area_m2": 154.72,
+      "x": -456.19,
+      "z": -2670.17,
+      "relation": "no_road_access",
+      "dist_to_road_edge_m": 1227.56,
+      "nearest_road_id": 441423781,
+      "mesh_vertices_inside": 0,
+      "nearest_tested_vertex_m": 8.12
+    },
+    {
+      "id": 1527858312,
+      "in_city_osm": true,
+      "kind": "yes",
+      "name": "",
+      "area_m2": 111.31,
+      "x": -1011.14,
+      "z": -2791.01,
+      "relation": "no_road_access",
+      "dist_to_road_edge_m": 1287.71,
+      "nearest_road_id": 441423781,
+      "mesh_vertices_inside": 0,
+      "nearest_tested_vertex_m": 7.75
+    }
+  ],
+  "mesh_bounds": {
+    "vertices": 48305,
+    "x": [
+      -4323.52,
+      2686.52
+    ],
+    "y": [
+      0.0,
+      13.78
+    ],
+    "z": [
+      -2835.89,
+      4285.07
+    ]
+  },
+  "osm_bounds": {
+    "footprints": 1866,
+    "x": [
+      -4313.11,
+      2682.86
+    ],
+    "z": [
+      -2812.82,
+      4279.38
+    ]
+  },
+  "current_spawn": {
+    "x": -13.09,
+    "z": -86.21,
+    "inside_building": false,
+    "nearest_road_id": 102664423,
+    "nearest_highway": "secondary",
+    "distance_to_centreline_m": 0.0,
+    "on_main_component": true,
+    "buildings_100m": 0,
+    "buildings_250m": 2,
+    "buildings_500m": 10,
+    "shops_500m": [],
+    "named_places_500m": [
+      "Sanskar Homeopathic Clinic",
+      "my native place is damundar",
+      "Kamlabai Girls High School"
+    ],
+    "named_buildings_500m": [
+      "Prakash Cinema Theatre",
+      "Muncipal corporation Dhule",
+      "Swastik Theatre",
+      "New City High School",
+      "Apala Maharashtra Paper Office",
+      "New City High School"
+    ]
+  },
+  "candidates": [
+    {
+      "x": -895.79,
+      "z": -1404.18,
+      "hx": -0.2965,
+      "hz": 0.955,
+      "road_id": 441423781,
+      "highway": "residential",
+      "road_name": "",
+      "buildings_100m": 41,
+      "buildings_250m": 91,
+      "buildings_500m": 209,
+      "buildings_left": 12,
+      "buildings_right": 12,
+      "junctions_80m": 0,
+      "shops_500m": 1,
+      "named_places_500m": [],
+      "named_buildings_500m": [
+        "Jai Hind College"
+      ],
+      "overlaps_within_50m": 0,
+      "score": 244.65
+    },
+    {
+      "x": -636.54,
+      "z": 881.83,
+      "hx": -0.72,
+      "hz": -0.694,
+      "road_id": 887431550,
+      "highway": "residential",
+      "road_name": "",
+      "buildings_100m": 43,
+      "buildings_250m": 85,
+      "buildings_500m": 154,
+      "buildings_left": 14,
+      "buildings_right": 10,
+      "junctions_80m": 4,
+      "shops_500m": 0,
+      "named_places_500m": [
+        "Dhule",
+        "Dr. Nikhil Shirole Gastroenterologist Hospital",
+        "Kaderi Hospital",
+        "Shradha Multi Speciality Hospital",
+        "Kesharanand Hospital",
+        "Om Sai Hospital",
+        "Yash Urology Hospital",
+        "Archana Cardiac and Diabetes Centre Hospital"
+      ],
+      "named_buildings_500m": [
+        "Malhar Bhaskar Deshpande",
+        "Dhule District & Sessions Court"
+      ],
+      "overlaps_within_50m": 0,
+      "score": 241.75
+    },
+    {
+      "x": -872.11,
+      "z": -1153.8,
+      "hx": 0.2547,
+      "hz": -0.967,
+      "road_id": 304760884,
+      "highway": "residential",
+      "road_name": "",
+      "buildings_100m": 33,
+      "buildings_250m": 88,
+      "buildings_500m": 171,
+      "buildings_left": 10,
+      "buildings_right": 11,
+      "junctions_80m": 0,
+      "shops_500m": 1,
+      "named_places_500m": [
+        "Sudha Multispeciality Hospital and Critical Care Centre",
+        "Shri Siddheshwar Multispeciality Hospital"
+      ],
+      "named_buildings_500m": [],
+      "overlaps_within_50m": 0,
+      "score": 204.2
+    },
+    {
+      "x": -465.97,
+      "z": 950.06,
+      "hx": 0.0521,
+      "hz": -0.9986,
+      "road_id": 887431552,
+      "highway": "residential",
+      "road_name": "",
+      "buildings_100m": 36,
+      "buildings_250m": 95,
+      "buildings_500m": 174,
+      "buildings_left": 8,
+      "buildings_right": 5,
+      "junctions_80m": 1,
+      "shops_500m": 1,
+      "named_places_500m": [
+        "Lokmanyaa Hospital",
+        "Exide Battery",
+        "Canossa Convent High School",
+        "Plaza",
+        "Dr. Nikhil Shirole Gastroenterologist Hospital",
+        "Kaderi Hospital",
+        "Shradha Multi Speciality Hospital",
+        "Jeevan Jyoti Children Hospital"
+      ],
+      "named_buildings_500m": [
+        "Malhar Bhaskar Deshpande",
+        "Dhule District & Sessions Court"
+      ],
+      "overlaps_within_50m": 0,
+      "score": 179.25
+    },
+    {
+      "x": -1167.61,
+      "z": 1559.95,
+      "hx": 0.1138,
+      "hz": -0.9935,
+      "road_id": 441426956,
+      "highway": "residential",
+      "road_name": "",
+      "buildings_100m": 41,
+      "buildings_250m": 66,
+      "buildings_500m": 107,
+      "buildings_left": 10,
+      "buildings_right": 6,
+      "junctions_80m": 0,
+      "shops_500m": 0,
+      "named_places_500m": [
+        "Accident Hospital",
+        "Dr. Nikhil Shirole Gastroenterologist Hospital",
+        "Kaderi Hospital",
+        "Kesharanand Hospital",
+        "Shivpushp Hospital"
+      ],
+      "named_buildings_500m": [],
+      "overlaps_within_50m": 1,
+      "score": 165.9
+    }
+  ],
+  "recommended": {
+    "x": -636.54,
+    "z": 881.83,
+    "hx": -0.72,
+    "hz": -0.694,
+    "road_id": 887431550,
+    "highway": "residential",
+    "road_name": "",
+    "buildings_100m": 43,
+    "buildings_250m": 85,
+    "buildings_500m": 154,
+    "buildings_left": 14,
+    "buildings_right": 10,
+    "junctions_80m": 4,
+    "shops_500m": 0,
+    "named_places_500m": [
+      "Dhule",
+      "Dr. Nikhil Shirole Gastroenterologist Hospital",
+      "Kaderi Hospital",
+      "Shradha Multi Speciality Hospital",
+      "Kesharanand Hospital",
+      "Om Sai Hospital",
+      "Yash Urology Hospital",
+      "Archana Cardiac and Diabetes Centre Hospital"
+    ],
+    "named_buildings_500m": [
+      "Malhar Bhaskar Deshpande",
+      "Dhule District & Sessions Court"
+    ],
+    "overlaps_within_50m": 0,
+    "score": 241.75
+  },
+  "candidate_pool": 168,
+  "shops": [
+    {
+      "id": 7330998411,
+      "name": "Exide Battery",
+      "kind": "car_parts",
+      "x": -63.8,
+      "z": 1100.58
+    },
+    {
+      "id": 7655988175,
+      "name": "INVESTMENTVALA",
+      "kind": "supermarket",
+      "x": -599.64,
+      "z": -1252.53
+    },
+    {
+      "id": 10062229423,
+      "name": "multiple local newspaper vendors",
+      "kind": "newsagent",
+      "x": -915.4,
+      "z": -43.65
+    },
+    {
+      "id": 12401569297,
+      "name": "New Suranan Kirana Stores",
+      "kind": "grocery",
+      "x": -1120.96,
+      "z": -2046.83
+    },
+    {
+      "id": 14214421139,
+      "name": "Vishakha Dusane makeover",
+      "kind": "beauty",
+      "x": -1313.45,
+      "z": 492.15
+    }
+  ],
+  "named_building_count": 22,
+  "tag_counts": {
+    "yes": 1850,
+    "school": 4,
+    "apartments": 3,
+    "college": 2,
+    "residential": 2,
+    "commercial": 2,
+    "house": 2,
+    "hospital": 1
+  }
+}

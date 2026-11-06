@@ -8,31 +8,46 @@
 4. Visual meshes/textures = **our Blender work** or clearly free (CC0 / compatible) licenses.
 5. Prefer rewriting ideas from open repos; watch **GPL** (can force your game open-source if you copy code).
 
-## Planned free pipeline (P1)
+## Working pipeline (locked)
+
+Google Map Tiles API can show a satellite photo. Enabling the API is free; every tile after that is billed. That photo is optional. It is not the city we ship.
+
+The city we ship:
 
 ```
-OpenStreetMap (Dhule clip)
+assets/maps/dhule_roads_game.json     real roads and place points
+Downloads\dhulemap.osm                OpenStreetMap source clip
         ↓
-Geofabrik India extract / Overpass
+Blender 4.5 + blosm 2.7.28
+  OSM buildings / highways / water only
+  Do not use blosm's Google 3D or satellite import
         ↓
-OSM2World  →  glTF / OBJ   (or Blender OSM add-on)
+assets/maps/dhule_blosm.glb
         ↓
-Clean in Blender (Indian shop kits, landmarks)
-        ↓
-Import to Godot → res://assets/maps/dhule_...
-        ↓
-Replace dhule_block_builder.gd procedural grid
+Godot main scene, player car on that mesh
 ```
+
+blosm is GPL-3. Keep the addon outside the game repo (Downloads or `D:\tools`). Do not copy its Python into `scripts/`. The mesh we export is geometry from OpenStreetMap, so the game still credits OSM.
+
+One district per export. The whole of Dhule is the same step repeated, not one giant first file.
+
+Repeat the first clip:
+
+```powershell
+& "D:\tools\blender-4.5.5-windows-x64\blender.exe" --background --factory-startup --python "D:\drivevicecity\tools\export_dhule_blosm.py"
+```
+
+That writes `assets/maps/dhule_blosm.glb`. The main scene is `scenes/dhule_blosm.tscn`.
 
 ## Credit text (keep for store + in-game About)
 
 > Map data © OpenStreetMap contributors, available under ODbL.  
 > https://www.openstreetmap.org/copyright
 
-## Current map (P0)
+## Current map
 
-`scripts/dhule_block_builder.gd` builds a **fake grid** with Dhule-flavored landmark *names*.  
-It is **not** real geography. Good for driving feel only.
+Playable ground is the Blender export of Dhule OpenStreetMap (`assets/maps/dhule_blosm.glb`) in the main scene.  
+`scenes/google_drive.tscn` remains the optional paid satellite test. It is not the shipped world.
 
 ## Free reference projects (study only)
 

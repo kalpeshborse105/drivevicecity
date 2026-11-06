@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://cp4n06h6sjdsj"
+
+[deps]
+
+files=["res://blender_work/dhule_city_pipeline/validation/replacement_check.confident.translation", "res://blender_work/dhule_city_pipeline/validation/replacement_check.id.translation", "res://blender_work/dhule_city_pipeline/validation/replacement_check.visual.translation", "res://blender_work/dhule_city_pipeline/validation/replacement_check.collision.translation", "res://blender_work/dhule_city_pipeline/validation/replacement_check.ray.translation"]
+
+source_file="res://blender_work/dhule_city_pipeline/validation/replacement_check.csv"
+dest_files=["res://blender_work/dhule_city_pipeline/validation/replacement_check.confident.translation", "res://blender_work/dhule_city_pipeline/validation/replacement_check.id.translation", "res://blender_work/dhule_city_pipeline/validation/replacement_check.visual.translation", "res://blender_work/dhule_city_pipeline/validation/replacement_check.collision.translation", "res://blender_work/dhule_city_pipeline/validation/replacement_check.ray.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

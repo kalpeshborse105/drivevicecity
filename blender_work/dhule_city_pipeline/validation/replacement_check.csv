@@ -1,0 +1,5 @@
+osm_id,confident_blosm_triangles,in_neighbourhood_as_raw_id,visual_node,collision_body,ray
+1337951722,31,absent,bld_1337951722,hit_col_1337951722,"(-658.40, 1.6, 928.3)"
+1337953905,44,absent,bld_1337953905,hit_col_1337953905,"(-621.03, 1.6, 916.2) from the 1.84 m gap"
+482794524,9,absent,bld_482794524,hit_col_482794524,"(-697.92, 1.6, 946.0)"
+1337953919,45,present,1337953919,hit_1337953919,"(-614.01, 1.6, 916.2) from the east"

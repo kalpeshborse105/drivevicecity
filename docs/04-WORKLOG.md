@@ -340,3 +340,11 @@ Retest: **R** then hold **W**.
 - Test: F5 → Esc → click view → W. Headless: `godot --headless --path . -s res://tools/smoke_test.gd`.
 
 When you finish a session, append a short dated block here (what changed + how to test).
+
+## 2026-11-06 — Free Dhule world: Blender blosm, not paid satellite
+
+- Design lock: [13-BUILD-ORDER.md](13-BUILD-ORDER.md) and [06-MAP-AND-LEGAL.md](06-MAP-AND-LEGAL.md). Shipped city is OpenStreetMap geometry. Google satellite stays optional and billed.
+- Installed Blender 4.5.5 at `D:\tools\blender-4.5.5-windows-x64`. blosm 2.7.28 from Downloads, OSM import only.
+- Exported central Dhule (`dhulemap.osm`, 254 buildings, roads, water) to `assets/maps/dhule_blosm.glb`.
+- Main scene is now `scenes/dhule_blosm.tscn`. Press F5. WASD. Credit line is on screen.
+- Next district is the same script with a larger OSM clip. This export is one central patch, not all of Dhule.

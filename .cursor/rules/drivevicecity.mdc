@@ -19,10 +19,11 @@ Keep the game **playable as a test harness** while upgrading art. Do not delete 
 
 ## Legal / maps (hard rules)
 
-- **Never** scrape, fetch, or ship Google Maps / Earth tiles, 3D, or Street View.  
-- Google Maps = **eyes-only** reference for “does this feel right.”  
-- Production roads/names = **OpenStreetMap** (ODbL — credit OSM). Data in `assets/maps/dhule_roads_game.json`.  
-- All meshes/textures = **original / free-licensed** — no paid city/car packs, no ripped GTA/BUSID assets.  
+- Google Maps Platform **is allowed** when the user supplies their own API key. Load the key at runtime from `google key.txt`. Never paste the key into scripts, chat, or git.
+- Use the official Map Tiles API for the drive ground. Do not scrape Street View, Earth, or unofficial tile URLs. Do not save map tiles into the project.
+- Show “Map data © Google” on screen.
+- OpenStreetMap files stay in the repo as backup. The playable ground for this phase is the Google map, not the OSM racer.
+- Meshes other than the player car stay out of this Google-map drive.
 - Learn **formula** from GTA / BUSID; never copy their IP.
 
 ## References (formula only)
@@ -34,7 +35,7 @@ Keep the game **playable as a test harness** while upgrading art. Do not delete 
 
 - Map builder: `scripts/osm_road_builder.gd` + `scripts/street_kit.gd`  
 - Car: `VehicleBody3D` in `scripts/player_car.gd` — fix tire axis (spin around X) and grip before adding features.  
-- Road names: use OSM `name` fields already in JSON (e.g. Sakri Road, SH 14) — do not call Google APIs.  
+- Playable map: `scenes/google_drive.tscn` loads Google satellite tiles at runtime around Shivtirth Chowk. Key file: `google key.txt` (gitignored).  
 - Docs: `docs/13-BUILD-ORDER.md`, `docs/USER-GUIDE.md`, `docs/INDEX.md`
 
 ## When user says “continue”

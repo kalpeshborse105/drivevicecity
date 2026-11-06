@@ -19,7 +19,7 @@ We do **not** delete jobs/controls — we improve how the world and cars look, t
 **References (formula only):** GTA Vice City / GTA V feel of “city + free drive + jobs”; BUSID feel of “local map + vehicle progression”.  
 **Never** copy their assets / trademarks.
 
-**Maps:** OpenStreetMap only for data/names. Google Maps = eyes-only reference. Never scrape Google.
+**Maps:** OpenStreetMap geometry is the real world we ship. Blender + the blosm addon turns that into 3D. Google satellite is an optional paid Map Tiles view, not the city we build. Never scrape Google tiles.
 
 ---
 
@@ -37,15 +37,29 @@ We do **not** delete jobs/controls — we improve how the world and cars look, t
 
 ## PHASE 1 — Map (current)
 
-Do in this order:
+### Correct workflow (locked)
 
-1. **1A** Clean markers + richer road surface (asphalt tone, lanes, sidewalks)  
-2. **1B** Building kits: windows, roofs, shop variety, less pink boxes  
-3. **1C** Ground / lots / walls so empty tan slabs disappear  
-4. **1D** Sky / lighting / fog for India afternoon (not washed desert)  
-5. **1E** Landmark props (water tower, market stall, bus stop) on OSM points  
+The photograph of Dhule is the paid Google part. The free real city is the OpenStreetMap layout, dressed in Blender.
 
-Exit Phase 1 when: 30-second drive from spawn looks like a **busy Dhule street**, not a prototype sandbox.
+```
+dhule_roads_game.json + dhulemap.osm   (real roads, footprints, place names)
+        ↓
+Blender 4.5 + blosm addon (OSM import only — no Google 3D / satellite button)
+        ↓
+simple 3D buildings + roads, one district at a time
+        ↓
+export .glb → assets/maps/ → Godot main scene + player car
+```
+
+1. **1A** Import one Dhule district (Agra Road / Panzara first), not all of India  
+2. **1B** Keep real GPS positions from the JSON and OSM file  
+3. **1C** blosm simple-3D buildings and highways; water where the river is mapped  
+4. **1D** Export glb and drive it in Godot. Credit OpenStreetMap on screen  
+5. **1E** Repeat the same import for the next district. Hand-dress shops only after the block is in-game  
+
+Exit Phase 1 when: a drive from spawn follows a **real Dhule street** with building blocks on real footprints.
+
+Google Map Tiles stays a separate optional scene (`scenes/google_drive.tscn`). It needs the paid Map Tiles API. It is not this workflow.
 
 ---
 
@@ -81,10 +95,6 @@ Exit Phase 2 when: vehicle reads clearly in screenshots next to reference games�
 
 ## Now
 
-**PHASE 1 in progress**
-
-- 1A markers/roads ✅ · 1B windows/roofs ✅  
-- 1C lots/ground ✅ · 1D sky/light ✅ · 1E landmarks started ✅  
-
-Next after more map polish: **PHASE 2 — Vehicle**.  
-Detail: [14-PHASE1-LOTS-SKY.md](14-PHASE1-LOTS-SKY.md)
+**PHASE 1 — Blender district import.**  
+First clip is central Dhule (`dhulemap.osm`, about 20.890–20.910 N, 74.760–74.789 E).  
+Detail: [06-MAP-AND-LEGAL.md](06-MAP-AND-LEGAL.md).

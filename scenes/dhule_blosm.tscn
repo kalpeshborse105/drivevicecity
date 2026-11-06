@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/maps/dhule_blosm.glb" id="1_city"]
+[ext_resource type="PackedScene" path="res://scenes/player_car.tscn" id="2_car"]
+
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat"]
+sky_top_color = Color(0.45, 0.62, 0.82, 1)
+sky_horizon_color = Color(0.9, 0.78, 0.55, 1)
+ground_horizon_color = Color(0.55, 0.45, 0.32, 1)
+
+[sub_resource type="Sky" id="Sky"]
+sky_material = SubResource("SkyMat")
+
+[sub_resource type="Environment" id="Env"]
+background_mode = 2
+sky = SubResource("Sky")
+ambient_light_source = 2
+ambient_light_energy = 0.65
+tonemap_mode = 2
+
+[sub_resource type="BoxShape3D" id="GroundShape"]
+size = Vector3(4000, 0.4, 4000)
+
+[node name="DhuleBlosm" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.78, -0.35, 0.52, 0, 0.83, 0.56, -0.63, -0.43, 0.65, 0, 80, 0)
+light_energy = 1.25
+shadow_enabled = true
+
+[node name="City" parent="." instance=ExtResource("1_city")]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("GroundShape")
+
+[node name="PlayerCar" parent="." instance=ExtResource("2_car")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Attribution" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 920.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.85)
+theme_override_font_sizes/font_size = 18
+text = "Dhule from OpenStreetMap  ·  WASD drive  ·  Map data © OpenStreetMap contributors"

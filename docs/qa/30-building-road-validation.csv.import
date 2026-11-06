@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dhuqekbm8kjdv"
+
+[deps]
+
+files=["res://docs/qa/30-building-road-validation.kind.translation", "res://docs/qa/30-building-road-validation.name.translation", "res://docs/qa/30-building-road-validation.x.translation", "res://docs/qa/30-building-road-validation.z.translation", "res://docs/qa/30-building-road-validation.area.translation", "res://docs/qa/30-building-road-validation.nearest.translation", "res://docs/qa/30-building-road-validation.nearest.translation", "res://docs/qa/30-building-road-validation.dist.translation", "res://docs/qa/30-building-road-validation.dist.translation", "res://docs/qa/30-building-road-validation.relation.translation", "res://docs/qa/30-building-road-validation.on.translation"]
+
+source_file="res://docs/qa/30-building-road-validation.csv"
+dest_files=["res://docs/qa/30-building-road-validation.kind.translation", "res://docs/qa/30-building-road-validation.name.translation", "res://docs/qa/30-building-road-validation.x.translation", "res://docs/qa/30-building-road-validation.z.translation", "res://docs/qa/30-building-road-validation.area.translation", "res://docs/qa/30-building-road-validation.nearest.translation", "res://docs/qa/30-building-road-validation.nearest.translation", "res://docs/qa/30-building-road-validation.dist.translation", "res://docs/qa/30-building-road-validation.dist.translation", "res://docs/qa/30-building-road-validation.relation.translation", "res://docs/qa/30-building-road-validation.on.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

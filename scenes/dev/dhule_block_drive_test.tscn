@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/dev/dhule_block_drive_test.gd" id="1_boot"]
+[ext_resource type="PackedScene" path="res://assets/prototypes/dhule_block/dhule_block.glb" id="2_block"]
+[ext_resource type="PackedScene" uid="uid://c3cwqdrnbgter" path="res://scenes/player_car.tscn" id="3_car"]
+
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat"]
+sky_top_color = Color(0.45, 0.62, 0.84, 1)
+sky_horizon_color = Color(0.86, 0.72, 0.52, 1)
+ground_bottom_color = Color(0.45, 0.38, 0.28, 1)
+ground_horizon_color = Color(0.62, 0.52, 0.38, 1)
+
+[sub_resource type="Sky" id="Sky"]
+sky_material = SubResource("SkyMat")
+
+[sub_resource type="Environment" id="Env"]
+background_mode = 2
+sky = SubResource("Sky")
+ambient_light_source = 2
+ambient_light_energy = 0.55
+
+[node name="DhuleBlockDriveTest" type="Node3D"]
+script = ExtResource("1_boot")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.82, -0.38, 0.43, 0, 0.75, 0.66, -0.57, -0.54, 0.62, -550, 40, 900)
+light_energy = 1.35
+shadow_enabled = true
+directional_shadow_max_distance = 400.0
+
+[node name="Block" parent="." instance=ExtResource("2_block")]
+
+[node name="PlayerCar" parent="." instance=ExtResource("3_car")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -553.86, 0.42, 908.39)
+
+[node name="AerialCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.55, 0.83, 0, -0.83, 0.55, -430, 160, 1120)
+current = false
+far = 2500.0
+
+[node name="Overlay" type="CanvasLayer" parent="."]
+
+[node name="Fps" type="Label" parent="Overlay"]
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 1100.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(1, 0.95, 0.8, 1)
+theme_override_font_sizes/font_size = 18
+text = "Dhule block drive test"

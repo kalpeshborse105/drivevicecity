@@ -1,0 +1,243 @@
+{
+  "game_roads": 796,
+  "game_unique_ids": 796,
+  "duplicate_ids_in_game": [],
+  "geojson_ways": 799,
+  "geojson_bounds": {
+    "minlat": "20.8900200",
+    "minlon": "74.7597700",
+    "maxlat": "20.9099000",
+    "maxlon": "74.7889600"
+  },
+  "osm_highway_ways": 0,
+  "in_game_not_geojson": 0,
+  "in_geojson_not_game": [
+    "1426345742",
+    "880887781",
+    "887725190"
+  ],
+  "in_osm_not_game": [],
+  "in_game_and_osm": 0,
+  "highway_class_counts": {
+    "trunk_link": 1,
+    "primary": 32,
+    "secondary": 26,
+    "tertiary": 45,
+    "unclassified": 23,
+    "residential": 623,
+    "service": 46
+  },
+  "named_in_game": 41,
+  "unnamed_in_game": 755,
+  "named_by_class": {
+    "primary": 14,
+    "secondary": 15,
+    "tertiary": 10,
+    "residential": 2
+  },
+  "verified_names_missing_from_game": [],
+  "roundabouts": [
+    {
+      "osm_id": "217392930",
+      "in_game": true,
+      "highway": "primary",
+      "name": "",
+      "lanes": "2",
+      "nodes": 21
+    },
+    {
+      "osm_id": "883678059",
+      "in_game": true,
+      "highway": "primary",
+      "name": "",
+      "lanes": "",
+      "nodes": 19
+    },
+    {
+      "osm_id": "887725187",
+      "in_game": true,
+      "highway": "secondary",
+      "name": "",
+      "lanes": "",
+      "nodes": 18
+    }
+  ],
+  "squares_named_in_geojson": [],
+  "endpoint_pairs": 1592,
+  "endpoints_joined_within_1_5m": 252,
+  "endpoints_meeting_another_way": 1305,
+  "endpoints_with_no_neighbour": 287,
+  "duplicate_segment_keys": 0,
+  "sub_metre_segments": 0,
+  "game_has_name_ref_official_alt": {
+    "name": 41,
+    "ref": 0,
+    "official_name": 0,
+    "alt_name": 0,
+    "oneway": 0,
+    "lanes": 0,
+    "surface": 0,
+    "bridge": 0,
+    "tunnel": 0
+  },
+  "sample_named": [
+    {
+      "osm_id": "102664422",
+      "name": "Dhule Malegaon Road",
+      "highway": "primary",
+      "width": 11.0
+    },
+    {
+      "osm_id": "217392944",
+      "name": "Sakri Road",
+      "highway": "primary",
+      "width": 11.0
+    },
+    {
+      "osm_id": "887885955",
+      "name": "Sakri Road",
+      "highway": "primary",
+      "width": 11.0
+    },
+    {
+      "osm_id": "784708465",
+      "name": "Sakri Road",
+      "highway": "primary",
+      "width": 11.0
+    },
+    {
+      "osm_id": "883678050",
+      "name": "State Highway 14",
+      "highway": "primary",
+      "width": 11.0
+    },
+    {
+      "osm_id": "883678048",
+      "name": "State Highway 14",
+      "highway": "primary",
+      "width": 11.0
+    },
+    {
+      "osm_id": "278083064",
+      "name": "State Highway 14",
+      "highway": "primary",
+      "width": 11.0
+    },
+    {
+      "osm_id": "883678057",
+      "name": "State Highway 14",
+      "highway": "primary",
+      "width": 11.0
+    },
+    {
+      "osm_id": "103496270",
+      "name": "State Highway 14",
+      "highway": "primary",
+      "width": 11.0
+    },
+    {
+      "osm_id": "278083065",
+      "name": "State Highway 14",
+      "highway": "primary",
+      "width": 11.0
+    },
+    {
+      "osm_id": "883678055",
+      "name": "State Highway 14",
+      "highway": "primary",
+      "width": 11.0
+    },
+    {
+      "osm_id": "883678058",
+      "name": "State Highway 14",
+      "highway": "primary",
+      "width": 11.0
+    },
+    {
+      "osm_id": "883678056",
+      "name": "State Highway 14",
+      "highway": "primary",
+      "width": 11.0
+    },
+    {
+      "osm_id": "887885958",
+      "name": "State Highway 14",
+      "highway": "primary",
+      "width": 11.0
+    },
+    {
+      "osm_id": "278083094",
+      "name": "Station Road",
+      "highway": "secondary",
+      "width": 9.5
+    },
+    {
+      "osm_id": "104116551",
+      "name": "Other District Road 106",
+      "highway": "secondary",
+      "width": 9.5
+    },
+    {
+      "osm_id": "883678047",
+      "name": "80 Feet Road",
+      "highway": "secondary",
+      "width": 9.5
+    },
+    {
+      "osm_id": "102664420",
+      "name": "80 Feet Road",
+      "highway": "secondary",
+      "width": 9.5
+    },
+    {
+      "osm_id": "881989914",
+      "name": "Major District Road 46",
+      "highway": "secondary",
+      "width": 9.5
+    },
+    {
+      "osm_id": "880575047",
+      "name": "Station Road",
+      "highway": "secondary",
+      "width": 9.5
+    },
+    {
+      "osm_id": "278083063",
+      "name": "Major District Road 46",
+      "highway": "secondary",
+      "width": 9.5
+    },
+    {
+      "osm_id": "414759300",
+      "name": "Major District Road 46",
+      "highway": "secondary",
+      "width": 9.5
+    },
+    {
+      "osm_id": "414759304",
+      "name": "80 Feet Road",
+      "highway": "secondary",
+      "width": 9.5
+    },
+    {
+      "osm_id": "414759303",
+      "name": "80 Feet Road",
+      "highway": "secondary",
+      "width": 9.5
+    },
+    {
+      "osm_id": "881854868",
+      "name": "Station Road",
+      "highway": "secondary",
+      "width": 9.5
+    }
+  ],
+  "spawn": {
+    "x": -636.54,
+    "z": 881.83,
+    "hx": -0.72,
+    "hz": -0.694,
+    "road": "887431550",
+    "highway": "residential"
+  }
+}

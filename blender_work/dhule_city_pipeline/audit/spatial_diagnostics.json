@@ -1,0 +1,244 @@
+{
+  "projection": {
+    "lat": 20.902,
+    "lon": 74.777,
+    "x": "east",
+    "y": "up",
+    "z": "south"
+  },
+  "assignment_rule": "unchanged from partition_buildings.py. This audit does not assign triangles.",
+  "source_triangles": 25251,
+  "assigned_triangles": 20329,
+  "unresolved_triangles": 4922,
+  "reason_counts": {
+    "nearest_edge": 7396,
+    "boundary": 11499,
+    "crosses_boundary": 2476,
+    "unmatched": 2412,
+    "inside": 1434,
+    "ambiguous_multi_footprint": 28,
+    "ambiguous_margin": 6
+  },
+  "missing_footprints": 136,
+  "missing_classification": {
+    "B": 136
+  },
+  "projection_test": {
+    "assigned_sample": {
+      "n": 200,
+      "mean_dx": -3.67,
+      "mean_dz": 0.55,
+      "spread_m": 8.31
+    },
+    "class_a": null,
+    "class_d_count": 0,
+    "conclusion": "Assigned footprints meet the mesh in the game projection. The missing set does not share one offset, so these holes are not a projection error."
+  },
+  "unresolved_diagnostics": {
+    "real_building_wall": 2930,
+    "geometry_between_adjoining_buildings": 34,
+    "real_building_roof": 1923,
+    "roof_overhang": 35
+  },
+  "by_reason": {
+    "crosses_boundary": {
+      "count": 2476,
+      "materials": {
+        "wall": 1644,
+        "roof": 832
+      },
+      "diagnostics": {
+        "real_building_wall": 1644,
+        "real_building_roof": 797,
+        "roof_overhang": 35
+      },
+      "degenerate": 0,
+      "boundary_distance_m": {
+        "p10": 0.14160281378109354,
+        "p50": 0.34214836054112796,
+        "p90": 2.961129283384398,
+        "max": 13.352470627502992
+      },
+      "area_m2": {
+        "p50": 18.088624761014945,
+        "max": 1079.407723158598
+      },
+      "within_1m": 1949,
+      "within_3m": 2241,
+      "beyond_8m": 4,
+      "centroid_inside": 2069,
+      "centroid_outside": 407
+    },
+    "unmatched": {
+      "count": 2412,
+      "materials": {
+        "wall": 1286,
+        "roof": 1126
+      },
+      "diagnostics": {
+        "real_building_wall": 1286,
+        "real_building_roof": 1126
+      },
+      "degenerate": 0,
+      "boundary_distance_m": {
+        "p10": 0.24025666716367264,
+        "p50": 0.4702649264372297,
+        "p90": 3.9231429427947226,
+        "max": 30.418048621581075
+      },
+      "area_m2": {
+        "p50": 36.138482529030746,
+        "max": 8260.207992741838
+      },
+      "within_1m": 1469,
+      "within_3m": 1905,
+      "beyond_8m": 7,
+      "centroid_inside": 1126,
+      "centroid_outside": 1286
+    },
+    "ambiguous_multi_footprint": {
+      "count": 28,
+      "materials": {
+        "wall": 18,
+        "roof": 10
+      },
+      "diagnostics": {
+        "geometry_between_adjoining_buildings": 28
+      },
+      "degenerate": 0,
+      "boundary_distance_m": {
+        "p10": 10.202418667064062,
+        "p50": 23.606407050691512,
+        "p90": 29.798558297550613,
+        "max": 31.332247477151427
+      },
+      "area_m2": {
+        "p50": 81.55390810096323,
+        "max": 327.4639500416815
+      },
+      "within_1m": 0,
+      "within_3m": 0,
+      "beyond_8m": 28,
+      "centroid_inside": 28,
+      "centroid_outside": 0
+    },
+    "ambiguous_margin": {
+      "count": 6,
+      "materials": {
+        "wall": 6
+      },
+      "diagnostics": {
+        "geometry_between_adjoining_buildings": 6
+      },
+      "degenerate": 0,
+      "boundary_distance_m": {
+        "p10": 0.05305126159865682,
+        "p50": 0.11604886094368991,
+        "p90": 0.12323347880158061,
+        "max": 0.1779217539124043
+      },
+      "area_m2": {
+        "p50": 17.8702984533089,
+        "max": 19.49122956936681
+      },
+      "within_1m": 6,
+      "within_3m": 6,
+      "beyond_8m": 0,
+      "centroid_inside": 0,
+      "centroid_outside": 6
+    }
+  },
+  "category_recommendation": {
+    "crosses_boundary": "preserve_separately. Every crossing triangle extends 0.23 m to 0.68 m past one footprint. A later edge split could keep the interior piece. The whole triangle was not assigned.",
+    "unmatched": "preserve_separately. No vertex tested inside a footprint. Many are roofs whose vertices sit on the ring while the centroid is inside, so the 0.20 m centroid test does not accept them. Not assigned.",
+    "ambiguous_multi_footprint": "preserve_separately. Vertices meet more than one footprint.",
+    "ambiguous_margin": "preserve_separately. The two nearest footprints are under 0.50 m apart in the ranking."
+  },
+  "recommendations_applied": false,
+  "cameras": {
+    "missing": {
+      "osm_id": "829189455",
+      "look": [
+        2682.86,
+        1.0,
+        4074.16
+      ]
+    },
+    "unresolved": {
+      "look": [
+        -3940.0,
+        2.0,
+        1300.0
+      ]
+    },
+    "overview": {
+      "look": [
+        -909.3631462488163,
+        0.0,
+        -580.0269869781604
+      ]
+    }
+  },
+  "source_comparison": {
+    "osm_generator": "DriveViceCity",
+    "osm_path": "D:\\drivevicecity\\assets\\maps\\dhule_city.osm",
+    "osm_sha256": "a6e346aac42bc677374aecb895121f227c75f9f29000bb14635d5a851754b97c",
+    "osm_mtime_utc": "2026-11-06T11:59:29.185927+00:00",
+    "osm_nodes": 11278,
+    "osm_ways": 1897,
+    "osm_relations": 0,
+    "osm_building_ways": 1866,
+    "osm_ways_with_version_or_timestamp": 0,
+    "partition_footprints": 1866,
+    "ids_only_in_osm": [],
+    "ids_only_in_partition": [],
+    "duplicate_way_ids": [],
+    "glb_path": "D:\\drivevicecity\\assets\\models\\environments\\dhule_blosm_city.glb",
+    "glb_sha256": "fe778f2ebfab9bad67e43027e488b7b15dcc817c62cc572d1b66725d1bd7393d",
+    "glb_mtime_utc": "2026-11-06T12:00:26.050555+00:00",
+    "glb_generator": "Khronos glTF Blender I/O v4.5.49",
+    "glb_nodes": [
+      {
+        "name": "dhule_city.osm_buildings",
+        "extras": null
+      },
+      {
+        "name": "dhule_city.osm_water",
+        "extras": null
+      }
+    ],
+    "glb_has_osm_ids": false,
+    "export_script_osm_path": "D:\\drivevicecity\\assets\\maps\\dhule_city.osm",
+    "source_identity": "not_proven",
+    "source_note": "tools/export_dhule_blosm.py points at this OSM path and the same origin. The GLB stores no way ids, no source hash, and no OSM version. Node ids in the OSM file are local. Way version and timestamp attributes are absent. The current OSM bytes therefore cannot be proven to be the bytes Blosm read.",
+    "road_file_not_modified": true,
+    "road_count": 796,
+    "road_origin_matches": true,
+    "footprints_with_no_mesh_vertex_inside": [
+      "1485903708",
+      "1527760215",
+      "1527760232",
+      "1527760270",
+      "1527760283",
+      "1527816133",
+      "1527858168",
+      "1527858172",
+      "1527858312"
+    ],
+    "water_triangles": 830
+  },
+  "missing_overhang_m": {
+    "p10": 0.3430616106084871,
+    "p50": 0.38967001295842313,
+    "p90": 0.4273684011478431,
+    "max": 0.683136178361655
+  },
+  "boundary_distance_note": "nearest_boundary_distance_m is the distance from the triangle centroid to the nearest footprint edge. When nearest_contains_centroid is 1, that distance is an inset, not a gap.",
+  "unmatched_centroid_outside_m": {
+    "count": 1286,
+    "p10": 0.225,
+    "p50": 0.312,
+    "p90": 0.438,
+    "max": 0.607
+  }
+}

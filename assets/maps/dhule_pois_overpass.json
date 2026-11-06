@@ -1,0 +1,7501 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-11-05T15:35:21Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+    {
+      "type": "node",
+      "id": 245691673,
+      "lat": 20.898,
+      "lon": 74.7732,
+      "tags": {
+        "name": "Dhule",
+        "name:ar": "دهولي",
+        "name:en": "Dhule",
+        "name:fa": "دوله",
+        "name:hi": "धुले",
+        "name:ja": "ドゥーレー",
+        "name:kn": "ಧುಲೆ",
+        "name:ko": "둘레",
+        "name:ml": "ധൂലെ",
+        "name:mr": "धुळे",
+        "name:pa": "ਧੁਲ਼ੇ",
+        "name:ru": "Дхуле",
+        "name:zh": "图莱",
+        "place": "city",
+        "population": "375550",
+        "postal_code": "424001",
+        "source": "AND",
+        "wikidata": "Q773603",
+        "wikipedia": "en:Dhule"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1224887450,
+      "lat": 20.8878255,
+      "lon": 74.7682128,
+      "tags": {
+        "IR:zone": "CR",
+        "internet_access": "no",
+        "name": "Dhule",
+        "name:hi": "धुले",
+        "name:ja": "ドゥーレー",
+        "name:pa": "ਧੁਲ਼ੇ",
+        "network": "IR",
+        "operator": "CR",
+        "public_transport": "station",
+        "railway": "station",
+        "ref": "DHI",
+        "train": "yes",
+        "wikidata": "Q19891337",
+        "wikipedia": "en:Dhule railway station"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3217490126,
+      "lat": 20.9035194,
+      "lon": 74.7775248,
+      "tags": {
+        "addr:city": "Dhule",
+        "addr:housenumber": "15, 1st Floor Shree Vinayak Plaza",
+        "addr:postcode": "424001",
+        "addr:street": "Opposite Sri Ram Medical, Phoolwala Chowk",
+        "amenity": "hospital",
+        "name": "Sanskar Homeopathic Clinic",
+        "operator": "DR VIRAJ JAIN",
+        "phone": "09922551167"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3534614391,
+      "lat": 20.899524,
+      "lon": 74.7738705,
+      "tags": {
+        "name": "my native place is damundar"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6896411658,
+      "lat": 20.9035541,
+      "lon": 74.7675251,
+      "tags": {
+        "addr:city": "Dhule",
+        "addr:district": "DHULE",
+        "addr:full": "Atul Medical and Rehabilitation Society, Arpan Blood Bank, Jain Oswal Boarding, Ganpati Road, Near Santoshi Mata Mandir, Dhule, Nashik",
+        "addr:postcode": "424001",
+        "addr:state": "Maharashtra",
+        "amenity": "blood_bank",
+        "contact:mobile": "09881907646; 09975000000",
+        "contact:phone": "02562229163; 02562229164; 02562229165",
+        "name": "Arpan Blood Bank, Dhule",
+        "opening_hours": "24/7",
+        "operator:type": "ngo",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6896411671,
+      "lat": 20.8977966,
+      "lon": 74.7754544,
+      "tags": {
+        "addr:city": "Dhule",
+        "addr:district": "DHULE",
+        "addr:full": "3252 Agra Road, Near Prabhakar Theater",
+        "addr:postcode": "424001",
+        "addr:state": "Maharashtra",
+        "amenity": "blood_bank",
+        "contact:mobile": "9422562094",
+        "contact:phone": "2562232807",
+        "email": "bb_jyoti@yahoo.com",
+        "name": "Jeevan Jyoti Blood Bank, Dhule",
+        "opening_hours": "24/7",
+        "operator:type": "ngo",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6896411676,
+      "lat": 20.8944752,
+      "lon": 74.7596307,
+      "tags": {
+        "addr:city": "Dhule",
+        "addr:district": "DHULE",
+        "addr:full": "Plot No. 39, S. No. 579/3+5, Sushil Nagar Behind Vaibhav Nagar, Dhule.(424001)(M.S.)",
+        "addr:postcode": "424001",
+        "addr:state": "Maharashtra",
+        "amenity": "blood_bank",
+        "contact:helpline": "02562 244662",
+        "contact:mobile": "09881171637; 09422714375; 09422387555",
+        "contact:phone": "02562245662; 02562246289; 02562244662",
+        "email": "navjeevan.dhule@gmail.com",
+        "fax": "02562 245662",
+        "name": "Navjeevan Medical Relief & Research Society, Shree Navjeevan Blood Bank and Component Laboratary",
+        "opening_hours": "24/7",
+        "operator:type": "ngo",
+        "source": "OpenGovernmentData",
+        "website": "http://www.shreenavjeevanbloodbankdhule.com"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7043230047,
+      "lat": 20.89146,
+      "lon": 74.7767566,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Opp Canosa High School Chalisagaon Road",
+        "addr:postcode": "424001",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "name": "Lokmanyaa Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7043667610,
+      "lat": 20.9021102,
+      "lon": 74.782856,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Plot No-16, Badgujar Plot, Parola Road",
+        "addr:postcode": "424001",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "name": "Ram Surgical Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7044271223,
+      "lat": 20.9022142,
+      "lon": 74.7902414,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Chaudhary Complex, 80 Ft Road",
+        "addr:postcode": "424001",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "name": "Patil Accident Hospital, Dhule",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7049671751,
+      "lat": 20.9032822,
+      "lon": 74.7625449,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Institute Of Urology Sakri Road",
+        "addr:postcode": "424001",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "name": "Tajnaksh Healthcare",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7050381824,
+      "lat": 20.9135702,
+      "lon": 74.7736285,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Jaihind College Campus,Wadibhokar Road,Deopur",
+        "addr:postcode": "424002",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "name": "Spandan Hospital Dhule",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7051765089,
+      "lat": 20.9027191,
+      "lon": 74.7647725,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Champa Bag, Skri Road",
+        "addr:postcode": "424001",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "name": "Bafna Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7054602124,
+      "lat": 20.9031613,
+      "lon": 74.765081,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Sakri Road, Opposite Champa Baug",
+        "addr:postcode": "424001",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "name": "Mutha Accident Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7055076761,
+      "lat": 20.9158057,
+      "lon": 74.7715545,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "17, Shriram Nagar, Wadibhokar Road",
+        "addr:postcode": "424001",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "name": "Matruseva Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7059617945,
+      "lat": 20.8970824,
+      "lon": 74.7641234,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Near Dutta Mandir , Jamnagiri Road",
+        "addr:postcode": "424001",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "name": "Apurva Critical Care",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7062592070,
+      "lat": 20.8888407,
+      "lon": 74.7737847,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Opp Ramwadi, Malegaon Road",
+        "addr:postcode": "424001",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "name": "Aastha Intensive Care Centre",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7064985687,
+      "lat": 20.9122279,
+      "lon": 74.7752492,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "4792/126, Wadibhokar Road, Deopur",
+        "addr:postcode": "424002",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "name": "Sushrut Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7065820591,
+      "lat": 20.8994842,
+      "lon": 74.7827386,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "80 Ft Road,Nr Natraj Theature",
+        "addr:postcode": "424002",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "name": "Niramaya Cancer Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7066505788,
+      "lat": 20.9132551,
+      "lon": 74.7596093,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Sharda Netralay, Reu Nagar, Nakane Road, Devpur",
+        "addr:postcode": "424002",
+        "addr:state": "Maharashtra",
+        "amenity": "clinic",
+        "name": "Sharda Netralay",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7067113553,
+      "lat": 20.9088798,
+      "lon": 74.7707149,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "50, Jai Hind Colony, Deopur",
+        "addr:postcode": "424002",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "name": "Sudha Multispeciality Hospital and Critical Care Centre",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7070157922,
+      "lat": 20.9150271,
+      "lon": 74.7708779,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Opposite Shalimar Health Club, Near at Jay Hind Senior College, Wadibhokar Road, Devpur",
+        "addr:postcode": "424002",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "email": "drchetanpatil1@gmail.com",
+        "name": "Life Surgical and Materity Home",
+        "source": "OpenGovernmentData",
+        "website": "http://www.drchetanpatil.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7070262587,
+      "lat": 20.8900836,
+      "lon": 74.768663,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Ramvadi Malegone Road",
+        "addr:postcode": "424001",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "name": "Accident Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7070859133,
+      "lat": 20.9142248,
+      "lon": 74.7708987,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "21 Ranapratap Colony",
+        "addr:postcode": "424001",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "name": "Chirantan Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7072544661,
+      "lat": 20.8958045,
+      "lon": 74.7651413,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Opposite D.I.C.Office, Jamnagiri Road",
+        "addr:postcode": "424001",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "name": "Tushar Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7073537696,
+      "lat": 20.908105,
+      "lon": 74.7686309,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Garud Colony, Near Ganapati Mandir Bridge,Deopur",
+        "addr:postcode": "424002",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "name": "Shri Siddheshwar Multispeciality Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7080242540,
+      "lat": 20.9131211,
+      "lon": 74.7740838,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Prathamesh Plaza, Opposite Panchayat Samiti, Wadibhokar Road, Deopur",
+        "addr:postcode": "424002",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "name": "Sanjeevan Hospital, Dhule",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7083324273,
+      "lat": 20.9115965,
+      "lon": 74.767279,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Near Indira Garden, Deopur",
+        "addr:postcode": "424005",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "name": "Gajanan Infertility Clinic and Vimal Maternity Home",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7226751923,
+      "lat": 20.899044,
+      "lon": 74.779926,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Nagar Patti, Dhule",
+        "addr:postcode": "424001",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "name": "Dhule Mahanagarpalika Dawakhana",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7226751947,
+      "lat": 20.9016416,
+      "lon": 74.7711279,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Sakri Road, Vidhya Vihar Colony, Dhule",
+        "addr:postcode": "424001",
+        "addr:state": "Maharashtra",
+        "amenity": "hospital",
+        "description": "District Hospital",
+        "name": "District Hospital, Dhule",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7330998411,
+      "lat": 20.8921134,
+      "lon": 74.7763865,
+      "tags": {
+        "name": "Exide Battery",
+        "shop": "car_parts"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7330998456,
+      "lat": 20.8914305,
+      "lon": 74.7752532,
+      "tags": {
+        "amenity": "school",
+        "name": "Canossa Convent High School"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7330998457,
+      "lat": 20.8903806,
+      "lon": 74.7738665,
+      "tags": {
+        "name": "Plaza",
+        "tourism": "hotel"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7331005095,
+      "lat": 20.9033994,
+      "lon": 74.7722492,
+      "tags": {
+        "amenity": "school",
+        "name": "Kamlabai Girls High School"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7331013173,
+      "lat": 20.8882092,
+      "lon": 74.7698781,
+      "tags": {
+        "amenity": "school",
+        "name": "St Ann's English School"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7652426447,
+      "lat": 20.9029647,
+      "lon": 74.7631966,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Opp Mission Compound, Sakri Road, Dhule",
+        "addr:postcode": "424002",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Siddhi-Vinayak Hospital",
+        "source": "Local Knowledge"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7652426450,
+      "lat": 20.903498,
+      "lon": 74.762331,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Sakri Road, Kumar Nagar, Mahindale",
+        "addr:postcode": "424002",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Sunder Madhav Hospital",
+        "source": "Local Knowledge"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7652426454,
+      "lat": 20.8914486,
+      "lon": 74.768569,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Meera Hospital, UMID Clinic, Dhule",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Dr. Nikhil Shirole Gastroenterologist Hospital",
+        "source": "Local Knowledge"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7652426456,
+      "lat": 20.9116385,
+      "lon": 74.7759558,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Nehru Chowk, Veer Savarkar Marg, Vishnu Nagar, Deopur, Near Madhyamik School, Dhule",
+        "addr:postcode": "424001",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Arpan Maternity Hospital",
+        "source": "Local Knowledge"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7652426460,
+      "lat": 20.8911471,
+      "lon": 74.7689005,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Kaderi Hospital, Station Road, Snehnagar, Green Park, Dhule",
+        "addr:postcode": "424001",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Kaderi Hospital",
+        "source": "Local Knowledge"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7652426462,
+      "lat": 20.9063449,
+      "lon": 74.7615244,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Kumar Nagar, Dhule",
+        "addr:postcode": "424001",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Sane Guruji Hospital",
+        "source": "Local Knowledge"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7652426464,
+      "lat": 20.903793,
+      "lon": 74.759592,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "NH6, Padmanabh Nagar, Kumar Nagar, Dhule",
+        "addr:postcode": "424002",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Suyog Hospital",
+        "source": "Local Knowledge"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7652426466,
+      "lat": 20.8919485,
+      "lon": 74.7745264,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Dhule",
+        "addr:postcode": "424001",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Shradha Multi Speciality Hospital",
+        "source": "Local Knowledge"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7652426469,
+      "lat": 20.8923323,
+      "lon": 74.7765078,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "80 Feet Road, Ansar Nagar, Dhule",
+        "addr:postcode": "424001",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Jeevan Jyoti Children Hospital",
+        "source": "Local Knowledge"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7652426471,
+      "lat": 20.8906338,
+      "lon": 74.7687905,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Green Park, Dhule",
+        "addr:postcode": "424006",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Kesharanand Hospital",
+        "source": "Local Knowledge"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7652426484,
+      "lat": 20.8939095,
+      "lon": 74.7664327,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Navjivan Nagar, Dhule",
+        "addr:postcode": "424002",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Om Sai Hospital",
+        "source": "Local Knowledge"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7652426491,
+      "lat": 20.8899558,
+      "lon": 74.7685522,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Station Road, Green Park, Dondaicha",
+        "addr:postcode": "425408",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Shree Dwarka Hospital",
+        "source": "Local Knowledge"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7652426492,
+      "lat": 20.8948801,
+      "lon": 74.7654274,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Ashok Nagar, Jamnagiri Road, Opp Kamgar Bhavan, Fashipul, Sambhappa Colony, Dhule",
+        "addr:postcode": "424001",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Dashak Hospital",
+        "source": "Local Knowledge"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7652426495,
+      "lat": 20.89421,
+      "lon": 74.76554,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Sambhappa Colony, Dhule",
+        "addr:postcode": "424006",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Ankur Hospital",
+        "source": "Local Knowledge"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7652426497,
+      "lat": 20.891741,
+      "lon": 74.774265,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Near Agrasen Statue, Malegaon",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Yash Urology Hospital",
+        "source": "Local Knowledge"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7652426498,
+      "lat": 20.895298,
+      "lon": 74.7654428,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Ashok Nagar, Jamnagiri Road, Fashipool, Dhule",
+        "addr:postcode": "424001",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Dr. Deepak Dinkar Patil Accident Hospital",
+        "source": "Local Knowledge"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7652426499,
+      "lat": 20.9157724,
+      "lon": 74.7710815,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Wadibhokar Road, Deopur, Dhule",
+        "addr:postcode": "424002",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Thakare Hospital",
+        "source": "Local Knowledge"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7652426513,
+      "lat": 20.9116862,
+      "lon": 74.776433,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Deopur, Dhule",
+        "addr:postcode": "424002",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Munot Hospital",
+        "source": "Local Knowledge"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7652426515,
+      "lat": 20.8881533,
+      "lon": 74.7735723,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Agrawal Nagar, Malegaon Road, Dhule",
+        "addr:postcode": "424001",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Bhatwal Hospital",
+        "source": "Local Knowledge"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7652426522,
+      "lat": 20.8937839,
+      "lon": 74.7650145,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Ashok Nagar, Chitod Road, Dhule",
+        "addr:postcode": "424002",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Madhusmit Hospital",
+        "source": "Local Knowledge"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7652426531,
+      "lat": 20.9026867,
+      "lon": 74.762653,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Mission Compound, Sakri Road, Padmanabh Nagar, Kumar Nagar, Dhule",
+        "addr:postcode": "424002",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Seva Superspeciality Hospital and Critical Care Centre",
+        "source": "Local Knowledge"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7652426536,
+      "lat": 20.8902688,
+      "lon": 74.7682835,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Opp. Zende Hospital, Green Park, Dhule",
+        "addr:postcode": "424006",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Shivpushp Hospital",
+        "source": "Local Knowledge"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7652426537,
+      "lat": 20.8896888,
+      "lon": 74.7684359,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Station Road, Green Park, Dhule",
+        "addr:postcode": "424006",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Vardaan Hospital",
+        "source": "Local Knowledge"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7652426542,
+      "lat": 20.9120915,
+      "lon": 74.7708564,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Wadibhokar Road, Municipal Colony, Deopur, Dhule",
+        "addr:postcode": "424002",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Jamnabai Memorial Hospital",
+        "source": "Local Knowledge"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7652426549,
+      "lat": 20.8916241,
+      "lon": 74.7735375,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Dhule",
+        "addr:postcode": "424001",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Archana Cardiac and Diabetes Centre Hospital",
+        "source": "Local Knowledge"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7652426551,
+      "lat": 20.914136,
+      "lon": 74.7719149,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Wadibhokar Road, Professor Colony, Deopur, Dhule",
+        "addr:postcode": "424002",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Mangalya Hospital",
+        "source": "Local Knowledge"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7652426558,
+      "lat": 20.8945385,
+      "lon": 74.7660027,
+      "tags": {
+        "addr:district": "Dhule",
+        "addr:full": "Sambhappa Colony, Dhule",
+        "addr:postcode": "424006",
+        "addr:state": "Maharastra",
+        "amenity": "hospital",
+        "name": "Shree Shakambhari Hospital",
+        "source": "Local Knowledge"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7655988175,
+      "lat": 20.9132516,
+      "lon": 74.7712339,
+      "tags": {
+        "addr:city": "Dhule",
+        "addr:housenumber": "16 SUNDARAM",
+        "addr:postcode": "424002",
+        "addr:street": "Professor Colony Road",
+        "brand": "INVESTMENTVALA",
+        "currency:INR": "yes",
+        "currency:USD": "yes",
+        "description": "I am Niranjan Sawant, son of lovely and supportive parents, born in Dhule, mechanical engineer turned piping design engineer, turned \"Investment planning specialist\" and now founder of INVESTMENTVALA. I am on a mission of To help 1,00,000 salaried people ",
+        "email": "CONTACT@INVESTMENTVALA.COM",
+        "name": "INVESTMENTVALA",
+        "opening_hours": "Mo-Fr 09:00-18:00",
+        "operator": "NIRANJAN SAWANT",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "payment:mastercard": "yes",
+        "phone": "+919860377143",
+        "shop": "supermarket",
+        "website": "WWW.INVESTMENTVALA.COM"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10062229423,
+      "lat": 20.9023921,
+      "lon": 74.7681976,
+      "tags": {
+        "name": "multiple local newspaper vendors",
+        "shop": "newsagent"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10062243720,
+      "lat": 20.9001219,
+      "lon": 74.7667626,
+      "tags": {
+        "leisure": "swimming_pool",
+        "name": "Officer's club Swimming club"
+      }
+    },
+    {
+      "type": "node",
+      "id": 14214421139,
+      "lat": 20.897579,
+      "lon": 74.76437,
+      "tags": {
+        "addr:city": "Dhule",
+        "addr:district": "Dhule",
+        "addr:housenumber": "shop no 12,",
+        "addr:postcode": "424001",
+        "addr:street": "datta mandir, Jamnagiri Rd,",
+        "beauty": "nails;tanning;spa;cosmetics;hair_removal;skin_care;hair;eyebrow;aesthetic;massage;waxing;pedicure;eyelash",
+        "name": "Vishakha Dusane makeover",
+        "opening_hours": "Mo-Sun 09:00-24:00",
+        "operator": "Vishakha Dusane",
+        "payment:app": "yes",
+        "payment:cash": "yes",
+        "payment:google_pay": "yes",
+        "shop": "beauty",
+        "website": "https://vishakhadusanemakeover.com/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 265573305,
+      "center": {
+        "lat": 20.8984831,
+        "lon": 74.770307
+      },
+      "tags": {
+        "amenity": "bus_station"
+      }
+    },
+    {
+      "type": "way",
+      "id": 482794524,
+      "center": {
+        "lat": 20.8934996,
+        "lon": 74.7698173
+      },
+      "tags": {
+        "addr:city": "Dhule",
+        "addr:postcode": "424002",
+        "addr:street": "Station Road",
+        "amenity": "courthouse",
+        "building": "yes",
+        "name": "Dhule District & Sessions Court"
+      }
+    },
+    {
+      "type": "way",
+      "id": 482794972,
+      "center": {
+        "lat": 20.892523,
+        "lon": 74.7688616
+      },
+      "tags": {
+        "addr:city": "Dhule",
+        "addr:housenumber": "23",
+        "addr:postcode": "424001",
+        "addr:street": "Station Road",
+        "building": "yes",
+        "name": "Malhar Bhaskar Deshpande",
+        "office": "lawyer",
+        "opening_hours": "10:30-17:30",
+        "phone": "+91985562713"
+      }
+    },
+    {
+      "type": "way",
+      "id": 482795252,
+      "center": {
+        "lat": 20.8923918,
+        "lon": 74.7697212
+      },
+      "tags": {
+        "addr:city": "Dhule",
+        "addr:postcode": "424001",
+        "addr:street": "Major District Road 46",
+        "amenity": "school",
+        "name": "Cannosa Convent High School"
+      }
+    },
+    {
+      "type": "way",
+      "id": 482797271,
+      "center": {
+        "lat": 20.9157337,
+        "lon": 74.7719778
+      },
+      "tags": {
+        "addr:city": "Dhule",
+        "addr:postcode": "424002",
+        "addr:street": "Wadi Bhokar Road",
+        "building": "college",
+        "building:levels": "4",
+        "name": "Jai Hind College"
+      }
+    },
+    {
+      "type": "way",
+      "id": 509652981,
+      "center": {
+        "lat": 20.9108141,
+        "lon": 74.7789397
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 509653012,
+      "center": {
+        "lat": 20.9157093,
+        "lon": 74.7720171
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 736582963,
+      "center": {
+        "lat": 20.9034347,
+        "lon": 74.7676096
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 736582964,
+      "center": {
+        "lat": 20.8977899,
+        "lon": 74.7754906
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 736582965,
+      "center": {
+        "lat": 20.8944441,
+        "lon": 74.7596951
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 753843897,
+      "center": {
+        "lat": 20.8915311,
+        "lon": 74.7767277
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 753901576,
+      "center": {
+        "lat": 20.9021055,
+        "lon": 74.7828368
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 753992236,
+      "center": {
+        "lat": 20.9021922,
+        "lon": 74.7902582
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 754614025,
+      "center": {
+        "lat": 20.9033101,
+        "lon": 74.762554
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 754696916,
+      "center": {
+        "lat": 20.913511,
+        "lon": 74.7735788
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 754873738,
+      "center": {
+        "lat": 20.9027134,
+        "lon": 74.7647223
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 755198128,
+      "center": {
+        "lat": 20.9031554,
+        "lon": 74.7651182
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 755255770,
+      "center": {
+        "lat": 20.9158452,
+        "lon": 74.7715494
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 755852703,
+      "center": {
+        "lat": 20.8970781,
+        "lon": 74.7641847
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 756164993,
+      "center": {
+        "lat": 20.8888514,
+        "lon": 74.7737276
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 756394965,
+      "center": {
+        "lat": 20.91222,
+        "lon": 74.7751742
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 756483856,
+      "center": {
+        "lat": 20.8994666,
+        "lon": 74.7827984
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 756573405,
+      "center": {
+        "lat": 20.913231,
+        "lon": 74.7595908
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 756630131,
+      "center": {
+        "lat": 20.9088768,
+        "lon": 74.7707151
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 757041421,
+      "center": {
+        "lat": 20.9150168,
+        "lon": 74.7708702
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 757051639,
+      "center": {
+        "lat": 20.8900595,
+        "lon": 74.7686671
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 757101008,
+      "center": {
+        "lat": 20.9142426,
+        "lon": 74.7708942
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 757346341,
+      "center": {
+        "lat": 20.8957723,
+        "lon": 74.7650948
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 757435796,
+      "center": {
+        "lat": 20.9080839,
+        "lon": 74.7686436
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 757721928,
+      "center": {
+        "lat": 20.8869768,
+        "lon": 74.7760447
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 758158423,
+      "center": {
+        "lat": 20.9130944,
+        "lon": 74.7740606
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 758455675,
+      "center": {
+        "lat": 20.9115883,
+        "lon": 74.7672709
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 774541607,
+      "center": {
+        "lat": 20.8990467,
+        "lon": 74.7799444
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 774541653,
+      "center": {
+        "lat": 20.9016706,
+        "lon": 74.7711187
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 784704488,
+      "center": {
+        "lat": 20.8921813,
+        "lon": 74.7763975
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 784704490,
+      "center": {
+        "lat": 20.8914812,
+        "lon": 74.7757083
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 784704491,
+      "center": {
+        "lat": 20.8915344,
+        "lon": 74.7758075
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 784704492,
+      "center": {
+        "lat": 20.8917719,
+        "lon": 74.7759635
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 784704493,
+      "center": {
+        "lat": 20.8915526,
+        "lon": 74.7756547
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 784704494,
+      "center": {
+        "lat": 20.8904006,
+        "lon": 74.7738926
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 784704496,
+      "center": {
+        "lat": 20.8914005,
+        "lon": 74.7752069
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 784704497,
+      "center": {
+        "lat": 20.8910522,
+        "lon": 74.7749467
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 784704498,
+      "center": {
+        "lat": 20.8911616,
+        "lon": 74.774889
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 784705586,
+      "center": {
+        "lat": 20.9032136,
+        "lon": 74.7721626
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 784708455,
+      "center": {
+        "lat": 20.888198,
+        "lon": 74.7697984
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 784708464,
+      "center": {
+        "lat": 20.9034061,
+        "lon": 74.7730986
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 784708756,
+      "center": {
+        "lat": 20.8973788,
+        "lon": 74.7611747
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 784708757,
+      "center": {
+        "lat": 20.897219,
+        "lon": 74.7609312
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 784708758,
+      "center": {
+        "lat": 20.8971288,
+        "lon": 74.7607001
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 784708759,
+      "center": {
+        "lat": 20.8970587,
+        "lon": 74.7605925
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 784708760,
+      "center": {
+        "lat": 20.8970149,
+        "lon": 74.7605101
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 819424752,
+      "center": {
+        "lat": 20.8905953,
+        "lon": 74.7689327
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 819424753,
+      "center": {
+        "lat": 20.8952813,
+        "lon": 74.7654353
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 819424770,
+      "center": {
+        "lat": 20.9121156,
+        "lon": 74.7708752
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 819424772,
+      "center": {
+        "lat": 20.8911496,
+        "lon": 74.768924
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 819424773,
+      "center": {
+        "lat": 20.9038227,
+        "lon": 74.7596611
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 819424774,
+      "center": {
+        "lat": 20.8896909,
+        "lon": 74.7684271
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 819424775,
+      "center": {
+        "lat": 20.889939,
+        "lon": 74.7685587
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 819424776,
+      "center": {
+        "lat": 20.8937879,
+        "lon": 74.7650033
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 819424781,
+      "center": {
+        "lat": 20.9157378,
+        "lon": 74.7711193
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 819424782,
+      "center": {
+        "lat": 20.8916272,
+        "lon": 74.7735051
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 819424785,
+      "center": {
+        "lat": 20.9034892,
+        "lon": 74.7623085
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 819424797,
+      "center": {
+        "lat": 20.8919291,
+        "lon": 74.7744935
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 819424798,
+      "center": {
+        "lat": 20.8924075,
+        "lon": 74.7764691
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 819424799,
+      "center": {
+        "lat": 20.8948696,
+        "lon": 74.7654053
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 819424800,
+      "center": {
+        "lat": 20.8945297,
+        "lon": 74.765998
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 819424801,
+      "center": {
+        "lat": 20.8942231,
+        "lon": 74.7655372
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 819424804,
+      "center": {
+        "lat": 20.9141326,
+        "lon": 74.7719094
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 819424812,
+      "center": {
+        "lat": 20.8902508,
+        "lon": 74.768286
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 819424813,
+      "center": {
+        "lat": 20.8939151,
+        "lon": 74.7664231
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 819424818,
+      "center": {
+        "lat": 20.9116375,
+        "lon": 74.7759545
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 819424819,
+      "center": {
+        "lat": 20.9116841,
+        "lon": 74.776445
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 819424822,
+      "center": {
+        "lat": 20.9063261,
+        "lon": 74.7615174
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 819424828,
+      "center": {
+        "lat": 20.8917437,
+        "lon": 74.7742348
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 819424835,
+      "center": {
+        "lat": 20.9027196,
+        "lon": 74.762649
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 819424836,
+      "center": {
+        "lat": 20.902934,
+        "lon": 74.7632069
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 819424841,
+      "center": {
+        "lat": 20.8914435,
+        "lon": 74.7685551
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 819424846,
+      "center": {
+        "lat": 20.8881658,
+        "lon": 74.7735593
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1158458742,
+      "center": {
+        "lat": 20.8889061,
+        "lon": 74.7614581
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1193592151,
+      "center": {
+        "lat": 20.9102529,
+        "lon": 74.7743816
+      },
+      "tags": {
+        "addr:city": "Dhule",
+        "addr:district": "Dhule",
+        "addr:postcode": "424002",
+        "building": "college",
+        "name": "Dr Babasaheb Ambedkar Memorial College of Law, Deopur"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1193592823,
+      "center": {
+        "lat": 20.9103128,
+        "lon": 74.7739893
+      },
+      "tags": {
+        "addr:city": "Dhule",
+        "addr:district": "Dhule",
+        "addr:postcode": "424002",
+        "amenity": "college",
+        "name": "Dr Babasaheb Ambedkar Memorial College of Law",
+        "name:etymology:wikidata": "Q231690",
+        "operator": "West Khandesh Dalit Shikshan Prasarak Mandal's",
+        "operator:type": "private_non_profit"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1193593171,
+      "center": {
+        "lat": 20.9112921,
+        "lon": 74.7733689
+      },
+      "tags": {
+        "addr:city": "Dhule",
+        "addr:district": "Dhule",
+        "addr:postcode": "424002",
+        "building": "school",
+        "building:levels": "2",
+        "name": "Dr Babasaheb Ambedkar High School, Dhule"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1276026223,
+      "center": {
+        "lat": 20.8991059,
+        "lon": 74.7861393
+      },
+      "tags": {
+        "addr:city": "Dhule",
+        "addr:district": "Dhule",
+        "addr:street": "Market Road",
+        "amenity": "fuel",
+        "brand": "Bharat Petroleum",
+        "brand:wikidata": "Q854826",
+        "fuel:petrol": "yes",
+        "name": "Bharat Petroleum"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1276027539,
+      "center": {
+        "lat": 20.8993237,
+        "lon": 74.7829751
+      },
+      "tags": {
+        "addr:city": "Dhule",
+        "addr:district": "Dhule",
+        "addr:street": "80 Feet Road",
+        "building": "residential",
+        "name": "Radhey Apartment"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1276027884,
+      "center": {
+        "lat": 20.8990775,
+        "lon": 74.7833458
+      },
+      "tags": {
+        "addr:city": "Dhule",
+        "addr:district": "Dhule",
+        "addr:street": "80 Feet Road",
+        "building": "residential",
+        "name": "Pitru Chhaya Apartment"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1276028477,
+      "center": {
+        "lat": 20.9025521,
+        "lon": 74.7830108
+      },
+      "tags": {
+        "addr:city": "Dhule",
+        "addr:district": "Dhule",
+        "addr:street": "NH53",
+        "building": "commercial",
+        "building:levels": "2",
+        "name": "Rachana Hall"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1276029311,
+      "center": {
+        "lat": 20.9007868,
+        "lon": 74.7827489
+      },
+      "tags": {
+        "addr:city": "Dhule",
+        "addr:district": "Dhule",
+        "addr:street": "80 Feet Road",
+        "building": "commercial",
+        "name": "Adivasi Vikas Prakalpa Office"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1276030150,
+      "center": {
+        "lat": 20.9031967,
+        "lon": 74.7816525
+      },
+      "tags": {
+        "addr:city": "Dhule",
+        "addr:district": "Dhule",
+        "addr:street": "NH53",
+        "amenity": "cinema",
+        "building": "yes",
+        "name": "Prakash Cinema Theatre"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1276031266,
+      "center": {
+        "lat": 20.9035487,
+        "lon": 74.7751523
+      },
+      "tags": {
+        "addr:city": "Dhule",
+        "addr:district": "Dhule",
+        "addr:street": "NH53",
+        "building": "yes",
+        "government": "government",
+        "name": "Muncipal corporation Dhule",
+        "office": "government"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1276032398,
+      "center": {
+        "lat": 20.9044619,
+        "lon": 74.7752463
+      },
+      "tags": {
+        "addr:city": "Dhule",
+        "addr:district": "Dhule",
+        "addr:street": "Veer Savarkar Marg",
+        "amenity": "cinema",
+        "building": "yes",
+        "name": "Swastik Theatre"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1276032689,
+      "center": {
+        "lat": 20.904829,
+        "lon": 74.7750297
+      },
+      "tags": {
+        "addr:city": "Dhule",
+        "addr:district": "Dhule",
+        "addr:street": "Veer Savarkar Marg",
+        "building": "school",
+        "name": "New City High School"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1276034799,
+      "center": {
+        "lat": 20.9056365,
+        "lon": 74.7755889
+      },
+      "tags": {
+        "addr:city": "Dhule",
+        "addr:district": "Dhule",
+        "addr:street": "Veer Savarkar Marg",
+        "building": "yes",
+        "name": "Apala Maharashtra Paper Office",
+        "office": "newspaper"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1276126020,
+      "center": {
+        "lat": 20.9050978,
+        "lon": 74.7751204
+      },
+      "tags": {
+        "addr:city": "Dhule",
+        "addr:district": "Dhule",
+        "addr:street": "Veer Savarkar Marg",
+        "building": "school",
+        "name": "New City High School"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1276134183,
+      "center": {
+        "lat": 20.9054814,
+        "lon": 74.775408
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951691,
+      "center": {
+        "lat": 20.8930289,
+        "lon": 74.772361
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951692,
+      "center": {
+        "lat": 20.8929454,
+        "lon": 74.7723603
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951693,
+      "center": {
+        "lat": 20.8928505,
+        "lon": 74.7723639
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951694,
+      "center": {
+        "lat": 20.8927644,
+        "lon": 74.7723568
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951695,
+      "center": {
+        "lat": 20.8926706,
+        "lon": 74.7723522
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951696,
+      "center": {
+        "lat": 20.8925735,
+        "lon": 74.7723545
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951697,
+      "center": {
+        "lat": 20.8925059,
+        "lon": 74.7723557
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951698,
+      "center": {
+        "lat": 20.8924023,
+        "lon": 74.7723463
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951699,
+      "center": {
+        "lat": 20.8922059,
+        "lon": 74.7723381
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951700,
+      "center": {
+        "lat": 20.8921088,
+        "lon": 74.7723347
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951701,
+      "center": {
+        "lat": 20.8924629,
+        "lon": 74.7726344
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951702,
+      "center": {
+        "lat": 20.8926152,
+        "lon": 74.7729359
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951703,
+      "center": {
+        "lat": 20.8927084,
+        "lon": 74.7729388
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951704,
+      "center": {
+        "lat": 20.8927891,
+        "lon": 74.7729376
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951705,
+      "center": {
+        "lat": 20.892884,
+        "lon": 74.7729446
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951706,
+      "center": {
+        "lat": 20.8926074,
+        "lon": 74.7730802
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951707,
+      "center": {
+        "lat": 20.8924412,
+        "lon": 74.7729463
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951708,
+      "center": {
+        "lat": 20.8924357,
+        "lon": 74.7730426
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951709,
+      "center": {
+        "lat": 20.8924357,
+        "lon": 74.7731372
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951710,
+      "center": {
+        "lat": 20.8925682,
+        "lon": 74.7732639
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951711,
+      "center": {
+        "lat": 20.8930056,
+        "lon": 74.7727329
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951712,
+      "center": {
+        "lat": 20.8930143,
+        "lon": 74.7725957
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951713,
+      "center": {
+        "lat": 20.8926724,
+        "lon": 74.7726574
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951714,
+      "center": {
+        "lat": 20.8928149,
+        "lon": 74.7725942
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951715,
+      "center": {
+        "lat": 20.8929927,
+        "lon": 74.7716835
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951716,
+      "center": {
+        "lat": 20.89361,
+        "lon": 74.7721948
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951717,
+      "center": {
+        "lat": 20.8936157,
+        "lon": 74.7720123
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951718,
+      "center": {
+        "lat": 20.8936385,
+        "lon": 74.7714005
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951719,
+      "center": {
+        "lat": 20.8936451,
+        "lon": 74.7712186
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951720,
+      "center": {
+        "lat": 20.8934211,
+        "lon": 74.7712095
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951721,
+      "center": {
+        "lat": 20.8934172,
+        "lon": 74.7713904
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951722,
+      "center": {
+        "lat": 20.8936641,
+        "lon": 74.7706166
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951723,
+      "center": {
+        "lat": 20.8934348,
+        "lon": 74.7706113
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951724,
+      "center": {
+        "lat": 20.8941528,
+        "lon": 74.770386
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951725,
+      "center": {
+        "lat": 20.8943733,
+        "lon": 74.7703913
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951726,
+      "center": {
+        "lat": 20.8943382,
+        "lon": 74.7709988
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951727,
+      "center": {
+        "lat": 20.8943307,
+        "lon": 74.7711933
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951728,
+      "center": {
+        "lat": 20.8946161,
+        "lon": 74.7708723
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951729,
+      "center": {
+        "lat": 20.8946108,
+        "lon": 74.770763
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337951730,
+      "center": {
+        "lat": 20.8942369,
+        "lon": 74.770999
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337952466,
+      "center": {
+        "lat": 20.8942344,
+        "lon": 74.7711906
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337952467,
+      "center": {
+        "lat": 20.8942724,
+        "lon": 74.7704074
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337952468,
+      "center": {
+        "lat": 20.8940507,
+        "lon": 74.7703986
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337952469,
+      "center": {
+        "lat": 20.8935532,
+        "lon": 74.770618
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337952470,
+      "center": {
+        "lat": 20.8933465,
+        "lon": 74.7706251
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337952471,
+      "center": {
+        "lat": 20.893315,
+        "lon": 74.7712214
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337952472,
+      "center": {
+        "lat": 20.8933135,
+        "lon": 74.7714002
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337952473,
+      "center": {
+        "lat": 20.8935416,
+        "lon": 74.771409
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337952474,
+      "center": {
+        "lat": 20.8935399,
+        "lon": 74.7712303
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337952533,
+      "center": {
+        "lat": 20.8935063,
+        "lon": 74.7722107
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953891,
+      "center": {
+        "lat": 20.8933937,
+        "lon": 74.7720077
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953892,
+      "center": {
+        "lat": 20.8933874,
+        "lon": 74.7721859
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953893,
+      "center": {
+        "lat": 20.8933542,
+        "lon": 74.7728039
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953894,
+      "center": {
+        "lat": 20.8935179,
+        "lon": 74.7720271
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953895,
+      "center": {
+        "lat": 20.8931687,
+        "lon": 74.7724187
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953896,
+      "center": {
+        "lat": 20.893166,
+        "lon": 74.7725511
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953897,
+      "center": {
+        "lat": 20.8931768,
+        "lon": 74.7723055
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953898,
+      "center": {
+        "lat": 20.8932019,
+        "lon": 74.7717615
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953899,
+      "center": {
+        "lat": 20.8932094,
+        "lon": 74.7715228
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953900,
+      "center": {
+        "lat": 20.8932232,
+        "lon": 74.7709729
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953901,
+      "center": {
+        "lat": 20.8932333,
+        "lon": 74.7707396
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953902,
+      "center": {
+        "lat": 20.893939,
+        "lon": 74.770518
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953903,
+      "center": {
+        "lat": 20.8939303,
+        "lon": 74.7707562
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953904,
+      "center": {
+        "lat": 20.8937765,
+        "lon": 74.7707492
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953905,
+      "center": {
+        "lat": 20.8937699,
+        "lon": 74.7709862
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953906,
+      "center": {
+        "lat": 20.893747,
+        "lon": 74.7715536
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953907,
+      "center": {
+        "lat": 20.893926,
+        "lon": 74.7714964
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953908,
+      "center": {
+        "lat": 20.8939183,
+        "lon": 74.7717299
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953909,
+      "center": {
+        "lat": 20.8939117,
+        "lon": 74.7719715
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953910,
+      "center": {
+        "lat": 20.8932591,
+        "lon": 74.7727972
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953911,
+      "center": {
+        "lat": 20.8931629,
+        "lon": 74.7726561
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953912,
+      "center": {
+        "lat": 20.8932847,
+        "lon": 74.7721854
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953913,
+      "center": {
+        "lat": 20.8933035,
+        "lon": 74.7720057
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953914,
+      "center": {
+        "lat": 20.8932007,
+        "lon": 74.7718555
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953915,
+      "center": {
+        "lat": 20.8932095,
+        "lon": 74.7716262
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953916,
+      "center": {
+        "lat": 20.8932258,
+        "lon": 74.7710709
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953917,
+      "center": {
+        "lat": 20.8932296,
+        "lon": 74.7708376
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953918,
+      "center": {
+        "lat": 20.8937671,
+        "lon": 74.7708564
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953919,
+      "center": {
+        "lat": 20.8937658,
+        "lon": 74.7710884
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953920,
+      "center": {
+        "lat": 20.8939287,
+        "lon": 74.7708617
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953921,
+      "center": {
+        "lat": 20.893935,
+        "lon": 74.7706217
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953922,
+      "center": {
+        "lat": 20.8944098,
+        "lon": 74.7702435
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953923,
+      "center": {
+        "lat": 20.8944186,
+        "lon": 74.7699994
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953924,
+      "center": {
+        "lat": 20.8946166,
+        "lon": 74.7706338
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953925,
+      "center": {
+        "lat": 20.8946243,
+        "lon": 74.7705241
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953926,
+      "center": {
+        "lat": 20.8944064,
+        "lon": 74.7701378
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953927,
+      "center": {
+        "lat": 20.8944189,
+        "lon": 74.7699018
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953928,
+      "center": {
+        "lat": 20.8937417,
+        "lon": 74.77179
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953929,
+      "center": {
+        "lat": 20.893746,
+        "lon": 74.7716576
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953930,
+      "center": {
+        "lat": 20.8937374,
+        "lon": 74.7718948
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953931,
+      "center": {
+        "lat": 20.8939216,
+        "lon": 74.7718363
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953932,
+      "center": {
+        "lat": 20.8939245,
+        "lon": 74.7716005
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337953933,
+      "center": {
+        "lat": 20.893913,
+        "lon": 74.7720735
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1485893456,
+      "center": {
+        "lat": 20.9036432,
+        "lon": 74.7803311
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1485896128,
+      "center": {
+        "lat": 20.8991274,
+        "lon": 74.7670676
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1485896694,
+      "center": {
+        "lat": 20.8985681,
+        "lon": 74.7646889
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1485897039,
+      "center": {
+        "lat": 20.8984318,
+        "lon": 74.7646237
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1485897801,
+      "center": {
+        "lat": 20.8979912,
+        "lon": 74.7623378
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1485898301,
+      "center": {
+        "lat": 20.8979788,
+        "lon": 74.7625067
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1485902256,
+      "center": {
+        "lat": 20.8980085,
+        "lon": 74.7620817
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1485902982,
+      "center": {
+        "lat": 20.898336,
+        "lon": 74.7618983
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1485903476,
+      "center": {
+        "lat": 20.8978094,
+        "lon": 74.7610474
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1485903708,
+      "center": {
+        "lat": 20.8978837,
+        "lon": 74.7610144
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1485904164,
+      "center": {
+        "lat": 20.8977992,
+        "lon": 74.7603679
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1485907514,
+      "center": {
+        "lat": 20.8979062,
+        "lon": 74.7575613
+      },
+      "tags": {
+        "building": "house"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1485907674,
+      "center": {
+        "lat": 20.8975745,
+        "lon": 74.7574997
+      },
+      "tags": {
+        "building": "apartments"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1485908242,
+      "center": {
+        "lat": 20.897693,
+        "lon": 74.7576341
+      },
+      "tags": {
+        "building": "apartments"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1486207752,
+      "center": {
+        "lat": 20.8940808,
+        "lon": 74.775988
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1486208569,
+      "center": {
+        "lat": 20.8940002,
+        "lon": 74.776961
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1486208670,
+      "center": {
+        "lat": 20.9019497,
+        "lon": 74.7664433
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1486209103,
+      "center": {
+        "lat": 20.9027035,
+        "lon": 74.7616623
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1486209104,
+      "center": {
+        "lat": 20.9028303,
+        "lon": 74.7616432
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1486209345,
+      "center": {
+        "lat": 20.8956808,
+        "lon": 74.7613384
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1486209419,
+      "center": {
+        "lat": 20.8953211,
+        "lon": 74.7600164
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1486209480,
+      "center": {
+        "lat": 20.8966872,
+        "lon": 74.7575801
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1486209713,
+      "center": {
+        "lat": 20.8968475,
+        "lon": 74.757051
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222462,
+      "center": {
+        "lat": 20.9102057,
+        "lon": 74.7720325
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222463,
+      "center": {
+        "lat": 20.9100784,
+        "lon": 74.7725892
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222464,
+      "center": {
+        "lat": 20.9101387,
+        "lon": 74.7723996
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222465,
+      "center": {
+        "lat": 20.9108266,
+        "lon": 74.7712019
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222466,
+      "center": {
+        "lat": 20.9107848,
+        "lon": 74.7715494
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222467,
+      "center": {
+        "lat": 20.9107339,
+        "lon": 74.7718979
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222468,
+      "center": {
+        "lat": 20.9105242,
+        "lon": 74.7716837
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222469,
+      "center": {
+        "lat": 20.9104735,
+        "lon": 74.7720762
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222470,
+      "center": {
+        "lat": 20.9107155,
+        "lon": 74.7723324
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222471,
+      "center": {
+        "lat": 20.910507,
+        "lon": 74.7719215
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222472,
+      "center": {
+        "lat": 20.9110108,
+        "lon": 74.7724518
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222473,
+      "center": {
+        "lat": 20.9110303,
+        "lon": 74.7723022
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222474,
+      "center": {
+        "lat": 20.911024,
+        "lon": 74.7721203
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222475,
+      "center": {
+        "lat": 20.9111456,
+        "lon": 74.7719377
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222476,
+      "center": {
+        "lat": 20.9110161,
+        "lon": 74.7719318
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222477,
+      "center": {
+        "lat": 20.9112791,
+        "lon": 74.7722542
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222478,
+      "center": {
+        "lat": 20.9113278,
+        "lon": 74.7720792
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222479,
+      "center": {
+        "lat": 20.9112691,
+        "lon": 74.7715044
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222480,
+      "center": {
+        "lat": 20.9110698,
+        "lon": 74.7717564
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222481,
+      "center": {
+        "lat": 20.91144,
+        "lon": 74.7719162
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222482,
+      "center": {
+        "lat": 20.9114895,
+        "lon": 74.7725909
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222483,
+      "center": {
+        "lat": 20.9115674,
+        "lon": 74.772257
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222484,
+      "center": {
+        "lat": 20.911846,
+        "lon": 74.7707907
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222485,
+      "center": {
+        "lat": 20.9116712,
+        "lon": 74.7705388
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222486,
+      "center": {
+        "lat": 20.911726,
+        "lon": 74.7703508
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222487,
+      "center": {
+        "lat": 20.9119002,
+        "lon": 74.7705739
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222488,
+      "center": {
+        "lat": 20.9114522,
+        "lon": 74.7704666
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222489,
+      "center": {
+        "lat": 20.9114028,
+        "lon": 74.7707329
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222490,
+      "center": {
+        "lat": 20.9114528,
+        "lon": 74.7702956
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222491,
+      "center": {
+        "lat": 20.911272,
+        "lon": 74.7706973
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222492,
+      "center": {
+        "lat": 20.9112775,
+        "lon": 74.7702671
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222493,
+      "center": {
+        "lat": 20.9111495,
+        "lon": 74.7706944
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222494,
+      "center": {
+        "lat": 20.911496,
+        "lon": 74.771208
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222495,
+      "center": {
+        "lat": 20.911677,
+        "lon": 74.7715695
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222496,
+      "center": {
+        "lat": 20.9117427,
+        "lon": 74.7713074
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222497,
+      "center": {
+        "lat": 20.9116058,
+        "lon": 74.7710431
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222498,
+      "center": {
+        "lat": 20.9114824,
+        "lon": 74.7710077
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222499,
+      "center": {
+        "lat": 20.9114016,
+        "lon": 74.7713406
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222500,
+      "center": {
+        "lat": 20.9114883,
+        "lon": 74.7696501
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222501,
+      "center": {
+        "lat": 20.9112963,
+        "lon": 74.7696702
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222502,
+      "center": {
+        "lat": 20.9113746,
+        "lon": 74.7692459
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222503,
+      "center": {
+        "lat": 20.911544,
+        "lon": 74.7693087
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222504,
+      "center": {
+        "lat": 20.9114267,
+        "lon": 74.7690712
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222505,
+      "center": {
+        "lat": 20.9116914,
+        "lon": 74.7691231
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222506,
+      "center": {
+        "lat": 20.9116741,
+        "lon": 74.7693401
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222507,
+      "center": {
+        "lat": 20.9110633,
+        "lon": 74.769263
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222508,
+      "center": {
+        "lat": 20.911148,
+        "lon": 74.7690523
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222509,
+      "center": {
+        "lat": 20.9110278,
+        "lon": 74.7696056
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222510,
+      "center": {
+        "lat": 20.9112735,
+        "lon": 74.7699259
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222511,
+      "center": {
+        "lat": 20.9116395,
+        "lon": 74.7699858
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222512,
+      "center": {
+        "lat": 20.9116663,
+        "lon": 74.7686243
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222513,
+      "center": {
+        "lat": 20.9114737,
+        "lon": 74.7685881
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222514,
+      "center": {
+        "lat": 20.9114346,
+        "lon": 74.7688361
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222515,
+      "center": {
+        "lat": 20.9115008,
+        "lon": 74.7683116
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222516,
+      "center": {
+        "lat": 20.9117249,
+        "lon": 74.7683563
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222517,
+      "center": {
+        "lat": 20.9116665,
+        "lon": 74.7688506
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222518,
+      "center": {
+        "lat": 20.9121169,
+        "lon": 74.7689035
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222519,
+      "center": {
+        "lat": 20.9118977,
+        "lon": 74.7688797
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222520,
+      "center": {
+        "lat": 20.9119418,
+        "lon": 74.7686545
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222521,
+      "center": {
+        "lat": 20.9120911,
+        "lon": 74.7687048
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222522,
+      "center": {
+        "lat": 20.9119388,
+        "lon": 74.7683624
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222523,
+      "center": {
+        "lat": 20.9121787,
+        "lon": 74.7684285
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222524,
+      "center": {
+        "lat": 20.9120981,
+        "lon": 74.7692118
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222525,
+      "center": {
+        "lat": 20.9123151,
+        "lon": 74.769234
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222526,
+      "center": {
+        "lat": 20.9119661,
+        "lon": 74.769719
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222527,
+      "center": {
+        "lat": 20.9122723,
+        "lon": 74.7700525
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222528,
+      "center": {
+        "lat": 20.9121523,
+        "lon": 74.7699989
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222529,
+      "center": {
+        "lat": 20.9120081,
+        "lon": 74.7700014
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222530,
+      "center": {
+        "lat": 20.9120869,
+        "lon": 74.7694157
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222531,
+      "center": {
+        "lat": 20.9127224,
+        "lon": 74.7693214
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222532,
+      "center": {
+        "lat": 20.9128211,
+        "lon": 74.7691645
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222533,
+      "center": {
+        "lat": 20.9128611,
+        "lon": 74.7690064
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222534,
+      "center": {
+        "lat": 20.9126793,
+        "lon": 74.7688456
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222535,
+      "center": {
+        "lat": 20.9125947,
+        "lon": 74.7689996
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222536,
+      "center": {
+        "lat": 20.9124566,
+        "lon": 74.7687652
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222537,
+      "center": {
+        "lat": 20.9124255,
+        "lon": 74.7689524
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222538,
+      "center": {
+        "lat": 20.9126916,
+        "lon": 74.7697025
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222539,
+      "center": {
+        "lat": 20.9130208,
+        "lon": 74.76855
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222540,
+      "center": {
+        "lat": 20.912853,
+        "lon": 74.7686479
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222541,
+      "center": {
+        "lat": 20.912764,
+        "lon": 74.7684814
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222542,
+      "center": {
+        "lat": 20.9126025,
+        "lon": 74.7685178
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527222543,
+      "center": {
+        "lat": 20.9129084,
+        "lon": 74.7683329
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234324,
+      "center": {
+        "lat": 20.9129229,
+        "lon": 74.7679475
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234325,
+      "center": {
+        "lat": 20.9128692,
+        "lon": 74.7680883
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234326,
+      "center": {
+        "lat": 20.9126459,
+        "lon": 74.7680507
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234327,
+      "center": {
+        "lat": 20.9125648,
+        "lon": 74.7676568
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234328,
+      "center": {
+        "lat": 20.9126816,
+        "lon": 74.7682653
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234329,
+      "center": {
+        "lat": 20.9125317,
+        "lon": 74.7682496
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234330,
+      "center": {
+        "lat": 20.9124918,
+        "lon": 74.7680163
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234331,
+      "center": {
+        "lat": 20.912397,
+        "lon": 74.7682184
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234332,
+      "center": {
+        "lat": 20.9138539,
+        "lon": 74.7689239
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234333,
+      "center": {
+        "lat": 20.913696,
+        "lon": 74.7688796
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234334,
+      "center": {
+        "lat": 20.9137729,
+        "lon": 74.7692128
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234335,
+      "center": {
+        "lat": 20.9139042,
+        "lon": 74.7692397
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234336,
+      "center": {
+        "lat": 20.9136309,
+        "lon": 74.7692155
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234337,
+      "center": {
+        "lat": 20.9135807,
+        "lon": 74.7694446
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234338,
+      "center": {
+        "lat": 20.9135279,
+        "lon": 74.7696859
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234339,
+      "center": {
+        "lat": 20.913772,
+        "lon": 74.7695828
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234340,
+      "center": {
+        "lat": 20.9139807,
+        "lon": 74.76846
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234341,
+      "center": {
+        "lat": 20.9138187,
+        "lon": 74.7683938
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234342,
+      "center": {
+        "lat": 20.9145118,
+        "lon": 74.7684687
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234343,
+      "center": {
+        "lat": 20.9143575,
+        "lon": 74.7684122
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234344,
+      "center": {
+        "lat": 20.914192,
+        "lon": 74.7683586
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234345,
+      "center": {
+        "lat": 20.9141344,
+        "lon": 74.7685103
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234346,
+      "center": {
+        "lat": 20.9143627,
+        "lon": 74.7690922
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234347,
+      "center": {
+        "lat": 20.9142189,
+        "lon": 74.7690276
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234348,
+      "center": {
+        "lat": 20.9144766,
+        "lon": 74.7691742
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234349,
+      "center": {
+        "lat": 20.9140012,
+        "lon": 74.7678649
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234350,
+      "center": {
+        "lat": 20.9140797,
+        "lon": 74.768083
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234351,
+      "center": {
+        "lat": 20.9141361,
+        "lon": 74.7679233
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234352,
+      "center": {
+        "lat": 20.9142632,
+        "lon": 74.7679706
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234353,
+      "center": {
+        "lat": 20.9142802,
+        "lon": 74.7681179
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234354,
+      "center": {
+        "lat": 20.913925,
+        "lon": 74.76804
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234355,
+      "center": {
+        "lat": 20.9138831,
+        "lon": 74.76825
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234356,
+      "center": {
+        "lat": 20.9149451,
+        "lon": 74.7681936
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234357,
+      "center": {
+        "lat": 20.9148911,
+        "lon": 74.7683449
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234358,
+      "center": {
+        "lat": 20.9147728,
+        "lon": 74.7683161
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234359,
+      "center": {
+        "lat": 20.9148385,
+        "lon": 74.7681615
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234360,
+      "center": {
+        "lat": 20.9147642,
+        "lon": 74.7681487
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234361,
+      "center": {
+        "lat": 20.9146639,
+        "lon": 74.7681022
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234362,
+      "center": {
+        "lat": 20.9145545,
+        "lon": 74.7682527
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234363,
+      "center": {
+        "lat": 20.914637,
+        "lon": 74.7685179
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234364,
+      "center": {
+        "lat": 20.9147909,
+        "lon": 74.7685602
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234365,
+      "center": {
+        "lat": 20.9148643,
+        "lon": 74.7686078
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234366,
+      "center": {
+        "lat": 20.9147664,
+        "lon": 74.7687459
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234367,
+      "center": {
+        "lat": 20.9146353,
+        "lon": 74.7686719
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234368,
+      "center": {
+        "lat": 20.9147142,
+        "lon": 74.7689476
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234369,
+      "center": {
+        "lat": 20.9146681,
+        "lon": 74.7690408
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234370,
+      "center": {
+        "lat": 20.9145776,
+        "lon": 74.7693565
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234371,
+      "center": {
+        "lat": 20.9149804,
+        "lon": 74.7688919
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234372,
+      "center": {
+        "lat": 20.9150447,
+        "lon": 74.7691155
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234373,
+      "center": {
+        "lat": 20.9151146,
+        "lon": 74.7688798
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234374,
+      "center": {
+        "lat": 20.9151741,
+        "lon": 74.7687099
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234375,
+      "center": {
+        "lat": 20.9149181,
+        "lon": 74.7690521
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234376,
+      "center": {
+        "lat": 20.9153265,
+        "lon": 74.7683392
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234377,
+      "center": {
+        "lat": 20.915197,
+        "lon": 74.7682856
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234378,
+      "center": {
+        "lat": 20.9152637,
+        "lon": 74.7680634
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234379,
+      "center": {
+        "lat": 20.9153385,
+        "lon": 74.7678181
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234380,
+      "center": {
+        "lat": 20.9155192,
+        "lon": 74.7679295
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234381,
+      "center": {
+        "lat": 20.9154202,
+        "lon": 74.7681094
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234382,
+      "center": {
+        "lat": 20.9153967,
+        "lon": 74.7688249
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234383,
+      "center": {
+        "lat": 20.9156772,
+        "lon": 74.7680929
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234384,
+      "center": {
+        "lat": 20.9158575,
+        "lon": 74.7676811
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234385,
+      "center": {
+        "lat": 20.9156988,
+        "lon": 74.7686403
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234386,
+      "center": {
+        "lat": 20.9156121,
+        "lon": 74.7685338
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234387,
+      "center": {
+        "lat": 20.9158018,
+        "lon": 74.7685262
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234388,
+      "center": {
+        "lat": 20.9157185,
+        "lon": 74.7684283
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234389,
+      "center": {
+        "lat": 20.9158973,
+        "lon": 74.7686498
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234390,
+      "center": {
+        "lat": 20.9160046,
+        "lon": 74.7687454
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234391,
+      "center": {
+        "lat": 20.9158886,
+        "lon": 74.7688705
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234392,
+      "center": {
+        "lat": 20.9160928,
+        "lon": 74.7692391
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234393,
+      "center": {
+        "lat": 20.916178,
+        "lon": 74.7688915
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234394,
+      "center": {
+        "lat": 20.916091,
+        "lon": 74.768999
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234395,
+      "center": {
+        "lat": 20.9159871,
+        "lon": 74.7690929
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234396,
+      "center": {
+        "lat": 20.9163342,
+        "lon": 74.7686552
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234397,
+      "center": {
+        "lat": 20.9162362,
+        "lon": 74.7685205
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234398,
+      "center": {
+        "lat": 20.9163454,
+        "lon": 74.7682691
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234399,
+      "center": {
+        "lat": 20.9165535,
+        "lon": 74.7685114
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234400,
+      "center": {
+        "lat": 20.9164471,
+        "lon": 74.7683737
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234401,
+      "center": {
+        "lat": 20.9161604,
+        "lon": 74.7680821
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234402,
+      "center": {
+        "lat": 20.916554,
+        "lon": 74.7690774
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234403,
+      "center": {
+        "lat": 20.9166914,
+        "lon": 74.7685968
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234442,
+      "center": {
+        "lat": 20.9169939,
+        "lon": 74.7702245
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527234443,
+      "center": {
+        "lat": 20.9169916,
+        "lon": 74.7704494
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527760289,
+      "center": {
+        "lat": 20.887413,
+        "lon": 74.774389
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527760290,
+      "center": {
+        "lat": 20.8872458,
+        "lon": 74.7743648
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527760291,
+      "center": {
+        "lat": 20.8870883,
+        "lon": 74.7742748
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527760292,
+      "center": {
+        "lat": 20.8873881,
+        "lon": 74.7747269
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527760293,
+      "center": {
+        "lat": 20.8873138,
+        "lon": 74.7748729
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527760294,
+      "center": {
+        "lat": 20.8873717,
+        "lon": 74.7750451
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527760295,
+      "center": {
+        "lat": 20.8871826,
+        "lon": 74.7750114
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527760296,
+      "center": {
+        "lat": 20.8870543,
+        "lon": 74.7744734
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527760297,
+      "center": {
+        "lat": 20.8869557,
+        "lon": 74.7748448
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527760298,
+      "center": {
+        "lat": 20.8872138,
+        "lon": 74.7754496
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527760299,
+      "center": {
+        "lat": 20.8872295,
+        "lon": 74.7753043
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527760301,
+      "center": {
+        "lat": 20.8871041,
+        "lon": 74.7758136
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527760303,
+      "center": {
+        "lat": 20.8872646,
+        "lon": 74.7764217
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527760304,
+      "center": {
+        "lat": 20.8879632,
+        "lon": 74.7755894
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766245,
+      "center": {
+        "lat": 20.8876336,
+        "lon": 74.7756519
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766246,
+      "center": {
+        "lat": 20.8876255,
+        "lon": 74.7754363
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766247,
+      "center": {
+        "lat": 20.8877107,
+        "lon": 74.7759966
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766248,
+      "center": {
+        "lat": 20.887895,
+        "lon": 74.7759201
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766249,
+      "center": {
+        "lat": 20.8877974,
+        "lon": 74.7756439
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766250,
+      "center": {
+        "lat": 20.887838,
+        "lon": 74.7754147
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766251,
+      "center": {
+        "lat": 20.8876166,
+        "lon": 74.7761921
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766252,
+      "center": {
+        "lat": 20.8877464,
+        "lon": 74.7763373
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766253,
+      "center": {
+        "lat": 20.8874533,
+        "lon": 74.7761402
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766254,
+      "center": {
+        "lat": 20.8876938,
+        "lon": 74.7751481
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766255,
+      "center": {
+        "lat": 20.8877236,
+        "lon": 74.7764859
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766256,
+      "center": {
+        "lat": 20.8881272,
+        "lon": 74.7759847
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766257,
+      "center": {
+        "lat": 20.8881653,
+        "lon": 74.7757453
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766258,
+      "center": {
+        "lat": 20.8881056,
+        "lon": 74.77503
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766259,
+      "center": {
+        "lat": 20.888396,
+        "lon": 74.7753073
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766260,
+      "center": {
+        "lat": 20.8883293,
+        "lon": 74.7755852
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766261,
+      "center": {
+        "lat": 20.8881958,
+        "lon": 74.7755447
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766262,
+      "center": {
+        "lat": 20.8882609,
+        "lon": 74.7759856
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766263,
+      "center": {
+        "lat": 20.8882296,
+        "lon": 74.7761517
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766264,
+      "center": {
+        "lat": 20.8883743,
+        "lon": 74.7763343
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766265,
+      "center": {
+        "lat": 20.8884072,
+        "lon": 74.776162
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766266,
+      "center": {
+        "lat": 20.8884346,
+        "lon": 74.7760191
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766267,
+      "center": {
+        "lat": 20.8884523,
+        "lon": 74.77565
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766268,
+      "center": {
+        "lat": 20.8880547,
+        "lon": 74.7763206
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766269,
+      "center": {
+        "lat": 20.8880094,
+        "lon": 74.7765223
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766270,
+      "center": {
+        "lat": 20.8890674,
+        "lon": 74.7748175
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766271,
+      "center": {
+        "lat": 20.8890412,
+        "lon": 74.7750321
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766272,
+      "center": {
+        "lat": 20.8892434,
+        "lon": 74.7748295
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766273,
+      "center": {
+        "lat": 20.8890114,
+        "lon": 74.7751688
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766274,
+      "center": {
+        "lat": 20.889151,
+        "lon": 74.7753663
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766275,
+      "center": {
+        "lat": 20.8890178,
+        "lon": 74.7752869
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766276,
+      "center": {
+        "lat": 20.8889758,
+        "lon": 74.7754308
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766277,
+      "center": {
+        "lat": 20.8888512,
+        "lon": 74.7758068
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766278,
+      "center": {
+        "lat": 20.8886814,
+        "lon": 74.7752729
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766279,
+      "center": {
+        "lat": 20.8901016,
+        "lon": 74.7748284
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766280,
+      "center": {
+        "lat": 20.8898848,
+        "lon": 74.7749233
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766281,
+      "center": {
+        "lat": 20.8898997,
+        "lon": 74.7747442
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766282,
+      "center": {
+        "lat": 20.8899017,
+        "lon": 74.7745815
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766283,
+      "center": {
+        "lat": 20.8899317,
+        "lon": 74.7743258
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766284,
+      "center": {
+        "lat": 20.8899657,
+        "lon": 74.7740374
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766285,
+      "center": {
+        "lat": 20.8905475,
+        "lon": 74.774703
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766286,
+      "center": {
+        "lat": 20.8904411,
+        "lon": 74.7747749
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766287,
+      "center": {
+        "lat": 20.8902859,
+        "lon": 74.7748647
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766288,
+      "center": {
+        "lat": 20.890645,
+        "lon": 74.7750133
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766289,
+      "center": {
+        "lat": 20.8907621,
+        "lon": 74.7701312
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766290,
+      "center": {
+        "lat": 20.8907729,
+        "lon": 74.7700217
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766291,
+      "center": {
+        "lat": 20.8908059,
+        "lon": 74.7698428
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766292,
+      "center": {
+        "lat": 20.8909844,
+        "lon": 74.7700598
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766293,
+      "center": {
+        "lat": 20.8908444,
+        "lon": 74.7694751
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766294,
+      "center": {
+        "lat": 20.8908188,
+        "lon": 74.7696984
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766295,
+      "center": {
+        "lat": 20.8906715,
+        "lon": 74.7695123
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766296,
+      "center": {
+        "lat": 20.8906424,
+        "lon": 74.7696865
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766297,
+      "center": {
+        "lat": 20.8906122,
+        "lon": 74.7700275
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766298,
+      "center": {
+        "lat": 20.8912236,
+        "lon": 74.7704047
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766299,
+      "center": {
+        "lat": 20.8912768,
+        "lon": 74.7700988
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766300,
+      "center": {
+        "lat": 20.8911077,
+        "lon": 74.7700662
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766301,
+      "center": {
+        "lat": 20.8910542,
+        "lon": 74.7702297
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766302,
+      "center": {
+        "lat": 20.8910234,
+        "lon": 74.770369
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766303,
+      "center": {
+        "lat": 20.8909936,
+        "lon": 74.7705125
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766304,
+      "center": {
+        "lat": 20.8911355,
+        "lon": 74.7707485
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766305,
+      "center": {
+        "lat": 20.8910013,
+        "lon": 74.770719
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766306,
+      "center": {
+        "lat": 20.891594,
+        "lon": 74.7706576
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766307,
+      "center": {
+        "lat": 20.8914945,
+        "lon": 74.7703097
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766308,
+      "center": {
+        "lat": 20.8916545,
+        "lon": 74.770366
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766309,
+      "center": {
+        "lat": 20.8916447,
+        "lon": 74.7705453
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766310,
+      "center": {
+        "lat": 20.8914683,
+        "lon": 74.7704476
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766311,
+      "center": {
+        "lat": 20.89155,
+        "lon": 74.7708942
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766312,
+      "center": {
+        "lat": 20.8917933,
+        "lon": 74.7714455
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766313,
+      "center": {
+        "lat": 20.8918025,
+        "lon": 74.7712844
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766314,
+      "center": {
+        "lat": 20.891817,
+        "lon": 74.7711112
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766315,
+      "center": {
+        "lat": 20.8918733,
+        "lon": 74.7709407
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766316,
+      "center": {
+        "lat": 20.8919195,
+        "lon": 74.7706264
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766317,
+      "center": {
+        "lat": 20.8918909,
+        "lon": 74.7707888
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766318,
+      "center": {
+        "lat": 20.8915253,
+        "lon": 74.7714219
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766319,
+      "center": {
+        "lat": 20.8912687,
+        "lon": 74.7776594
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766320,
+      "center": {
+        "lat": 20.8911347,
+        "lon": 74.7777275
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766321,
+      "center": {
+        "lat": 20.8911425,
+        "lon": 74.7780132
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766322,
+      "center": {
+        "lat": 20.8908973,
+        "lon": 74.7774727
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766323,
+      "center": {
+        "lat": 20.8908898,
+        "lon": 74.7780381
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766324,
+      "center": {
+        "lat": 20.8909026,
+        "lon": 74.7778009
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766325,
+      "center": {
+        "lat": 20.8910958,
+        "lon": 74.7785008
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766326,
+      "center": {
+        "lat": 20.8908946,
+        "lon": 74.7793909
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766327,
+      "center": {
+        "lat": 20.8908529,
+        "lon": 74.7792102
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766328,
+      "center": {
+        "lat": 20.8907893,
+        "lon": 74.779049
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766329,
+      "center": {
+        "lat": 20.8907454,
+        "lon": 74.7788795
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766330,
+      "center": {
+        "lat": 20.8906038,
+        "lon": 74.7792798
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766331,
+      "center": {
+        "lat": 20.8907132,
+        "lon": 74.7787077
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766332,
+      "center": {
+        "lat": 20.8906599,
+        "lon": 74.7785368
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766333,
+      "center": {
+        "lat": 20.8905159,
+        "lon": 74.7790439
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766334,
+      "center": {
+        "lat": 20.8915301,
+        "lon": 74.7782462
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766335,
+      "center": {
+        "lat": 20.8914916,
+        "lon": 74.7784927
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766336,
+      "center": {
+        "lat": 20.8916248,
+        "lon": 74.7784244
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766337,
+      "center": {
+        "lat": 20.8910187,
+        "lon": 74.777135
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766338,
+      "center": {
+        "lat": 20.8872448,
+        "lon": 74.7651444
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766339,
+      "center": {
+        "lat": 20.8873516,
+        "lon": 74.7651467
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766340,
+      "center": {
+        "lat": 20.8873275,
+        "lon": 74.7654003
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766341,
+      "center": {
+        "lat": 20.8874416,
+        "lon": 74.765145
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766342,
+      "center": {
+        "lat": 20.8874057,
+        "lon": 74.7653911
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766343,
+      "center": {
+        "lat": 20.887381,
+        "lon": 74.7655792
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766344,
+      "center": {
+        "lat": 20.8874,
+        "lon": 74.7654662
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527766345,
+      "center": {
+        "lat": 20.8874785,
+        "lon": 74.7657939
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806932,
+      "center": {
+        "lat": 20.887617,
+        "lon": 74.7651408
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806933,
+      "center": {
+        "lat": 20.8877205,
+        "lon": 74.7651561
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806934,
+      "center": {
+        "lat": 20.887749,
+        "lon": 74.7649609
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806935,
+      "center": {
+        "lat": 20.8877746,
+        "lon": 74.765585
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806936,
+      "center": {
+        "lat": 20.8879445,
+        "lon": 74.7654501
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806937,
+      "center": {
+        "lat": 20.8878142,
+        "lon": 74.7651901
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806938,
+      "center": {
+        "lat": 20.8878511,
+        "lon": 74.7650032
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806939,
+      "center": {
+        "lat": 20.8879649,
+        "lon": 74.7652135
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806940,
+      "center": {
+        "lat": 20.8879579,
+        "lon": 74.7650209
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806941,
+      "center": {
+        "lat": 20.8875993,
+        "lon": 74.7659853
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806942,
+      "center": {
+        "lat": 20.8876024,
+        "lon": 74.7658175
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806943,
+      "center": {
+        "lat": 20.8875152,
+        "lon": 74.7662016
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806944,
+      "center": {
+        "lat": 20.8874628,
+        "lon": 74.765974
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806945,
+      "center": {
+        "lat": 20.8875877,
+        "lon": 74.7664898
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806946,
+      "center": {
+        "lat": 20.8878522,
+        "lon": 74.765985
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806947,
+      "center": {
+        "lat": 20.8877403,
+        "lon": 74.7664623
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806948,
+      "center": {
+        "lat": 20.8877268,
+        "lon": 74.7662357
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806949,
+      "center": {
+        "lat": 20.8880505,
+        "lon": 74.7646355
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806950,
+      "center": {
+        "lat": 20.887966,
+        "lon": 74.7646134
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806951,
+      "center": {
+        "lat": 20.8880333,
+        "lon": 74.7647472
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806952,
+      "center": {
+        "lat": 20.8879412,
+        "lon": 74.764754
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806953,
+      "center": {
+        "lat": 20.8878233,
+        "lon": 74.764696
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806954,
+      "center": {
+        "lat": 20.8884865,
+        "lon": 74.7657024
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806955,
+      "center": {
+        "lat": 20.8884998,
+        "lon": 74.7655422
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806956,
+      "center": {
+        "lat": 20.8883071,
+        "lon": 74.7656736
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806957,
+      "center": {
+        "lat": 20.8881864,
+        "lon": 74.7655096
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806958,
+      "center": {
+        "lat": 20.8880508,
+        "lon": 74.7656271
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806959,
+      "center": {
+        "lat": 20.8883211,
+        "lon": 74.7659385
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806960,
+      "center": {
+        "lat": 20.8881556,
+        "lon": 74.7651675
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806961,
+      "center": {
+        "lat": 20.8882524,
+        "lon": 74.7650696
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806962,
+      "center": {
+        "lat": 20.8882187,
+        "lon": 74.7652571
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806963,
+      "center": {
+        "lat": 20.888298,
+        "lon": 74.7652576
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806964,
+      "center": {
+        "lat": 20.8883246,
+        "lon": 74.7650788
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806965,
+      "center": {
+        "lat": 20.8883951,
+        "lon": 74.7650776
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806966,
+      "center": {
+        "lat": 20.8884655,
+        "lon": 74.7651029
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806967,
+      "center": {
+        "lat": 20.8885363,
+        "lon": 74.7651274
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806968,
+      "center": {
+        "lat": 20.8885091,
+        "lon": 74.7653002
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806969,
+      "center": {
+        "lat": 20.8885974,
+        "lon": 74.7652892
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806970,
+      "center": {
+        "lat": 20.8883196,
+        "lon": 74.7646613
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806971,
+      "center": {
+        "lat": 20.8882189,
+        "lon": 74.7646422
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806972,
+      "center": {
+        "lat": 20.8882045,
+        "lon": 74.7647809
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806973,
+      "center": {
+        "lat": 20.8883669,
+        "lon": 74.7648157
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806974,
+      "center": {
+        "lat": 20.8882866,
+        "lon": 74.7648061
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806975,
+      "center": {
+        "lat": 20.8881369,
+        "lon": 74.7646388
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806976,
+      "center": {
+        "lat": 20.88864,
+        "lon": 74.7648692
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806977,
+      "center": {
+        "lat": 20.8887154,
+        "lon": 74.7647324
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806978,
+      "center": {
+        "lat": 20.8885556,
+        "lon": 74.7646945
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806979,
+      "center": {
+        "lat": 20.8885468,
+        "lon": 74.7648446
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806980,
+      "center": {
+        "lat": 20.8884586,
+        "lon": 74.7648252
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806981,
+      "center": {
+        "lat": 20.8887055,
+        "lon": 74.7653051
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806982,
+      "center": {
+        "lat": 20.8888907,
+        "lon": 74.7648983
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806983,
+      "center": {
+        "lat": 20.8888984,
+        "lon": 74.7651729
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806984,
+      "center": {
+        "lat": 20.8887478,
+        "lon": 74.7651592
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806985,
+      "center": {
+        "lat": 20.8889211,
+        "lon": 74.7646358
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806986,
+      "center": {
+        "lat": 20.8889734,
+        "lon": 74.7642968
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806987,
+      "center": {
+        "lat": 20.889009,
+        "lon": 74.7640737
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806988,
+      "center": {
+        "lat": 20.8887626,
+        "lon": 74.7642978
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527806989,
+      "center": {
+        "lat": 20.8887889,
+        "lon": 74.7641479
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527807064,
+      "center": {
+        "lat": 20.8869612,
+        "lon": 74.7738665
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527807065,
+      "center": {
+        "lat": 20.8870437,
+        "lon": 74.7735754
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527807066,
+      "center": {
+        "lat": 20.887033,
+        "lon": 74.7733137
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816091,
+      "center": {
+        "lat": 20.8878184,
+        "lon": 74.7734488
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816092,
+      "center": {
+        "lat": 20.8879237,
+        "lon": 74.7731158
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816093,
+      "center": {
+        "lat": 20.8875369,
+        "lon": 74.7737862
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816094,
+      "center": {
+        "lat": 20.8876626,
+        "lon": 74.7733431
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816095,
+      "center": {
+        "lat": 20.8880222,
+        "lon": 74.7740569
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816096,
+      "center": {
+        "lat": 20.8875591,
+        "lon": 74.7744111
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816097,
+      "center": {
+        "lat": 20.8918315,
+        "lon": 74.7697426
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816098,
+      "center": {
+        "lat": 20.8912508,
+        "lon": 74.7684248
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816099,
+      "center": {
+        "lat": 20.891057,
+        "lon": 74.7684081
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816100,
+      "center": {
+        "lat": 20.8913941,
+        "lon": 74.7682102
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816101,
+      "center": {
+        "lat": 20.8908903,
+        "lon": 74.7691018
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816102,
+      "center": {
+        "lat": 20.891322,
+        "lon": 74.7698152
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816103,
+      "center": {
+        "lat": 20.8911959,
+        "lon": 74.7695359
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816104,
+      "center": {
+        "lat": 20.891065,
+        "lon": 74.7694874
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816105,
+      "center": {
+        "lat": 20.8910546,
+        "lon": 74.7691546
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816106,
+      "center": {
+        "lat": 20.891404,
+        "lon": 74.7696704
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816107,
+      "center": {
+        "lat": 20.8914117,
+        "lon": 74.769288
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816108,
+      "center": {
+        "lat": 20.8911848,
+        "lon": 74.7691792
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816109,
+      "center": {
+        "lat": 20.8906831,
+        "lon": 74.7715696
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816110,
+      "center": {
+        "lat": 20.8908868,
+        "lon": 74.7716669
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816111,
+      "center": {
+        "lat": 20.8906362,
+        "lon": 74.7717153
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816112,
+      "center": {
+        "lat": 20.8905367,
+        "lon": 74.7719764
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816113,
+      "center": {
+        "lat": 20.8904482,
+        "lon": 74.7719521
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816114,
+      "center": {
+        "lat": 20.8903798,
+        "lon": 74.7715508
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816115,
+      "center": {
+        "lat": 20.8905296,
+        "lon": 74.7715354
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816116,
+      "center": {
+        "lat": 20.8904699,
+        "lon": 74.7716943
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816117,
+      "center": {
+        "lat": 20.890365,
+        "lon": 74.7719253
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816118,
+      "center": {
+        "lat": 20.8904912,
+        "lon": 74.7713054
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816119,
+      "center": {
+        "lat": 20.8886211,
+        "lon": 74.775667
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816120,
+      "center": {
+        "lat": 20.888543,
+        "lon": 74.7758677
+      },
+      "tags": {
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1527816128,
+      "center": {
+        "lat": 20.886954,
+        "lon": 74.7769561
+      },
+      "tags": {
+        "building": "yes"
+      }
+    }
+  ]
+}
