@@ -13,21 +13,20 @@ const AssetKit = preload("res://scripts/asset_kit.gd")
 @export var max_speed_kph: float = 150.0
 
 const PAINTS: Array[Color] = [
-	Color(0.85, 0.55, 0.12),
-	Color(0.12, 0.35, 0.7),
-	Color(0.82, 0.15, 0.12),
-	Color(0.15, 0.55, 0.28),
 	Color(0.92, 0.92, 0.9),
 	Color(0.12, 0.12, 0.14),
-	Color(0.55, 0.55, 0.58),
-	Color(0.95, 0.75, 0.15),
-	Color(0.55, 0.15, 0.55),
-	Color(0.1, 0.55, 0.55),
+	Color(0.72, 0.73, 0.75),
+	Color(0.42, 0.44, 0.46),
+	Color(0.72, 0.12, 0.1),
+	Color(0.12, 0.28, 0.62),
+	Color(0.08, 0.14, 0.32),
+	Color(0.12, 0.38, 0.22),
+	Color(0.38, 0.24, 0.14),
+	Color(0.86, 0.72, 0.12),
 ]
 
 const PAINT_NAMES: Array[String] = [
-	"Saffron", "Blue", "Red", "Green", "White", "Black", "Silver",
-	"Taxi Yellow", "Royal Purple", "Teal"
+	"White", "Black", "Silver", "Grey", "Red", "Blue", "Dark Blue", "Green", "Brown", "Yellow"
 ]
 
 const KIT_NAMES: Array[String] = ["Stock", "Spoiler", "Roof Rack", "Sport"]
@@ -498,7 +497,6 @@ func _rebuild_visuals() -> void:
 
 
 func _tint_kit_meshes(root: Node, paint: Color) -> void:
-	## Paint tab actually changes kit GLB body colour (not fake UI).
 	for child in root.get_children():
 		_tint_kit_meshes(child, paint)
 	if root is MeshInstance3D:
@@ -506,21 +504,51 @@ func _tint_kit_meshes(root: Node, paint: Color) -> void:
 		if mi.mesh == null:
 			return
 		for si in mi.mesh.get_surface_count():
-			var base: Material = mi.get_active_material(si)
-			var sm := StandardMaterial3D.new()
-			if base is StandardMaterial3D:
-				sm = (base as StandardMaterial3D).duplicate() as StandardMaterial3D
-			elif base != null:
-				sm.albedo_color = paint
-			else:
-				sm.albedo_color = paint
-				sm.roughness = 0.45
-			# Keep dark glass / rubber; tint body-like surfaces
-			var c := sm.albedo_color
-			var lum := c.r * 0.3 + c.g * 0.5 + c.b * 0.2
-			if lum > 0.12 and c.a > 0.9:
-				sm.albedo_color = paint.lerp(c, 0.25)
-			mi.set_surface_override_material(si, sm)
+			var base: Material = mi.mesh.surface_get_material(si)
+			var label := mi.name
+			if base != null:
+				label += " " + base.resource_name
+			var slot := _paint_slot(label)
+			if slot in ["glass", "rubber", "light", "interior"]:
+				mi.set_surface_override_material(si, null)
+				continue
+			if slot == "trim":
+				var trim := StandardMaterial3D.new()
+				trim.albedo_color = Color(0.72, 0.73, 0.76)
+				trim.metallic = 0.8
+				trim.roughness = 0.28
+				mi.set_surface_override_material(si, trim)
+				continue
+			if slot != "body":
+				var lum := 0.0
+				if base is StandardMaterial3D:
+					var c := (base as StandardMaterial3D).albedo_color
+					lum = c.r * 0.3 + c.g * 0.5 + c.b * 0.2
+				if lum < 0.35:
+					mi.set_surface_override_material(si, null)
+					continue
+			var body := StandardMaterial3D.new()
+			body.albedo_color = paint
+			body.metallic = 0.12
+			body.roughness = 0.42
+			mi.set_surface_override_material(si, body)
+
+
+func _paint_slot(label: String) -> String:
+	var n := label.to_lower()
+	if "glass" in n or "window" in n:
+		return "glass"
+	if "tire" in n or "tyre" in n or "rubber" in n or "wheel" in n:
+		return "rubber"
+	if "light" in n or "lamp" in n or "drl" in n:
+		return "light"
+	if "seat" in n or "dash" in n or "interior" in n or "steer" in n:
+		return "interior"
+	if "chrome" in n or "mirror" in n or "bumper" in n:
+		return "trim"
+	if "paint" in n or "body" in n or "primary" in n or "chassis" in n:
+		return "body"
+	return ""
 
 
 func _apply_rim_visuals() -> void:

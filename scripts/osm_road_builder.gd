@@ -176,7 +176,7 @@ func _build(data: Dictionary) -> void:
 			continue
 		dress.append([pts, width, dens, hw])
 
-	var drawn := RoadSurface.draw_prepared_junctions(self, road_y, _asphalt, _major)
+	var drawn := RoadSurface.draw_prepared_junctions(self, road_y, _asphalt, _major, _paint)
 	var road_batches := RoadSurface.flush_batch()
 	print("ROAD batches ", road_batches, " junctions ", drawn, " ", RoadJunctions.summary)
 
@@ -974,7 +974,10 @@ func _add_road_name_signs(roads: Array) -> int:
 			continue
 		_named_roads.append(road)
 	add_to_group("dhule_roads")
-	return RoadLabels.bind(self, roads, data_buildings())
+	var signs := RoadLabels.bind(self, roads, data_buildings())
+	var painted := RoadLabels.lay_on_asphalt(self, roads, road_y, spawn_position)
+	print("ROAD names signs ", signs, " painted ", painted)
+	return signs
 
 
 func data_buildings() -> Array:

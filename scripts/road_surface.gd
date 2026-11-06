@@ -139,16 +139,102 @@ static func prepare_junctions(roads: Array) -> int:
 	return RoadJunctions.prepare(roads)
 
 
-static func draw_prepared_junctions(parent: Node3D, y: float, asphalt: Material, major: Material) -> int:
+static func draw_prepared_junctions(parent: Node3D, y: float, asphalt: Material, major: Material, paint: Material = null) -> int:
 	var n := 0
 	for jv in RoadJunctions.clips:
 		var j: Dictionary = jv
-		var mat: Material = major if bool(j.get("major", false)) else asphalt
-		if not bool(j.get("disc", true)):
+		if not bool(j.get("disc", true)) or not j.has("arms"):
 			continue
-		add_junction(parent, j["c"], float(j["r"]), y, mat)
-		n += 1
+		var mat: Material = major if bool(j.get("major", false)) else asphalt
+		if _join_polygon(parent, j, y, mat):
+			n += 1
+		if paint != null:
+			_junction_marks(j, y, paint)
 	return n
+
+
+static func _join_polygon(parent: Node3D, clip: Dictionary, y: float, asphalt: Material) -> bool:
+	var arms: Array = clip["arms"]
+	if arms.size() < 2:
+		return false
+	var corners: Array[Vector2] = []
+	for arm_v in arms:
+		var arm: Dictionary = arm_v
+		var dir: Vector2 = arm["dir"]
+		var tip: Vector2 = arm["p"] + dir * float(arm["pull"])
+		var side := Vector2(-dir.y, dir.x)
+		var half := float(arm["w"]) * 0.5
+		corners.append(tip + side * half)
+		corners.append(tip - side * half)
+	var centre: Vector2 = clip["c"]
+	corners.sort_custom(func(a: Vector2, b: Vector2) -> bool:
+		return atan2(a.y - centre.y, a.x - centre.x) < atan2(b.y - centre.y, b.x - centre.x)
+	)
+	var batched := _batch_parent != null
+	var st := SurfaceTool.new()
+	if batched:
+		st = _tool_for(_decks, asphalt)
+	else:
+		st.begin(Mesh.PRIMITIVE_TRIANGLES)
+	var c3 := Vector3(centre.x, y, centre.y)
+	for i in corners.size():
+		var a := corners[i]
+		var b := corners[(i + 1) % corners.size()]
+		var a3 := Vector3(a.x, y, a.y)
+		var b3 := Vector3(b.x, y, b.y)
+		if (a3 - c3).cross(b3 - c3).y < 0.0:
+			var swap := a3
+			a3 = b3
+			b3 = swap
+		st.set_normal(Vector3.UP)
+		st.set_uv(Vector2(0.5, 0.5))
+		st.add_vertex(c3)
+		st.set_uv(Vector2(0.5, 0.0))
+		st.add_vertex(a3)
+		st.set_uv(Vector2(0.5, 1.0))
+		st.add_vertex(b3)
+	if not batched:
+		var mesh := st.commit()
+		mesh.surface_set_material(0, asphalt)
+		var mi := MeshInstance3D.new()
+		mi.name = "junction"
+		mi.mesh = mesh
+		mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		parent.add_child(mi)
+	return true
+
+
+static func _junction_marks(clip: Dictionary, y: float, paint: Material) -> void:
+	var arms: Array = clip["arms"]
+	if arms.size() < 3:
+		return
+	var st := _tool_for(_marks, paint)
+	var lift := Vector3(0, 0.03, 0)
+	var narrow: Dictionary = arms[0]
+	for arm_v in arms:
+		var arm: Dictionary = arm_v
+		var dir: Vector2 = arm["dir"]
+		var tip: Vector2 = arm["p"] + dir * (float(arm["pull"]) + 0.85)
+		var side := Vector2(-dir.y, dir.x)
+		var half := float(arm["w"]) * 0.42
+		var a := Vector3(tip.x, y, tip.y) + Vector3(side.x, 0, side.y) * half + lift
+		var b := Vector3(tip.x, y, tip.y) - Vector3(side.x, 0, side.y) * half + lift
+		var fwd := Vector3(dir.x, 0, dir.y) * 0.28
+		_mark(st, a, b, b + fwd, a + fwd)
+		if float(arm["w"]) < float(narrow["w"]):
+			narrow = arm
+	if arms.size() < 4:
+		return
+	var dir_n: Vector2 = narrow["dir"]
+	var side_n := Vector2(-dir_n.y, dir_n.x)
+	var half_n := float(narrow["w"]) * 0.46
+	for stripe in 5:
+		var along := float(narrow["pull"]) + 2.4 + float(stripe) * 0.7
+		var tip_n: Vector2 = narrow["p"] + dir_n * along
+		var mid := Vector3(tip_n.x, y, tip_n.y) + lift
+		var across := Vector3(side_n.x, 0, side_n.y) * half_n
+		var deep := Vector3(dir_n.x, 0, dir_n.y) * 0.36
+		_mark(st, mid - across, mid + across, mid + across + deep, mid - across + deep)
 
 
 static func add_junction(parent: Node3D, pos: Vector2, radius: float, y: float, asphalt: Material) -> void:

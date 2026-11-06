@@ -45,7 +45,8 @@ func _ready() -> void:
 		var hw := str(road.get("highway", "residential"))
 		var mat: Material = major if hw in ["primary", "secondary", "tertiary", "trunk", "trunk_link"] else asphalt
 		RoadSurface.add_way(self, road.get("points", []), float(road.get("width", 7.0)), 0.04, mat, paint, hw)
-	var drawn := RoadSurface.draw_prepared_junctions(self, 0.04, asphalt, major)
+	var drawn := RoadSurface.draw_prepared_junctions(self, 0.04, asphalt, major, paint)
+	RoadLabels.lay_on_asphalt(self, shown, 0.04, origin)
 	var kerb := StandardMaterial3D.new()
 	kerb.albedo_color = Color(0.72, 0.7, 0.64)
 	var fill := StandardMaterial3D.new()
@@ -56,7 +57,16 @@ func _ready() -> void:
 	print("URBAN ways ", shown.size(), " junctions ", junctions, " drawn ", drawn, " roundabouts ", circles, " signs ", signs)
 
 
+func lock_view(pos: Vector3, at: Vector3) -> void:
+	set_meta("lock_view", true)
+	_cam.current = true
+	_cam.global_position = pos
+	_cam.look_at(at, Vector3.UP)
+
+
 func _process(delta: float) -> void:
+	if bool(get_meta("lock_view", false)):
+		return
 	if _cam == null or _car == null:
 		return
 	var car_cam := _car.get_node_or_null("CameraPivot/Camera3D") as Camera3D

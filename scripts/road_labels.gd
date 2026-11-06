@@ -3,6 +3,7 @@ extends RefCounted
 ## is empty. Signs stand on the ground beside the carriageway. A small pool
 ## follows the camera, so the first roads in the JSON do not use up the cap.
 
+const RoadJunctions = preload("res://scripts/road_junctions.gd")
 const SPACING_M := 170.0
 const SHOW_M := 78.0
 const SEPARATION_M := 34.0
@@ -179,6 +180,90 @@ static func _make_sign(parent: Node3D) -> Node3D:
 	root.visible = false
 	parent.add_child(root)
 	return root
+
+
+static func lay_on_asphalt(parent: Node3D, roads: Array, y: float, near: Vector3) -> int:
+	var found: Array[Dictionary] = []
+	for road_v in roads:
+		var road: Dictionary = road_v
+		var text := str(road.get("name", "")).strip_edges()
+		if text.is_empty():
+			text = str(road.get("ref", "")).strip_edges()
+		if text.is_empty():
+			continue
+		var pts: Array = road.get("points", [])
+		if pts.size() < 2:
+			continue
+		var length := _length(pts)
+		var steps := maxi(1, int(length / 140.0))
+		for step in steps:
+			var sample := _sample(pts, (float(step) + 0.5) / float(steps))
+			if sample.is_empty():
+				continue
+			var centre: Vector3 = sample[0]
+			var along: Vector3 = sample[1]
+			if _near_join(Vector2(centre.x, centre.z)) or _bent(pts, centre):
+				continue
+			found.append({
+				"text": text,
+				"at": centre,
+				"yaw": atan2(along.x, along.z),
+				"d": Vector2(centre.x, centre.z).distance_to(Vector2(near.x, near.z)),
+			})
+	found.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return float(a["d"]) < float(b["d"]))
+	var kept := 0
+	var used: Array[Vector3] = []
+	for item in found:
+		if kept >= 36:
+			break
+		var at: Vector3 = item["at"]
+		var crowded := false
+		for prev in used:
+			if prev.distance_to(at) < 70.0:
+				crowded = true
+				break
+		if crowded:
+			continue
+		var label := Label3D.new()
+		label.text = str(item["text"])
+		label.font_size = 32
+		label.pixel_size = 0.03
+		label.modulate = Color(0.95, 0.94, 0.86)
+		label.outline_size = 8
+		label.outline_modulate = Color(0.12, 0.12, 0.12)
+		label.billboard = BaseMaterial3D.BILLBOARD_DISABLED
+		label.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		label.position = Vector3(at.x, y + 0.035, at.z)
+		label.rotation = Vector3(-PI * 0.5, float(item["yaw"]), 0)
+		parent.add_child(label)
+		used.append(at)
+		kept += 1
+	return kept
+
+
+static func _near_join(pos: Vector2) -> bool:
+	for jv in RoadJunctions.clips:
+		var j: Dictionary = jv
+		if not j.has("c"):
+			continue
+		var c: Vector2 = j["c"]
+		if pos.distance_to(c) < 16.0:
+			return true
+	return false
+
+
+static func _bent(pts: Array, centre: Vector3) -> bool:
+	for i in range(1, pts.size() - 1):
+		var p := Vector3(float(pts[i][0]), 0, float(pts[i][1]))
+		if p.distance_to(centre) > 16.0:
+			continue
+		var a := p - Vector3(float(pts[i - 1][0]), 0, float(pts[i - 1][1]))
+		var b := Vector3(float(pts[i + 1][0]), 0, float(pts[i + 1][1])) - p
+		if a.length() < 0.4 or b.length() < 0.4:
+			continue
+		if a.normalized().dot(b.normalized()) < 0.9:
+			return true
+	return false
 
 
 static func _blocked(pos: Vector2, roads: Array, own: Dictionary, buildings: Array) -> bool:
