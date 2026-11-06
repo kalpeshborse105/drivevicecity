@@ -1,3 +1,7 @@
+# Local API keys — never commit
+google key.txt
+*api*key*.txt
+
 # Godot 4
 .godot/
 *.translation
@@ -5,6 +9,23 @@ export.cfg
 export_presets.cfg
 .import/
 *.tmp
+
+# GitHub rejects blobs over 100 MB. Keep these on disk only.
+assets/incoming/gltf.zip
+assets/incoming/roads/gltf.zip
+assets/incoming/*.zip
+assets/incoming/**/*.zip
+assets/incoming/old_city.glb
+
+# Blender autosave. The .blend file is the source.
+*.blend1
+
+# Local editor config
+.mcp.json
+
+# Python bytecode
+__pycache__/
+*.pyc
 
 # Large raw OSM downloads (regenerate with tools/); keep *_game.json
 assets/maps/*.osm.xml

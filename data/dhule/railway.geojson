@@ -1,0 +1,60 @@
+{
+  "type": "FeatureCollection",
+  "name": "dhule-railway",
+  "source": {
+    "file": "assets/maps/dhulemap.osm",
+    "license": "ODbL-1.0",
+    "attribution": "© OpenStreetMap contributors",
+    "bounds": {
+      "minlat": "20.8900200",
+      "minlon": "74.7597700",
+      "maxlat": "20.9099000",
+      "maxlon": "74.7889600"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "way/667409697",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            74.7667486,
+            20.8907591
+          ],
+          [
+            74.7670845,
+            20.8900202
+          ],
+          [
+            74.767429,
+            20.8892601
+          ],
+          [
+            74.7678092,
+            20.8884179
+          ]
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 667409697,
+        "node_ids": [
+          2825104753,
+          2825104750,
+          2825104747,
+          2825104745
+        ],
+        "tags": {
+          "electrified": "no",
+          "gauge": "1676",
+          "railway": "rail",
+          "service": "siding"
+        },
+        "railway": "rail",
+        "name": null
+      }
+    }
+  ]
+}

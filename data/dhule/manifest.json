@@ -1,0 +1,96 @@
+{
+  "city_id": "dhule",
+  "display_name": "Dhule",
+  "crs": "WGS84 / EPSG:4326",
+  "epsg": 4326,
+  "origin": {
+    "latitude": 20.902,
+    "longitude": 74.777
+  },
+  "source_filename": "assets/maps/dhulemap.osm",
+  "source_timestamp": null,
+  "latest_element_timestamp": "2026-11-05T08:21:22Z",
+  "export_date": "2026-11-06",
+  "bounds": {
+    "minlat": "20.8900200",
+    "minlon": "74.7597700",
+    "maxlat": "20.9099000",
+    "maxlon": "74.7889600"
+  },
+  "license": "ODbL-1.0",
+  "attribution": "© OpenStreetMap contributors",
+  "exporter": {
+    "script": "tools/export_dhule_layers.py",
+    "version": "1.0.0"
+  },
+  "layers": [
+    {
+      "id": "roads",
+      "filename": "roads.geojson",
+      "feature_count": 799,
+      "rewritten_this_export": false
+    },
+    {
+      "id": "buildings",
+      "filename": "buildings.geojson",
+      "feature_count": 254,
+      "rewritten_this_export": false
+    },
+    {
+      "id": "waterway",
+      "filename": "waterways.geojson",
+      "feature_count": 2,
+      "rewritten_this_export": true
+    },
+    {
+      "id": "natural",
+      "filename": "natural.geojson",
+      "feature_count": 1,
+      "rewritten_this_export": true
+    },
+    {
+      "id": "landuse",
+      "filename": "landuse.geojson",
+      "feature_count": 4,
+      "rewritten_this_export": true
+    },
+    {
+      "id": "leisure",
+      "filename": "leisure.geojson",
+      "feature_count": 6,
+      "rewritten_this_export": true
+    },
+    {
+      "id": "railway",
+      "filename": "railway.geojson",
+      "feature_count": 1,
+      "rewritten_this_export": true
+    },
+    {
+      "id": "amenities",
+      "filename": "amenities.geojson",
+      "feature_count": 3,
+      "rewritten_this_export": true
+    },
+    {
+      "id": "places",
+      "filename": "places.geojson",
+      "feature_count": 81,
+      "rewritten_this_export": true
+    },
+    {
+      "id": "route_relations",
+      "filename": "route_relations.json",
+      "feature_count": 4,
+      "rewritten_this_export": true
+    },
+    {
+      "id": "boundaries",
+      "filename": "boundaries.geojson",
+      "feature_count": 2,
+      "geometry_assembled": 0,
+      "rewritten_this_export": true
+    }
+  ],
+  "skipped_unresolved_ways": []
+}

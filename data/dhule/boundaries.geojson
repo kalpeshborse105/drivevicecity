@@ -1,0 +1,262 @@
+{
+  "type": "FeatureCollection",
+  "name": "dhule-boundaries",
+  "source": {
+    "file": "assets/maps/dhulemap.osm",
+    "license": "ODbL-1.0",
+    "attribution": "© OpenStreetMap contributors",
+    "bounds": {
+      "minlat": "20.8900200",
+      "minlon": "74.7597700",
+      "maxlat": "20.9099000",
+      "maxlon": "74.7889600"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "relation/1985898",
+      "geometry": null,
+      "properties": {
+        "osm_type": "relation",
+        "osm_id": 1985898,
+        "name": "Dhule",
+        "tags": {
+          "admin_level": "5",
+          "boundary": "administrative",
+          "name": "Dhule",
+          "name:en": "Dhule District",
+          "name:hi": "धुले",
+          "name:ja": "ドゥーレー",
+          "name:ko": "둘레구",
+          "name:mr": "धुळे जिल्हा",
+          "name:pa": "ਧੁਲ਼ੇ",
+          "official_name": "Dhule District",
+          "ref:LGD:district": "474",
+          "type": "boundary",
+          "wikidata": "Q1797383",
+          "wikipedia": "en:Dhule district"
+        },
+        "members": [
+          {
+            "type": "way",
+            "ref": 748930486,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 748937378,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 144146261,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 144146268,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 1084239746,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 1084231740,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 1084233659,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 749033943,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 749033891,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 147133409,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 748957351,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 749034005,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 748957347,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 1218605662,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 1218605669,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 1218605664,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 1218605691,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 1218605772,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 1218605946,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 1218605721,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 1218605682,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 1218605744,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 1218605728,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 1218605663,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 1218615580,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 1218692770,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 1218692792,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 1218692763,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 748937383,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 748957349,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 748957417,
+            "role": "outer"
+          },
+          {
+            "type": "node",
+            "ref": 245691673,
+            "role": "admin_centre"
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "relation/10327952",
+      "geometry": null,
+      "properties": {
+        "osm_type": "relation",
+        "osm_id": 10327952,
+        "name": "Dhule Taluka",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "Dhule Taluka",
+          "name:mr": "धुळे तालुका",
+          "ref:LGD:subdistrict": "3959",
+          "type": "boundary",
+          "wikidata": "Q2761862",
+          "wikipedia": "mr:धुळे तालुका"
+        },
+        "members": [
+          {
+            "type": "node",
+            "ref": 245691673,
+            "role": "admin_centre"
+          },
+          {
+            "type": "way",
+            "ref": 748957352,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 748957418,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 1084233659,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 749033943,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 749033891,
+            "role": "outer"
+          },
+          {
+            "type": "way",
+            "ref": 147133409,
+            "role": "outer"
+          }
+        ]
+      }
+    }
+  ]
+}

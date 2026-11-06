@@ -1,0 +1,2133 @@
+{
+  "type": "FeatureCollection",
+  "name": "dhule-places",
+  "source": {
+    "file": "assets/maps/dhulemap.osm",
+    "license": "ODbL-1.0",
+    "attribution": "© OpenStreetMap contributors",
+    "bounds": {
+      "minlat": "20.8900200",
+      "minlon": "74.7597700",
+      "maxlat": "20.9099000",
+      "maxlon": "74.7889600"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "node/245691673",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7732,
+          20.898
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 245691673,
+        "tags": {
+          "name": "Dhule",
+          "name:ar": "دهولي",
+          "name:en": "Dhule",
+          "name:fa": "دوله",
+          "name:hi": "धुले",
+          "name:ja": "ドゥーレー",
+          "name:kn": "ಧುಲೆ",
+          "name:ko": "둘레",
+          "name:ml": "ധൂലെ",
+          "name:mr": "धुळे",
+          "name:pa": "ਧੁਲ਼ੇ",
+          "name:ru": "Дхуле",
+          "name:zh": "图莱",
+          "place": "city",
+          "population": "375550",
+          "postal_code": "424001",
+          "source": "AND",
+          "wikidata": "Q773603",
+          "wikipedia": "en:Dhule"
+        },
+        "place": "city",
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": "Dhule"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/245691702",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.796886,
+          20.9009034
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 245691702,
+        "tags": {
+          "source": "AND"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/245691711",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7835923,
+          20.9028541
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 245691711,
+        "tags": {
+          "source": "AND"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/837203186",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7825646,
+          20.8755004
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 837203186,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1185717515",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7714411,
+          20.8827695
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 1185717515,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1185717522",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7765273,
+          20.9010467
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 1185717522,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1185717524",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.781043,
+          20.8796799
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 1185717524,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1185717545",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7731466,
+          20.8763787
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 1185717545,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1185717549",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7775204,
+          20.9058071
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 1185717549,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1185717551",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7742233,
+          20.8992975
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 1185717551,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1185717552",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7762046,
+          20.899419
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 1185717552,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1185717553",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.782198,
+          20.8766274
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 1185717553,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1185717560",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7728855,
+          20.8733477
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 1185717560,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1185717562",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7787186,
+          20.8876057
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 1185717562,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1185717565",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7754131,
+          20.8969126
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 1185717565,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1185717567",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7714012,
+          20.8816807
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 1185717567,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1185717570",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.781547,
+          20.8963119
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 1185717570,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1185717573",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7720956,
+          20.8790667
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 1185717573,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1185717579",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7799712,
+          20.8942647
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 1185717579,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1185717581",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7690693,
+          20.887714
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 1185717581,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1185717588",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7722068,
+          20.8854299
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 1185717588,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1185717589",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7743901,
+          20.9002326
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 1185717589,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1185717595",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.779346,
+          20.8856288
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 1185717595,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1185717597",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7823356,
+          20.898398
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 1185717597,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1185717598",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.772624,
+          20.8727162
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 1185717598,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1185717599",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7746817,
+          20.8947151
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 1185717599,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1185717601",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7762734,
+          20.8997967
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 1185717601,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1185717607",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7815067,
+          20.8781476
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 1185717607,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1185717609",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7716769,
+          20.880406
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 1185717609,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1185717611",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7783171,
+          20.8883665
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 1185717611,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1185717621",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7728064,
+          20.8772799
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 1185717621,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1185717626",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7735071,
+          20.8900144
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 1185717626,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1185717627",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7806579,
+          20.89493
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 1185717627,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/2825104750",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7670845,
+          20.8900202
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 2825104750,
+        "tags": {
+          "railway": "level_crossing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/2825104753",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7667486,
+          20.8907591
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 2825104753,
+        "tags": {
+          "railway": "buffer_stop"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/3217490126",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7775248,
+          20.9035194
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 3217490126,
+        "tags": {
+          "addr:city": "Dhule",
+          "addr:housenumber": "15, 1st Floor Shree Vinayak Plaza",
+          "addr:postcode": "424001",
+          "addr:street": "Opposite Sri Ram Medical, Phoolwala Chowk",
+          "amenity": "hospital",
+          "name": "Sanskar Homeopathic Clinic",
+          "operator": "DR VIRAJ JAIN",
+          "phone": "09922551167"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Sanskar Homeopathic Clinic"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/3534614391",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7738705,
+          20.899524
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 3534614391,
+        "tags": {
+          "name": "my native place is damundar"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": "my native place is damundar"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/4391720080",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7663171,
+          20.8894803
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 4391720080,
+        "tags": {
+          "railway": "level_crossing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/6896411658",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7675251,
+          20.9035541
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 6896411658,
+        "tags": {
+          "addr:city": "Dhule",
+          "addr:district": "DHULE",
+          "addr:full": "Atul Medical and Rehabilitation Society, Arpan Blood Bank, Jain Oswal Boarding, Ganpati Road, Near Santoshi Mata Mandir, Dhule, Nashik",
+          "addr:postcode": "424001",
+          "addr:state": "Maharashtra",
+          "amenity": "blood_bank",
+          "contact:mobile": "09881907646; 09975000000",
+          "contact:phone": "02562229163; 02562229164; 02562229165",
+          "name": "Arpan Blood Bank, Dhule",
+          "opening_hours": "24/7",
+          "operator:type": "ngo",
+          "source": "OpenGovernmentData"
+        },
+        "place": null,
+        "amenity": "blood_bank",
+        "shop": null,
+        "tourism": null,
+        "name": "Arpan Blood Bank, Dhule"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/6896411671",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7754544,
+          20.8977966
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 6896411671,
+        "tags": {
+          "addr:city": "Dhule",
+          "addr:district": "DHULE",
+          "addr:full": "3252 Agra Road, Near Prabhakar Theater",
+          "addr:postcode": "424001",
+          "addr:state": "Maharashtra",
+          "amenity": "blood_bank",
+          "contact:mobile": "9422562094",
+          "contact:phone": "2562232807",
+          "email": "bb_jyoti@yahoo.com",
+          "name": "Jeevan Jyoti Blood Bank, Dhule",
+          "opening_hours": "24/7",
+          "operator:type": "ngo",
+          "source": "OpenGovernmentData"
+        },
+        "place": null,
+        "amenity": "blood_bank",
+        "shop": null,
+        "tourism": null,
+        "name": "Jeevan Jyoti Blood Bank, Dhule"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7043230047",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7767566,
+          20.89146
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7043230047,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "Opp Canosa High School Chalisagaon Road",
+          "addr:postcode": "424001",
+          "addr:state": "Maharashtra",
+          "amenity": "hospital",
+          "name": "Lokmanyaa Hospital",
+          "source": "OpenGovernmentData"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Lokmanyaa Hospital"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7043667610",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.782856,
+          20.9021102
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7043667610,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "Plot No-16, Badgujar Plot, Parola Road",
+          "addr:postcode": "424001",
+          "addr:state": "Maharashtra",
+          "amenity": "hospital",
+          "name": "Ram Surgical Hospital",
+          "source": "OpenGovernmentData"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Ram Surgical Hospital"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7049671751",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7625449,
+          20.9032822
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7049671751,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "Institute Of Urology Sakri Road",
+          "addr:postcode": "424001",
+          "addr:state": "Maharashtra",
+          "amenity": "hospital",
+          "name": "Tajnaksh Healthcare",
+          "source": "OpenGovernmentData"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Tajnaksh Healthcare"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7051765089",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7647725,
+          20.9027191
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7051765089,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "Champa Bag, Skri Road",
+          "addr:postcode": "424001",
+          "addr:state": "Maharashtra",
+          "amenity": "hospital",
+          "name": "Bafna Hospital",
+          "source": "OpenGovernmentData"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Bafna Hospital"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7054602124",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.765081,
+          20.9031613
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7054602124,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "Sakri Road, Opposite Champa Baug",
+          "addr:postcode": "424001",
+          "addr:state": "Maharashtra",
+          "amenity": "hospital",
+          "name": "Mutha Accident Hospital",
+          "source": "OpenGovernmentData"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Mutha Accident Hospital"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7059617945",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7641234,
+          20.8970824
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7059617945,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "Near Dutta Mandir , Jamnagiri Road",
+          "addr:postcode": "424001",
+          "addr:state": "Maharashtra",
+          "amenity": "hospital",
+          "name": "Apurva Critical Care",
+          "source": "OpenGovernmentData"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Apurva Critical Care"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7065820591",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7827386,
+          20.8994842
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7065820591,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "80 Ft Road,Nr Natraj Theature",
+          "addr:postcode": "424002",
+          "addr:state": "Maharashtra",
+          "amenity": "hospital",
+          "name": "Niramaya Cancer Hospital",
+          "source": "OpenGovernmentData"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Niramaya Cancer Hospital"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7067113553",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7707149,
+          20.9088798
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7067113553,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "50, Jai Hind Colony, Deopur",
+          "addr:postcode": "424002",
+          "addr:state": "Maharashtra",
+          "amenity": "hospital",
+          "name": "Sudha Multispeciality Hospital and Critical Care Centre",
+          "source": "OpenGovernmentData"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Sudha Multispeciality Hospital and Critical Care Centre"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7070262587",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.768663,
+          20.8900836
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7070262587,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "Ramvadi Malegone Road",
+          "addr:postcode": "424001",
+          "addr:state": "Maharashtra",
+          "amenity": "hospital",
+          "name": "Accident Hospital",
+          "source": "OpenGovernmentData"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Accident Hospital"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7072544661",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7651413,
+          20.8958045
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7072544661,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "Opposite D.I.C.Office, Jamnagiri Road",
+          "addr:postcode": "424001",
+          "addr:state": "Maharashtra",
+          "amenity": "hospital",
+          "name": "Tushar Hospital",
+          "source": "OpenGovernmentData"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Tushar Hospital"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7073537696",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7686309,
+          20.908105
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7073537696,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "Garud Colony, Near Ganapati Mandir Bridge,Deopur",
+          "addr:postcode": "424002",
+          "addr:state": "Maharashtra",
+          "amenity": "hospital",
+          "name": "Shri Siddheshwar Multispeciality Hospital",
+          "source": "OpenGovernmentData"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Shri Siddheshwar Multispeciality Hospital"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7226751923",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.779926,
+          20.899044
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7226751923,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "Nagar Patti, Dhule",
+          "addr:postcode": "424001",
+          "addr:state": "Maharashtra",
+          "amenity": "hospital",
+          "name": "Dhule Mahanagarpalika Dawakhana",
+          "source": "OpenGovernmentData"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Dhule Mahanagarpalika Dawakhana"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7226751947",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7711279,
+          20.9016416
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7226751947,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "Sakri Road, Vidhya Vihar Colony, Dhule",
+          "addr:postcode": "424001",
+          "addr:state": "Maharashtra",
+          "amenity": "hospital",
+          "description": "District Hospital",
+          "name": "District Hospital, Dhule",
+          "source": "OpenGovernmentData"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "District Hospital, Dhule"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7330998411",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7763865,
+          20.8921134
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7330998411,
+        "tags": {
+          "name": "Exide Battery",
+          "shop": "car_parts"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": "car_parts",
+        "tourism": null,
+        "name": "Exide Battery"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7330998456",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7752532,
+          20.8914305
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7330998456,
+        "tags": {
+          "amenity": "school",
+          "name": "Canossa Convent High School"
+        },
+        "place": null,
+        "amenity": "school",
+        "shop": null,
+        "tourism": null,
+        "name": "Canossa Convent High School"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7330998457",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7738665,
+          20.8903806
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7330998457,
+        "tags": {
+          "name": "Plaza",
+          "tourism": "hotel"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": "hotel",
+        "name": "Plaza"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7331005095",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7722492,
+          20.9033994
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7331005095,
+        "tags": {
+          "amenity": "school",
+          "name": "Kamlabai Girls High School"
+        },
+        "place": null,
+        "amenity": "school",
+        "shop": null,
+        "tourism": null,
+        "name": "Kamlabai Girls High School"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7652426447",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7631966,
+          20.9029647
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7652426447,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "Opp Mission Compound, Sakri Road, Dhule",
+          "addr:postcode": "424002",
+          "addr:state": "Maharastra",
+          "amenity": "hospital",
+          "name": "Siddhi-Vinayak Hospital",
+          "source": "Local Knowledge"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Siddhi-Vinayak Hospital"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7652426450",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.762331,
+          20.903498
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7652426450,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "Sakri Road, Kumar Nagar, Mahindale",
+          "addr:postcode": "424002",
+          "addr:state": "Maharastra",
+          "amenity": "hospital",
+          "name": "Sunder Madhav Hospital",
+          "source": "Local Knowledge"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Sunder Madhav Hospital"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7652426454",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.768569,
+          20.8914486
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7652426454,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "Meera Hospital, UMID Clinic, Dhule",
+          "addr:state": "Maharastra",
+          "amenity": "hospital",
+          "name": "Dr. Nikhil Shirole Gastroenterologist Hospital",
+          "source": "Local Knowledge"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Dr. Nikhil Shirole Gastroenterologist Hospital"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7652426460",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7689005,
+          20.8911471
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7652426460,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "Kaderi Hospital, Station Road, Snehnagar, Green Park, Dhule",
+          "addr:postcode": "424001",
+          "addr:state": "Maharastra",
+          "amenity": "hospital",
+          "name": "Kaderi Hospital",
+          "source": "Local Knowledge"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Kaderi Hospital"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7652426462",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7615244,
+          20.9063449
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7652426462,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "Kumar Nagar, Dhule",
+          "addr:postcode": "424001",
+          "addr:state": "Maharastra",
+          "amenity": "hospital",
+          "name": "Sane Guruji Hospital",
+          "source": "Local Knowledge"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Sane Guruji Hospital"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7652426466",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7745264,
+          20.8919485
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7652426466,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "Dhule",
+          "addr:postcode": "424001",
+          "addr:state": "Maharastra",
+          "amenity": "hospital",
+          "name": "Shradha Multi Speciality Hospital",
+          "source": "Local Knowledge"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Shradha Multi Speciality Hospital"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7652426469",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7765078,
+          20.8923323
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7652426469,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "80 Feet Road, Ansar Nagar, Dhule",
+          "addr:postcode": "424001",
+          "addr:state": "Maharastra",
+          "amenity": "hospital",
+          "name": "Jeevan Jyoti Children Hospital",
+          "source": "Local Knowledge"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Jeevan Jyoti Children Hospital"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7652426471",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7687905,
+          20.8906338
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7652426471,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "Green Park, Dhule",
+          "addr:postcode": "424006",
+          "addr:state": "Maharastra",
+          "amenity": "hospital",
+          "name": "Kesharanand Hospital",
+          "source": "Local Knowledge"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Kesharanand Hospital"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7652426484",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7664327,
+          20.8939095
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7652426484,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "Navjivan Nagar, Dhule",
+          "addr:postcode": "424002",
+          "addr:state": "Maharastra",
+          "amenity": "hospital",
+          "name": "Om Sai Hospital",
+          "source": "Local Knowledge"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Om Sai Hospital"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7652426492",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7654274,
+          20.8948801
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7652426492,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "Ashok Nagar, Jamnagiri Road, Opp Kamgar Bhavan, Fashipul, Sambhappa Colony, Dhule",
+          "addr:postcode": "424001",
+          "addr:state": "Maharastra",
+          "amenity": "hospital",
+          "name": "Dashak Hospital",
+          "source": "Local Knowledge"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Dashak Hospital"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7652426495",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.76554,
+          20.89421
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7652426495,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "Sambhappa Colony, Dhule",
+          "addr:postcode": "424006",
+          "addr:state": "Maharastra",
+          "amenity": "hospital",
+          "name": "Ankur Hospital",
+          "source": "Local Knowledge"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Ankur Hospital"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7652426497",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.774265,
+          20.891741
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7652426497,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "Near Agrasen Statue, Malegaon",
+          "addr:state": "Maharastra",
+          "amenity": "hospital",
+          "name": "Yash Urology Hospital",
+          "source": "Local Knowledge"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Yash Urology Hospital"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7652426498",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7654428,
+          20.895298
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7652426498,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "Ashok Nagar, Jamnagiri Road, Fashipool, Dhule",
+          "addr:postcode": "424001",
+          "addr:state": "Maharastra",
+          "amenity": "hospital",
+          "name": "Dr. Deepak Dinkar Patil Accident Hospital",
+          "source": "Local Knowledge"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Dr. Deepak Dinkar Patil Accident Hospital"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7652426522",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7650145,
+          20.8937839
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7652426522,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "Ashok Nagar, Chitod Road, Dhule",
+          "addr:postcode": "424002",
+          "addr:state": "Maharastra",
+          "amenity": "hospital",
+          "name": "Madhusmit Hospital",
+          "source": "Local Knowledge"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Madhusmit Hospital"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7652426531",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.762653,
+          20.9026867
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7652426531,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "Mission Compound, Sakri Road, Padmanabh Nagar, Kumar Nagar, Dhule",
+          "addr:postcode": "424002",
+          "addr:state": "Maharastra",
+          "amenity": "hospital",
+          "name": "Seva Superspeciality Hospital and Critical Care Centre",
+          "source": "Local Knowledge"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Seva Superspeciality Hospital and Critical Care Centre"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7652426536",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7682835,
+          20.8902688
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7652426536,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "Opp. Zende Hospital, Green Park, Dhule",
+          "addr:postcode": "424006",
+          "addr:state": "Maharastra",
+          "amenity": "hospital",
+          "name": "Shivpushp Hospital",
+          "source": "Local Knowledge"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Shivpushp Hospital"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7652426549",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7735375,
+          20.8916241
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7652426549,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "Dhule",
+          "addr:postcode": "424001",
+          "addr:state": "Maharastra",
+          "amenity": "hospital",
+          "name": "Archana Cardiac and Diabetes Centre Hospital",
+          "source": "Local Knowledge"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Archana Cardiac and Diabetes Centre Hospital"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/7652426558",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7660027,
+          20.8945385
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 7652426558,
+        "tags": {
+          "addr:district": "Dhule",
+          "addr:full": "Sambhappa Colony, Dhule",
+          "addr:postcode": "424006",
+          "addr:state": "Maharastra",
+          "amenity": "hospital",
+          "name": "Shree Shakambhari Hospital",
+          "source": "Local Knowledge"
+        },
+        "place": null,
+        "amenity": "hospital",
+        "shop": null,
+        "tourism": null,
+        "name": "Shree Shakambhari Hospital"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/8190450178",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7732146,
+          20.8756384
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 8190450178,
+        "tags": {
+          "railway": "level_crossing",
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/8190450183",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7691305,
+          20.8877839
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 8190450183,
+        "tags": {
+          "source": "Bing"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/10062229423",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7681976,
+          20.9023921
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 10062229423,
+        "tags": {
+          "name": "multiple local newspaper vendors",
+          "shop": "newsagent"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": "newsagent",
+        "tourism": null,
+        "name": "multiple local newspaper vendors"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/10062243720",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7667626,
+          20.9001219
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 10062243720,
+        "tags": {
+          "leisure": "swimming_pool",
+          "name": "Officer's club Swimming club"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": "Officer's club Swimming club"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/13621972942",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7671357,
+          20.8988155
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 13621972942,
+        "tags": {
+          "highway": "turning_circle"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": null,
+        "tourism": null,
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/14214421139",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.76437,
+          20.897579
+        ]
+      },
+      "properties": {
+        "osm_type": "node",
+        "osm_id": 14214421139,
+        "tags": {
+          "addr:city": "Dhule",
+          "addr:district": "Dhule",
+          "addr:housenumber": "shop no 12,",
+          "addr:postcode": "424001",
+          "addr:street": "datta mandir, Jamnagiri Rd,",
+          "beauty": "nails;tanning;spa;cosmetics;hair_removal;skin_care;hair;eyebrow;aesthetic;massage;waxing;pedicure;eyelash",
+          "name": "Vishakha Dusane makeover",
+          "opening_hours": "Mo-Sun 09:00-24:00",
+          "operator": "Vishakha Dusane",
+          "payment:app": "yes",
+          "payment:cash": "yes",
+          "payment:google_pay": "yes",
+          "shop": "beauty",
+          "website": "https://vishakhadusanemakeover.com/"
+        },
+        "place": null,
+        "amenity": null,
+        "shop": "beauty",
+        "tourism": null,
+        "name": "Vishakha Dusane makeover"
+      }
+    }
+  ]
+}

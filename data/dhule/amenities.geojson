@@ -1,0 +1,174 @@
+{
+  "type": "FeatureCollection",
+  "name": "dhule-amenities",
+  "source": {
+    "file": "assets/maps/dhulemap.osm",
+    "license": "ODbL-1.0",
+    "attribution": "© OpenStreetMap contributors",
+    "bounds": {
+      "minlat": "20.8900200",
+      "minlon": "74.7597700",
+      "maxlat": "20.9099000",
+      "maxlon": "74.7889600"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "way/265573305",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              74.771042,
+              20.8988539
+            ],
+            [
+              74.769497,
+              20.8989842
+            ],
+            [
+              74.7694541,
+              20.8979819
+            ],
+            [
+              74.77116,
+              20.8979819
+            ],
+            [
+              74.771042,
+              20.8988539
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 265573305,
+        "node_ids": [
+          2712187272,
+          2712187273,
+          2712187274,
+          2712187276,
+          2712187272
+        ],
+        "tags": {
+          "amenity": "bus_station"
+        },
+        "amenity": "bus_station",
+        "name": null
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/482795252",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              74.7692638,
+              20.8926728
+            ],
+            [
+              74.770329,
+              20.8926348
+            ],
+            [
+              74.7702477,
+              20.8921107
+            ],
+            [
+              74.7691134,
+              20.892179
+            ],
+            [
+              74.7692638,
+              20.8926728
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 482795252,
+        "node_ids": [
+          4755880081,
+          4755880082,
+          4755880083,
+          4755880084,
+          4755880081
+        ],
+        "tags": {
+          "addr:city": "Dhule",
+          "addr:postcode": "424001",
+          "addr:street": "Major District Road 46",
+          "amenity": "school",
+          "name": "Cannosa Convent High School"
+        },
+        "amenity": "school",
+        "name": "Cannosa Convent High School"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/1276026223",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              74.7861185,
+              20.8992228
+            ],
+            [
+              74.7859984,
+              20.8991278
+            ],
+            [
+              74.7861719,
+              20.898989
+            ],
+            [
+              74.7862803,
+              20.8990826
+            ],
+            [
+              74.7862069,
+              20.8991496
+            ],
+            [
+              74.7861185,
+              20.8992228
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "osm_type": "way",
+        "osm_id": 1276026223,
+        "node_ids": [
+          11846834035,
+          11846834036,
+          11846834037,
+          11846834038,
+          11846834039,
+          11846834035
+        ],
+        "tags": {
+          "addr:city": "Dhule",
+          "addr:district": "Dhule",
+          "addr:street": "Market Road",
+          "amenity": "fuel",
+          "brand": "Bharat Petroleum",
+          "brand:wikidata": "Q854826",
+          "fuel:petrol": "yes",
+          "name": "Bharat Petroleum"
+        },
+        "amenity": "fuel",
+        "name": "Bharat Petroleum"
+      }
+    }
+  ]
+}
