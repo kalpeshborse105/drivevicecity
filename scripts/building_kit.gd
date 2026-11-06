@@ -1,6 +1,7 @@
 extends RefCounted
-## Own Indian multi-storey facades — one ArrayMesh per OSM footprint (Phase 1B).
-## Floors derive from plan area; shutters, signboards, balconies, bands, parapet, roof tanks.
+## Own Indian multi-storey facades — one ArrayMesh per rectangular fallback footprint.
+## Floors derive from plan area; shutters, blank signboards, balconies, bands, parapet, roof tanks.
+## Shop names are never invented. A signboard stays blank unless the caller passes a verified name.
 
 const StreetKit = preload("res://scripts/street_kit.gd")
 
@@ -27,55 +28,7 @@ const GLASS := Color(0.26, 0.36, 0.46)
 const DARK := Color(0.13, 0.13, 0.14)
 const ROOF := Color(0.46, 0.44, 0.42)
 
-## Dhule / Maharashtra shopfront signage bank (authentic Dhule business names
-## in Roman script — renders on default Godot font, exactly how real Maharashtra signs appear).
-const SIGN_WORDS: Array[String] = [
-	"SHREE GANESH KIRANA",
-	"OM SAI MEDICAL & MEDICO",
-	"MAHESH CLOTH & SAREES",
-	"DHULE AGRI SEVA KENDRA",
-	"HOTEL SURUCHI PURE VEG",
-	"LAXMI SARAF JEWELLERS",
-	"BHARAT SWEET MART",
-	"NEW BOMBAY HAIR SALOON",
-	"KHANDESH MOTOR GARAGE",
-	"DEOPUR BAKERY & CAFE",
-	"SAI ELECTRONICS & MOBILE",
-	"PHOOLWALA CHOWK HARDWARE",
-	"SWAMI PHOTO STUDIO",
-	"PANCHAVATI TAILORS",
-	"AMUL MILK & ICE CREAM",
-	"JAI BHAVANI CHAI & SNACKS",
-	"VIVEKANAND OPTICALS",
-	"SANCHETI BOOK DEPOT",
-	"POOJA BARTAN BHANDAR",
-	"APNA BAZAR SUPER MARKET",
-	"EXIDE BATTERY HOUSE",
-	"AMIT TYRES & ALIGNMENT",
-	"MAHARASHTRA FERTILIZERS",
-	"SHREEJI PLASTIC STORES",
-	"TULSI AYURVEDIC AUSHADHI",
-	"HOTEL ANNAPURNA THALI",
-	"GANPATI JEWELLERS",
-	"BALAJI ELECTRICALS",
-	"KRISHNA GENERAL STORES",
-	"SHREE RAM AUTOMOBILES",
-	"ANAND SWEETS & FARSAN",
-	"VISHAL FOOTWEAR",
-	"KHANDESH TEA HOUSE",
-	"SHIVAJI CHOWK MEDICAL",
-	"ROYAL MENS WEAR",
-	"MOHADI AGRI KENDRA",
-	"DHULE COLD DRINKS",
-	"SHRINATHJI DRY FRUITS",
-	"MAULI HARDWARE & PAINTS",
-	"JAI HIND BOOK CENTRE",
-	"PATIL WATCH & EYEWEAR",
-	"SAI KRUPA FRUIT STALL",
-	"SHREE RADHE DAIRY",
-	"VIJAY PAAN BHANDAR",
-]
-## Signboard fascia background colors (vibrant enamel tones: red, royal blue, emerald green, saffron orange, marigold yellow).
+## Blank signboard fascia colours. No business name is stored here.
 const SIGN_COLORS: Array[Color] = [
 	Color(0.82, 0.14, 0.12), # vibrant red
 	Color(0.12, 0.35, 0.75), # royal blue
@@ -132,12 +85,8 @@ static func footprint(
 
 	var wall_c: Color = WALLS[rng.randi_range(0, WALLS.size() - 1)]
 	var accent_c: Color = ACCENTS[rng.randi_range(0, ACCENTS.size() - 1)]
-	# A shopfront name on some commercial fronts — reads as a real Dhule high-street.
-	var sign_text := ""
-	if commercial and signature_budget > 0 and rng.randf() < 0.88:
-		signature_budget -= 1
-		sign_text = SIGN_WORDS[rng.randi() % SIGN_WORDS.size()]
-	_build(parent, pos, face_dir, w, d, h, floors, ground_h, floor_h, commercial, wall_c, accent_c, rng, sign_text, with_collision)
+	# Commercial fronts keep a blank board. A name is added only when a caller passes one.
+	_build(parent, pos, face_dir, w, d, h, floors, ground_h, floor_h, commercial, wall_c, accent_c, rng, "", with_collision)
 	return h
 
 
