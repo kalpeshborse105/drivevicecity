@@ -68,15 +68,16 @@ const NORMALIZE := {
 	# Cart prop (~2.6 m). Full shop footprints use place_shop_footprint() instead.
 	"res://assets/kit/buildings/bhelpuri_shop.glb": {"len": 2.6, "yaw": 0.0},
 	"res://assets/models/buildings/shops/bhelpuri_shop.glb": {"len": 10.0, "yaw": 0.0},
-	# VehicleBody3D / glTF front = MODEL_FRONT (+Z). Longest axis → Z; yaw 0 keeps nose +Z.
+	# VehicleBody3D / glTF front = MODEL_FRONT (+Z). Longest axis → Z, then yaw PI
+	# turns kit noses to +Z so the chase camera sees the rear, matching travel.
 	# Chase cam sits on −Z so you see the rear (truck_town / GTA-style).
-	"res://assets/kit/vehicles/carnival.glb": {"len": 5.1, "yaw": 0.0},
-	"res://assets/kit/vehicles/tata_safari.glb": {"len": 4.7, "yaw": 0.0},
-	"res://assets/kit/vehicles/autorickshaw.glb": {"len": 2.9, "yaw": 0.0},
-	"res://assets/kit/vehicles/bus.glb": {"len": 11.0, "yaw": 0.0},
-	"res://assets/kit/vehicles/tata_truck.glb": {"len": 12.0, "yaw": 0.0},
-	"res://assets/kit/vehicles/camry.glb": {"len": 4.9, "yaw": 0.0},
-	"res://assets/models/vehicles/premium_sedan_mh.glb": {"len": 4.65, "yaw": 0.0},
+	"res://assets/kit/vehicles/carnival.glb": {"len": 5.1, "yaw": 3.14159265},
+	"res://assets/kit/vehicles/tata_safari.glb": {"len": 4.7, "yaw": 3.14159265},
+	"res://assets/kit/vehicles/autorickshaw.glb": {"len": 2.9, "yaw": 3.14159265},
+	"res://assets/kit/vehicles/bus.glb": {"len": 11.0, "yaw": 3.14159265},
+	"res://assets/kit/vehicles/tata_truck.glb": {"len": 12.0, "yaw": 3.14159265},
+	"res://assets/kit/vehicles/camry.glb": {"len": 4.9, "yaw": 3.14159265},
+	"res://assets/models/vehicles/premium_sedan_mh.glb": {"len": 4.65, "yaw": 3.14159265},
 	"res://assets/models/environments/dhule_junction_streetscape.glb": {"len": 48.0, "yaw": 0.0},
 	# Diorama meshes scaled down to ~12 m tiles for OSM strip overlays.
 	"res://assets/kit/roads/avenue_street.glb": {"len": 12.0, "yaw": 0.0},

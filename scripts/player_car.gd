@@ -6,11 +6,11 @@ signal vehicle_changed(profile_name: String, paint_name: String)
 const VehicleMeshBuilder = preload("res://scripts/vehicle_mesh_builder.gd")
 const AssetKit = preload("res://scripts/asset_kit.gd")
 
-@export var engine_force_value: float = 640.0
+@export var engine_force_value: float = 5200.0
 @export var brake_force_value: float = 35.0
 @export var steer_limit: float = 0.55
 @export var steer_speed: float = 5.5
-@export var max_speed_kph: float = 145.0
+@export var max_speed_kph: float = 150.0
 
 const PAINTS: Array[Color] = [
 	Color(0.85, 0.55, 0.12),
@@ -80,7 +80,7 @@ func _ready() -> void:
 	_configure_wheels_base()
 	_body_mat = VehicleMeshBuilder.mat(PAINTS[0], 0.42, 0.18)
 	_apply_paint(0)
-	_apply_profile(0)
+	_apply_profile(8)
 	_setup_fx_and_audio()
 	# Embedded editor Play often needs the game window focused for WASD
 	call_deferred("_grab_play_focus")
@@ -205,7 +205,11 @@ func _physics_process(delta: float) -> void:
 
 	var speed := linear_velocity.length()
 	var speed_kph := speed * 3.6
-	var top := clampf(1.05 - (speed_kph / max_speed_kph), 0.4, 1.0)
+	var top := 1.0
+	if speed_kph >= max_speed_kph:
+		top = 0.0
+	elif speed_kph > max_speed_kph * 0.92:
+		top = clampf((max_speed_kph - speed_kph) / (max_speed_kph * 0.08), 0.0, 1.0)
 	# Positive engine_force → MODEL_FRONT (+Z). W drives away from chase cam (rear).
 	engine_force = throttle * engine_force_value * top
 	brake = 0.0
@@ -330,56 +334,56 @@ func _apply_profile(index: int) -> void:
 	match _profile_index:
 		1:
 			mass = 1250.0
-			engine_force_value = 480.0
+			engine_force_value = 5600.0
 			max_speed_kph = 120.0
 			steer_limit = 0.48
 			_set_wheel_base(1.5, 0.92)
 		2:
 			mass = 1400.0
-			engine_force_value = 500.0
+			engine_force_value = 6200.0
 			max_speed_kph = 130.0
 			steer_limit = 0.5
 			_set_wheel_base(1.55, 0.95)
 		3:
 			mass = 1600.0
-			engine_force_value = 540.0
+			engine_force_value = 6800.0
 			max_speed_kph = 135.0
 			steer_limit = 0.48
 			_set_wheel_base(1.55, 0.95)
 		4:
 			mass = 700.0
-			engine_force_value = 380.0
-			max_speed_kph = 85.0
+			engine_force_value = 3200.0
+			max_speed_kph = 120.0
 			steer_limit = 0.6
 			_set_wheel_base(1.0, 0.7)
 		5:
 			mass = 4200.0
-			engine_force_value = 420.0
-			max_speed_kph = 95.0
+			engine_force_value = 9000.0
+			max_speed_kph = 120.0
 			steer_limit = 0.4
 			_set_wheel_base(2.2, 1.15)
 		6:
 			mass = 3800.0
-			engine_force_value = 460.0
-			max_speed_kph = 100.0
+			engine_force_value = 8600.0
+			max_speed_kph = 125.0
 			steer_limit = 0.42
 			_set_wheel_base(2.0, 1.1)
 		7:
 			mass = 1500.0
-			engine_force_value = 520.0
+			engine_force_value = 7000.0
 			max_speed_kph = 140.0
 			steer_limit = 0.5
 			_set_wheel_base(1.5, 0.92)
 		8:
 			mass = 1550.0
-			engine_force_value = 560.0
+			engine_force_value = 7400.0
 			max_speed_kph = 150.0
 			steer_limit = 0.5
 			_set_wheel_base(1.5, 0.93)
 		_:
 			mass = 950.0
-			engine_force_value = 640.0
-			max_speed_kph = 145.0
+			engine_force_value = 5200.0
+			max_speed_kph = 150.0
 			steer_limit = 0.55
 			_set_wheel_base(1.32, 0.82)
 	_configure_wheels_base()
@@ -432,9 +436,11 @@ func _rebuild_visuals() -> void:
 			_set_wheel_meshes_visible(false)
 	elif _profile_index == 1:
 		col_size = VehicleMeshBuilder.build_van(_visual_root, _body_mat, _kit_index)
+		_visual_root.rotation.y = PI
 		_set_wheel_meshes_visible(true)
 	else:
 		col_size = VehicleMeshBuilder.build_sedan(_visual_root, _body_mat, _kit_index)
+		_visual_root.rotation.y = PI
 		_set_wheel_meshes_visible(true)
 	var shape := _body_shape.shape as BoxShape3D
 	if shape == null:

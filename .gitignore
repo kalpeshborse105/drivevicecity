@@ -56,3 +56,15 @@ build/
 addons/ziva/
 # osm_racer is a separate reference project. The game does not load it.
 osm_racer/
+.cursor/
+addons/
+
+# Generated pipeline dumps and local backups. Scripts and reports stay tracked.
+blender_work/**/audit/preview.bin
+blender_work/**/export/
+*.blend
+assets/maps/*_bak.json
+assets/maps/*_pre_new_map.json
+assets/models/props/dhule_chowk_statue.glb
+assets/models/props/dhule_chowk_statue.glb.import
+

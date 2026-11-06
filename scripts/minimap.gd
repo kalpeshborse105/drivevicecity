@@ -192,7 +192,15 @@ func _process(_delta: float) -> void:
 	if _coord_label:
 		var lat := ORIGIN_LAT - (pos.z / 111320.0)
 		var lon := ORIGIN_LON + (pos.x / (111320.0 * cos(deg_to_rad(ORIGIN_LAT))))
-		_coord_label.text = "DHULE GPS · %.4f°N %.4f°E" % [lat, lon]
+		var gps := "DHULE GPS · %.4f°N %.4f°E" % [lat, lon]
+		var road_name := ""
+		var roads := get_tree().get_first_node_in_group("dhule_roads")
+		if roads and roads.has_method("nearest_road_name"):
+			road_name = str(roads.call("nearest_road_name", pos))
+		if road_name.is_empty():
+			_coord_label.text = gps
+		else:
+			_coord_label.text = "%s   %s" % [road_name, gps]
 	_marker.queue_redraw()
 
 

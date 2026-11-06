@@ -3,6 +3,8 @@ extends Node3D
 
 signal map_ready(spawn_position: Vector3, spawn_heading: Vector2, anchors: Array)
 
+const RoadSurface = preload("res://scripts/road_surface.gd")
+const RoadLabels = preload("res://scripts/road_labels.gd")
 const StreetKit = preload("res://scripts/street_kit.gd")
 const AssetKit = preload("res://scripts/asset_kit.gd")
 const BuildingKit = preload("res://scripts/building_kit.gd")
@@ -29,6 +31,7 @@ var _curb: StandardMaterial3D
 var _sidewalk: StandardMaterial3D
 var _palette: Array = []
 var _road_samples: Array[Vector3] = []
+var _named_roads: Array = []
 var _parked_heavy := 0
 var _named_labels := 0  ## real OSM building names drawn this map build
 var _has_blosm := false
@@ -109,9 +112,8 @@ func _build(data: Dictionary) -> void:
 	# Strict 2 kit sources: street_road = sub, avenue_street = main (asphalt crop, no yellow gutter)
 	_asphalt = _kit_road_mat("street_road", Color(0.86, 0.86, 0.89), 0.9)
 	_major = _kit_road_mat("avenue_street", Color(0.83, 0.83, 0.87), 0.84)
-	_paint = _mat(Color(0.92, 0.86, 0.35), 0.65)
-	# Road-edge line paint: off-white, slightly rough (worn thermoplastic look).
-	_edge = _mat(Color(0.93, 0.93, 0.9), 0.7)
+	_paint = _mat(Color(0.93, 0.93, 0.9), 0.55)
+	_edge = _paint
 	_curb = _mat(Color(0.6, 0.58, 0.54), 0.95)
 	_sidewalk = _road_mat(Color(0.62, 0.58, 0.5), 0.92, 33)
 	_palette = [
@@ -136,6 +138,7 @@ func _build(data: Dictionary) -> void:
 	_add_ground(clip)
 	# Batch the thousands of visual-only lane-marking / kerb / paint boxes.
 	StreetKit.begin_box_batch(self)
+	RoadSurface.begin_batch(self)
 
 	var roads: Array = data.get("roads", [])
 	# Resolve spawn early so density uses it
@@ -159,7 +162,7 @@ func _build(data: Dictionary) -> void:
 		var is_major := hw in ["primary", "secondary", "trunk", "motorway", "tertiary"]
 		# Strict 2 kit looks only: avenue_street (main) / street_road (sub). No zebra/wear/mesh stack.
 		var mat := _major if is_major else _asphalt
-		_build_road_strip(pts, width, mat, hw)
+		_build_road_strip(pts, width, mat, hw, str(road.get("id", "")))
 		if is_major and not _has_blosm:
 			_build_curbs(pts, width)
 		_sample_road(pts, width)
@@ -167,6 +170,9 @@ func _build(data: Dictionary) -> void:
 		if dens <= 0.0:
 			continue
 		dress.append([pts, width, dens, hw])
+
+	var road_batches := RoadSurface.flush_batch()
+	print("ROAD batches ", road_batches)
 
 	# Props run after every road is sampled, so a tree beside one way cannot sit on another.
 	for job in dress:
@@ -189,6 +195,8 @@ func _build(data: Dictionary) -> void:
 	var spawn_dress := _dress_spawn_street(roads, rng)
 	landmarks += spawn_dress
 	var signs := _add_road_name_signs(roads)
+	_add_junctions(roads)
+	_add_roundabouts(roads)
 	var demo_scenery := _add_demo_scenery(rng)
 	# Commit every queued roadside tree as 2 MultiMesh batches (Android node-count win).
 	StreetKit.flush_trees(self)
@@ -952,51 +960,90 @@ func _fill_empty_lots(clip: float, rng: RandomNumberGenerator) -> int:
 
 
 func _add_road_name_signs(roads: Array) -> int:
-	## Real OSM names (not Google). Quieter labels — less debug clutter.
-	var placed_names: Dictionary = {}
-	var n := 0
+	## Verified OSM name or ref only. Highway class is not a name.
+	_named_roads = []
 	for road_v in roads:
 		var road: Dictionary = road_v
-		var road_name := str(road.get("name", "")).strip_edges()
-		if road_name.is_empty():
+		if str(road.get("name", "")).strip_edges().is_empty() and str(road.get("ref", "")).strip_edges().is_empty():
 			continue
-		if placed_names.has(road_name):
-			continue
-		var dens := _density_for_polyline(road.get("points", []))
-		if dens <= 0.0:
+		_named_roads.append(road)
+	add_to_group("dhule_roads")
+	return RoadLabels.add_names(self, roads, 48)
+
+
+func nearest_road_name(pos: Vector3) -> String:
+	var best := ""
+	var best_d := 14.0
+	for road_v in _named_roads:
+		var road: Dictionary = road_v
+		var text := str(road.get("name", "")).strip_edges()
+		if text.is_empty():
+			text = str(road.get("ref", "")).strip_edges()
+		if text.is_empty():
 			continue
 		var pts: Array = road.get("points", [])
-		if pts.size() < 2:
-			continue
-		var mid_i := int(pts.size() / 2.0)
-		var p: Array = pts[mid_i]
-		var p1: Array = pts[mini(mid_i + 1, pts.size() - 1)]
-		var pos := Vector3(float(p[0]), 0.0, float(p[1]))
-		var along := Vector3(float(p1[0]) - pos.x, 0.0, float(p1[1]) - pos.z)
-		if along.length() < 0.1:
-			along = Vector3(0, 0, -1)
-		along = along.normalized()
-		var side := Vector3(-along.z, 0, along.x) * 7.2
-		var label := Label3D.new()
-		label.text = road_name
-		label.font_size = 36
-		label.pixel_size = 0.01
-		label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-		label.outline_size = 4
-		label.modulate = Color(0.95, 0.93, 0.88, 0.92)
-		label.position = pos + side + Vector3(0, 2.4, 0)
-		add_child(label)
-		StreetKit.add_box(self, Vector3(0.1, 2.2, 0.1), pos + side + Vector3(0, 1.1, 0), _mat(Color(0.35, 0.35, 0.38)))
-		StreetKit.add_box(self, Vector3(2.2, 0.55, 0.08), pos + side + Vector3(0, 2.4, 0), _mat(Color(0.1, 0.32, 0.18)))
-		placed_names[road_name] = true
-		n += 1
-		var sign_max := 10
-		var gs := get_node_or_null("/root/GameSettings")
-		if gs and gs.has_method("road_sign_max"):
-			sign_max = int(gs.call("road_sign_max"))
-		if n >= sign_max:
-			break
-	return n
+		var half := float(road.get("width", 7.0)) * 0.5 + 3.0
+		for i in pts.size() - 1:
+			var a := Vector2(float(pts[i][0]), float(pts[i][1]))
+			var b := Vector2(float(pts[i + 1][0]), float(pts[i + 1][1]))
+			var dist := _point_segment(Vector2(pos.x, pos.z), a, b)
+			if dist < half and dist < best_d:
+				best_d = dist
+				best = text
+	return best
+
+
+func _point_segment(p: Vector2, a: Vector2, b: Vector2) -> float:
+	var ab := b - a
+	var den := ab.length_squared()
+	var t := 0.0 if den == 0.0 else clampf((p - a).dot(ab) / den, 0.0, 1.0)
+	return p.distance_to(a + ab * t)
+
+
+func _process(_delta: float) -> void:
+	var cam := get_viewport().get_camera_3d()
+	if cam == null:
+		return
+	RoadLabels.update_fade(get_tree(), cam.global_position)
+
+
+func _add_junctions(roads: Array) -> void:
+	var n := RoadSurface.add_shared_junctions(self, roads, road_y, _asphalt)
+	print("ROAD junctions ", n)
+
+
+func _add_roundabouts(roads: Array) -> void:
+	var kerb := _mat(Color(0.72, 0.7, 0.64), 0.9)
+	var fill := _mat(Color(0.34, 0.42, 0.28), 0.92)
+	var n := RoadSurface.add_verified_roundabouts(self, roads, road_y, fill, kerb)
+	print("ROAD roundabouts ", n)
+
+
+func _build_road_strip(pts: Array, width: float, mat: Material, hw: String = "residential", road_id: String = "") -> void:
+	RoadSurface.add_way(self, pts, width, road_y, mat, _paint, hw)
+	if _has_blosm or road_id.is_empty():
+		return
+	# Barriers stay off the carriageway. They are not a second road deck.
+	var barrier_path := AssetKit.prop_path("barrier")
+	if not AssetKit.exists(barrier_path):
+		return
+	if hw not in ["primary", "secondary", "trunk", "motorway", "tertiary"] or width < 8.0:
+		return
+	if pts.size() < 2:
+		return
+	var a: Array = pts[0]
+	var b: Array = pts[mini(1, pts.size() - 1)]
+	var along := Vector3(float(b[0]) - float(a[0]), 0, float(b[1]) - float(a[1]))
+	if along.length() < 1.0:
+		return
+	along = along.normalized()
+	var side := Vector3(-along.z, 0, along.x)
+	var mid := Vector3(float(a[0]), 0, float(a[1])) + along * 6.0
+	if _near_spawn(mid, 22.0):
+		return
+	var bn := AssetKit.place_at(self, barrier_path, _ground_pos(mid + side * (width * 0.5 + 1.65)), atan2(along.x, along.z), 1.0)
+	if bn:
+		_strip_physics(bn)
 
 
 func _dress_spawn_street(_roads: Array, rng: RandomNumberGenerator) -> int:
@@ -1221,101 +1268,6 @@ func _add_real_spots() -> int:
 		_add_name_label(str(spot["name"]), pos + Vector3(0, h + 1.4, 0))
 		n += 1
 	return n
-
-
-func _build_road_strip(pts: Array, width: float, mat: Material, hw: String = "residential") -> void:
-	## Merge near-colinear OSM verts into long decks so center dashes stay along the path
-	## and seams read as one continuous strip. avenue → V-along; street_road → U-along.
-	var shoulder := _mat(Color(0.42, 0.4, 0.36), 0.95)
-	var is_major := hw in ["primary", "secondary", "trunk", "motorway", "tertiary"]
-	# Both kit albedos normalized to U-along in AssetKit.road_albedo_clean
-	var along_u := true
-	var tile_m := 12.0 if is_major else 10.0
-	var barrier_path := AssetKit.prop_path("barrier")
-	var has_barrier := AssetKit.exists(barrier_path)
-	var i := 0
-	var run_i := 0
-	while i < pts.size() - 1:
-		var a0: Array = pts[i]
-		var b0: Array = pts[i + 1]
-		var p_start := Vector3(float(a0[0]), 0.0, float(a0[1]))
-		var p_next := Vector3(float(b0[0]), 0.0, float(b0[1]))
-		var d0 := p_next - p_start
-		var len0 := d0.length()
-		if len0 < 0.5:
-			i += 1
-			continue
-		var dir0 := d0 / len0
-		var p_end := p_next
-		var total_len := len0
-		var j := i + 1
-		# Extend while the polyline stays roughly straight (auto-connect)
-		while j < pts.size() - 1 and total_len < 48.0:
-			var aj: Array = pts[j]
-			var bj: Array = pts[j + 1]
-			var pj0 := Vector3(float(aj[0]), 0.0, float(aj[1]))
-			var pj1 := Vector3(float(bj[0]), 0.0, float(bj[1]))
-			var dj := pj1 - pj0
-			var lj := dj.length()
-			if lj < 0.5:
-				j += 1
-				continue
-			var dirj := dj / lj
-			if dir0.dot(dirj) < 0.965:  # ~15° break → new deck
-				break
-			total_len += lj
-			p_end = pj1
-			j += 1
-		var delta := p_end - p_start
-		var length := delta.length()
-		if length < 0.5:
-			i = maxi(j, i + 1)
-			continue
-		var along := delta / length
-		var side := Vector3(-along.z, 0, along.x)
-		var mid := (p_start + p_end) * 0.5
-		var yaw := atan2(delta.x, delta.z)
-		var deck_len := length + 1.2  # slight overlap into next run
-		var deck_pos := Vector3(mid.x, road_y + 0.01, mid.z)
-		# Painted lane-edge lines are baked into the deck mesh (no extra nodes).
-		StreetKit.add_road_deck(self, width, deck_len, deck_pos, yaw, mat, tile_m, along_u, _edge)
-		if not _has_blosm and width >= 7.0:
-			var sh_y := road_y - 0.02
-			StreetKit.add_box(
-				self,
-				Vector3(0.55, 0.06, length + 0.5),
-				Vector3(mid.x, sh_y, mid.z) + side * (width * 0.5 + 0.25),
-				shoulder,
-				false,
-				yaw
-			)
-			StreetKit.add_box(
-				self,
-				Vector3(0.55, 0.06, length + 0.5),
-				Vector3(mid.x, sh_y, mid.z) - side * (width * 0.5 + 0.25),
-				shoulder,
-				false,
-				yaw
-			)
-		# Metal/concrete barriers as kerbside dividers (never on centerline / drive lane)
-		if not _has_blosm and has_barrier and is_major and width >= 8.0 and length > 6.0 and not _near_spawn(mid, 22.0):
-			var kerb_off := width * 0.5 + 1.65
-			var side_s := 1.0 if (run_i % 2 == 0) else -1.0
-			var bp := _ground_pos(mid + side * (kerb_off * side_s))
-			var bn := AssetKit.place_at(self, barrier_path, bp, yaw, 1.0)
-			if bn:
-				_strip_physics(bn)
-			# Extra pieces along long wide straights (road-break / divider rhythm)
-			if width >= 10.0 and length > 20.0:
-				for k in range(1, 3):
-					var along_p: Vector3 = p_start.lerp(p_end, float(k) / 3.0)
-					var bp2 := _ground_pos(along_p + side * (kerb_off * side_s))
-					var bn2 := AssetKit.place_at(self, barrier_path, bp2, yaw, 1.0)
-					if bn2:
-						_strip_physics(bn2)
-		run_i += 1
-		i = maxi(j, i + 1)
-
 
 func _add_flyovers(data: Dictionary) -> int:
 	## Stored flyovers have kind and width only — no bridge tag — so they are not used
