@@ -1,15 +1,15 @@
-[gd_scene load_steps=14 format=3]
+[gd_scene format=3 uid="uid://chvl44l1eqxxq"]
 
-[ext_resource type="Script" path="res://scripts/game_bootstrap.gd" id="1_boot"]
-[ext_resource type="PackedScene" path="res://scenes/player_car.tscn" id="2_car"]
-[ext_resource type="Script" path="res://scripts/osm_road_builder.gd" id="3_map"]
-[ext_resource type="Script" path="res://scripts/hud.gd" id="4_hud"]
-[ext_resource type="Script" path="res://scripts/delivery_mission.gd" id="5_mission"]
+[ext_resource type="Script" uid="uid://bhcm6dd0hwte1" path="res://scripts/game_bootstrap.gd" id="1_boot"]
+[ext_resource type="PackedScene" uid="uid://c3cwqdrnbgter" path="res://scenes/player_car.tscn" id="2_car"]
+[ext_resource type="Script" uid="uid://b5aovplje3fco" path="res://scripts/osm_road_builder.gd" id="3_map"]
+[ext_resource type="Script" uid="uid://d3tonoyjlyb7h" path="res://scripts/hud.gd" id="4_hud"]
+[ext_resource type="Script" uid="uid://cf63ppbw1f1os" path="res://scripts/delivery_mission.gd" id="5_mission"]
 [ext_resource type="PackedScene" path="res://scenes/delivery_zone.tscn" id="6_zone"]
 [ext_resource type="PackedScene" path="res://scenes/nav_arrow.tscn" id="7_nav"]
-[ext_resource type="Script" path="res://scripts/minimap.gd" id="8_mini"]
-[ext_resource type="Script" path="res://scripts/garage_ui.gd" id="9_garage"]
-[ext_resource type="Script" path="res://scripts/touch_controls.gd" id="10_touch"]
+[ext_resource type="Script" uid="uid://de0q1wymcgytp" path="res://scripts/minimap.gd" id="8_mini"]
+[ext_resource type="Script" uid="uid://j6p53q0gx2jj" path="res://scripts/garage_ui.gd" id="9_garage"]
+[ext_resource type="Script" uid="uid://c3qoarrug4frg" path="res://scripts/touch_controls.gd" id="10_touch"]
 
 [sub_resource type="ProceduralSkyMaterial" id="SkyMat"]
 sky_top_color = Color(0.19, 0.4, 0.72, 1)
@@ -29,7 +29,6 @@ ambient_light_source = 2
 ambient_light_color = Color(0.88, 0.82, 0.72, 1)
 ambient_light_energy = 0.42
 tonemap_mode = 3
-tonemap_exposure = 1.0
 ssao_enabled = true
 ssao_radius = 1.3
 ssao_intensity = 1.45
@@ -43,55 +42,55 @@ fog_density = 0.00026
 fog_aerial_perspective = 0.3
 fog_sky_affect = 0.4
 adjustment_enabled = true
-adjustment_saturation = 1.1
 adjustment_contrast = 1.06
+adjustment_saturation = 1.1
 
 [sub_resource type="StyleBoxFlat" id="HudPanel"]
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
 bg_color = Color(0.08, 0.1, 0.09, 0.55)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
-content_margin_left = 12
-content_margin_top = 8
-content_margin_right = 12
-content_margin_bottom = 8
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" unique_id=1907068729]
 script = ExtResource("1_boot")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1486532233]
 environment = SubResource("Env")
 
-[node name="Sun" type="DirectionalLight3D" parent="."]
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=691686172]
 transform = Transform3D(0.72, -0.55, 0.42, 0.05, 0.62, 0.78, -0.69, -0.56, 0.46, 40, 85, 25)
 light_color = Color(1, 0.88, 0.7, 1)
 light_energy = 1.3
 shadow_enabled = true
+shadow_opacity = 0.85
+shadow_blur = 1.15
 directional_shadow_mode = 1
 directional_shadow_max_distance = 120.0
-shadow_blur = 1.15
-shadow_opacity = 0.85
 
 [node name="DhuleMap" type="Node3D" parent="."]
 script = ExtResource("3_map")
 
-[node name="PlayerCar" parent="." instance=ExtResource("2_car")]
+[node name="PlayerCar" parent="." unique_id=2080200024 instance=ExtResource("2_car")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
 
-[node name="NavArrow" parent="." instance=ExtResource("7_nav")]
+[node name="NavArrow" parent="." unique_id=455219402 instance=ExtResource("7_nav")]
 visible = false
 
-[node name="DeliveryMission" type="Node" parent="."]
+[node name="DeliveryMission" type="Node" parent="." unique_id=442288623]
 script = ExtResource("5_mission")
 zone_scene = ExtResource("6_zone")
 car_path = NodePath("../PlayerCar")
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=804855992]
 script = ExtResource("4_hud")
 car_path = NodePath("../PlayerCar")
 
-[node name="Root" type="Control" parent="HUD"]
+[node name="Root" type="Control" parent="HUD" unique_id=615114749]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -100,7 +99,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="SpeedLabel" type="Label" parent="HUD/Root"]
+[node name="SpeedLabel" type="Label" parent="HUD/Root" unique_id=27371349]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -115,7 +114,7 @@ theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = SubResource("HudPanel")
 text = "0 km/h"
 
-[node name="TitleLabel" type="Label" parent="HUD/Root"]
+[node name="TitleLabel" type="Label" parent="HUD/Root" unique_id=521938616]
 layout_mode = 1
 offset_left = 24.0
 offset_top = 16.0
@@ -125,7 +124,7 @@ theme_override_colors/font_color = Color(0.98, 0.92, 0.7, 1)
 theme_override_font_sizes/font_size = 22
 text = "DriveViceCity — Dhule P2"
 
-[node name="StatsLabel" type="Label" parent="HUD/Root"]
+[node name="StatsLabel" type="Label" parent="HUD/Root" unique_id=2096189506]
 layout_mode = 1
 offset_left = 24.0
 offset_top = 52.0
@@ -135,7 +134,7 @@ theme_override_colors/font_color = Color(0.75, 0.95, 0.7, 1)
 theme_override_font_sizes/font_size = 18
 text = "₹0  ·  0 jobs"
 
-[node name="VehicleLabel" type="Label" parent="HUD/Root"]
+[node name="VehicleLabel" type="Label" parent="HUD/Root" unique_id=453701665]
 layout_mode = 1
 offset_left = 24.0
 offset_top = 84.0
@@ -145,7 +144,7 @@ theme_override_colors/font_color = Color(0.75, 0.85, 1, 1)
 theme_override_font_sizes/font_size = 16
 text = "Sedan · Saffron"
 
-[node name="MissionLabel" type="Label" parent="HUD/Root"]
+[node name="MissionLabel" type="Label" parent="HUD/Root" unique_id=1808541657]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -161,7 +160,7 @@ theme_override_styles/normal = SubResource("HudPanel")
 text = "Loading…"
 horizontal_alignment = 1
 
-[node name="NavLabel" type="Label" parent="HUD/Root"]
+[node name="NavLabel" type="Label" parent="HUD/Root" unique_id=291706546]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -173,10 +172,9 @@ offset_bottom = 88.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.9, 0.35, 1)
 theme_override_font_sizes/font_size = 18
-text = ""
 horizontal_alignment = 1
 
-[node name="HintLabel" type="Label" parent="HUD/Root"]
+[node name="HintLabel" type="Label" parent="HUD/Root" unique_id=687267320]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -194,7 +192,7 @@ theme_override_font_sizes/font_size = 14
 text = "Controls loading..."
 horizontal_alignment = 2
 
-[node name="TestLabel" type="Label" parent="HUD/Root"]
+[node name="TestLabel" type="Label" parent="HUD/Root" unique_id=1978038823]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -206,10 +204,9 @@ offset_bottom = 44.0
 grow_horizontal = 0
 theme_override_colors/font_color = Color(0.6, 1, 0.7, 1)
 theme_override_font_sizes/font_size = 14
-text = ""
 horizontal_alignment = 2
 
-[node name="Minimap" type="Control" parent="HUD/Root"]
+[node name="Minimap" type="Control" parent="HUD/Root" unique_id=1819629990]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -222,7 +219,7 @@ grow_horizontal = 0
 script = ExtResource("8_mini")
 car_path = NodePath("../../../PlayerCar")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="HUD/Root/Minimap"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HUD/Root/Minimap" unique_id=1611753554]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -231,18 +228,18 @@ grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="HUD/Root/Minimap/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="HUD/Root/Minimap/SubViewportContainer" unique_id=284109762]
 handle_input_locally = false
 size = Vector2i(216, 216)
 render_target_update_mode = 4
 
-[node name="MiniCam" type="Camera3D" parent="HUD/Root/Minimap/SubViewportContainer/SubViewport"]
+[node name="MiniCam" type="Camera3D" parent="HUD/Root/Minimap/SubViewportContainer/SubViewport" unique_id=146383541]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 220, 0)
 projection = 1
-size = 180.0
 current = true
+size = 180.0
 
-[node name="CustomizeBtn" type="Button" parent="HUD/Root"]
+[node name="CustomizeBtn" type="Button" parent="HUD/Root" unique_id=79014028]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -255,7 +252,7 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 20
 text = "Customize"
 
-[node name="GaragePanel" type="PanelContainer" parent="HUD/Root"]
+[node name="GaragePanel" type="PanelContainer" parent="HUD/Root" unique_id=993333741]
 visible = false
 z_index = 20
 layout_mode = 1
@@ -270,42 +267,41 @@ offset_right = 320.0
 offset_bottom = 240.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 0
 script = ExtResource("9_garage")
 
-[node name="Margin" type="MarginContainer" parent="HUD/Root/GaragePanel"]
+[node name="Margin" type="MarginContainer" parent="HUD/Root/GaragePanel" unique_id=1420506529]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 12
 
-[node name="VBox" type="VBoxContainer" parent="HUD/Root/GaragePanel/Margin"]
+[node name="VBox" type="VBoxContainer" parent="HUD/Root/GaragePanel/Margin" unique_id=368622112]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Title" type="Label" parent="HUD/Root/GaragePanel/Margin/VBox"]
+[node name="Title" type="Label" parent="HUD/Root/GaragePanel/Margin/VBox" unique_id=318493126]
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Garage"
 horizontal_alignment = 1
 
-[node name="PaintRow" type="HBoxContainer" parent="HUD/Root/GaragePanel/Margin/VBox"]
+[node name="PaintRow" type="HBoxContainer" parent="HUD/Root/GaragePanel/Margin/VBox" unique_id=1033518729]
 layout_mode = 2
 theme_override_constants/separation = 6
 alignment = 1
 
-[node name="ProfileRow" type="HBoxContainer" parent="HUD/Root/GaragePanel/Margin/VBox"]
+[node name="ProfileRow" type="HBoxContainer" parent="HUD/Root/GaragePanel/Margin/VBox" unique_id=1740677962]
 layout_mode = 2
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="Info" type="Label" parent="HUD/Root/GaragePanel/Margin/VBox"]
+[node name="Info" type="Label" parent="HUD/Root/GaragePanel/Margin/VBox" unique_id=600119298]
 layout_mode = 2
 text = "Current"
 horizontal_alignment = 1
 
-[node name="TouchControls" type="Control" parent="HUD/Root"]
+[node name="TouchControls" type="Control" parent="HUD/Root" unique_id=1467293181]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

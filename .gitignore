@@ -54,3 +54,5 @@ build/
 *.exe
 *.pck
 addons/ziva/
+# osm_racer is a separate reference project. The game does not load it.
+osm_racer/

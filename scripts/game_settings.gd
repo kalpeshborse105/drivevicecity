@@ -18,7 +18,7 @@ var audio_enabled: bool = true
 ## On-screen touch pad: 0=auto (touch devices), 1=always, 2=off.
 var touch_controls_mode: int = 0
 ## Default body = Carnival (kit GLB) so Play shows an incoming vehicle immediately.
-var profile_index: int = 2
+var profile_index: int = 8
 var paint_index: int = 0
 var kit_index: int = 0
 var rim_index: int = 0
@@ -37,11 +37,11 @@ func _ready() -> void:
 func road_sign_max() -> int:
 	match road_sign_density:
 		0:
-			return 5
+			return 8
 		1:
-			return 10
+			return 20
 		_:
-			return 18
+			return 41  ## show every real named Dhule road (OSM has 41)
 
 
 func load_cfg() -> void:
@@ -54,7 +54,7 @@ func load_cfg() -> void:
 	fx_quality = int(cf.get_value("settings", "fx_quality", fx_quality))
 	audio_enabled = bool(cf.get_value("settings", "audio_enabled", true))
 	touch_controls_mode = int(cf.get_value("settings", "touch_controls_mode", touch_controls_mode))
-	profile_index = int(cf.get_value("vehicle", "profile_index", 2))
+	profile_index = int(cf.get_value("vehicle", "profile_index", 8))
 	paint_index = int(cf.get_value("vehicle", "paint_index", 0))
 	kit_index = int(cf.get_value("vehicle", "kit_index", 0))
 	rim_index = int(cf.get_value("vehicle", "rim_index", 0))

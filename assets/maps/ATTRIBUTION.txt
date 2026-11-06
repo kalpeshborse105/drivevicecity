@@ -6,3 +6,7 @@ Source clip: Dhule, Maharashtra, India — Ring 1 playable ~±1600 m around
 20.902 N, 74.777 E (PBF window ~20.880–20.930 N, 74.742–74.812 E).
 Roads/buildings/water/landuse/POIs from Geofabrik western-zone OSM PBF +
 Shortbread MBTiles. Processed into dhule_roads_game.json for DriveViceCity.
+
+dhule_blosm.glb is a Blender blosm simple-3D export of the local dhulemap.osm
+clip (about 20.890–20.910 N, 74.760–74.789 E): 254 building footprints, roads,
+and water. The blosm addon itself is not included in this repo.

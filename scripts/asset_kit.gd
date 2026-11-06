@@ -50,6 +50,7 @@ const VEHICLES := {
 }
 const ENVIRONMENTS := {
 	"dhule_junction": "res://assets/models/environments/dhule_junction_streetscape.glb",
+	"dhule_blosm_city": "res://assets/models/environments/dhule_blosm_city.glb",
 }
 ## Terrain3D demo meshes + kit barriers (road_demos edge CSG needs Path3D — use GLB instead).
 const SCENERY := {

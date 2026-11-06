@@ -27,13 +27,63 @@ const GLASS := Color(0.26, 0.36, 0.46)
 const DARK := Color(0.13, 0.13, 0.14)
 const ROOF := Color(0.46, 0.44, 0.42)
 
-## Dhule / Maharashtra shopfront signage bank (Roman script — renders on the
-## default Godot font, and is exactly how much Indian signage is painted).
+## Dhule / Maharashtra shopfront signage bank (authentic Dhule business names
+## in Roman script — renders on default Godot font, exactly how real Maharashtra signs appear).
 const SIGN_WORDS: Array[String] = [
-	"KIRANA", "MEDICAL", "HOTEL", "GENERAL STORE", "MOBILE", "SARAF JEWELLERS",
-	"CHAI", "BAKERY", "CLOTH", "ELECTRICAL", "FURNITURE", "BOOKS",
-	"AGRI KENDRA", "TYRE", "GARAGE", "SALOON", "PHOTO STUDIO", "SWEETS",
-	"PANSARI", "MEDICO", "HARDWARE", "STATIONERY", "TAILOR", "OPTICAL",
+	"SHREE GANESH KIRANA",
+	"OM SAI MEDICAL & MEDICO",
+	"MAHESH CLOTH & SAREES",
+	"DHULE AGRI SEVA KENDRA",
+	"HOTEL SURUCHI PURE VEG",
+	"LAXMI SARAF JEWELLERS",
+	"BHARAT SWEET MART",
+	"NEW BOMBAY HAIR SALOON",
+	"KHANDESH MOTOR GARAGE",
+	"DEOPUR BAKERY & CAFE",
+	"SAI ELECTRONICS & MOBILE",
+	"PHOOLWALA CHOWK HARDWARE",
+	"SWAMI PHOTO STUDIO",
+	"PANCHAVATI TAILORS",
+	"AMUL MILK & ICE CREAM",
+	"JAI BHAVANI CHAI & SNACKS",
+	"VIVEKANAND OPTICALS",
+	"SANCHETI BOOK DEPOT",
+	"POOJA BARTAN BHANDAR",
+	"APNA BAZAR SUPER MARKET",
+	"EXIDE BATTERY HOUSE",
+	"AMIT TYRES & ALIGNMENT",
+	"MAHARASHTRA FERTILIZERS",
+	"SHREEJI PLASTIC STORES",
+	"TULSI AYURVEDIC AUSHADHI",
+	"HOTEL ANNAPURNA THALI",
+	"GANPATI JEWELLERS",
+	"BALAJI ELECTRICALS",
+	"KRISHNA GENERAL STORES",
+	"SHREE RAM AUTOMOBILES",
+	"ANAND SWEETS & FARSAN",
+	"VISHAL FOOTWEAR",
+	"KHANDESH TEA HOUSE",
+	"SHIVAJI CHOWK MEDICAL",
+	"ROYAL MENS WEAR",
+	"MOHADI AGRI KENDRA",
+	"DHULE COLD DRINKS",
+	"SHRINATHJI DRY FRUITS",
+	"MAULI HARDWARE & PAINTS",
+	"JAI HIND BOOK CENTRE",
+	"PATIL WATCH & EYEWEAR",
+	"SAI KRUPA FRUIT STALL",
+	"SHREE RADHE DAIRY",
+	"VIJAY PAAN BHANDAR",
+]
+## Signboard fascia background colors (vibrant enamel tones: red, royal blue, emerald green, saffron orange, marigold yellow).
+const SIGN_COLORS: Array[Color] = [
+	Color(0.82, 0.14, 0.12), # vibrant red
+	Color(0.12, 0.35, 0.75), # royal blue
+	Color(0.12, 0.56, 0.28), # emerald green
+	Color(0.92, 0.52, 0.08), # saffron orange
+	Color(0.94, 0.78, 0.12), # marigold yellow
+	Color(0.55, 0.14, 0.45), # deep magenta
+	Color(0.18, 0.48, 0.58), # teal
 ]
 ## How many shopfront name labels the current map build may still place.
 static var signature_budget: int = 0
@@ -84,7 +134,7 @@ static func footprint(
 	var accent_c: Color = ACCENTS[rng.randi_range(0, ACCENTS.size() - 1)]
 	# A shopfront name on some commercial fronts — reads as a real Dhule high-street.
 	var sign_text := ""
-	if commercial and signature_budget > 0 and rng.randf() < 0.42:
+	if commercial and signature_budget > 0 and rng.randf() < 0.88:
 		signature_budget -= 1
 		sign_text = SIGN_WORDS[rng.randi() % SIGN_WORDS.size()]
 	_build(parent, pos, face_dir, w, d, h, floors, ground_h, floor_h, commercial, wall_c, accent_c, rng, sign_text, with_collision)
@@ -120,6 +170,11 @@ static func landmark(parent: Node3D, pos: Vector3, poi_name: String, kind: Strin
 			wall_c = Color(0.68, 0.72, 0.78)
 			accent_c = Color(0.12, 0.30, 0.55)
 			floors = 3
+		"government", "courthouse":
+			wall_c = Color(0.90, 0.88, 0.82)
+			accent_c = Color(0.16, 0.28, 0.44)
+			floors = 3
+			w = rng.randf_range(26.0, 34.0)
 		_:
 			floors = rng.randi_range(3, 4)
 	var ground_h := 3.8
@@ -159,6 +214,11 @@ static func landmark(parent: Node3D, pos: Vector3, poi_name: String, kind: Strin
 			for sx in [-1.0, 1.0]:
 				StreetKit.add_box(node, Vector3(0.8, 4.2, 0.8), Vector3(sx * 3.2, 2.1, d * 0.5 + 3.0), gate, false)
 			StreetKit.add_box(node, Vector3(7.2, 0.7, 0.7), Vector3(0, 4.2, d * 0.5 + 3.0), gate, false)
+		"government", "courthouse":
+			var portico := StreetKit.mat(Color(0.88, 0.86, 0.82), 0.85)
+			StreetKit.add_box(node, Vector3(10.0, 0.35, 3.8), Vector3(0, 4.2, d * 0.5 + 2.0), portico, false)
+			for col_x in [-4.0, -1.33, 1.33, 4.0]:
+				StreetKit.add_box(node, Vector3(0.45, 4.2, 0.45), Vector3(col_x, 2.1, d * 0.5 + 3.6), portico, false)
 	return h
 
 
@@ -187,6 +247,12 @@ static func _build(
 	var accent := _Surf.new(StreetKit.mat(accent_c, 0.75))
 	var dark := _Surf.new(StreetKit.mat(DARK, 0.85))
 	var roof := _Surf.new(StreetKit.mat(ROOF, 0.95))
+	# Vibrant Dhule enamel signboard background
+	var sign_col: Color = SIGN_COLORS[rng.randi() % SIGN_COLORS.size()]
+	var sign_surf := _Surf.new(StreetKit.mat(sign_col, 0.42, 0.1))
+	# Metallic rolling shutter material
+	var shutter_c := Color(0.46, 0.52, 0.56) if rng.randf() < 0.6 else accent_c.darkened(0.35)
+	var shutter := _Surf.new(StreetKit.mat(shutter_c, 0.52, 0.35))
 
 	# Body (bottom at y=0)
 	_box(wall, Vector3(0, h * 0.5, 0), Vector3(w, h, d))
@@ -205,12 +271,13 @@ static func _build(
 	_box(trim, Vector3(0, h + par_h * 0.5, -d * 0.5 + 0.1), Vector3(w + 0.1, par_h, 0.2))
 	_box(trim, Vector3(w * 0.5 - 0.1, h + par_h * 0.5, 0), Vector3(0.2, par_h, d - 0.2))
 	_box(trim, Vector3(-w * 0.5 + 0.1, h + par_h * 0.5, 0), Vector3(0.2, par_h, d - 0.2))
-	# Roof props: water tank(s), stair head
-	var tank_x := rng.randf_range(-w * 0.35, w * 0.35)
-	var tank_z := rng.randf_range(-d * 0.35, d * 0.35)
-	_box(dark, Vector3(tank_x, h + 0.65, tank_z), Vector3(1.0, 1.2, 1.0))
+	# Roof props: Sintex-style cylindrical water tank(s), stair head
+	var tank_x := rng.randf_range(-w * 0.32, w * 0.32)
+	var tank_z := rng.randf_range(-d * 0.32, d * 0.32)
+	_box(dark, Vector3(tank_x, h + 0.7, tank_z), Vector3(1.2, 1.4, 1.2))
+	_box(dark, Vector3(tank_x, h + 1.45, tank_z), Vector3(0.7, 0.12, 0.7))
 	if rng.randf() < 0.5:
-		_box(dark, Vector3(-tank_x * 0.8, h + 0.6, -tank_z * 0.8), Vector3(0.9, 1.1, 0.9))
+		_box(dark, Vector3(-tank_x * 0.8, h + 0.6, -tank_z * 0.8), Vector3(1.0, 1.2, 1.0))
 	if w > 8.0 and d > 8.0 and rng.randf() < 0.7:
 		_box(wall, Vector3(-w * 0.5 + 1.6, h + 1.15, -d * 0.5 + 1.6), Vector3(2.4, 2.3, 2.4))
 
@@ -245,14 +312,20 @@ static func _build(
 				# Projecting window sill (chhajja-style ledge) under every window.
 				var sill_size := Vector3(win_size.x + 0.3, 0.09, 0.22) if absf(fn.z) > 0.5 else Vector3(0.22, 0.09, win_size.z + 0.3)
 				_box(trim, center + fn * 0.06 + Vector3(0, -win_size.y * 0.5 - 0.05, 0), sill_size)
-				# Balcony on front/back for residential upper floors, every other column
-				if residential and f >= 1 and absf(fn.z) > 0.5 and c % 2 == 0 and rng.randf() < 0.7:
+				# Balcony on front/back for upper floors, every other column
+				if f >= 1 and absf(fn.z) > 0.5 and c % 2 == 0 and rng.randf() < 0.65:
 					var by := yc - 0.75
 					var slab_c := along_v + fn * (half + 0.55) + Vector3(0, by, 0)
 					_box(wall, slab_c, Vector3(spacing * 0.86, 0.14, 1.1))
 					_box(accent, slab_c + fn * 0.5 + Vector3(0, 0.5, 0), Vector3(spacing * 0.86, 0.9, 0.08))
-				# AC unit occasionally
-				if f >= 1 and rng.randf() < 0.12:
+				# Desert air cooler (iconic Khandesh/Dhule house cooling box)
+				elif f >= 1 and rng.randf() < 0.25:
+					var cooler_s := Vector3(0.75, 0.75, 0.65) if absf(fn.z) > 0.5 else Vector3(0.65, 0.75, 0.75)
+					_box(trim, center + fn * 0.38 + Vector3(0, -win_size.y * 0.25, 0), cooler_s)
+					var grill_s := Vector3(0.62, 0.62, 0.03) if absf(fn.z) > 0.5 else Vector3(0.03, 0.62, 0.62)
+					_box(dark, center + fn * 0.72 + Vector3(0, -win_size.y * 0.25, 0), grill_s)
+				# AC outdoor unit occasionally
+				elif f >= 1 and rng.randf() < 0.12:
 					_box(dark, center + fn * 0.3 + Vector3(0, -0.95, 0), Vector3(0.6, 0.45, 0.5) if absf(fn.z) > 0.5 else Vector3(0.5, 0.45, 0.6))
 
 	# Ground floor front: shutters + signboard (commercial) or door + porch (residential)
@@ -260,22 +333,32 @@ static func _build(
 	if commercial:
 		var cols := maxi(2, int(w / 3.4))
 		var spacing := w / float(cols)
+		# Plinth step in front of shops
+		_box(trim, Vector3(0, 0.12, front_half + 0.42), Vector3(w * 0.94, 0.24, 0.84))
 		for c in cols:
 			var x := -w * 0.5 + spacing * (float(c) + 0.5)
 			var open := rng.randf() < 0.45
 			var sh_h := 1.2 if open else 2.7
 			var sh_y := (ground_h - 0.6) - sh_h * 0.5 if open else 1.45
-			var surf := accent if (c % 2 == 0) else dark
-			_box(surf, Vector3(x, sh_y, front_half + 0.04), Vector3(spacing * 0.82, sh_h, 0.07))
+			_box(shutter, Vector3(x, sh_y, front_half + 0.05), Vector3(spacing * 0.84, sh_h, 0.08))
+			# Shutter horizontal corrugation ribs
+			for rib in range(1, 4):
+				var ry := sh_y - sh_h * 0.5 + float(rib) * (sh_h / 4.0)
+				_box(trim, Vector3(x, ry, front_half + 0.095), Vector3(spacing * 0.85, 0.04, 0.02))
 			if open:
 				# Dark interior opening below rolled shutter
 				_box(dark, Vector3(x, (ground_h - 0.6 - sh_h) * 0.5, front_half + 0.01), Vector3(spacing * 0.78, ground_h - 0.6 - sh_h, 0.02))
-		# Signboard strip above shutters
-		_box(accent, Vector3(0, ground_h - 0.3, front_half + 0.12), Vector3(w * 0.96, 0.62, 0.12))
-		_box(wall, Vector3(0, ground_h - 0.3, front_half + 0.19), Vector3(w * 0.5, 0.26, 0.02))
-		# Awning
-		if rng.randf() < 0.6:
-			_box(accent, Vector3(0, ground_h - 0.72, front_half + 0.7), Vector3(w * 0.9, 0.06, 1.3))
+		# Vibrant Dhule Signboard strip above shutters
+		var sign_h := 0.82
+		var sign_y := ground_h - 0.42
+		_box(sign_surf, Vector3(0, sign_y, front_half + 0.14), Vector3(w * 0.96, sign_h, 0.12))
+		# Inner trim border around signboard
+		_box(trim, Vector3(0, sign_y, front_half + 0.21), Vector3(w * 0.93, sign_h * 0.88, 0.02))
+		# Awning (slanted shop sunshade canopy)
+		if rng.randf() < 0.65:
+			_box(accent, Vector3(0, ground_h - 0.86, front_half + 0.82), Vector3(w * 0.94, 0.06, 1.45))
+			_box(trim, Vector3(-w * 0.45, (ground_h - 0.86) * 0.5, front_half + 1.42), Vector3(0.06, ground_h - 0.86, 0.06))
+			_box(trim, Vector3(w * 0.45, (ground_h - 0.86) * 0.5, front_half + 1.42), Vector3(0.06, ground_h - 0.86, 0.06))
 	else:
 		_box(dark, Vector3(0, 1.05, front_half + 0.03), Vector3(1.0, 2.1, 0.06))
 		_box(trim, Vector3(0, 0.08, front_half + 0.9), Vector3(2.6, 0.16, 1.8))
@@ -285,7 +368,7 @@ static func _build(
 	# Compose mesh
 	var mesh := ArrayMesh.new()
 	var idx := 0
-	for s in [wall, trim, glass, accent, dark, roof]:
+	for s in [wall, trim, glass, accent, dark, roof, sign_surf, shutter]:
 		var surf: _Surf = s
 		if surf.count == 0:
 			continue
@@ -315,12 +398,12 @@ static func _build(
 	if sign_text != "":
 		var label := Label3D.new()
 		label.text = sign_text
-		label.font_size = 40
+		label.font_size = 46
 		label.pixel_size = 0.012
-		label.modulate = Color(0.98, 0.97, 0.92)
-		label.outline_modulate = Color(0.1, 0.1, 0.1)
-		label.outline_size = 8
-		label.position = Vector3(0, ground_h - 0.3, front_half + 0.26)
+		label.modulate = Color(1.0, 0.98, 0.88)
+		label.outline_modulate = Color(0.05, 0.05, 0.05)
+		label.outline_size = 10
+		label.position = Vector3(0, ground_h - 0.42, front_half + 0.28)
 		mi.add_child(label)
 	return mi
 

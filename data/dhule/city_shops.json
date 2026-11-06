@@ -1,0 +1,43 @@
+{
+  "attribution": "© OpenStreetMap contributors (ODbL)",
+  "origin_lat": 20.902,
+  "origin_lon": 74.777,
+  "shop_count": 5,
+  "shops": [
+    {
+      "id": 7330998411,
+      "name": "Exide Battery",
+      "kind": "car_parts",
+      "x": -63.8,
+      "z": 1100.58
+    },
+    {
+      "id": 7655988175,
+      "name": "INVESTMENTVALA",
+      "kind": "supermarket",
+      "x": -599.64,
+      "z": -1252.53
+    },
+    {
+      "id": 10062229423,
+      "name": "multiple local newspaper vendors",
+      "kind": "newsagent",
+      "x": -915.4,
+      "z": -43.65
+    },
+    {
+      "id": 12401569297,
+      "name": "New Suranan Kirana Stores",
+      "kind": "grocery",
+      "x": -1120.96,
+      "z": -2046.83
+    },
+    {
+      "id": 14214421139,
+      "name": "Vishakha Dusane makeover",
+      "kind": "beauty",
+      "x": -1313.45,
+      "z": 492.15
+    }
+  ]
+}

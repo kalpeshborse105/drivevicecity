@@ -5,6 +5,14 @@ extends RefCounted
 static var _mat_cache: Dictionary = {}
 static var _unit_cyl: CylinderMesh = null
 static var _unit_sphere: SphereMesh = null
+static var _unit_box_mesh: BoxMesh = null
+## Box batching: many thousands of lane-marking / kerb / paint boxes are visual-only.
+## While a batch is open, add_box() records a scaled unit-box transform per material
+## instead of creating a MeshInstance3D, and flush_box_batch() commits one
+## MultiMeshInstance3D per material. Big Android node-count win.
+static var _box_batch_parent: Node3D = null
+static var _box_batches: Dictionary = {}
+static var _box_batch_count := 0
 
 
 static func mat(color: Color, rough: float = 0.9, metal: float = 0.0) -> StandardMaterial3D:
@@ -83,7 +91,40 @@ static func _cylinder(parent: Node3D, radius: float, height: float, bottom: Vect
 	_add_mesh(parent, _unit_cylinder(), bottom + Vector3(0, height * 0.5, 0), material, Vector3(radius, height, radius))
 
 
+static func begin_box_batch(parent: Node3D) -> void:
+	_box_batch_parent = parent
+	_box_batches.clear()
+	_box_batch_count = 0
+
+
+static func flush_box_batch() -> int:
+	## Commit every queued visual box as one MultiMeshInstance3D per material.
+	var committed := _box_batch_count
+	if _box_batch_parent != null:
+		for material in _box_batches:
+			_commit_batch(_box_batch_parent, _unit_box(), _box_batches[material], [], material)
+	_box_batches.clear()
+	_box_batch_parent = null
+	_box_batch_count = 0
+	return committed
+
+
+static func _unit_box() -> BoxMesh:
+	if _unit_box_mesh == null:
+		_unit_box_mesh = BoxMesh.new()
+		_unit_box_mesh.size = Vector3.ONE
+	return _unit_box_mesh
+
+
 static func add_box(parent: Node3D, size: Vector3, pos: Vector3, material: Material, with_collision: bool = false, yaw: float = 0.0) -> void:
+	if _box_batch_parent != null and not with_collision:
+		# Visual-only box → record a scaled unit-box instance; no node per box.
+		var xf := Transform3D(Basis(Vector3.UP, yaw).scaled(size), pos)
+		if not _box_batches.has(material):
+			_box_batches[material] = []
+		(_box_batches[material] as Array).append(xf)
+		_box_batch_count += 1
+		return
 	var mi := MeshInstance3D.new()
 	var mesh := BoxMesh.new()
 	mesh.size = size

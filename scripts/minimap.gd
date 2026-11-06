@@ -1,5 +1,6 @@
 extends Control
-## Top-down minimap with zoom + centre player marker (PC + Android).
+## Google-Maps Style Minimap for Dhule, Maharashtra (PC + Android).
+## Supports Real Lat/Lon GPS readout, Google Maps route line, Landmark pins, and SAT / MAP mode.
 
 @export var car_path: NodePath
 @export var map_path: NodePath
@@ -13,10 +14,27 @@ var _zoom: float = 110.0
 var _marker: Control
 var _btn_in: Button
 var _btn_out: Button
+var _btn_mode: Button
 var _zoom_label: Label
+var _coord_label: Label
+var _target_world_pos: Vector3 = Vector3.ZERO
+var _has_target: bool = false
+var _satellite_mode: bool = false
 
+const ORIGIN_LAT := 20.9020
+const ORIGIN_LON := 74.7770
 const ZOOM_MIN := 45.0
-const ZOOM_MAX := 280.0
+const ZOOM_MAX := 320.0
+
+const DHULE_POIS := [
+	{"name": "Agra Rd NH-3", "pos": Vector3(0, 0, 0), "color": Color(0.98, 0.74, 0.02)},
+	{"name": "Swaminarayan Mandir", "pos": Vector3(145, 0, -210), "color": Color(0.95, 0.35, 0.25)},
+	{"name": "Shivaji Maharaj Statue", "pos": Vector3(-60, 0, 40), "color": Color(1.0, 0.55, 0.1)},
+	{"name": "Panzara River Bridge", "pos": Vector3(20, 0, -95), "color": Color(0.25, 0.65, 0.98)},
+	{"name": "Deopur Vidyanagri", "pos": Vector3(-160, 0, -240), "color": Color(0.3, 0.85, 0.45)},
+	{"name": "Rajwade Mandal", "pos": Vector3(85, 0, 110), "color": Color(0.85, 0.45, 0.95)},
+	{"name": "Dhule Court", "pos": Vector3(-240, 0, -120), "color": Color(0.85, 0.25, 0.25)},
+]
 
 
 func _ready() -> void:
@@ -30,13 +48,30 @@ func _ready() -> void:
 	_build_chrome()
 
 
+func set_navigation_target(world_pos: Vector3, active: bool) -> void:
+	_target_world_pos = world_pos
+	_has_target = active
+	if _marker:
+		_marker.queue_redraw()
+
+
 func _build_chrome() -> void:
-	## Player is always at map centre — draw a big arrow on top + zoom buttons.
 	_marker = Control.new()
 	_marker.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_marker.set_anchors_preset(Control.PRESET_FULL_RECT)
-	_marker.draw.connect(_draw_player_marker)
+	_marker.draw.connect(_draw_google_map_overlay)
 	add_child(_marker)
+
+	# Top GPS coordinate header bar (Google Maps style)
+	_coord_label = Label.new()
+	_coord_label.set_anchors_preset(Control.PRESET_TOP_WIDE)
+	_coord_label.offset_top = 4.0
+	_coord_label.offset_left = 6.0
+	_coord_label.offset_right = -6.0
+	_coord_label.add_theme_font_size_override("font_size", 10)
+	_coord_label.add_theme_color_override("font_color", Color(0.95, 0.98, 1.0, 0.95))
+	_coord_label.text = "DHULE GPS · 20.9020°N 74.7770°E"
+	add_child(_coord_label)
 
 	var row := HBoxContainer.new()
 	row.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
@@ -44,30 +79,44 @@ func _build_chrome() -> void:
 	row.offset_bottom = -2.0
 	row.offset_left = 4.0
 	row.offset_right = -4.0
-	row.add_theme_constant_override("separation", 4)
+	row.add_theme_constant_override("separation", 3)
 	row.alignment = BoxContainer.ALIGNMENT_CENTER
 	add_child(row)
 
 	_btn_out = Button.new()
 	_btn_out.text = "−"
-	_btn_out.custom_minimum_size = Vector2(36, 28)
+	_btn_out.custom_minimum_size = Vector2(28, 24)
 	_btn_out.focus_mode = Control.FOCUS_NONE
 	_btn_out.pressed.connect(func() -> void: zoom_by(1.25))
 	row.add_child(_btn_out)
 
 	_zoom_label = Label.new()
 	_zoom_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_zoom_label.custom_minimum_size = Vector2(48, 0)
-	_zoom_label.add_theme_font_size_override("font_size", 12)
+	_zoom_label.custom_minimum_size = Vector2(40, 0)
+	_zoom_label.add_theme_font_size_override("font_size", 11)
 	row.add_child(_zoom_label)
 
 	_btn_in = Button.new()
 	_btn_in.text = "+"
-	_btn_in.custom_minimum_size = Vector2(36, 28)
+	_btn_in.custom_minimum_size = Vector2(28, 24)
 	_btn_in.focus_mode = Control.FOCUS_NONE
 	_btn_in.pressed.connect(func() -> void: zoom_by(0.8))
 	row.add_child(_btn_in)
+
+	_btn_mode = Button.new()
+	_btn_mode.text = "SAT"
+	_btn_mode.custom_minimum_size = Vector2(36, 24)
+	_btn_mode.focus_mode = Control.FOCUS_NONE
+	_btn_mode.pressed.connect(_toggle_map_mode)
+	row.add_child(_btn_mode)
+
 	_refresh_zoom_label()
+
+
+func _toggle_map_mode() -> void:
+	_satellite_mode = not _satellite_mode
+	_btn_mode.text = "MAP" if _satellite_mode else "SAT"
+	_marker.queue_redraw()
 
 
 func zoom_by(factor: float) -> void:
@@ -82,32 +131,72 @@ func _refresh_zoom_label() -> void:
 		_zoom_label.text = "%dm" % int(_zoom)
 
 
-func _draw_player_marker() -> void:
+func _world_to_minimap(world_pos: Vector3, center_pos: Vector3) -> Vector2:
 	var c := size * 0.5
-	c.y -= 10.0 # sit above zoom row
-	var yaw := 0.0
-	if _car:
-		# Car forward = MODEL_FRONT (+Z local → basis.z)
-		var f := _car.global_transform.basis.z
-		yaw = atan2(f.x, f.z)
-	# Compact car marker — roughly road-scale on the ortho map (was oversized wedge).
-	var tip := c + Vector2(sin(yaw), -cos(yaw)) * 7.0
-	var left := c + Vector2(sin(yaw + 2.5), -cos(yaw + 2.5)) * 5.0
-	var right := c + Vector2(sin(yaw - 2.5), -cos(yaw - 2.5)) * 5.0
-	_marker.draw_colored_polygon(PackedVector2Array([tip, left, right]), Color(1.0, 0.92, 0.2, 0.98))
-	_marker.draw_circle(c, 2.2, Color(0.12, 0.12, 0.14, 0.95))
+	c.y -= 10.0
+	var rel := Vector2(world_pos.x - center_pos.x, world_pos.z - center_pos.z)
+	var scale_px := (minf(size.x, size.y) / maxf(_zoom, 1.0))
+	return c + rel * scale_px
+
+
+func _draw_google_map_overlay() -> void:
+	var c := size * 0.5
+	c.y -= 10.0
+
+	# Google Maps outer frame border
+	_marker.draw_rect(Rect2(Vector2.ZERO, size), Color(0.12, 0.16, 0.24, 0.9), false, 2.0)
+
+	# If in Satellite mode, draw subtle dark contrast overlay for road readability
+	if _satellite_mode:
+		_marker.draw_rect(Rect2(Vector2.ZERO, size), Color(0.04, 0.08, 0.05, 0.18))
+
+	if _car == null:
+		return
+
+	var car_pos := _car.global_position
+
+	# Draw Dhule Landmark pins
+	for poi in DHULE_POIS:
+		var p_screen := _world_to_minimap(poi["pos"], car_pos)
+		if p_screen.x > 8 and p_screen.x < size.x - 8 and p_screen.y > 18 and p_screen.y < size.y - 30:
+			_marker.draw_circle(p_screen, 4.5, Color(0.08, 0.08, 0.1, 0.9))
+			_marker.draw_circle(p_screen, 3.2, poi["color"])
+
+	# Draw Google Maps cyan/blue GPS route polyline to destination
+	if _has_target:
+		var t_screen := _world_to_minimap(_target_world_pos, car_pos)
+		t_screen.x = clampf(t_screen.x, 10.0, size.x - 10.0)
+		t_screen.y = clampf(t_screen.y, 20.0, size.y - 32.0)
+		_marker.draw_line(c, t_screen, Color(0.08, 0.45, 0.98, 0.85), 4.0)
+		_marker.draw_line(c, t_screen, Color(0.42, 0.82, 1.0, 0.95), 2.0)
+		_marker.draw_circle(t_screen, 5.5, Color(0.95, 0.22, 0.18, 1.0))
+		_marker.draw_circle(t_screen, 2.2, Color(1.0, 1.0, 1.0, 1.0))
+
+	# Player navigation arrow (Google Maps GPS navigation chevron)
+	var f := _car.global_transform.basis.z
+	var yaw := atan2(f.x, f.z)
+	var tip := c + Vector2(sin(yaw), -cos(yaw)) * 10.0
+	var left := c + Vector2(sin(yaw + 2.5), -cos(yaw + 2.5)) * 7.0
+	var right := c + Vector2(sin(yaw - 2.5), -cos(yaw - 2.5)) * 7.0
+	_marker.draw_circle(c, 9.0, Color(0.12, 0.45, 0.95, 0.32))
+	_marker.draw_colored_polygon(PackedVector2Array([tip, left, right]), Color(1.0, 0.92, 0.18, 0.98))
+	_marker.draw_circle(c, 2.5, Color(0.1, 0.1, 0.12, 0.95))
 
 
 func _process(_delta: float) -> void:
 	if _car == null:
 		return
-	_cam.global_position = _car.global_position + Vector3(0, 220, 0)
-	_cam.look_at(_car.global_position, Vector3(0, 0, -1))
+	var pos := _car.global_position
+	_cam.global_position = pos + Vector3(0, 220, 0)
+	_cam.look_at(pos, Vector3(0, 0, -1))
+	if _coord_label:
+		var lat := ORIGIN_LAT - (pos.z / 111320.0)
+		var lon := ORIGIN_LON + (pos.x / (111320.0 * cos(deg_to_rad(ORIGIN_LAT))))
+		_coord_label.text = "DHULE GPS · %.4f°N %.4f°E" % [lat, lon]
 	_marker.queue_redraw()
 
 
 func _gui_input(event: InputEvent) -> void:
-	## Pinch / wheel zoom on the minimap itself (Android + desktop).
 	if event is InputEventMouseButton:
 		var mb := event as InputEventMouseButton
 		if mb.pressed and mb.button_index == MOUSE_BUTTON_WHEEL_UP:

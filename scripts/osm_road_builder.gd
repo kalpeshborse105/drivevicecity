@@ -10,6 +10,7 @@ const BuildingKit = preload("res://scripts/building_kit.gd")
 const GROUND_ALBEDO := "res://demo/assets/textures/ground037_alb_ht.png"
 const GROUND_NORMAL := "res://demo/assets/textures/ground037_nrm_rgh.png"
 const PARKED_HEAVY_MAX := 14
+const NAMED_LABEL_CAP := 40  ## max real OSM building-name labels (perf guard)
 
 @export_file("*.json") var map_json_path: String = "res://assets/maps/dhule_roads_game.json"
 @export var road_y: float = 0.04
@@ -29,6 +30,8 @@ var _sidewalk: StandardMaterial3D
 var _palette: Array = []
 var _road_samples: Array[Vector3] = []
 var _parked_heavy := 0
+var _named_labels := 0  ## real OSM building names drawn this map build
+var _has_blosm := false
 
 
 func _ready() -> void:
@@ -124,22 +127,27 @@ func _build(data: Dictionary) -> void:
 	_road_samples.clear()
 	_parked_heavy = 0
 	# Shopfront nameplate budget (Dhule high-street feel); lighter when quieted.
-	var sign_budget := 64
+	var sign_budget := 140
 	var gs := get_node_or_null("/root/GameSettings")
 	if gs and gs.get("road_sign_density") != null and int(gs.get("road_sign_density")) == 0:
-		sign_budget = 24
+		sign_budget = 48
 	BuildingKit.signature_budget = sign_budget
 
 	_add_ground(clip)
+	# Batch the thousands of visual-only lane-marking / kerb / paint boxes.
+	StreetKit.begin_box_batch(self)
 
 	var roads: Array = data.get("roads", [])
 	# Resolve spawn early so density uses it
 	_resolve_spawn(data, roads)
+	var blosm_path := str(AssetKit.ENVIRONMENTS.get("dhule_blosm_city", ""))
+	_has_blosm = AssetKit.exists(blosm_path)
 
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 742021
 	var shops := 0
 	var props := 0
+	var dress: Array = []
 
 	for road_v in roads:
 		var road: Dictionary = road_v
@@ -152,15 +160,23 @@ func _build(data: Dictionary) -> void:
 		# Strict 2 kit looks only: avenue_street (main) / street_road (sub). No zebra/wear/mesh stack.
 		var mat := _major if is_major else _asphalt
 		_build_road_strip(pts, width, mat, hw)
-		if is_major:
+		if is_major and not _has_blosm:
 			_build_curbs(pts, width)
 		_sample_road(pts, width)
-
 		var dens := _density_for_polyline(pts)
 		if dens <= 0.0:
 			continue
-		shops += _dress_road_sides(pts, width, dens, hw, rng)
-		props += _dress_road_props(pts, width, dens, hw, rng)
+		dress.append([pts, width, dens, hw])
+
+	# Props run after every road is sampled, so a tree beside one way cannot sit on another.
+	for job in dress:
+		var dress_pts: Array = job[0]
+		var dress_width: float = job[1]
+		var dress_dens: float = job[2]
+		var dress_hw: String = job[3]
+		if not _has_blosm:
+			shops += _dress_road_sides(dress_pts, dress_width, dress_dens, dress_hw, rng)
+		props += _dress_road_props(dress_pts, dress_width, dress_dens, dress_hw, rng)
 
 	delivery_anchors.clear()
 	for a_v in data.get("delivery_anchors", []):
@@ -176,6 +192,9 @@ func _build(data: Dictionary) -> void:
 	var demo_scenery := _add_demo_scenery(rng)
 	# Commit every queued roadside tree as 2 MultiMesh batches (Android node-count win).
 	StreetKit.flush_trees(self)
+	# Commit queued visual boxes as a few MultiMesh batches (was ~13k MeshInstance3D).
+	var batched_boxes := StreetKit.flush_box_batch()
+	print("StreetKit box batch: %d boxes -> MultiMesh" % batched_boxes)
 
 	print(
 		"PHASE1 map: %d ways, shops~%d props~%d lots~%d landmarks~%d road_signs~%d osm_features~%d flyovers~%d demo_scenery~%d spawn=(%.1f,%.1f)"
@@ -220,6 +239,8 @@ func _ground_pos(p: Vector3) -> Vector3:
 
 
 func _dress_road_sides(pts: Array, width: float, dens: float, hw: String, rng: RandomNumberGenerator) -> int:
+	if _has_blosm:
+		return 0
 	var placed := 0
 	var step := 2 if dens > 0.8 else 3
 	# Wide setback so buildings never eat the lane / camera (screenshot jam fix)
@@ -267,7 +288,7 @@ func _dress_road_sides(pts: Array, width: float, dens: float, hw: String, rng: R
 					var cart := AssetKit.place_at(self, cart_path, cp, atan2(-side.x, -side.z), 1.0)
 					if cart:
 						_strip_physics(cart)
-			if core_clear:
+			if _has_blosm or core_clear:
 				continue
 			var chance := dens * (0.78 if commercial else 0.48)
 			if near_spawn:
@@ -331,7 +352,7 @@ func _dress_road_props(pts: Array, width: float, dens: float, hw: String, rng: R
 		var yaw := atan2(along.x, along.z)
 		var spawn_soft := _near_spawn(p0, 18.0)
 		# Parked bus / truck (visual only) on major roads in the core
-		if heavy_ok and _parked_heavy < PARKED_HEAVY_MAX:
+		if not _has_blosm and heavy_ok and _parked_heavy < PARKED_HEAVY_MAX:
 			var roll := rng.randf()
 			var heavy_key := ""
 			if roll < 0.05:
@@ -347,29 +368,25 @@ func _dress_road_props(pts: Array, width: float, dens: float, hw: String, rng: R
 						_strip_physics(hv)
 						_parked_heavy += 1
 						n += 1
-		if rng.randf() < dens * 0.4 or (spawn_soft and rng.randf() < 0.55):
+		if rng.randf() < dens * 0.25 or (spawn_soft and not _has_blosm and rng.randf() < 0.55):
 			# Procedural 6 m lamp on kerb — never GLB (overscale / rooftop look).
-			var lp := _ground_pos(p0 + outward * (width * 0.5 + 1.55))
-			if _asphalt_depth(lp) < -0.4:
+			var lp := _ground_pos(p0 + outward * (width * 0.5 + 2.4))
+			var lamp_clear := -1.6 if _has_blosm else -0.4
+			if _asphalt_depth(lp) < lamp_clear:
 				StreetKit.lamp(self, lp)
 				n += 1
-		elif dens > 0.7 and rng.randf() < 0.2 and not spawn_soft:
+		elif not _has_blosm and dens > 0.7 and rng.randf() < 0.2 and not spawn_soft:
 			var up := _ground_pos(p0 - outward * (width * 0.5 + 1.6))
 			if _asphalt_depth(up) < -0.4:
 				StreetKit.utility_pole(self, up)
 				n += 1
-		if rng.randf() < dens * 0.55 and not spawn_soft:
-			# Trees on outer verge only (canopy ~3 m — keep trunks clear of lanes).
-			var t1 := _ground_pos(p0 - outward * (width * 0.5 + rng.randf_range(5.5, 8.5)))
+		if rng.randf() < dens * 0.22 and not spawn_soft:
+			# One verge tree, 9 m past the road edge, and only if every sampled road is clear.
+			var t1 := _ground_pos(p0 - outward * (width * 0.5 + 9.0))
 			if _tree_site_ok(t1):
 				StreetKit.tree(self, t1, rng)
 				n += 1
-			if dens > 0.8 and rng.randf() < 0.4:
-				var t2 := _ground_pos(p0 + outward * (width * 0.5 + rng.randf_range(5.5, 8.5)))
-				if _tree_site_ok(t2):
-					StreetKit.tree(self, t2, rng)
-					n += 1
-		if dens > 0.7 and wide_enough and hw in ["primary", "secondary", "tertiary"] and rng.randf() < 0.14:
+		if not _has_blosm and dens > 0.7 and wide_enough and hw in ["primary", "secondary", "tertiary"] and rng.randf() < 0.14:
 			var park := p0 + outward * (width * 0.5 + 3.8) + along * rng.randf_range(1.0, 3.0)
 			if _near_spawn(park, 14.0):
 				continue
@@ -379,29 +396,29 @@ func _dress_road_props(pts: Array, width: float, dens: float, hw: String, rng: R
 				StreetKit.parked_stub(self, park, along, rng)
 			n += 1
 		# Roadside barriers / breakers — kerb line only, never mid-lane
-		if dens > 0.65 and AssetKit.exists(barrier_path) and rng.randf() < 0.16 and not spawn_soft:
+		if not _has_blosm and dens > 0.65 and AssetKit.exists(barrier_path) and rng.randf() < 0.16 and not spawn_soft:
 			var bpos := _ground_pos(p0 + outward * (width * 0.5 + 2.6))
 			if not _near_road(bpos, maxf(4.0, width * 0.35)):
 				var bn := AssetKit.place_at(self, barrier_path, bpos, yaw, 1.0)
 				if bn:
 					_strip_physics(bn)
 					n += 1
-		if dens > 0.85 and rng.randf() < 0.06 and not spawn_soft:
+		if not _has_blosm and dens > 0.85 and rng.randf() < 0.06 and not spawn_soft:
 			var bb := _ground_pos(p0 + outward * (width * 0.5 + 11.0))
 			if not _near_road(bb, 5.0):
 				StreetKit.billboard(self, bb, -outward, rng)
 				n += 1
-		elif dens > 0.6 and hw in ["primary", "secondary"] and rng.randf() < 0.05 and not spawn_soft:
+		elif not _has_blosm and dens > 0.6 and hw in ["primary", "secondary"] and rng.randf() < 0.05 and not spawn_soft:
 			var hp2 := _ground_pos(p0 + outward * (width * 0.5 + 9.0))
 			if not _near_road(hp2, 5.5):
 				StreetKit.hoarding(self, hp2, -outward, rng)
 				n += 1
-		if dens > 0.5 and rng.randf() < 0.07 and not _near_spawn(p0, 12.0):
+		if not _has_blosm and dens > 0.5 and rng.randf() < 0.07 and not _near_spawn(p0, 12.0):
 			var db := _ground_pos(p0 + outward * (width * 0.5 + 3.2) + along * 1.5)
 			if not _near_road(db, maxf(3.5, width * 0.3)):
 				StreetKit.dustbin_pair(self, db, yaw)
 		# Sparse original planter GLB on sidewalks
-		if dens > 0.75 and rng.randf() < 0.05 and not spawn_soft:
+		if not _has_blosm and dens > 0.75 and rng.randf() < 0.05 and not spawn_soft:
 			var planter_path := AssetKit.prop_path("planter")
 			if AssetKit.exists(planter_path):
 				var pp := _ground_pos(p0 + outward * (width * 0.5 + 3.4))
@@ -486,6 +503,40 @@ func _add_osm_context(data: Dictionary, rng: RandomNumberGenerator) -> int:
 		var wd := clampf(float(w.get("d", 12)), 12.0, 72.0)
 		StreetKit.water_body(self, pos, Vector2(ww, wd))
 		n += 1
+	# Real Blender Blosm 3D Model:
+	var blosm_path := str(AssetKit.ENVIRONMENTS.get("dhule_blosm_city", ""))
+	if AssetKit.exists(blosm_path):
+		var blosm_scene: PackedScene = load(blosm_path)
+		if blosm_scene:
+			var blosm_inst: Node3D = blosm_scene.instantiate()
+			blosm_inst.name = "DhuleBlosmCity"
+			blosm_inst.position = Vector3.ZERO
+			add_child(blosm_inst)
+			_has_blosm = true
+			for child in blosm_inst.get_children():
+				var cname := child.name.to_lower()
+				if child is GeometryInstance3D:
+					# The city is one mesh several kilometres wide. Godot's generated LODs
+					# collapse it, so the blocks disappear around the camera.
+					(child as GeometryInstance3D).lod_bias = 128.0
+				if "roads" in cname or "profile" in cname:
+					child.visible = false
+				elif "water" in cname:
+					if child is MeshInstance3D:
+						var mi := child as MeshInstance3D
+						var extent := mi.get_aabb().size
+						if extent.x > 8000.0 or extent.z > 8000.0:
+							mi.visible = false
+						else:
+							var w_mat := StandardMaterial3D.new()
+							w_mat.albedo_color = Color(0.18, 0.42, 0.52, 0.88)
+							w_mat.roughness = 0.08
+							mi.material_override = w_mat
+				elif "buildings" in cname:
+					_collide_city_mesh(child)
+			n += 1
+			n += _place_osm_shops()
+
 	var cart_path := AssetKit.building_path("bhelpuri") # ~3 m street-food cart GLB
 	var has_cart := AssetKit.exists(cart_path)
 	var has_shop := AssetKit.exists(AssetKit.building_path("shop"))
@@ -526,7 +577,8 @@ func _add_osm_context(data: Dictionary, rng: RandomNumberGenerator) -> int:
 		# Optional shop GLB on a few commercial footprints (materials reused from one PackedScene)
 		var used_shop := false
 		if (
-			has_shop
+			not _has_blosm
+			and has_shop
 			and shop_placed < shop_cap
 			and kind in ["commercial", "retail", "shop"]
 			and fw >= 6.0
@@ -540,19 +592,28 @@ func _add_osm_context(data: Dictionary, rng: RandomNumberGenerator) -> int:
 				shop_placed += 1
 				used_shop = true
 		if not used_shop:
-			# Collision only near spawn/core — outer Ring 1 is visual to save StaticBodies
-			BuildingKit.footprint(self, pos, Vector2(fw, fd), kind, _pos_seed(pos), face_dir, with_col)
+			var bld_name := str(b.get("name", ""))
+			if _has_blosm:
+				if not bld_name.is_empty() and _named_labels < NAMED_LABEL_CAP:
+					_add_name_label(bld_name, pos + Vector3(0, float(b.get("h", 6.0)) + 1.6, 0))
+					_named_labels += 1
+			else:
+				var bld_h := BuildingKit.footprint(self, pos, Vector2(fw, fd), kind, _pos_seed(pos), face_dir, with_col)
+				if not bld_name.is_empty() and _named_labels < NAMED_LABEL_CAP:
+					_add_name_label(bld_name, pos + Vector3(0, bld_h + 1.6, 0))
+					_named_labels += 1
 		b_placed += 1
 		n += 1
-		if has_cart and kind == "commercial" and in_dense and rng.randf() < 0.14:
+		if not _has_blosm and has_cart and kind == "commercial" and in_dense and rng.randf() < 0.14:
 			var cp := _ground_pos(pos + face_dir * (fd * 0.5 + 3.0))
 			if not _near_road(cp, 5.5) and not _near_spawn(cp, 16.0):
 				var cart := AssetKit.place_at(self, cart_path, cp, yaw, 1.0)
 				if cart:
 					_strip_physics(cart)
 	var poi_n := 0
+	# Cap raised to 60 — real Dhule Overpass POIs now populate this list (78 entries)
 	for p_v in data.get("pois", []):
-		if poi_n >= 28:
+		if poi_n >= 60:
 			break
 		var p: Dictionary = p_v
 		var pos := Vector3(float(p.get("x", 0)), 0, float(p.get("z", 0)))
@@ -561,7 +622,9 @@ func _add_osm_context(data: Dictionary, rng: RandomNumberGenerator) -> int:
 		var poi_name := str(p.get("name", "POI"))
 		var poi_kind := str(p.get("kind", ""))
 		var face := _face_toward_road(pos, 60.0, rng)
-		var bh := BuildingKit.landmark(self, pos, poi_name, poi_kind, _pos_seed(pos), face)
+		var bh := 8.0
+		if not _has_blosm:
+			bh = BuildingKit.landmark(self, pos, poi_name, poi_kind, _pos_seed(pos), face)
 		var label := Label3D.new()
 		label.text = poi_name
 		label.font_size = 28
@@ -573,6 +636,65 @@ func _add_osm_context(data: Dictionary, rng: RandomNumberGenerator) -> int:
 		poi_n += 1
 		n += 1
 	return n
+
+
+func _collide_city_mesh(node: Node) -> void:
+	if node is MeshInstance3D:
+		(node as MeshInstance3D).create_trimesh_collision()
+	for child in node.get_children():
+		_collide_city_mesh(child)
+
+
+func _place_osm_shops() -> int:
+	var path := "res://data/dhule/city_shops.json"
+	if not FileAccess.file_exists(path):
+		return 0
+	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
+	if typeof(parsed) != TYPE_DICTIONARY:
+		return 0
+	var shops: Array = (parsed as Dictionary).get("shops", [])
+	var placed := 0
+	for shop_v in shops:
+		var shop: Dictionary = shop_v
+		var pos := _ground_pos(Vector3(float(shop.get("x", 0.0)), 0.0, float(shop.get("z", 0.0))))
+		var face := _face_toward_road(pos, 80.0, _shop_rng(pos))
+		if _asphalt_depth(pos) > -2.0:
+			pos = _ground_pos(pos - face * 7.0)
+		var yaw := atan2(face.x, face.z)
+		var cart := AssetKit.building_path("bhelpuri")
+		var node := AssetKit.place_at(self, cart, pos, yaw, 1.0)
+		if node == null:
+			continue
+		_strip_physics(node)
+		var shop_name := str(shop.get("name", "")).strip_edges()
+		if not shop_name.is_empty() and _named_labels < NAMED_LABEL_CAP:
+			_add_name_label(shop_name, pos + Vector3(0.0, 3.2, 0.0))
+			_named_labels += 1
+		placed += 1
+	print("OSM shops placed: %d" % placed)
+	return placed
+
+
+func _shop_rng(pos: Vector3) -> RandomNumberGenerator:
+	var rng := RandomNumberGenerator.new()
+	rng.seed = _pos_seed(pos)
+	return rng
+
+
+func _add_name_label(text: String, pos: Vector3) -> void:
+	## Real OSM building name floating above its footprint (billboard).
+	## Data: © OpenStreetMap contributors (ODbL).
+	var label := Label3D.new()
+	label.text = text
+	label.font_size = 26
+	label.pixel_size = 0.009
+	label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	label.outline_size = 5
+	label.modulate = Color(0.96, 0.94, 0.86)
+	label.outline_modulate = Color(0.08, 0.08, 0.1)
+	label.render_priority = 1
+	label.position = pos
+	add_child(label)
 
 
 func _sample_road(pts: Array, width: float) -> void:
@@ -628,9 +750,9 @@ func _tree_site_ok(pos: Vector3) -> bool:
 	## Trunk clear of asphalt + spawn; canopy (~3 m) must not sit in the drive lane.
 	if _near_spawn(pos, 12.0):
 		return false
-	if _asphalt_depth(pos) > -3.2:
+	if _asphalt_depth(pos) > -5.0:
 		return false
-	if _near_road(pos, 3.0):
+	if _near_road(pos, 4.5):
 		return false
 	return true
 
@@ -672,10 +794,11 @@ func _face_toward_road(pos: Vector3, max_m: float, rng: RandomNumberGenerator) -
 	var found := false
 	var flat := Vector3(pos.x, 0.0, pos.z)
 	for s in _road_samples:
-		var d := flat.distance_to(s)
+		var road_xz := Vector3(s.x, 0.0, s.z)
+		var d := flat.distance_to(road_xz)
 		if d < best_d and d > 0.01:
 			best_d = d
-			best = s
+			best = road_xz
 			found = true
 	if found:
 		var dir := Vector3(best.x - flat.x, 0.0, best.z - flat.z)
@@ -697,6 +820,8 @@ func _strip_physics(root: Node) -> void:
 
 
 func _add_demo_scenery(rng: RandomNumberGenerator) -> int:
+	if _has_blosm:
+		return 0
 	## Terrain3D demo rocks + Road Generator edge barriers (off spawn / off lane).
 	var n := 0
 	var rock_keys := ["rock_a", "rock_b", "rock_c"]
@@ -761,7 +886,9 @@ func _fill_empty_lots(clip: float, rng: RandomNumberGenerator) -> int:
 	var lot_cap := 72
 	var attempts := 160
 	var scrub_n := 40
-	if clip >= 1400.0:
+	if _has_blosm:
+		return 0
+	elif clip >= 1400.0:
 		lot_cap = 36
 		attempts = 100
 		scrub_n = 24
@@ -780,7 +907,7 @@ func _fill_empty_lots(clip: float, rng: RandomNumberGenerator) -> int:
 			continue
 		if _near_delivery_anchor(pos, 18.0):
 			continue
-		var with_shed := not _near_spawn(pos, 70.0)
+		var with_shed := not _near_spawn(pos, 70.0) and not _has_blosm
 		StreetKit.filled_lot(self, pos, rng, with_shed)
 		n += 1
 		if n >= lot_cap:
@@ -874,6 +1001,8 @@ func _add_road_name_signs(roads: Array) -> int:
 
 func _dress_spawn_street(_roads: Array, rng: RandomNumberGenerator) -> int:
 	## First-camera frontage: mixed kit + procedural shops (not one repeated stall).
+	if _has_blosm:
+		return 0
 	var n := 0
 	var shop_path := AssetKit.building_path("bhelpuri")
 	var barrier := AssetKit.prop_path("barrier")
@@ -936,6 +1065,8 @@ func _dress_spawn_street(_roads: Array, rng: RandomNumberGenerator) -> int:
 
 func _add_landmarks(rng: RandomNumberGenerator) -> int:
 	## Sidewalk scenery only — never on the carriageway (fixes stall/bus-stop-in-road bug).
+	if _has_blosm:
+		return 0
 	var n := 0
 	var forward := Vector3(spawn_heading.x, 0.0, spawn_heading.y).normalized()
 	if forward.length() < 0.1:
@@ -946,6 +1077,15 @@ func _add_landmarks(rng: RandomNumberGenerator) -> int:
 	var wt := _off_carriageway(spawn_position + forward * 55.0, forward, 1.0, 8.0)
 	StreetKit.water_tower(self, wt)
 	n += 1
+
+	var junction_env := str(AssetKit.ENVIRONMENTS.get("dhule_junction", ""))
+	if AssetKit.exists(junction_env):
+		var jpos := _off_carriageway(Vector3(-180.0, 0, -95.0), Vector3(1, 0, 0), 1.0, 16.0)
+		if not _near_road(jpos, 14.0) and not _near_spawn(jpos, 35.0):
+			var jnode := AssetKit.place_at(self, junction_env, jpos, 0.0, 0.85)
+			if jnode:
+				_strip_physics(jnode)
+				n += 1
 
 	var bs := _off_carriageway(spawn_position + forward * 28.0, forward, -1.0, 8.0)
 	if not _near_spawn(bs, 12.0) and not _near_road(bs, 6.0):
@@ -1037,6 +1177,49 @@ func _add_landmarks(rng: RandomNumberGenerator) -> int:
 	var hoard := _off_carriageway(spawn_position + forward * 70.0, forward, 1.0, 8.0)
 	StreetKit.hoarding(self, hoard, -right, rng)
 	n += 1
+	n += _add_real_spots()
+	return n
+
+
+func _latlon_to_xz(lat: float, lon: float) -> Vector3:
+	var lat_m := 6371000.0 * deg_to_rad(1.0)
+	var lon_m := 6371000.0 * cos(deg_to_rad(20.902)) * deg_to_rad(1.0)
+	return Vector3((lon - 74.777) * lon_m, 0.0, -(lat - 20.902) * lat_m)
+
+
+func _add_real_spots() -> int:
+	## Real Dhule places from OpenStreetMap coordinates. The statue mesh is original.
+	var spots: Array[Dictionary] = [
+		{"name": "Shivaji Maharaj, Fulwala Chowk", "lat": 20.90225, "lon": 74.77485, "kind": "statue"},
+		{"name": "Jhansi Rani Chowk", "lat": 20.90615, "lon": 74.77490, "kind": "chowk"},
+		{"name": "Panzara River Bridge", "lat": 20.90835, "lon": 74.77492, "kind": "bridge"},
+		{"name": "Ekvira Devi Mandir", "lat": 20.90985, "lon": 74.77160, "kind": "temple"},
+	]
+	var statue_path := "res://assets/models/props/dhule_chowk_statue.glb"
+	var n := 0
+	for spot in spots:
+		var pos := _latlon_to_xz(float(spot["lat"]), float(spot["lon"]))
+		if _near_road(pos, 7.0):
+			pos += Vector3(12.0, 0.0, 0.0)
+			if _near_road(pos, 6.0):
+				pos += Vector3(0.0, 0.0, 12.0)
+		var kind := str(spot["kind"])
+		var h := 6.0
+		if kind == "statue" and AssetKit.exists(statue_path):
+			var node := AssetKit.place_at(self, statue_path, pos, 0.0, 1.0)
+			if node:
+				_strip_physics(node)
+				h = 11.0
+		elif kind == "temple":
+			h = BuildingKit.landmark(self, pos, str(spot["name"]), "temple", _pos_seed(pos))
+		elif kind == "bridge":
+			StreetKit.add_box(self, Vector3(8.0, 0.4, 3.0), pos + Vector3(0, 0.3, 0), StreetKit.mat(Color(0.75, 0.72, 0.62), 0.8), false)
+			h = 4.0
+		else:
+			StreetKit.add_box(self, Vector3(6.0, 1.2, 6.0), pos + Vector3(0, 0.6, 0), StreetKit.mat(Color(0.55, 0.38, 0.22), 0.85), false)
+			h = 3.0
+		_add_name_label(str(spot["name"]), pos + Vector3(0, h + 1.4, 0))
+		n += 1
 	return n
 
 
@@ -1096,7 +1279,7 @@ func _build_road_strip(pts: Array, width: float, mat: Material, hw: String = "re
 		var deck_pos := Vector3(mid.x, road_y + 0.01, mid.z)
 		# Painted lane-edge lines are baked into the deck mesh (no extra nodes).
 		StreetKit.add_road_deck(self, width, deck_len, deck_pos, yaw, mat, tile_m, along_u, _edge)
-		if width >= 7.0:
+		if not _has_blosm and width >= 7.0:
 			var sh_y := road_y - 0.02
 			StreetKit.add_box(
 				self,
@@ -1115,7 +1298,7 @@ func _build_road_strip(pts: Array, width: float, mat: Material, hw: String = "re
 				yaw
 			)
 		# Metal/concrete barriers as kerbside dividers (never on centerline / drive lane)
-		if has_barrier and is_major and width >= 8.0 and length > 6.0 and not _near_spawn(mid, 22.0):
+		if not _has_blosm and has_barrier and is_major and width >= 8.0 and length > 6.0 and not _near_spawn(mid, 22.0):
 			var kerb_off := width * 0.5 + 1.65
 			var side_s := 1.0 if (run_i % 2 == 0) else -1.0
 			var bp := _ground_pos(mid + side * (kerb_off * side_s))
@@ -1135,7 +1318,10 @@ func _build_road_strip(pts: Array, width: float, mat: Material, hw: String = "re
 
 
 func _add_flyovers(data: Dictionary) -> int:
-	## OSM bridge=yes centerlines from the Dhule tile clip. Deck + ramps, pillars visual.
+	## Stored flyovers have kind and width only — no bridge tag — so they are not used
+	## on the real city mesh. The decks sat 6 m up with no mapped structure.
+	if _has_blosm:
+		return 0
 	var n := 0
 	var deck_y := 6.2
 	var concrete := _mat(Color(0.55, 0.53, 0.5), 0.9)
@@ -1201,28 +1387,9 @@ func _build_wear_patches(pts: Array, width: float, rng: RandomNumberGenerator) -
 		)
 
 
-func _build_zebra_and_breakers(pts: Array, width: float, rng: RandomNumberGenerator) -> void:
-	## Occasional zebra stripes + speed breakers on busy core majors.
-	if pts.size() < 4:
-		return
-	var mid_i := int(pts.size() / 2.0)
-	var a: Array = pts[mid_i]
-	var b: Array = pts[mini(mid_i + 1, pts.size() - 1)]
-	var p0 := Vector3(float(a[0]), road_y + 0.02, float(a[1]))
-	var p1 := Vector3(float(b[0]), road_y + 0.02, float(b[1]))
-	var delta := p1 - p0
-	if delta.length() < 2.0:
-		return
-	var dir := delta.normalized()
-	var yaw := atan2(delta.x, delta.z)
-	var white := _mat(Color(0.92, 0.92, 0.9), 0.7)
-	if rng.randf() < 0.55:
-		for s in range(-3, 4):
-			var stripe_mid := p0 + dir * (float(s) * 0.55)
-			StreetKit.add_box(self, Vector3(width * 0.72, 0.025, 0.35), stripe_mid, white, false, yaw)
-	if rng.randf() < 0.4:
-		var yellow := _mat(Color(0.85, 0.55, 0.1), 0.75)
-		StreetKit.add_box(self, Vector3(width * 0.85, 0.12, 0.55), p0 + dir * 6.0 + Vector3(0, 0.04, 0), yellow, false, yaw)
+func _build_zebra_and_breakers(_pts: Array, _width: float, _rng: RandomNumberGenerator) -> void:
+	## Random speed breakers are disabled. There is no mapped breaker location.
+	return
 
 
 func _build_edge_lines(pts: Array, width: float) -> void:

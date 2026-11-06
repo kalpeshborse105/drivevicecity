@@ -107,6 +107,8 @@ func set_distance_to_target(world_pos: Vector3, active: bool, car: Node3D) -> vo
 	_nav_active = active
 	if car:
 		_car = car as VehicleBody3D
+	if _minimap and _minimap.has_method("set_navigation_target"):
+		_minimap.set_navigation_target(world_pos, active)
 
 
 func set_test_status(text: String) -> void:
