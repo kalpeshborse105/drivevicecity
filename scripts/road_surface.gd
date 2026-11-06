@@ -5,6 +5,7 @@ extends RefCounted
 ## do not stack and shimmer.
 
 const TILE_M := 8.0
+const RoadJunctions = preload("res://scripts/road_junctions.gd")
 
 static var _batch_parent: Node3D
 static var _decks: Dictionary = {}
@@ -78,6 +79,7 @@ static func add_way(parent: Node3D, pts: Array, width: float, y: float, asphalt:
 		points.remove_at(points.size() - 1)
 	if points.size() < 2:
 		return
+	points = RoadJunctions.trim(points, closed)
 	var sides := _sides(points, closed)
 	var half := maxf(width, 2.4) * 0.5
 	var left: PackedVector3Array = PackedVector3Array()
@@ -133,13 +135,33 @@ static func add_way(parent: Node3D, pts: Array, width: float, y: float, asphalt:
 	parent.add_child(mi)
 
 
+static func prepare_junctions(roads: Array) -> int:
+	return RoadJunctions.prepare(roads)
+
+
+static func draw_prepared_junctions(parent: Node3D, y: float, asphalt: Material, major: Material) -> int:
+	var n := 0
+	for jv in RoadJunctions.clips:
+		var j: Dictionary = jv
+		var mat: Material = major if bool(j.get("major", false)) else asphalt
+		if not bool(j.get("disc", true)):
+			continue
+		add_junction(parent, j["c"], float(j["r"]), y, mat)
+		n += 1
+	return n
+
+
 static func add_junction(parent: Node3D, pos: Vector2, radius: float, y: float, asphalt: Material) -> void:
 	if radius < 2.0:
 		return
+	var batched := _batch_parent != null
 	var st := SurfaceTool.new()
-	st.begin(Mesh.PRIMITIVE_TRIANGLES)
-	var centre := Vector3(pos.x, y + 0.008, pos.y)
-	var steps := 10
+	if batched:
+		st = _tool_for(_decks, asphalt)
+	else:
+		st.begin(Mesh.PRIMITIVE_TRIANGLES)
+	var centre := Vector3(pos.x, y + 0.01, pos.y)
+	var steps := 12
 	for i in steps:
 		var a0 := TAU * float(i) / float(steps)
 		var a1 := TAU * float(i + 1) / float(steps)
@@ -152,6 +174,8 @@ static func add_junction(parent: Node3D, pos: Vector2, radius: float, y: float, 
 		st.add_vertex(p0)
 		st.set_uv(Vector2(0.5 + cos(a1) * 0.5, 0.5 + sin(a1) * 0.5))
 		st.add_vertex(p1)
+	if batched:
+		return
 	var mesh := st.commit()
 	mesh.surface_set_material(0, asphalt)
 	var mi := MeshInstance3D.new()

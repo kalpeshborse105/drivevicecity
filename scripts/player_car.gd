@@ -235,7 +235,54 @@ func _physics_process(delta: float) -> void:
 	var steer_scale := clampf(1.0 - speed_kph / 160.0, 0.4, 1.0)
 	steering = move_toward(steering, _steer_target * steer_scale, steer_speed * delta)
 
+	_roll_wheels(delta)
 	_update_chase_camera(delta, speed_kph)
+
+
+func _count_kit_wheels(node: Node) -> int:
+	var nm := String(node.name).to_lower()
+	if (nm.contains("tire") or nm.contains("tyre") or nm.contains("wheel")) and not nm.contains("steering") and not nm.contains("dummy"):
+		return 1
+	var count := 0
+	for child in node.get_children():
+		count += _count_kit_wheels(child)
+	return count
+
+
+func _roll_wheels(delta: float) -> void:
+	## Visual only. Does not change forces, friction, or suspension.
+	var forward := global_transform.basis.z
+	var radius := 0.38
+	if _fl:
+		radius = maxf(_fl.wheel_radius, 0.28)
+	var spin := linear_velocity.dot(forward) * delta / radius
+	if absf(spin) < 0.00001:
+		return
+	for w in _wheels:
+		if w == null:
+			continue
+		for child in w.get_children():
+			if child is MeshInstance3D and (child as MeshInstance3D).visible:
+				(child as Node3D).rotate_x(spin)
+	if _visual_root:
+		_spin_kit_wheels(_visual_root, spin)
+
+
+func _spin_kit_wheels(node: Node, spin: float) -> void:
+	var nm := String(node.name).to_lower()
+	var road_wheel := (nm.contains("tire") or nm.contains("tyre") or nm.contains("wheel")) and not nm.contains("steering") and not nm.contains("dummy")
+	if road_wheel and node is Node3D:
+		var wheel := node as Node3D
+		var parent := wheel.get_parent() as Node3D
+		if parent == null:
+			return
+		var axle := parent.global_transform.basis.inverse() * global_transform.basis.x
+		if axle.length() < 0.001:
+			return
+		wheel.rotate(axle.normalized(), spin)
+		return
+	for child in node.get_children():
+		_spin_kit_wheels(child, spin)
 
 
 func speed_kph() -> float:
@@ -433,7 +480,7 @@ func _rebuild_visuals() -> void:
 			# (wheel y 0.36 − rest 0.22 − radius 0.38) → drop mesh so tyres touch road.
 			n.position = Vector3(0, -0.22, 0)
 			col_size = Vector3(aabb.size.x, aabb.size.y, aabb.size.z)
-			_set_wheel_meshes_visible(false)
+			_set_wheel_meshes_visible(_count_kit_wheels(n) == 0)
 	elif _profile_index == 1:
 		col_size = VehicleMeshBuilder.build_van(_visual_root, _body_mat, _kit_index)
 		_visual_root.rotation.y = PI

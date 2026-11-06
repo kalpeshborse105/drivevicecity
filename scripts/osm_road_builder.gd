@@ -5,6 +5,7 @@ signal map_ready(spawn_position: Vector3, spawn_heading: Vector2, anchors: Array
 
 const RoadSurface = preload("res://scripts/road_surface.gd")
 const RoadLabels = preload("res://scripts/road_labels.gd")
+const RoadJunctions = preload("res://scripts/road_junctions.gd")
 const StreetKit = preload("res://scripts/street_kit.gd")
 const AssetKit = preload("res://scripts/asset_kit.gd")
 const BuildingKit = preload("res://scripts/building_kit.gd")
@@ -32,6 +33,7 @@ var _sidewalk: StandardMaterial3D
 var _palette: Array = []
 var _road_samples: Array[Vector3] = []
 var _named_roads: Array = []
+var _buildings: Array = []
 var _parked_heavy := 0
 var _named_labels := 0  ## real OSM building names drawn this map build
 var _has_blosm := false
@@ -108,6 +110,7 @@ func _anchor_from_dict(a: Dictionary) -> Dictionary:
 
 
 func _build(data: Dictionary) -> void:
+	_buildings = data.get("buildings", [])
 	var clip: float = float(data.get("clip_radius_m", 900.0))
 	# Strict 2 kit sources: street_road = sub, avenue_street = main (asphalt crop, no yellow gutter)
 	_asphalt = _kit_road_mat("street_road", Color(0.86, 0.86, 0.89), 0.9)
@@ -143,6 +146,8 @@ func _build(data: Dictionary) -> void:
 	var roads: Array = data.get("roads", [])
 	# Resolve spawn early so density uses it
 	_resolve_spawn(data, roads)
+	var junction_n := RoadSurface.prepare_junctions(roads)
+	print("ROAD junction prepare ", junction_n)
 	var blosm_path := str(AssetKit.ENVIRONMENTS.get("dhule_blosm_city", ""))
 	_has_blosm = AssetKit.exists(blosm_path)
 
@@ -171,8 +176,9 @@ func _build(data: Dictionary) -> void:
 			continue
 		dress.append([pts, width, dens, hw])
 
+	var drawn := RoadSurface.draw_prepared_junctions(self, road_y, _asphalt, _major)
 	var road_batches := RoadSurface.flush_batch()
-	print("ROAD batches ", road_batches)
+	print("ROAD batches ", road_batches, " junctions ", drawn, " ", RoadJunctions.summary)
 
 	# Props run after every road is sampled, so a tree beside one way cannot sit on another.
 	for job in dress:
@@ -968,7 +974,11 @@ func _add_road_name_signs(roads: Array) -> int:
 			continue
 		_named_roads.append(road)
 	add_to_group("dhule_roads")
-	return RoadLabels.add_names(self, roads, 48)
+	return RoadLabels.bind(self, roads, data_buildings())
+
+
+func data_buildings() -> Array:
+	return _buildings
 
 
 func nearest_road_name(pos: Vector3) -> String:
@@ -1004,12 +1014,11 @@ func _process(_delta: float) -> void:
 	var cam := get_viewport().get_camera_3d()
 	if cam == null:
 		return
-	RoadLabels.update_fade(get_tree(), cam.global_position)
+	RoadLabels.update(cam.global_position, _delta)
 
 
-func _add_junctions(roads: Array) -> void:
-	var n := RoadSurface.add_shared_junctions(self, roads, road_y, _asphalt)
-	print("ROAD junctions ", n)
+func _add_junctions(_roads: Array) -> void:
+	pass
 
 
 func _add_roundabouts(roads: Array) -> void:
