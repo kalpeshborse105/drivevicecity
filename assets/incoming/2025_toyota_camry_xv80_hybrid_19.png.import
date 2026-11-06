@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ghx0jqbgl0h1"
 path.s3tc="res://.godot/imported/2025_toyota_camry_xv80_hybrid_19.png-19ad2ea32486b45bdf80ed67bb0aa657.s3tc.ctex"
+path.etc2="res://.godot/imported/2025_toyota_camry_xv80_hybrid_19.png-19ad2ea32486b45bdf80ed67bb0aa657.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/incoming/2025_toyota_camry_xv80_hybrid_19.png"
-dest_files=["res://.godot/imported/2025_toyota_camry_xv80_hybrid_19.png-19ad2ea32486b45bdf80ed67bb0aa657.s3tc.ctex"]
+dest_files=["res://.godot/imported/2025_toyota_camry_xv80_hybrid_19.png-19ad2ea32486b45bdf80ed67bb0aa657.s3tc.ctex", "res://.godot/imported/2025_toyota_camry_xv80_hybrid_19.png-19ad2ea32486b45bdf80ed67bb0aa657.etc2.ctex"]
 
 [params]
 

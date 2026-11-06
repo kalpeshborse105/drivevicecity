@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c288gl6sc33t7"
 path.s3tc="res://.godot/imported/tata_signa_cargo_truck__low_poly_game_ready_pbr_4.png-1031674d5a4e65553c8cb20a4093543d.s3tc.ctex"
+path.etc2="res://.godot/imported/tata_signa_cargo_truck__low_poly_game_ready_pbr_4.png-1031674d5a4e65553c8cb20a4093543d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/incoming/tata_signa_cargo_truck__low_poly_game_ready_pbr_4.png"
-dest_files=["res://.godot/imported/tata_signa_cargo_truck__low_poly_game_ready_pbr_4.png-1031674d5a4e65553c8cb20a4093543d.s3tc.ctex"]
+dest_files=["res://.godot/imported/tata_signa_cargo_truck__low_poly_game_ready_pbr_4.png-1031674d5a4e65553c8cb20a4093543d.s3tc.ctex", "res://.godot/imported/tata_signa_cargo_truck__low_poly_game_ready_pbr_4.png-1031674d5a4e65553c8cb20a4093543d.etc2.ctex"]
 
 [params]
 

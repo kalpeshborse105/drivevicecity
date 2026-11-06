@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dich0mlpycycc"
 path.s3tc="res://.godot/imported/avenue_street_1.png-ea14a42873511e66963cdb2e58a3282e.s3tc.ctex"
+path.etc2="res://.godot/imported/avenue_street_1.png-ea14a42873511e66963cdb2e58a3282e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/kit/roads/avenue_street_1.png"
-dest_files=["res://.godot/imported/avenue_street_1.png-ea14a42873511e66963cdb2e58a3282e.s3tc.ctex"]
+dest_files=["res://.godot/imported/avenue_street_1.png-ea14a42873511e66963cdb2e58a3282e.s3tc.ctex", "res://.godot/imported/avenue_street_1.png-ea14a42873511e66963cdb2e58a3282e.etc2.ctex"]
 
 [params]
 

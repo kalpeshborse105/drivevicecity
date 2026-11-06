@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bmxp77jg82to"
 path.s3tc="res://.godot/imported/old_city_23.jpg-a103c5db23e5600801798b2d3c7396d4.s3tc.ctex"
+path.etc2="res://.godot/imported/old_city_23.jpg-a103c5db23e5600801798b2d3c7396d4.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/incoming/old_city_23.jpg"
-dest_files=["res://.godot/imported/old_city_23.jpg-a103c5db23e5600801798b2d3c7396d4.s3tc.ctex"]
+dest_files=["res://.godot/imported/old_city_23.jpg-a103c5db23e5600801798b2d3c7396d4.s3tc.ctex", "res://.godot/imported/old_city_23.jpg-a103c5db23e5600801798b2d3c7396d4.etc2.ctex"]
 
 [params]
 

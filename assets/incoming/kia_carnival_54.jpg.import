@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bxpbtppv4171b"
 path.s3tc="res://.godot/imported/kia_carnival_54.jpg-2d708c9b1921e2841d257ea7f541364b.s3tc.ctex"
+path.etc2="res://.godot/imported/kia_carnival_54.jpg-2d708c9b1921e2841d257ea7f541364b.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/incoming/kia_carnival_54.jpg"
-dest_files=["res://.godot/imported/kia_carnival_54.jpg-2d708c9b1921e2841d257ea7f541364b.s3tc.ctex"]
+dest_files=["res://.godot/imported/kia_carnival_54.jpg-2d708c9b1921e2841d257ea7f541364b.s3tc.ctex", "res://.godot/imported/kia_carnival_54.jpg-2d708c9b1921e2841d257ea7f541364b.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dk88j7unf8p2q"
 path.s3tc="res://.godot/imported/2021_tata_safari_14.png-41bc9bc505311a2e0a1cb9f13cf40e07.s3tc.ctex"
+path.etc2="res://.godot/imported/2021_tata_safari_14.png-41bc9bc505311a2e0a1cb9f13cf40e07.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/incoming/2021_tata_safari_14.png"
-dest_files=["res://.godot/imported/2021_tata_safari_14.png-41bc9bc505311a2e0a1cb9f13cf40e07.s3tc.ctex"]
+dest_files=["res://.godot/imported/2021_tata_safari_14.png-41bc9bc505311a2e0a1cb9f13cf40e07.s3tc.ctex", "res://.godot/imported/2021_tata_safari_14.png-41bc9bc505311a2e0a1cb9f13cf40e07.etc2.ctex"]
 
 [params]
 

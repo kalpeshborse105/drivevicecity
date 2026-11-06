@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cjce0m2003d3n"
 path.s3tc="res://.godot/imported/bhelpuri_shop_0.png-9931efcb1c4e971b1222f6d37d23a861.s3tc.ctex"
+path.etc2="res://.godot/imported/bhelpuri_shop_0.png-9931efcb1c4e971b1222f6d37d23a861.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/buildings/shops/bhelpuri_shop_0.png"
-dest_files=["res://.godot/imported/bhelpuri_shop_0.png-9931efcb1c4e971b1222f6d37d23a861.s3tc.ctex"]
+dest_files=["res://.godot/imported/bhelpuri_shop_0.png-9931efcb1c4e971b1222f6d37d23a861.s3tc.ctex", "res://.godot/imported/bhelpuri_shop_0.png-9931efcb1c4e971b1222f6d37d23a861.etc2.ctex"]
 
 [params]
 

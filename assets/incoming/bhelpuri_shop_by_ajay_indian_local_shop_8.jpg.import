@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dwo4s4wmkx2ky"
 path.s3tc="res://.godot/imported/bhelpuri_shop_by_ajay_indian_local_shop_8.jpg-bdcbad2adf81f5b982695b6f9e45d329.s3tc.ctex"
+path.etc2="res://.godot/imported/bhelpuri_shop_by_ajay_indian_local_shop_8.jpg-bdcbad2adf81f5b982695b6f9e45d329.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/incoming/bhelpuri_shop_by_ajay_indian_local_shop_8.jpg"
-dest_files=["res://.godot/imported/bhelpuri_shop_by_ajay_indian_local_shop_8.jpg-bdcbad2adf81f5b982695b6f9e45d329.s3tc.ctex"]
+dest_files=["res://.godot/imported/bhelpuri_shop_by_ajay_indian_local_shop_8.jpg-bdcbad2adf81f5b982695b6f9e45d329.s3tc.ctex", "res://.godot/imported/bhelpuri_shop_by_ajay_indian_local_shop_8.jpg-bdcbad2adf81f5b982695b6f9e45d329.etc2.ctex"]
 
 [params]
 

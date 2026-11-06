@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://rrml2qi8alqj"
 path.s3tc="res://.godot/imported/street_road_2.png-79d26299a16cb95f9b91b8ff58c12a25.s3tc.ctex"
+path.etc2="res://.godot/imported/street_road_2.png-79d26299a16cb95f9b91b8ff58c12a25.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/kit/roads/street_road_2.png"
-dest_files=["res://.godot/imported/street_road_2.png-79d26299a16cb95f9b91b8ff58c12a25.s3tc.ctex"]
+dest_files=["res://.godot/imported/street_road_2.png-79d26299a16cb95f9b91b8ff58c12a25.s3tc.ctex", "res://.godot/imported/street_road_2.png-79d26299a16cb95f9b91b8ff58c12a25.etc2.ctex"]
 
 [params]
 

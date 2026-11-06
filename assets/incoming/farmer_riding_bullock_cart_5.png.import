@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dm6k40xysm5it"
 path.s3tc="res://.godot/imported/farmer_riding_bullock_cart_5.png-eade5021ac61ea98fa1f2373cf15be59.s3tc.ctex"
+path.etc2="res://.godot/imported/farmer_riding_bullock_cart_5.png-eade5021ac61ea98fa1f2373cf15be59.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/incoming/farmer_riding_bullock_cart_5.png"
-dest_files=["res://.godot/imported/farmer_riding_bullock_cart_5.png-eade5021ac61ea98fa1f2373cf15be59.s3tc.ctex"]
+dest_files=["res://.godot/imported/farmer_riding_bullock_cart_5.png-eade5021ac61ea98fa1f2373cf15be59.s3tc.ctex", "res://.godot/imported/farmer_riding_bullock_cart_5.png-eade5021ac61ea98fa1f2373cf15be59.etc2.ctex"]
 
 [params]
 

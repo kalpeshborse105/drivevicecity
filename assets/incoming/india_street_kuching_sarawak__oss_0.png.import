@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cvcr33os1xxxt"
 path.s3tc="res://.godot/imported/india_street_kuching_sarawak__oss_0.png-ba8478cb748ab90f9f9f1be1c4a34c94.s3tc.ctex"
+path.etc2="res://.godot/imported/india_street_kuching_sarawak__oss_0.png-ba8478cb748ab90f9f9f1be1c4a34c94.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/incoming/india_street_kuching_sarawak__oss_0.png"
-dest_files=["res://.godot/imported/india_street_kuching_sarawak__oss_0.png-ba8478cb748ab90f9f9f1be1c4a34c94.s3tc.ctex"]
+dest_files=["res://.godot/imported/india_street_kuching_sarawak__oss_0.png-ba8478cb748ab90f9f9f1be1c4a34c94.s3tc.ctex", "res://.godot/imported/india_street_kuching_sarawak__oss_0.png-ba8478cb748ab90f9f9f1be1c4a34c94.etc2.ctex"]
 
 [params]
 

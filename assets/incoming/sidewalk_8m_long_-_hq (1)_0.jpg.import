@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dmmbtrc178gsc"
 path.s3tc="res://.godot/imported/sidewalk_8m_long_-_hq (1)_0.jpg-9bacfd21ba66b2a2a8ade407df32cdf7.s3tc.ctex"
+path.etc2="res://.godot/imported/sidewalk_8m_long_-_hq (1)_0.jpg-9bacfd21ba66b2a2a8ade407df32cdf7.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/incoming/sidewalk_8m_long_-_hq (1)_0.jpg"
-dest_files=["res://.godot/imported/sidewalk_8m_long_-_hq (1)_0.jpg-9bacfd21ba66b2a2a8ade407df32cdf7.s3tc.ctex"]
+dest_files=["res://.godot/imported/sidewalk_8m_long_-_hq (1)_0.jpg-9bacfd21ba66b2a2a8ade407df32cdf7.s3tc.ctex", "res://.godot/imported/sidewalk_8m_long_-_hq (1)_0.jpg-9bacfd21ba66b2a2a8ade407df32cdf7.etc2.ctex"]
 
 [params]
 

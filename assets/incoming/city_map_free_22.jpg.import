@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://gel8dfnqm3wn"
 path.s3tc="res://.godot/imported/city_map_free_22.jpg-499502c66ae6b596b560d5696f2e69b5.s3tc.ctex"
+path.etc2="res://.godot/imported/city_map_free_22.jpg-499502c66ae6b596b560d5696f2e69b5.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/incoming/city_map_free_22.jpg"
-dest_files=["res://.godot/imported/city_map_free_22.jpg-499502c66ae6b596b560d5696f2e69b5.s3tc.ctex"]
+dest_files=["res://.godot/imported/city_map_free_22.jpg-499502c66ae6b596b560d5696f2e69b5.s3tc.ctex", "res://.godot/imported/city_map_free_22.jpg-499502c66ae6b596b560d5696f2e69b5.etc2.ctex"]
 
 [params]
 
