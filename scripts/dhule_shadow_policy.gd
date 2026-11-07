@@ -39,6 +39,14 @@ static func diagnose(root: Node, cam: Camera3D = null) -> Array:
 	return out
 
 
+static func _is_blosm_buildings(n: Node, nm: String) -> bool:
+	if "dhule_city.osm_buildings" in nm or "dhule_city_osm_buildings" in nm:
+		return true
+	if nm.contains("buildings") and n.get_parent() != null and str(n.get_parent().name) == "DhuleBlosmCity":
+		return true
+	return false
+
+
 static func _walk(n: Node, stats: Dictionary) -> void:
 	var nm := str(n.name).to_lower()
 	if n is MeshInstance3D or n is MultiMeshInstance3D:
@@ -49,7 +57,7 @@ static func _walk(n: Node, stats: Dictionary) -> void:
 				stats["marks_off"] = int(stats["marks_off"]) + 1
 			else:
 				stats["roads_off"] = int(stats["roads_off"]) + 1
-		elif "dhule_city.osm_buildings" in nm or (nm.contains("buildings") and n.get_parent() != null and str(n.get_parent().name) == "DhuleBlosmCity"):
+		elif _is_blosm_buildings(n, nm):
 			stats["blosm_buildings"] = int(stats["blosm_buildings"]) + 1
 			var aabb := (n as MeshInstance3D).get_aabb() if n is MeshInstance3D else AABB()
 			var plan := maxf(aabb.size.x, aabb.size.z)
@@ -61,7 +69,7 @@ static func _walk(n: Node, stats: Dictionary) -> void:
 				gi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
 				stats["blosm_shadow_mode"] = "on"
 				stats["casters_on"] = int(stats["casters_on"]) + 1
-		elif "water" in nm:
+		elif "water" in nm or "dhule_city_osm_water" in nm:
 			gi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		elif gi.cast_shadow != GeometryInstance3D.SHADOW_CASTING_SETTING_OFF:
 			stats["casters_on"] = int(stats["casters_on"]) + 1

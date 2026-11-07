@@ -32,7 +32,8 @@ func _ready() -> void:
 	_viewport = SubViewport.new()
 	_viewport.name = "PreviewViewport"
 	_viewport.size = Vector2i(720, 420)
-	_viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+	# Disabled while Home is closed — UPDATE_ALWAYS was rendering a second 3D world every frame.
+	_viewport.render_target_update_mode = SubViewport.UPDATE_DISABLED
 	_viewport.transparent_bg = false
 	_viewport.own_world_3d = true
 	add_child(_viewport)
@@ -82,6 +83,17 @@ func _ready() -> void:
 	_body_mat = VehicleMeshBuilder.mat(Color(0.92, 0.92, 0.9), 0.42, 0.18)
 	rebuild(8, 0, 0, 0)
 	focus_part("full")
+	set_process(false)
+
+
+func set_live(on: bool) -> void:
+	## Garage UI calls this on open/close so the preview does not tax production FPS.
+	if _viewport == null:
+		return
+	_viewport.render_target_update_mode = (
+		SubViewport.UPDATE_ALWAYS if on else SubViewport.UPDATE_DISABLED
+	)
+	set_process(on)
 
 
 func _process(delta: float) -> void:

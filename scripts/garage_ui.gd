@@ -352,6 +352,8 @@ func set_info(profile_name: String, detail: String) -> void:
 
 func toggle() -> void:
 	visible = not visible
+	if _preview and _preview.has_method("set_live"):
+		_preview.call("set_live", visible)
 	if visible:
 		_sync_indices_from_car()
 		_refresh_preview("full")

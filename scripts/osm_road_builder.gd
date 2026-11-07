@@ -9,6 +9,7 @@ const RoadJunctions = preload("res://scripts/road_junctions.gd")
 const StreetKit = preload("res://scripts/street_kit.gd")
 const AssetKit = preload("res://scripts/asset_kit.gd")
 const BuildingKit = preload("res://scripts/building_kit.gd")
+const DhuleShadowPolicy = preload("res://scripts/dhule_shadow_policy.gd")
 
 const GROUND_ALBEDO := "res://demo/assets/textures/ground037_alb_ht.png"
 const GROUND_NORMAL := "res://demo/assets/textures/ground037_nrm_rgh.png"
@@ -202,6 +203,8 @@ func _build(data: Dictionary) -> void:
 
 	var flyovers := _add_flyovers(data)
 	var footprints := _add_osm_context(data, rng)
+	# Road flush runs before Blosm exists — re-apply so the giant city AABB stops casting.
+	DhuleShadowPolicy.apply_after_roads(self)
 	var lots := _fill_empty_lots(clip, rng)
 	var landmarks := _add_landmarks(rng)
 	var spawn_dress := _dress_spawn_street(roads, rng)
