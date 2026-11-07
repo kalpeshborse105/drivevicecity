@@ -9,15 +9,24 @@ var _follow: Node3D
 func setup(follow: Node3D) -> void:
 	_follow = follow
 	visible = false
-	var mesh := get_node_or_null("MeshInstance3D")
+	var mesh := get_node_or_null("MeshInstance3D") as MeshInstance3D
 	if mesh:
 		mesh.visible = false
+		mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 
 
 func set_target(world_pos: Vector3, active: bool) -> void:
 	_target = world_pos
 	_active = active
 	# Keep node invisible — HUD distance + minimap are the nav cues
+	visible = false
+
+
+func _ready() -> void:
+	var mesh := get_node_or_null("MeshInstance3D") as MeshInstance3D
+	if mesh:
+		mesh.visible = false
+		mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	visible = false
 
 

@@ -132,8 +132,9 @@ func _apply_base_vfx() -> void:
 	env.ssr_enabled = true
 	env.ssr_max_steps = 24
 	env.ssao_enabled = true
-	env.ssao_radius = 1.2
-	env.ssao_intensity = 1.35
+	# Keep mild contact AO; high intensity looked like a fake under-car stamp on asphalt.
+	env.ssao_radius = 1.0
+	env.ssao_intensity = 0.95
 	env.ssil_enabled = false
 	env.fog_aerial_perspective = 0.3
 	env.fog_sky_affect = 0.4

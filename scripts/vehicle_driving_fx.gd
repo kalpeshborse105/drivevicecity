@@ -90,6 +90,8 @@ func _make_smoke(node_name: String, pos: Vector3) -> GPUParticles3D:
 	sm.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	mesh.material = sm
 	p.draw_pass_1 = mesh
+	# Particles must not cast — otherwise idle smoke AABBs stamp road blobs.
+	p.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	add_child(p)
 	return p
 
