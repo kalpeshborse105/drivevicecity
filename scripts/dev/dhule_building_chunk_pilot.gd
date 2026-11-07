@@ -72,6 +72,10 @@ func _unhandled_input(event: InputEvent) -> void:
 					_id_root.visible = _show_ids
 			KEY_G:
 				get_tree().debug_collisions_hint = not get_tree().debug_collisions_hint
+			KEY_F:
+				_facade_inspect()
+			KEY_H:
+				_shadow_inspect()
 
 
 func lock_view(pos: Vector3, at: Vector3) -> void:
@@ -82,17 +86,47 @@ func lock_view(pos: Vector3, at: Vector3) -> void:
 		_cam.look_at(at, Vector3.UP)
 
 
+func _facade_inspect() -> void:
+	if _meta.is_empty():
+		return
+	_view_building_front(_meta[mini(2, _meta.size() - 1)])
+
+
+func _shadow_inspect() -> void:
+	if _meta.is_empty():
+		return
+	var m: Dictionary = _meta[0]
+	var at := Vector3(float(m["cx"]), 0.2, float(m["cz"]))
+	lock_view(at + Vector3(12, 8.0, 14), at + Vector3(0, 1.0, 0))
+
+
 func run_capture() -> void:
-	await _frames(12)
+	## Phase 2H.4B.2 visual QA stills (also refreshes 64/65 comparison shots).
+	await _frames(14)
+	if _id_root:
+		_id_root.visible = false
+		_show_ids = false
 	lock_view(_origin + Vector3(28, 55, 32), _origin + Vector3(0, 1, 10))
 	await _frames(8)
+	await _shot("res://docs/qa/72-chunk-aerial.png")
 	await _shot("res://docs/qa/64-chunk-aerial.png")
+	# Street drive view.
 	_follow = true
 	_aerial = false
-	await _frames(10)
+	await _frames(8)
 	lock_view(_origin + Vector3(-3, 2.6, 5), _origin + Vector3(4, 1.4, 18))
 	await _frames(6)
+	await _shot("res://docs/qa/72-chunk-street.png")
 	await _shot("res://docs/qa/64-chunk-street.png")
+	# Four style close-ups from distinct OSM ids.
+	await _capture_style_gallery()
+	# Facade + shadow inspection.
+	_facade_inspect()
+	await _frames(6)
+	await _shot("res://docs/qa/72-facade-closeup.png")
+	_shadow_inspect()
+	await _frames(6)
+	await _shot("res://docs/qa/72-shadow-inspect.png")
 	# Collision drive into first accepted building.
 	if not _meta.is_empty():
 		var m: Dictionary = _meta[0]
@@ -106,6 +140,7 @@ func run_capture() -> void:
 		print("DRIVE_HIT id=", m["osm_id"], " speed=", snapped(_car.linear_velocity.length() * 3.6, 0.1), " peak=", snapped(peak, 0.1))
 		lock_view(_car.global_position + Vector3(-5, 3.0, -4), _car.global_position + Vector3(0, 1.2, 3))
 		await _frames(5)
+		await _shot("res://docs/qa/72-collision.png")
 		await _shot("res://docs/qa/65-chunk-collision.png")
 	# Blosm comparison still
 	if _blosm_root:
@@ -115,6 +150,7 @@ func run_capture() -> void:
 			_chunk_root.visible = false
 		lock_view(_origin + Vector3(28, 55, 32), _origin + Vector3(0, 1, 10))
 		await _frames(8)
+		await _shot("res://docs/qa/72-blosm-compare.png")
 		await _shot("res://docs/qa/64-blosm-compare.png")
 		_show_blosm = false
 		_blosm_root.visible = false
@@ -124,10 +160,81 @@ func run_capture() -> void:
 	print("CHUNK_PILOT_CAPTURE_DONE accepted=", _meta.size())
 
 
+func _capture_style_gallery() -> void:
+	var wanted := {
+		DhuleBuildingStyles.STYLE_A: "72-style-family.png",
+		DhuleBuildingStyles.STYLE_B: "72-style-narrow.png",
+		DhuleBuildingStyles.STYLE_C: "72-style-compact.png",
+	}
+	var seen: Dictionary = {}
+	var extra := "72-style-variant.png"
+	for m_v in _meta:
+		var m: Dictionary = m_v
+		var sk := str(m.get("style_variant", ""))
+		var path := ""
+		if wanted.has(sk) and not seen.has(sk):
+			path = "res://docs/qa/%s" % wanted[sk]
+			seen[sk] = true
+		elif not seen.has("extra") and sk == DhuleBuildingStyles.STYLE_A and seen.has(sk):
+			path = "res://docs/qa/%s" % extra
+			seen["extra"] = true
+		if path == "":
+			continue
+		_view_building_front(m)
+		await _frames(6)
+		await _shot(path)
+		print("STYLE_SHOT ", sk, " id=", m["osm_id"], " -> ", path)
+		if seen.size() >= 4:
+			break
+
+
+func _view_building_front(m: Dictionary) -> void:
+	## Stand outside the road-facing edge, looking at the facade.
+	var id := str(m["osm_id"])
+	var poly := _poly_for_id(id)
+	if poly.is_empty():
+		var at0 := Vector3(float(m["cx"]), 1.5, float(m["cz"]))
+		lock_view(at0 + Vector3(-8, 2.4, 3), at0 + Vector3(0, 1.5, 0))
+		return
+	var segs := _road_segments(JSON.parse_string(FileAccess.get_file_as_string(MAP)))
+	var front := _front_edge(poly, segs)
+	var i: int = int(front["index"])
+	var a: Vector2 = poly[i]
+	var b: Vector2 = poly[(i + 1) % poly.size()]
+	var mid := (a + b) * 0.5
+	var edge := b - a
+	var length := maxf(edge.length(), 0.01)
+	var nrm := Vector2(-edge.y, edge.x) / length
+	# Pick the side away from the polygon centroid so the camera stays outdoors.
+	var centroid := Vector2.ZERO
+	for p in poly:
+		centroid += p
+	centroid /= float(poly.size())
+	if nrm.dot(mid - centroid) < 0.0:
+		nrm = -nrm
+	var cam2 := mid + nrm * 11.0
+	var at := Vector3(mid.x, 1.85, mid.y)
+	lock_view(Vector3(cam2.x, 2.85, cam2.y), at)
+
+
+func _poly_for_id(id: String) -> PackedVector2Array:
+	var man: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(MANIFEST))
+	for b_v in man.get("buildings", []):
+		var b: Dictionary = b_v
+		if str(b["osm_id"]) != id:
+			continue
+		var poly := PackedVector2Array()
+		for p_v in b["polygon"]:
+			var p: Dictionary = p_v
+			poly.append(Vector2(float(p["x"]), float(p["z"])))
+		return poly
+	return PackedVector2Array()
+
+
 func _process(_delta: float) -> void:
 	if _hud:
 		_hud.text = (
-			"C aerial | B Blosm/chunk | V chunk mesh | I OSM ids | G collision\n"
+			"C aerial | B Blosm | V chunk | I OSM ids | G collision | F facade | H shadow\n"
 			+ "buildings %d  chunk_vis %s  blosm %s"
 			% [_meta.size(), _show_chunk and not _show_blosm, _show_blosm]
 		)

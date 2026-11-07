@@ -53,10 +53,10 @@ static func estimated_floors(style_key: String, area_m2: float) -> int:
 static func describe(style_key: String) -> String:
 	match style_key:
 		STYLE_A:
-			return "Plastered house: flat RCC roof, parapet, modest windows, ground entrance, optional tank"
+			return "Urban family: 1–2 storeys, plaster + plinth, recessed grilled windows, chajja, optional balcony/tank, RCC parapet"
 		STYLE_B:
-			return "Narrow urban: narrow frontage, estimated two-level facade, balcony/sunshade, flat roof"
+			return "Narrow urban: tight frontage, vertical openings, entrance + compact balcony when clear, parapet posts"
 		STYLE_C:
-			return "Traditional compact: simple plaster, small openings, main door, subtle colour, flat roof"
+			return "Compact residential: 1 storey estimate, plaster, door lintel, small grilled windows, slab roof, selective tank"
 		_:
 			return style_key

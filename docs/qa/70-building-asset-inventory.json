@@ -1,0 +1,111 @@
+{
+	"assets": [
+		{
+			"aabb_m": [
+				5.0,
+				5.0,
+				5.16
+			],
+			"can_fit_pilot": true,
+			"exists": true,
+			"file": "indian_house.glb",
+			"fitted_count_dry": 16,
+			"has_collision_in_scene": false,
+			"kind": "complete_building",
+			"material_count": 2,
+			"mesh_count": 2,
+			"notes": "Only complete residential kit shell; uniform fit only.",
+			"path": "res://assets/kit/buildings/indian_house.glb"
+		},
+		{
+			"aabb_m": [
+				1.88,
+				3.0,
+				2.6
+			],
+			"can_fit_pilot": false,
+			"exists": true,
+			"file": "bhelpuri_shop.glb",
+			"has_collision_in_scene": false,
+			"kind": "prop_cart",
+			"material_count": 13,
+			"mesh_count": 14,
+			"notes": "Not a building — never stretch into footprint.",
+			"path": "res://assets/kit/buildings/bhelpuri_shop.glb"
+		},
+		{
+			"aabb_m": [
+				3.17,
+				95.76,
+				4.0
+			],
+			"can_fit_pilot": false,
+			"exists": true,
+			"file": "bullock_cart.glb",
+			"has_collision_in_scene": false,
+			"kind": "prop_cart",
+			"material_count": 21,
+			"mesh_count": 29,
+			"notes": "Not a building — never stretch into footprint.",
+			"path": "res://assets/kit/props/bullock_cart.glb"
+		},
+		{
+			"aabb_m": [
+				5.9,
+				1.7,
+				5.32
+			],
+			"can_fit_pilot": false,
+			"exists": true,
+			"file": "barriers.glb",
+			"has_collision_in_scene": false,
+			"kind": "prop_barrier",
+			"material_count": 1,
+			"mesh_count": 9,
+			"notes": "Road prop — not a building.",
+			"path": "res://assets/kit/props/barriers.glb"
+		},
+		{
+			"aabb_m": [
+				7.07,
+				6.09,
+				13.07
+			],
+			"can_fit_pilot": false,
+			"exists": true,
+			"file": "street_asset_pack.glb",
+			"has_collision_in_scene": false,
+			"kind": "prop_pack",
+			"material_count": 46,
+			"mesh_count": 46,
+			"notes": "Street props pack — not a building.",
+			"path": "res://assets/kit/props/street_asset_pack.glb"
+		}
+	],
+	"note": "Pilot keeps batched procedural shell; GLB only if undistorted fit. Dry-fit ignores asphalt (empty segments).",
+	"pilot_fit": {
+		"candidates": 61,
+		"decision": "pilot_keeps_procedural_batching",
+		"fitted": 16,
+		"fitted_ids": [
+			"1337953920",
+			"1337953921",
+			"1337953918",
+			"1337953919",
+			"1337953924",
+			"1337953922",
+			"1337953932",
+			"1337953929",
+			"1337953917",
+			"1337953916",
+			"1337953923",
+			"1337953931",
+			"1337953930",
+			"1337953915",
+			"1337953933",
+			"1337953914"
+		],
+		"procedural": 45,
+		"rejected": 0
+	}
+}
