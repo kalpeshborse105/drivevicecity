@@ -20,6 +20,9 @@ var _coord_label: Label
 var _target_world_pos: Vector3 = Vector3.ZERO
 var _has_target: bool = false
 var _satellite_mode: bool = false
+## Minimap shares the main World3D — updating every frame doubles scene draws.
+var _vp_accum: float = 0.0
+const VP_INTERVAL_SEC := 0.12  # ~8 Hz
 
 const ORIGIN_LAT := 20.9020
 const ORIGIN_LON := 74.7770
@@ -41,11 +44,13 @@ func _ready() -> void:
 	if car_path != NodePath(""):
 		_car = get_node_or_null(car_path) as Node3D
 	_viewport.world_3d = get_viewport().world_3d
+	_viewport.render_target_update_mode = SubViewport.UPDATE_DISABLED
 	_zoom = height
 	_cam.projection = Camera3D.PROJECTION_ORTHOGONAL
 	_cam.size = _zoom
 	_cam.current = true
 	_build_chrome()
+	_request_vp_frame()
 
 
 func set_navigation_target(world_pos: Vector3, active: bool) -> void:
@@ -183,7 +188,12 @@ func _draw_google_map_overlay() -> void:
 	_marker.draw_circle(c, 2.5, Color(0.1, 0.1, 0.12, 0.95))
 
 
-func _process(_delta: float) -> void:
+func _request_vp_frame() -> void:
+	if _viewport:
+		_viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
+
+
+func _process(delta: float) -> void:
 	if _car == null:
 		return
 	var pos := _car.global_position
@@ -196,6 +206,10 @@ func _process(_delta: float) -> void:
 			road_name = str(roads.call("nearest_road_name", pos))
 		_coord_label.text = road_name if not road_name.is_empty() else "MAP"
 	_marker.queue_redraw()
+	_vp_accum += delta
+	if _vp_accum >= VP_INTERVAL_SEC:
+		_vp_accum = 0.0
+		_request_vp_frame()
 
 
 func _gui_input(event: InputEvent) -> void:

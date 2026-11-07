@@ -1,0 +1,90 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Vulkan 1.3.215 - Forward+ - Using Device #0: Intel - Intel(R) UHD Graphics 620
+
+[MCPRuntimeServer] port: scanning 6570-6585 (default)
+[MCPRuntimeServer] listening on 127.0.0.1:6570
+[MCPRegistry] runtime port 6570 registered for d:/drivevicecity
+[godot_ai game_helper] registered mcp capture (debugger active=false, logger=true)
+ROAD junction prepare 153
+SHADOW policy roads_off=1 marks_off=1 blosm= lights=2 casters_on≈33
+ROAD crosswalks placed 46 skipped_arms 214
+ROAD batches 3 junctions 126 straight 80 bends 14 corners 9 three 19 four 4 arms 27
+ROAD join fix: pad +0.07 · major +0.014 · paint grow · stronger tip pull
+OSM shops placed: 5
+SHADOW policy roads_off=1 marks_off=1 blosm=off_giant_aabb_7121m lights=2 casters_on≈125
+ROAD names signs 172 painted 36
+ROAD roundabouts 3
+StreetKit box batch: 63 boxes -> MultiMesh
+PHASE1 map: 796 ways, shops~0 props~23 lots~0 landmarks~0 road_signs~172 osm_features~537 flyovers~0 demo_scenery~0 spawn=(-636.5,881.8)
+COST_MESH_BUCKETS
+  garage_preview=389
+  player_car=388
+  mesh:vehicle_kit_parts=70
+  mesh:post=8
+  mesh:board=8
+  roads=4
+  mesh:meshinstance3d=3
+  blosm=2
+  mesh:@meshinstance3d@58=1
+  mesh:@meshinstance3d@57=1
+  mesh:@meshinstance3d@56=1
+  mesh:@meshinstance3d@55=1
+  mesh:@meshinstance3d@54=1
+  mesh:@meshinstance3d@53=1
+  mesh:@meshinstance3d@52=1
+  mesh:@meshinstance3d@51=1
+  mesh:@meshinstance3d@50=1
+  mesh:@meshinstance3d@49=1
+  mesh:@meshinstance3d@48=1
+  mesh:@meshinstance3d@47=1
+  mesh:@meshinstance3d@46=1
+  mesh:@meshinstance3d@45=1
+  mesh:@meshinstance3d@44=1
+  mesh:@meshinstance3d@43=1
+  multimesh:@multimeshinstance3d@219=1
+COST_CASTER_BUCKETS
+  garage_preview=389
+  player_car=388
+  mesh:vehicle_kit_parts=70
+  mesh:meshinstance3d=3
+  mesh:@meshinstance3d@47=1
+  mesh:@meshinstance3d@46=1
+  mesh:@meshinstance3d@45=1
+  mesh:@meshinstance3d@44=1
+  mesh:@meshinstance3d@43=1
+  mesh:@meshinstance3d@42=1
+  mesh:@meshinstance3d@41=1
+  mesh:@meshinstance3d@40=1
+  mesh:@meshinstance3d@39=1
+  mesh:@meshinstance3d@38=1
+  mesh:@meshinstance3d@36=1
+  mesh:@meshinstance3d@35=1
+  mesh:@meshinstance3d@34=1
+  mesh:@meshinstance3d@48=1
+  mesh:@meshinstance3d@49=1
+  mesh:@meshinstance3d@50=1
+COST_MAT_OWNER_SAMPLES
+  garage_preview=389
+  player_car=388
+  mesh:vehicle_kit_parts=70
+  mesh:board=8
+  mesh:post=8
+  roads=4
+  blosm=3
+  mesh:@meshinstance3d@39=1
+  mesh:@meshinstance3d@40=1
+  mesh:@meshinstance3d@41=1
+  mesh:@meshinstance3d@42=1
+  mesh:@meshinstance3d@43=1
+  mesh:@meshinstance3d@44=1
+  mesh:@meshinstance3d@45=1
+  mesh:@meshinstance3d@46=1
+AB BASE fps_med=15.0 draws_med=2426.0 prims_med=1941068.0
+AB HIDE_LABEL3D fps_med=16.0 draws_med=2390.0 prims_med=2241474.0
+AB HIDE_MULTIMESH fps_med=15.0 draws_med=2409.0 prims_med=1926816.0
+AB HIDE_BLOSM fps_med=16.0 draws_med=2438.0 prims_med=1926410.0
+AB HIDE_OBJECT_PREFIX fps_med=16.0 draws_med=128.0 prims_med=844057.0
+AB MINIMAP_OFF fps_med=16.0 draws_med=1254.0 prims_med=1277832.0
+AB MINIMAP_ON fps_med=16.0 draws_med=2426.0 prims_med=1984304.0
+AB SHADOWS_OFF_SMALL_MESH fps_med=16.0 draws_med=2427.0 prims_med=1988308.0
+COST_BREAKDOWN_DONE

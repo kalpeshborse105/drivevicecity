@@ -498,6 +498,7 @@ func _rebuild_visuals() -> void:
 		if n:
 			_visual_root.add_child(n)
 			_tint_kit_meshes(n, _body_mat.albedo_color)
+			_optimize_kit_shadows(n)
 			var aabb := AssetKit.mesh_aabb(n)
 			# At suspension rest the chassis origin sits ~0.24 m above ground
 			# (wheel y 0.36 − rest 0.22 − radius 0.38) → drop mesh so tyres touch road.
@@ -518,6 +519,36 @@ func _rebuild_visuals() -> void:
 		_body_shape.shape = shape
 	shape.size = Vector3(col_size.x * 0.88, maxf(col_size.y * 0.5, 0.7), col_size.z * 0.88)
 	_body_shape.position = Vector3(0, 0.72, 0)
+
+
+func _optimize_kit_shadows(root: Node) -> void:
+	## Kit GLBs explode into hundreds of MeshInstance3D. Only the largest volume
+	## casts a shadow — the rest were the dominant production draw-call source.
+	var best: MeshInstance3D = null
+	var best_vol := -1.0
+	var stack: Array[Node] = [root]
+	while not stack.is_empty():
+		var node: Node = stack.pop_back()
+		for child in node.get_children():
+			stack.append(child)
+		if node is MeshInstance3D and (node as MeshInstance3D).mesh != null:
+			var mi := node as MeshInstance3D
+			var vol := mi.get_aabb().get_volume()
+			if vol > best_vol:
+				best_vol = vol
+				best = mi
+	stack = [root]
+	while not stack.is_empty():
+		var node2: Node = stack.pop_back()
+		for child2 in node2.get_children():
+			stack.append(child2)
+		if node2 is MeshInstance3D:
+			var mi2 := node2 as MeshInstance3D
+			mi2.cast_shadow = (
+				GeometryInstance3D.SHADOW_CASTING_SETTING_ON
+				if mi2 == best
+				else GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+			)
 
 
 func _tint_kit_meshes(root: Node, paint: Color) -> void:

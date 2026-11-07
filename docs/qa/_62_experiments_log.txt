@@ -1,0 +1,27 @@
+==== baseline ====
+EXP_NAME baseline
++   & $godot --path "D:\drivevicecity" --script "res://scripts/dev/perf ...
+EXP_PERF spawn fps_med=14.0 fps_min=14.0 ft_med_ms=64.7 draws_med=2424.0 prims_med=1963945.0
+EXP_PERF long_road fps_med=10.0 fps_min=3.0 ft_med_ms=100.3 draws_med=1595.0 prims_med=1838822.0
+EXP_DONE baseline
+==== vehicle_shadows ====
+EXP_NAME vehicle_shadows
++   & $godot --path "D:\drivevicecity" --script "res://scripts/dev/perf ...
+EXP_PERF spawn fps_med=13.0 fps_min=13.0 ft_med_ms=67.1 draws_med=936.0 prims_med=1287749.0
+EXP_PERF long_road fps_med=14.0 fps_min=12.0 ft_med_ms=68.5 draws_med=657.0 prims_med=1202872.0
+EXP_DONE vehicle_shadows
+==== minimap_throttle ====
+EXP_NAME minimap_throttle
++   & $godot --path "D:\drivevicecity" --script "res://scripts/dev/perf ...
+==== shadow_distance ====
+EXP_NAME shadow_distance
++   & $godot --path "D:\drivevicecity" --script "res://scripts/dev/perf ...
+EXP_PERF spawn fps_med=9.0 fps_min=9.0 ft_med_ms=110.5 draws_med=2071.0 prims_med=1613286.0
+EXP_PERF long_road fps_med=8.0 fps_min=8.0 ft_med_ms=106.0 draws_med=1584.0 prims_med=1866964.0
+EXP_DONE shadow_distance
+==== blosm_off ====
+EXP_NAME blosm_off
++   & $godot --path "D:\drivevicecity" --script "res://scripts/dev/perf ...
+EXP_PERF spawn fps_med=9.0 fps_min=9.0 ft_med_ms=103.3 draws_med=2443.0 prims_med=2000898.0
+EXP_PERF long_road fps_med=10.0 fps_min=9.0 ft_med_ms=97.7 draws_med=1623.0 prims_med=1840224.0
+EXP_DONE blosm_off

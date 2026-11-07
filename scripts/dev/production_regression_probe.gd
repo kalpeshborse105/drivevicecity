@@ -68,9 +68,11 @@ func _initialize() -> void:
 
 	# Near-building FPS: nudge toward denser Blosm if present.
 	var near_fps := drive_fps
-	var blosm := root_n.find_child("BlosmCity", true, false)
+	var blosm := root_n.find_child("DhuleBlosmCity", true, false)
 	if blosm == null:
-		blosm = root_n.find_child("dhule_city", true, false)
+		blosm = root_n.find_child("dhule_blosm_city", true, false)
+	if blosm == null:
+		blosm = root_n.find_child("dhule_city_osm_buildings", true, false)
 	if blosm is Node3D:
 		var target: Vector3 = (blosm as Node3D).global_position
 		# Soft teleport near mesh origin while keeping Y.
