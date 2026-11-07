@@ -1,5 +1,18 @@
 {
   "mcpServers": {
+    "godot-mcp-toolkit": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@npgamedev/godot-mcp-server@1.1.2"
+      ],
+      "env": {
+        "GODOT_MCP_CONFIG_VERSION": "1",
+        "npm_config_prefer_offline": "true"
+      }
+    },
     "blender": {
       "command": "C:\\Users\\Admin\\.local\\bin\\uv.exe",
       "args": [

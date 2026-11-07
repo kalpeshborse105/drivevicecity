@@ -64,7 +64,22 @@ static func is_roundabout(road_id: String) -> bool:
 	return road_id == "217392930" or road_id == "883678059" or road_id == "887725187"
 
 
-static func add_way(parent: Node3D, pts: Array, width: float, y: float, asphalt: Material, paint: Material, highway: String) -> void:
+static var _median_material: StandardMaterial3D
+
+
+static func _median_mat() -> Material:
+	if _median_material == null:
+		_median_material = StandardMaterial3D.new()
+		_median_material.albedo_color = Color(0.95, 0.75, 0.08)
+		_median_material.roughness = 0.42
+	return _median_material
+
+
+static func _is_divided(highway: String, width: float) -> bool:
+	return width >= 8.0 and highway in ["primary", "secondary", "trunk", "trunk_link", "motorway"]
+
+
+static func add_way(parent: Node3D, pts: Array, width: float, y: float, asphalt: Material, paint: Material, highway: String, _road_id: String = "") -> void:
 	var closed := false
 	if pts.size() >= 4:
 		var a := Vector2(float(pts[0][0]), float(pts[0][1]))
@@ -115,7 +130,9 @@ static func add_way(parent: Node3D, pts: Array, width: float, y: float, asphalt:
 		if paint != null and width >= 4.5:
 			var marks := _tool_for(_marks, paint)
 			_edge_lines(marks, left, right, sides, closed)
-			if _wants_centre(highway, width):
+			if _is_divided(highway, width):
+				_median_strip(_tool_for(_marks, _median_mat()), points, sides, closed)
+			elif _wants_centre(highway, width):
 				_centre_dashes(marks, points, dist)
 		return
 	var mesh := deck.commit()
@@ -124,7 +141,13 @@ static func add_way(parent: Node3D, pts: Array, width: float, y: float, asphalt:
 		var loose := SurfaceTool.new()
 		loose.begin(Mesh.PRIMITIVE_TRIANGLES)
 		_edge_lines(loose, left, right, sides, closed)
-		if _wants_centre(highway, width):
+		if _is_divided(highway, width):
+			var yellow := SurfaceTool.new()
+			yellow.begin(Mesh.PRIMITIVE_TRIANGLES)
+			_median_strip(yellow, points, sides, closed)
+			yellow.commit(mesh)
+			mesh.surface_set_material(mesh.get_surface_count() - 1, _median_mat())
+		elif _wants_centre(highway, width):
 			_centre_dashes(loose, points, dist)
 		loose.commit(mesh)
 		mesh.surface_set_material(mesh.get_surface_count() - 1, paint)
@@ -176,12 +199,14 @@ static func _join_polygon(parent: Node3D, clip: Dictionary, y: float, asphalt: M
 		st = _tool_for(_decks, asphalt)
 	else:
 		st.begin(Mesh.PRIMITIVE_TRIANGLES)
-	var c3 := Vector3(centre.x, y, centre.y)
+	# Sit the join above the road ribbons so the two meshes cannot z-fight.
+	var deck_y := y + 0.012
+	var c3 := Vector3(centre.x, deck_y, centre.y)
 	for i in corners.size():
 		var a := corners[i]
 		var b := corners[(i + 1) % corners.size()]
-		var a3 := Vector3(a.x, y, a.y)
-		var b3 := Vector3(b.x, y, b.y)
+		var a3 := Vector3(a.x, deck_y, a.y)
+		var b3 := Vector3(b.x, deck_y, b.y)
 		if (a3 - c3).cross(b3 - c3).y < 0.0:
 			var swap := a3
 			a3 = b3
@@ -209,7 +234,7 @@ static func _junction_marks(clip: Dictionary, y: float, paint: Material) -> void
 	if arms.size() < 3:
 		return
 	var st := _tool_for(_marks, paint)
-	var lift := Vector3(0, 0.03, 0)
+	var lift := Vector3(0, 0.028, 0)
 	var narrow: Dictionary = arms[0]
 	for arm_v in arms:
 		var arm: Dictionary = arm_v
@@ -408,6 +433,25 @@ static func _edge_lines(st: SurfaceTool, left: PackedVector3Array, right: Packed
 		var hw := 0.07
 		_mark(st, left[i] + inward_a - sides[i] * hw + lift, left[i] + inward_a + sides[i] * hw + lift, left[j] + inward_b + sides[j] * hw + lift, left[j] + inward_b - sides[j] * hw + lift)
 		_mark(st, right[i] - inward_a - sides[i] * hw + lift, right[i] - inward_a + sides[i] * hw + lift, right[j] - inward_b + sides[j] * hw + lift, right[j] - inward_b - sides[j] * hw + lift)
+
+
+static func _median_strip(st: SurfaceTool, points: Array[Vector3], sides: Array[Vector3], closed: bool) -> void:
+	## Double yellow line down the middle of a wide highway. Paint only, so the car can still turn.
+	var lift := Vector3(0, 0.035, 0)
+	var bar := 0.11
+	var gap := 0.22
+	var count := points.size() - 1
+	if closed and points.size() >= 3:
+		count = points.size()
+	for i in count:
+		var j := (i + 1) % points.size()
+		for sign_v in [-1.0, 1.0]:
+			var sign := float(sign_v)
+			var off_a := sides[i] * gap * sign
+			var off_b := sides[j] * gap * sign
+			var ha := sides[i] * bar
+			var hb := sides[j] * bar
+			_mark(st, points[i] + off_a - ha + lift, points[i] + off_a + ha + lift, points[j] + off_b + hb + lift, points[j] + off_b - hb + lift)
 
 
 static func _centre_dashes(st: SurfaceTool, points: Array[Vector3], dist: PackedFloat32Array) -> void:

@@ -35,6 +35,9 @@ var _road_samples: Array[Vector3] = []
 var _named_roads: Array = []
 var _buildings: Array = []
 var _parked_heavy := 0
+var _street_pack_n := 0
+var _street_lib: Node3D
+var _street_missing: Dictionary = {}
 var _named_labels := 0  ## real OSM building names drawn this map build
 var _has_blosm := false
 
@@ -156,6 +159,7 @@ func _build(data: Dictionary) -> void:
 	var shops := 0
 	var props := 0
 	var dress: Array = []
+	var drawn_decks: Array = []
 
 	for road_v in roads:
 		var road: Dictionary = road_v
@@ -166,6 +170,9 @@ func _build(data: Dictionary) -> void:
 		var hw: String = str(road.get("highway", "residential"))
 		var is_major := hw in ["primary", "secondary", "trunk", "motorway", "tertiary"]
 		# Strict 2 kit looks only: avenue_street (main) / street_road (sub). No zebra/wear/mesh stack.
+		if _stacked_on_drawn_road(pts, width, drawn_decks):
+			continue
+		drawn_decks.append({"pts": pts, "width": width})
 		var mat := _major if is_major else _asphalt
 		_build_road_strip(pts, width, mat, hw, str(road.get("id", "")))
 		if is_major and not _has_blosm:
@@ -189,6 +196,8 @@ func _build(data: Dictionary) -> void:
 		if not _has_blosm:
 			shops += _dress_road_sides(dress_pts, dress_width, dress_dens, dress_hw, rng)
 		props += _dress_road_props(dress_pts, dress_width, dress_dens, dress_hw, rng)
+	_seed_street_pack(roads)
+	print("STREET pack props ", _street_pack_n)
 
 	delivery_anchors.clear()
 	for a_v in data.get("delivery_anchors", []):
@@ -445,6 +454,96 @@ func _dress_road_props(pts: Array, width: float, dens: float, hw: String, rng: R
 	return n
 
 
+func _seed_street_pack(roads: Array) -> void:
+	## A short run of real street-pack props beside the spawn roads. Not the whole diorama.
+	if not ResourceLoader.exists("res://assets/kit/props/street_asset_pack.glb"):
+		return
+	var spawn_xz := Vector3(spawn_position.x, 0.0, spawn_position.z)
+	var names: Array[String] = ["concrete_barrier", "cone", "give_way"]
+	var heights: Array[float] = [0.9, 0.72, 3.4]
+	for road_v in roads:
+		if _street_pack_n >= 12:
+			return
+		var road: Dictionary = road_v
+		var pts: Array = road.get("points", [])
+		if pts.size() < 2:
+			continue
+		for i in range(0, pts.size() - 1, 3):
+			if _street_pack_n >= 12:
+				return
+			var a: Array = pts[i]
+			var b: Array = pts[mini(i + 1, pts.size() - 1)]
+			var p0 := Vector3(float(a[0]), 0.0, float(a[1]))
+			var from_spawn := p0.distance_to(spawn_xz)
+			if from_spawn < 28.0 or from_spawn > 160.0:
+				continue
+			var along := Vector3(float(b[0]) - float(a[0]), 0.0, float(b[1]) - float(a[1]))
+			if along.length() < 2.0:
+				continue
+			along = along.normalized()
+			var side_sign := 1.0 if (_street_pack_n % 2 == 0) else -1.0
+			var sp := _off_carriageway(p0, along, side_sign, 2.5)
+			if sp.distance_to(spawn_xz) < 22.0:
+				continue
+			var which := _street_pack_n % 3
+			_place_street_piece(names[which], sp, atan2(along.x, along.z), heights[which])
+
+
+func _place_street_piece(prefix: String, pos: Vector3, yaw: float, target_h: float) -> bool:
+	## One named prop from the street pack, scaled and sat on the verge. The pack itself stays hidden.
+	if bool(_street_missing.get(prefix, false)):
+		return false
+	if _street_lib == null:
+		var packed: PackedScene = load("res://assets/kit/props/street_asset_pack.glb")
+		if packed == null:
+			_street_missing[prefix] = true
+			return false
+		_street_lib = packed.instantiate() as Node3D
+		_street_lib.name = "StreetPackLibrary"
+		_street_lib.visible = false
+		add_child(_street_lib)
+	var src := _shallow_named(_street_lib, prefix)
+	if src == null:
+		_street_missing[prefix] = true
+		return false
+	var wrap := Node3D.new()
+	wrap.name = "street_" + prefix
+	add_child(wrap)
+	var copy := src.duplicate()
+	wrap.add_child(copy)
+	if copy is Node3D:
+		(copy as Node3D).position = Vector3.ZERO
+		(copy as Node3D).rotation = Vector3.ZERO
+	var box := AssetKit.mesh_aabb(wrap)
+	if box.size.y > 0.05:
+		wrap.scale = Vector3.ONE * clampf(target_h / box.size.y, 0.2, 1.4)
+	wrap.rotation.y = yaw
+	wrap.position = pos
+	var box2 := AssetKit.mesh_aabb(wrap)
+	if box2.size.y > 0.01:
+		wrap.position.y = pos.y - box2.position.y
+	_strip_physics(wrap)
+	_street_pack_n += 1
+	return true
+
+
+func _shallow_named(root: Node, prefix: String) -> Node:
+	var want := prefix.to_lower()
+	var best: Node = null
+	var best_depth := 999
+	var stack: Array = [[root, 0]]
+	while not stack.is_empty():
+		var item: Array = stack.pop_back()
+		var n: Node = item[0]
+		var depth: int = item[1]
+		if n != root and str(n.name).to_lower().begins_with(want) and depth < best_depth:
+			best = n
+			best_depth = depth
+		for c in n.get_children():
+			stack.append([c, depth + 1])
+	return best
+
+
 func _add_ground(clip: float) -> void:
 	var size := clip * 2.2
 	# Dusty Maharashtra base — CC0 ground037 (triplanar, ~12 m tiles), collision kept
@@ -556,6 +655,9 @@ func _add_osm_context(data: Dictionary, rng: RandomNumberGenerator) -> int:
 	var has_shop := AssetKit.exists(AssetKit.building_path("shop"))
 	var b_placed := 0
 	var shop_placed := 0
+	var house_placed := 0
+	var house_path := AssetKit.building_path("indian_house")
+	var has_house := AssetKit.exists(house_path)
 	var b_cap := 460
 	var shop_cap := 22
 	var collide_radius := dense_radius * 1.15
@@ -591,7 +693,22 @@ func _add_osm_context(data: Dictionary, rng: RandomNumberGenerator) -> int:
 		# Optional shop GLB on a few commercial footprints (materials reused from one PackedScene)
 		var used_shop := false
 		if (
-			not _has_blosm
+			has_house
+			and house_placed < 8
+			and kind == "residential"
+			and dist_spawn > 36.0
+			and dist_spawn < 220.0
+			and fw >= 7.0
+			and fd >= 7.0
+		):
+			var house := AssetKit.place_at(self, house_path, pos, yaw, 1.0)
+			if house:
+				house_placed += 1
+				used_shop = true
+				_strip_physics(house)
+		if (
+			not used_shop
+			and not _has_blosm
 			and has_shop
 			and shop_placed < shop_cap
 			and kind in ["commercial", "retail", "shop"]
@@ -649,6 +766,7 @@ func _add_osm_context(data: Dictionary, rng: RandomNumberGenerator) -> int:
 		add_child(label)
 		poi_n += 1
 		n += 1
+	print("HOUSES indian ", house_placed)
 	return n
 
 
@@ -1031,8 +1149,46 @@ func _add_roundabouts(roads: Array) -> void:
 	print("ROAD roundabouts ", n)
 
 
+func _stacked_on_drawn_road(pts: Array, width: float, kept: Array) -> bool:
+	## Skip a second deck that runs along one already drawn (the blink at duplicates).
+	if pts.size() < 2 or kept.is_empty():
+		return false
+	var mid_i := int(pts.size() / 2)
+	var samples: Array[int] = [0, mid_i, pts.size() - 1]
+	var mid_inside := false
+	var end_inside := 0
+	for idx in samples:
+		var p := Vector2(float(pts[idx][0]), float(pts[idx][1]))
+		var near := false
+		for prev_v in kept:
+			var prev: Dictionary = prev_v
+			var reach := maxf(float(prev["width"]), width) * 0.32
+			if _point_near_polyline(p, prev["pts"], reach):
+				near = true
+				break
+		if not near:
+			continue
+		if idx == mid_i:
+			mid_inside = true
+		else:
+			end_inside += 1
+	# Midpoint must lie on the earlier deck. A street that only touches at its ends stays.
+	return mid_inside and end_inside >= 1
+
+
+func _point_near_polyline(p: Vector2, pts: Array, reach: float) -> bool:
+	for i in pts.size() - 1:
+		var a := Vector2(float(pts[i][0]), float(pts[i][1]))
+		var b := Vector2(float(pts[i + 1][0]), float(pts[i + 1][1]))
+		if a.distance_squared_to(p) > 40000.0 and b.distance_squared_to(p) > 40000.0:
+			continue
+		if _point_segment(p, a, b) <= reach:
+			return true
+	return false
+
+
 func _build_road_strip(pts: Array, width: float, mat: Material, hw: String = "residential", road_id: String = "") -> void:
-	RoadSurface.add_way(self, pts, width, road_y, mat, _paint, hw)
+	RoadSurface.add_way(self, pts, width, road_y, mat, _paint, hw, road_id)
 	if _has_blosm or road_id.is_empty():
 		return
 	# Barriers stay off the carriageway. They are not a second road deck.

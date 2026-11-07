@@ -39,6 +39,7 @@ var _sign_density: OptionButton
 var _fx_quality: OptionButton
 var _audio_toggle: CheckButton
 var _touch_mode: OptionButton
+var _choice_buttons: Array[Button] = []
 @onready var _settings: Node = get_node_or_null("/root/GameSettings")
 
 
@@ -90,6 +91,7 @@ func _build_home_tab() -> void:
 		btn.text = str(entry[0])
 		btn.custom_minimum_size = Vector2(58, 40)
 		var pi: int = int(entry[1])
+		_track_choice(btn, "profile", pi)
 		btn.pressed.connect(func() -> void: profile_requested.emit(pi))
 		quick.add_child(btn)
 
@@ -122,6 +124,7 @@ func _build_vehicles_tab() -> void:
 		btn.text = str(entry[0])
 		btn.custom_minimum_size = Vector2(58, 36)
 		var pi: int = int(entry[1])
+		_track_choice(btn, "profile", pi)
 		btn.pressed.connect(func() -> void: profile_requested.emit(pi))
 		_profile_row.add_child(btn)
 
@@ -150,6 +153,7 @@ func _build_paint_tab() -> void:
 		sb.set_corner_radius_all(4)
 		btn.add_theme_stylebox_override("normal", sb)
 		var idx := i
+		_track_choice(btn, "paint", idx)
 		btn.pressed.connect(func() -> void: paint_requested.emit(idx))
 		_paint_row.add_child(btn)
 
@@ -161,7 +165,7 @@ func _build_kits_tab() -> void:
 	_tabs.add_child(page)
 
 	var note := Label.new()
-	note.text = "Body kits change Sedan / Van meshes. Carnival · Safari · Bus · Truck use kit GLBs (paint + rims still apply)."
+	note.text = "Pick a kit and it appears on the car immediately. Spoiler, roof rack, and sport skirts work on every body."
 	note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	note.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	page.add_child(note)
@@ -179,6 +183,7 @@ func _build_kits_tab() -> void:
 		btn.text = KIT_NAMES[i]
 		btn.custom_minimum_size = Vector2(88, 36)
 		var ki := i
+		_track_choice(btn, "kit", ki)
 		btn.pressed.connect(func() -> void: kit_requested.emit(ki))
 		kit_row.add_child(btn)
 	page.add_child(kit_row)
@@ -196,6 +201,7 @@ func _build_kits_tab() -> void:
 		btn.text = RIM_NAMES[i]
 		btn.custom_minimum_size = Vector2(88, 36)
 		var ri := i
+		_track_choice(btn, "rim", ri)
 		btn.pressed.connect(func() -> void: rim_requested.emit(ri))
 		rim_row.add_child(btn)
 	page.add_child(rim_row)
@@ -303,6 +309,26 @@ func _on_audio_toggled(on: bool) -> void:
 func _on_touch_selected(index: int) -> void:
 	if _settings and _settings.has_method("set_touch_controls"):
 		_settings.call("set_touch_controls", index)
+
+
+func _track_choice(btn: Button, row: String, index: int) -> void:
+	btn.set_meta("choice_row", row)
+	btn.set_meta("choice_index", index)
+	_choice_buttons.append(btn)
+
+
+func mark(row: String, index: int) -> void:
+	for btn in _choice_buttons:
+		if str(btn.get_meta("choice_row")) != row:
+			continue
+		var on := int(btn.get_meta("choice_index")) == index
+		if row == "paint":
+			var swatch := btn.get_theme_stylebox("normal") as StyleBoxFlat
+			if swatch:
+				swatch.set_border_width_all(4 if on else 0)
+				swatch.border_color = Color(1, 0.95, 0.75)
+			continue
+		btn.modulate = Color(1.0, 0.86, 0.45) if on else Color(1, 1, 1)
 
 
 func set_info(profile_name: String, detail: String) -> void:

@@ -13,20 +13,20 @@ const AssetKit = preload("res://scripts/asset_kit.gd")
 @export var max_speed_kph: float = 150.0
 
 const PAINTS: Array[Color] = [
+	Color(0.85, 0.55, 0.12),
+	Color(0.12, 0.35, 0.7),
+	Color(0.82, 0.15, 0.12),
+	Color(0.15, 0.55, 0.28),
 	Color(0.92, 0.92, 0.9),
 	Color(0.12, 0.12, 0.14),
-	Color(0.72, 0.73, 0.75),
-	Color(0.42, 0.44, 0.46),
-	Color(0.72, 0.12, 0.1),
-	Color(0.12, 0.28, 0.62),
-	Color(0.08, 0.14, 0.32),
-	Color(0.12, 0.38, 0.22),
-	Color(0.38, 0.24, 0.14),
-	Color(0.86, 0.72, 0.12),
+	Color(0.55, 0.55, 0.58),
+	Color(0.95, 0.75, 0.15),
+	Color(0.55, 0.15, 0.55),
+	Color(0.1, 0.55, 0.55),
 ]
 
 const PAINT_NAMES: Array[String] = [
-	"White", "Black", "Silver", "Grey", "Red", "Blue", "Dark Blue", "Green", "Brown", "Yellow"
+	"Saffron", "Blue", "Red", "Green", "White", "Black", "Silver", "Taxi Yellow", "Royal Purple", "Teal"
 ]
 
 const KIT_NAMES: Array[String] = ["Stock", "Spoiler", "Roof Rack", "Sport"]
@@ -62,6 +62,13 @@ var _look_touch_last: Vector2 = Vector2.ZERO
 var _orbit_return_t: float = 0.0
 var _driving_fx: Node
 var _vehicle_audio: Node
+var _gear: int = 1
+var _drive_force: float = 0.0
+var _showroom: bool = false
+var _showroom_yaw: float = 0.7
+const GEAR_COUNT := 6
+## Top speed of each gear, in km/h. Index 0 is unused.
+const _GEAR_CAP_KPH: Array[float] = [0.0, 10.0, 18.0, 28.0, 40.0, 54.0, 70.0]
 
 
 func _ready() -> void:
@@ -178,9 +185,27 @@ func _drive_input() -> Dictionary:
 	return {"throttle": throttle, "brake": brake_in, "steer": steer_input, "handbrake": handbrake}
 
 
+func set_showroom(on: bool) -> void:
+	_showroom = on
+	if on:
+		_showroom_yaw = 0.7
+		linear_velocity = Vector3.ZERO
+		angular_velocity = Vector3.ZERO
+		engine_force = 0.0
+		_drive_force = 0.0
+		brake = brake_force_value
+
+
 func _physics_process(delta: float) -> void:
 	freeze = false
 	sleeping = false
+	if _showroom:
+		linear_velocity = linear_velocity.move_toward(Vector3.ZERO, 12.0 * delta)
+		angular_velocity = Vector3.ZERO
+		engine_force = 0.0
+		brake = brake_force_value
+		_update_chase_camera(delta, 0.0)
+		return
 	if Input.is_action_just_pressed("reset_car"):
 		_reset_to_spawn()
 		return
@@ -204,23 +229,22 @@ func _physics_process(delta: float) -> void:
 
 	var speed := linear_velocity.length()
 	var speed_kph := speed * 3.6
-	var top := 1.0
-	if speed_kph >= max_speed_kph:
-		top = 0.0
-	elif speed_kph > max_speed_kph * 0.92:
-		top = clampf((max_speed_kph - speed_kph) / (max_speed_kph * 0.08), 0.0, 1.0)
-	# Positive engine_force → MODEL_FRONT (+Z). W drives away from chase cam (rear).
-	engine_force = throttle * engine_force_value * top
 	brake = 0.0
-
 	var forward_dir := global_transform.basis.z # MODEL_FRONT in world space
+	var target_force := 0.0
 	if brake_in > 0.0:
 		var going_forward := linear_velocity.dot(forward_dir) > 0.35
-		if speed_kph < 22.0 and not going_forward:
-			# Reverse: strong push so S backs toward the chase cam clearly
-			engine_force = -brake_in * engine_force_value * 1.35
+		if speed_kph < 14.0 and not going_forward:
+			_gear = 1
+			target_force = -brake_in * engine_force_value * 0.22
 		else:
 			brake = brake_in * brake_force_value
+	else:
+		_shift_gear(speed_kph, throttle)
+		var cap := _gear_cap_kph(_gear)
+		var headroom := clampf((cap - speed_kph) / 6.0, 0.0, 1.0)
+		var strength := 0.08 + 0.025 * float(_gear)
+		target_force = throttle * engine_force_value * strength * headroom
 
 	if handbrake:
 		brake = maxf(brake, brake_force_value * 1.35)
@@ -229,6 +253,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		for w in _wheels:
 			w.wheel_friction_slip = 8.0
+
+	_drive_force = move_toward(_drive_force, target_force, engine_force_value * 0.14 * delta)
+	engine_force = _drive_force
 
 	_steer_target = steer_input * steer_limit
 	var steer_scale := clampf(1.0 - speed_kph / 160.0, 0.4, 1.0)
@@ -286,6 +313,21 @@ func _spin_kit_wheels(node: Node, spin: float) -> void:
 
 func speed_kph() -> float:
 	return linear_velocity.length() * 3.6
+
+
+func current_gear() -> int:
+	return _gear
+
+
+func _gear_cap_kph(gear: int) -> float:
+	return minf(_GEAR_CAP_KPH[clampi(gear, 1, GEAR_COUNT)], max_speed_kph)
+
+
+func _shift_gear(speed_kph: float, throttle: float) -> void:
+	if throttle > 0.35 and _gear < GEAR_COUNT and speed_kph >= _gear_cap_kph(_gear) - 2.0:
+		_gear += 1
+	elif _gear > 1 and speed_kph < _gear_cap_kph(_gear - 1) - 4.0:
+		_gear -= 1
 
 
 func paint_name() -> String:
@@ -375,6 +417,8 @@ func _apply_profile(index: int) -> void:
 	linear_velocity = Vector3.ZERO
 	angular_velocity = Vector3.ZERO
 	engine_force = 0.0
+	_drive_force = 0.0
+	_gear = 1
 	brake = brake_force_value
 	steering = 0.0
 	match _profile_index:
@@ -473,11 +517,14 @@ func _rebuild_visuals() -> void:
 		var n := AssetKit.normalized(path)
 		if n:
 			_visual_root.add_child(n)
-			_tint_kit_meshes(n, _body_mat.albedo_color)
+			var painted := _tint_kit_meshes(n, _body_mat.albedo_color)
+			if painted == 0:
+				_tint_largest_body(n, _body_mat.albedo_color)
 			var aabb := AssetKit.mesh_aabb(n)
 			# At suspension rest the chassis origin sits ~0.24 m above ground
 			# (wheel y 0.36 − rest 0.22 − radius 0.38) → drop mesh so tyres touch road.
 			n.position = Vector3(0, -0.22, 0)
+			_attach_body_kit(n, aabb)
 			col_size = Vector3(aabb.size.x, aabb.size.y, aabb.size.z)
 			_set_wheel_meshes_visible(_count_kit_wheels(n) == 0)
 	elif _profile_index == 1:
@@ -496,13 +543,14 @@ func _rebuild_visuals() -> void:
 	_body_shape.position = Vector3(0, 0.72, 0)
 
 
-func _tint_kit_meshes(root: Node, paint: Color) -> void:
+func _tint_kit_meshes(root: Node, paint: Color) -> int:
+	var painted := 0
 	for child in root.get_children():
-		_tint_kit_meshes(child, paint)
+		painted += _tint_kit_meshes(child, paint)
 	if root is MeshInstance3D:
 		var mi := root as MeshInstance3D
 		if mi.mesh == null:
-			return
+			return painted
 		for si in mi.mesh.get_surface_count():
 			var base: Material = mi.mesh.surface_get_material(si)
 			var label := mi.name
@@ -532,6 +580,55 @@ func _tint_kit_meshes(root: Node, paint: Color) -> void:
 			body.metallic = 0.12
 			body.roughness = 0.42
 			mi.set_surface_override_material(si, body)
+			painted += 1
+	return painted
+
+
+func _tint_largest_body(root: Node, paint: Color) -> void:
+	var best: MeshInstance3D = null
+	var best_vol := 0.0
+	var stack: Array[Node] = [root]
+	while not stack.is_empty():
+		var node: Node = stack.pop_back()
+		for child in node.get_children():
+			stack.append(child)
+		if node is MeshInstance3D and (node as MeshInstance3D).mesh != null:
+			var vol := AssetKit.mesh_aabb(node).get_volume()
+			if vol > best_vol:
+				best_vol = vol
+				best = node
+	if best == null:
+		return
+	for si in best.mesh.get_surface_count():
+		var body := StandardMaterial3D.new()
+		body.albedo_color = paint
+		body.metallic = 0.12
+		body.roughness = 0.42
+		best.set_surface_override_material(si, body)
+
+
+func _attach_body_kit(host: Node3D, aabb: AABB) -> void:
+	if _kit_index == 0 or aabb.size.length() < 0.2:
+		return
+	var parts := Node3D.new()
+	parts.name = "KitParts"
+	host.add_child(parts)
+	var accent := VehicleMeshBuilder.mat(Color(0.07, 0.07, 0.08), 0.4, 0.35)
+	var chrome := VehicleMeshBuilder.mat(Color(0.78, 0.78, 0.82), 0.22, 0.9)
+	var top_y := aabb.position.y + aabb.size.y
+	var rear_z := aabb.position.z + aabb.size.z - 0.15
+	var mid_z := aabb.get_center().z
+	var cx := aabb.get_center().x
+	if _kit_index == 1 or _kit_index == 3:
+		VehicleMeshBuilder.add_box(parts, Vector3(aabb.size.x * 0.72, 0.08, 0.32), Vector3(cx, top_y + 0.1, rear_z), accent)
+		VehicleMeshBuilder.add_box(parts, Vector3(0.08, 0.22, 0.28), Vector3(cx - aabb.size.x * 0.22, top_y - 0.02, rear_z), accent)
+		VehicleMeshBuilder.add_box(parts, Vector3(0.08, 0.22, 0.28), Vector3(cx + aabb.size.x * 0.22, top_y - 0.02, rear_z), accent)
+	if _kit_index == 2:
+		VehicleMeshBuilder.add_box(parts, Vector3(aabb.size.x * 0.7, 0.06, aabb.size.z * 0.42), Vector3(cx, top_y + 0.06, mid_z), chrome)
+	if _kit_index == 3:
+		var skirt_y := aabb.position.y + aabb.size.y * 0.22
+		VehicleMeshBuilder.add_box(parts, Vector3(0.08, 0.14, aabb.size.z * 0.72), Vector3(aabb.position.x + 0.05, skirt_y, mid_z), accent)
+		VehicleMeshBuilder.add_box(parts, Vector3(0.08, 0.14, aabb.size.z * 0.72), Vector3(aabb.end.x - 0.05, skirt_y, mid_z), accent)
 
 
 func _paint_slot(label: String) -> String:
@@ -588,6 +685,8 @@ func _reset_to_spawn() -> void:
 	angular_velocity = Vector3.ZERO
 	global_transform = _spawn
 	engine_force = 0.0
+	_drive_force = 0.0
+	_gear = 1
 	brake = 0.0
 	steering = 0.0
 	_look_yaw = 0.0
@@ -654,6 +753,12 @@ func _apply_look_delta(relative: Vector2) -> void:
 
 func _update_chase_camera(delta: float, speed_kph: float) -> void:
 	if _camera == null or _camera_pivot == null:
+		return
+	if _showroom:
+		_showroom_yaw += delta * 0.45
+		var orbit := Vector3(sin(_showroom_yaw) * 7.2, 2.35, cos(_showroom_yaw) * 7.2)
+		_camera_pivot.global_position = global_position + orbit
+		_camera.look_at(global_position + Vector3.UP * 1.05, Vector3.UP)
 		return
 	# Slowly recenter after the player stops orbiting
 	if not _look_dragging:

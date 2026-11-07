@@ -3,11 +3,12 @@ extends Node3D
 ## Press T to cycle: Golden Hour / Noon / Night / Monsoon.
 ## Does NOT scrape or brand Google Maps.
 
-@export var world_environment_path: NodePath = NodePath("../WorldEnvironment")
-@export var sun_light_path: NodePath = NodePath("../Sun")
+@export var world_environment_path: NodePath = NodePath("../Sky3D")
+@export var sun_light_path: NodePath = NodePath("../Sky3D/SunLight")
 @export var player_car_path: NodePath = NodePath("../PlayerCar")
 
 var _env_node: WorldEnvironment
+var _sky: Sky3D
 var _sun: DirectionalLight3D
 var _car: Node
 var _preset_idx: int = 0
@@ -17,8 +18,20 @@ const PRESET_NAMES := ["Golden Hour Dhule", "Sunny Noon", "Night Drive", "Monsoo
 
 func _ready() -> void:
 	_env_node = get_node_or_null(world_environment_path) as WorldEnvironment
+	_sky = _env_node as Sky3D
 	_sun = get_node_or_null(sun_light_path) as DirectionalLight3D
+	if _sun == null and _sky:
+		_sun = _sky.get_node_or_null("SunLight") as DirectionalLight3D
 	_car = get_node_or_null(player_car_path)
+	if _sun:
+		_sun.shadow_enabled = true
+		_sun.shadow_blur = 0.0
+		_sun.shadow_bias = 0.06
+		_sun.shadow_normal_bias = 2.0
+		_sun.directional_shadow_mode = DirectionalLight3D.SHADOW_PARALLEL_2_SPLITS
+		_sun.directional_shadow_blend_splits = true
+		_sun.directional_shadow_fade_start = 0.9
+		_sun.directional_shadow_max_distance = 140.0
 	_apply_mobile_caps()
 	_apply_base_vfx()
 	apply_preset(0)
@@ -73,59 +86,43 @@ func apply_preset(index: int) -> void:
 	if _env_node == null or _env_node.environment == null:
 		return
 	var env := _env_node.environment
-	var sky_mat: ProceduralSkyMaterial = null
-	if env.sky:
-		sky_mat = env.sky.sky_material as ProceduralSkyMaterial
 	match index:
-		0: # Golden hour (late-afternoon Dhule: warm sun, deep-blue sky, no blowout)
-			if sky_mat:
-				sky_mat.sky_top_color = Color(0.17, 0.36, 0.68)
-				sky_mat.sky_horizon_color = Color(0.9, 0.64, 0.36)
-			if _sun:
-				_sun.light_color = Color(1.0, 0.87, 0.68)
-				_sun.light_energy = 1.34
+		0: # Golden hour — Sky3D sun sits late afternoon
+			_set_sky_time(17.2, 1.3, 0.25)
 			env.fog_light_color = Color(0.88, 0.7, 0.52)
 			env.fog_density = 0.00026
+			env.ambient_light_energy = 0.38
 			env.glow_intensity = 0.28
+			_notify_car_night(false)
 		1: # Noon
-			if sky_mat:
-				sky_mat.sky_top_color = Color(0.2, 0.5, 0.88)
-				sky_mat.sky_horizon_color = Color(0.76, 0.88, 0.96)
-			if _sun:
-				_sun.light_color = Color(1.0, 0.97, 0.92)
-				_sun.light_energy = 1.55
+			_set_sky_time(12.1, 1.5, 0.2)
 			env.fog_light_color = Color(0.8, 0.86, 0.94)
 			env.fog_density = 0.00016
+			env.ambient_light_energy = 0.42
 			env.glow_intensity = 0.28
-		2: # Night — headlights via DrivingFX; keep shadows soft
-			if sky_mat:
-				sky_mat.sky_top_color = Color(0.03, 0.04, 0.09)
-				sky_mat.sky_horizon_color = Color(0.1, 0.08, 0.18)
-			if _sun:
-				_sun.light_color = Color(0.35, 0.42, 0.7)
-				_sun.light_energy = 0.22
-				_sun.shadow_enabled = true
+			_notify_car_night(false)
+		2: # Night — headlights via DrivingFX
+			_set_sky_time(21.4, 0.15, 0.42)
 			env.ambient_light_energy = 0.18
 			env.fog_light_color = Color(0.08, 0.07, 0.14)
 			env.fog_density = 0.0004
 			env.glow_intensity = 0.55
 			_notify_car_night(true)
 		3: # Monsoon
-			if sky_mat:
-				sky_mat.sky_top_color = Color(0.28, 0.32, 0.38)
-				sky_mat.sky_horizon_color = Color(0.48, 0.52, 0.56)
-			if _sun:
-				_sun.light_color = Color(0.78, 0.84, 0.9)
-				_sun.light_energy = 0.7
+			_set_sky_time(15.6, 0.55, 0.2)
 			env.ambient_light_energy = 0.32
 			env.fog_light_color = Color(0.5, 0.55, 0.6)
 			env.fog_density = 0.00055
 			env.glow_intensity = 0.25
 			_notify_car_night(false)
-	if index != 2:
-		if index == 0 or index == 1:
-			env.ambient_light_energy = 0.38 if index == 0 else 0.42
-			_notify_car_night(false)
+
+
+func _set_sky_time(hour: float, sun_energy: float, moon_energy: float) -> void:
+	if _sky == null:
+		return
+	_sky.current_time = hour
+	_sky.sun_energy = sun_energy
+	_sky.moon_energy = moon_energy
 
 
 func _notify_car_night(night: bool) -> void:

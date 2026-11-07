@@ -39,6 +39,22 @@ func _ready() -> void:
 		_idle.play()
 	if _enabled and _accel.stream:
 		_accel.play()
+	if gs and gs.has_signal("settings_changed"):
+		gs.settings_changed.connect(_apply_audio_setting)
+
+
+func _apply_audio_setting() -> void:
+	var gs := get_node_or_null("/root/GameSettings")
+	_enabled = bool(gs.audio_enabled) if gs else true
+	if _enabled:
+		if _ambience and _ambience.stream and not _ambience.playing:
+			_ambience.play()
+		return
+	for player in [_idle, _accel, _horn, _screech, _impact]:
+		if player and player.playing:
+			player.stop()
+	if _ambience and _ambience.playing:
+		_ambience.stop()
 
 
 func _make3d(n: String, path: String, vol: float, loop: bool) -> AudioStreamPlayer3D:

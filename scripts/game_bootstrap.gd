@@ -53,10 +53,6 @@ func _on_map_ready(spawn_position: Vector3, spawn_heading: Vector2, anchors: Arr
 		_car.global_position = spawn_position
 	if _missions.has_method("start_with_anchors"):
 		_missions.start_with_anchors(anchors)
-	# On-screen self-check summary after map wires up
-	var status := "OK map+%d anchors · T weather · G garage · Customize" % anchors.size()
-	if _hud.has_method("set_test_status"):
-		_hud.set_test_status(status)
 
 
 func _on_target_changed(world_pos: Vector3, active: bool) -> void:
