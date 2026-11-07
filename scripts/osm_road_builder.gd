@@ -9,11 +9,15 @@ const RoadJunctions = preload("res://scripts/road_junctions.gd")
 const StreetKit = preload("res://scripts/street_kit.gd")
 const AssetKit = preload("res://scripts/asset_kit.gd")
 const BuildingKit = preload("res://scripts/building_kit.gd")
+const DhuleAssetCatalog = preload("res://scripts/dhule_asset_catalog.gd")
+const AssetPlacementValidator = preload("res://scripts/asset_placement_validator.gd")
 
 const GROUND_ALBEDO := "res://demo/assets/textures/ground037_alb_ht.png"
 const GROUND_NORMAL := "res://demo/assets/textures/ground037_nrm_rgh.png"
 const PARKED_HEAVY_MAX := 14
 const NAMED_LABEL_CAP := 40  ## max real OSM building-name labels (perf guard)
+## Phase 2G: no RNG street-pack / statue / unverified house scatter in production.
+const ALLOW_UNVERIFIED_WORLD_PROPS := false
 
 @export_file("*.json") var map_json_path: String = "res://assets/maps/dhule_roads_game.json"
 @export var road_y: float = 0.04
@@ -196,7 +200,10 @@ func _build(data: Dictionary) -> void:
 		if not _has_blosm:
 			shops += _dress_road_sides(dress_pts, dress_width, dress_dens, dress_hw, rng)
 		props += _dress_road_props(dress_pts, dress_width, dress_dens, dress_hw, rng)
-	_seed_street_pack(roads)
+	if ALLOW_UNVERIFIED_WORLD_PROPS:
+		_seed_street_pack(roads)
+	else:
+		print("STREET pack props disabled (unverified scale/placement)")
 	print("STREET pack props ", _street_pack_n)
 
 	delivery_anchors.clear()
@@ -424,7 +431,8 @@ func _dress_road_props(pts: Array, width: float, dens: float, hw: String, rng: R
 			if not _near_road(bpos, maxf(4.0, width * 0.35)):
 				var bn := AssetKit.place_at(self, barrier_path, bpos, yaw, 1.0)
 				if bn:
-					_strip_physics(bn)
+					# Barriers must stop the car — do not strip collision.
+					DhuleAssetCatalog.add_collision(bn, barrier_path)
 					n += 1
 		if not _has_blosm and dens > 0.85 and rng.randf() < 0.06 and not spawn_soft:
 			var bb := _ground_pos(p0 + outward * (width * 0.5 + 11.0))
@@ -456,6 +464,9 @@ func _dress_road_props(pts: Array, width: float, dens: float, hw: String, rng: R
 
 func _seed_street_pack(roads: Array) -> void:
 	## A short run of real street-pack props beside the spawn roads. Not the whole diorama.
+	## Disabled unless ALLOW_UNVERIFIED_WORLD_PROPS — height-only scale on Z-long poles made giants.
+	if not ALLOW_UNVERIFIED_WORLD_PROPS:
+		return
 	if not ResourceLoader.exists("res://assets/kit/props/street_asset_pack.glb"):
 		return
 	var spawn_xz := Vector3(spawn_position.x, 0.0, spawn_position.z)
@@ -490,7 +501,7 @@ func _seed_street_pack(roads: Array) -> void:
 
 
 func _place_street_piece(prefix: String, pos: Vector3, yaw: float, target_h: float) -> bool:
-	## One named prop from the street pack, scaled and sat on the verge. The pack itself stays hidden.
+	## Mesh-only rebuild + upright before scale. Seed stays gated by ALLOW_UNVERIFIED_WORLD_PROPS.
 	if bool(_street_missing.get(prefix, false)):
 		return false
 	if _street_lib == null:
@@ -509,22 +520,73 @@ func _place_street_piece(prefix: String, pos: Vector3, yaw: float, target_h: flo
 	var wrap := Node3D.new()
 	wrap.name = "street_" + prefix
 	add_child(wrap)
-	var copy := src.duplicate()
-	wrap.add_child(copy)
-	if copy is Node3D:
-		(copy as Node3D).position = Vector3.ZERO
-		(copy as Node3D).rotation = Vector3.ZERO
+	var meshes: Array = []
+	_collect_street_meshes(src, meshes)
+	if meshes.is_empty():
+		wrap.queue_free()
+		_street_missing[prefix] = true
+		return false
+	for mi_v in meshes:
+		var src_mi := mi_v as MeshInstance3D
+		var inst := MeshInstance3D.new()
+		inst.mesh = src_mi.mesh
+		inst.name = src_mi.name
+		wrap.add_child(inst)
 	var box := AssetKit.mesh_aabb(wrap)
-	if box.size.y > 0.05:
-		wrap.scale = Vector3.ONE * clampf(target_h / box.size.y, 0.2, 1.4)
+	if box.size.z > box.size.y * 1.4 and box.size.z > box.size.x * 1.4:
+		for c in wrap.get_children():
+			if c is Node3D:
+				(c as Node3D).rotation.x = -PI * 0.5
+		box = AssetKit.mesh_aabb(wrap)
+	var catalog_key := "street_pack:%s" % prefix
+	var catalog := DhuleAssetCatalog.entry(catalog_key)
+	var want_h := target_h
+	if not catalog.is_empty():
+		var exp: Dictionary = catalog.get("expected", {})
+		want_h = float(exp.get("height", target_h))
+	if box.size.y > 0.05 and want_h > 0.05:
+		var plan := maxf(box.size.x, box.size.z)
+		var s := want_h / box.size.y
+		if plan * s > 8.0:
+			s = 8.0 / maxf(plan, 0.01)
+		wrap.scale = Vector3.ONE * clampf(s, 0.15, 1.25)
 	wrap.rotation.y = yaw
 	wrap.position = pos
 	var box2 := AssetKit.mesh_aabb(wrap)
 	if box2.size.y > 0.01:
 		wrap.position.y = pos.y - box2.position.y
-	_strip_physics(wrap)
+	# Reject rather than hop 12 m when the footprint still overlaps asphalt.
+	if _footprint_on_road(box2, 0.5) or maxf(box2.size.x, box2.size.z) > 8.0 or box2.size.y > 6.0:
+		wrap.queue_free()
+		print("STREET reject ", prefix, " road_or_size")
+		return false
+	if DhuleAssetCatalog.blocks_vehicle(catalog_key):
+		DhuleAssetCatalog.add_collision(wrap, catalog_key)
+	else:
+		_strip_physics(wrap)
 	_street_pack_n += 1
 	return true
+
+
+func _footprint_on_road(aabb: AABB, margin: float) -> bool:
+	var corners := [
+		Vector3(aabb.position.x, 0, aabb.position.z),
+		Vector3(aabb.position.x + aabb.size.x, 0, aabb.position.z),
+		Vector3(aabb.position.x + aabb.size.x, 0, aabb.position.z + aabb.size.z),
+		Vector3(aabb.position.x, 0, aabb.position.z + aabb.size.z),
+		Vector3(aabb.position.x + aabb.size.x * 0.5, 0, aabb.position.z + aabb.size.z * 0.5),
+	]
+	for c in corners:
+		if _near_road(c, margin):
+			return true
+	return false
+
+
+func _collect_street_meshes(n: Node, out: Array) -> void:
+	if n is MeshInstance3D and (n as MeshInstance3D).mesh:
+		out.append(n)
+	for c in n.get_children():
+		_collect_street_meshes(c, out)
 
 
 func _shallow_named(root: Node, prefix: String) -> Node:
@@ -693,7 +755,8 @@ func _add_osm_context(data: Dictionary, rng: RandomNumberGenerator) -> int:
 		# Optional shop GLB on a few commercial footprints (materials reused from one PackedScene)
 		var used_shop := false
 		if (
-			has_house
+			ALLOW_UNVERIFIED_WORLD_PROPS
+			and has_house
 			and house_placed < 8
 			and kind == "residential"
 			and dist_spawn > 36.0
@@ -701,11 +764,12 @@ func _add_osm_context(data: Dictionary, rng: RandomNumberGenerator) -> int:
 			and fw >= 7.0
 			and fd >= 7.0
 		):
+			# AABB JSON footprints are not OSM rings — keep this off until the footprint fitter is production-ready.
 			var house := AssetKit.place_at(self, house_path, pos, yaw, 1.0)
 			if house:
 				house_placed += 1
 				used_shop = true
-				_strip_physics(house)
+				DhuleAssetCatalog.add_collision(house, house_path)
 		if (
 			not used_shop
 			and not _has_blosm
@@ -953,6 +1017,8 @@ func _strip_physics(root: Node) -> void:
 
 func _add_demo_scenery(rng: RandomNumberGenerator) -> int:
 	if _has_blosm:
+		return 0
+	if not ALLOW_UNVERIFIED_WORLD_PROPS:
 		return 0
 	## Terrain3D demo rocks + Road Generator edge barriers (off spawn / off lane).
 	var n := 0
@@ -1282,6 +1348,9 @@ func _add_landmarks(rng: RandomNumberGenerator) -> int:
 	## Sidewalk scenery only — never on the carriageway (fixes stall/bus-stop-in-road bug).
 	if _has_blosm:
 		return 0
+	## Phase 2G: no unverified statue/temple/shop/junction scatter or 12 m road-escape hops.
+	if not ALLOW_UNVERIFIED_WORLD_PROPS:
+		return 0
 	var n := 0
 	var forward := Vector3(spawn_heading.x, 0.0, spawn_heading.y).normalized()
 	if forward.length() < 0.1:
@@ -1403,6 +1472,9 @@ func _latlon_to_xz(lat: float, lon: float) -> Vector3:
 
 
 func _add_real_spots() -> int:
+	## Disabled: unverified statues/temples/bridges and 12 m escape hops onto new ground.
+	if not ALLOW_UNVERIFIED_WORLD_PROPS:
+		return 0
 	## Real Dhule places from OpenStreetMap coordinates. The statue mesh is original.
 	var spots: Array[Dictionary] = [
 		{"name": "Shivaji Maharaj, Fulwala Chowk", "lat": 20.90225, "lon": 74.77485, "kind": "statue"},
