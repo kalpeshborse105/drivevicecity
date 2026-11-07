@@ -92,10 +92,13 @@ static func add_neighbourhood(parent: Node3D, specs: Array, _party: Array) -> Di
 
 
 static func _style(style: String) -> String:
-	if style == "compact":
+	## Prototype A/B/C keys map to shell families. Shop/civic only when tags say so.
+	if style == "compact" or style == "traditional_compact" or style == "plastered_compact":
 		return "cottage"
-	if style == "urban":
+	if style == "urban" or style == "plastered_house":
 		return "family"
+	if style == "narrow_urban":
+		return "row"
 	if style == "mixed":
 		return "shop"
 	return style
