@@ -1,0 +1,30 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Vulkan 1.3.215 - Forward+ - Using Device #0: Intel - Intel(R) UHD Graphics 620
+
+[MCPRuntimeServer] port: scanning 6570-6585 (default)
+[MCPRuntimeServer] listening on 127.0.0.1:6572
+[MCPRegistry] runtime port 6572 registered for d:/drivevicecity
+[godot_ai game_helper] registered mcp capture (debugger active=false, logger=true)
+SHADOW policy roads_off=1 marks_off=1 blosm= lights=1 casters_on≈59
+ROAD crosswalks placed 6 skipped_arms 6
+VISUAL_QA ready junctions straight 1 bends 1 corners 0 three 1 four 2 arms 0 crosswalks 6
+SHOT res://docs/qa/57-junction-after.png
+SHOT res://docs/qa/57-markings-close.png
+SHADOW_DIAG count 68
+  _MeshInstance3D_27 dist=9.5 aabb=(0.06, 0.4, 0.65) path=/root/DhuleVisualQA/PlayerCar/VisualRoot/premium_sedan_mh/ExportRoot/PremiumSedanMH/_MeshInstance3D_27
+  _MeshInstance3D_42 dist=9.5 aabb=(0.08, 0.35, 0.55) path=/root/DhuleVisualQA/PlayerCar/VisualRoot/premium_sedan_mh/ExportRoot/PremiumSedanMH/_MeshInstance3D_42
+  _MeshInstance3D_39 dist=9.5 aabb=(0.14, 0.1, 0.02) path=/root/DhuleVisualQA/PlayerCar/VisualRoot/premium_sedan_mh/ExportRoot/PremiumSedanMH/_MeshInstance3D_39
+  _MeshInstance3D_25 dist=9.6 aabb=(0.06, 0.42, 0.7) path=/root/DhuleVisualQA/PlayerCar/VisualRoot/premium_sedan_mh/ExportRoot/PremiumSedanMH/_MeshInstance3D_25
+  _MeshInstance3D_37 dist=9.6 aabb=(0.22, 0.12, 0.18) path=/root/DhuleVisualQA/PlayerCar/VisualRoot/premium_sedan_mh/ExportRoot/PremiumSedanMH/_MeshInstance3D_37
+  _MeshInstance3D_35 dist=9.6 aabb=(0.12, 0.04, 0.04) path=/root/DhuleVisualQA/PlayerCar/VisualRoot/premium_sedan_mh/ExportRoot/PremiumSedanMH/_MeshInstance3D_35
+  _MeshInstance3D_33 dist=9.6 aabb=(0.02, 0.55, 0.02) path=/root/DhuleVisualQA/PlayerCar/VisualRoot/premium_sedan_mh/ExportRoot/PremiumSedanMH/_MeshInstance3D_33
+  _MeshInstance3D_41 dist=9.7 aabb=(0.08, 0.35, 0.55) path=/root/DhuleVisualQA/PlayerCar/VisualRoot/premium_sedan_mh/ExportRoot/PremiumSedanMH/_MeshInstance3D_41
+  _MeshInstance3D_29 dist=9.7 aabb=(0.02, 0.55, 0.02) path=/root/DhuleVisualQA/PlayerCar/VisualRoot/premium_sedan_mh/ExportRoot/PremiumSedanMH/_MeshInstance3D_29
+  _MeshInstance3D_31 dist=9.7 aabb=(0.12, 0.04, 0.04) path=/root/DhuleVisualQA/PlayerCar/VisualRoot/premium_sedan_mh/ExportRoot/PremiumSedanMH/_MeshInstance3D_31
+  TireSmokeL dist=9.8 aabb=(0.0, 0.0, 0.0) path=/root/DhuleVisualQA/PlayerCar/DrivingFX/TireSmokeL
+  Mesh dist=9.8 aabb=(0.748454, 0.28, 0.76) path=/root/DhuleVisualQA/PlayerCar/WheelRL/Mesh
+SHOT res://docs/qa/58-shadow-diag.png
+SHOT res://docs/qa/58-shadow-moving.png
+SHOT res://docs/qa/59-buildings-street.png
+SHOT res://docs/qa/59-buildings-aerial.png
+PERF visual_qa fps_med 10.0 draws_med 210.0 crosswalks 6 shadow { "roads_off": 1, "marks_off": 1, "blosm_buildings": 0, "blosm_shadow_mode": "", "lights_tuned": 1, "casters_on": 59 }

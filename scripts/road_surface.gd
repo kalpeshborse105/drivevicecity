@@ -6,16 +6,21 @@ extends RefCounted
 
 const TILE_M := 8.0
 const RoadJunctions = preload("res://scripts/road_junctions.gd")
+const RoadCrosswalk = preload("res://scripts/road_crosswalk.gd")
+const DhuleShadowPolicy = preload("res://scripts/dhule_shadow_policy.gd")
 
 static var _batch_parent: Node3D
 static var _decks: Dictionary = {}
 static var _marks: Dictionary = {}
+static var _crosswalk_parent: Node3D
 
 
 static func begin_batch(parent: Node3D) -> void:
 	_batch_parent = parent
+	_crosswalk_parent = parent
 	_decks = {}
 	_marks = {}
+	RoadCrosswalk.reset_stats()
 
 
 static func flush_batch() -> int:
@@ -26,7 +31,10 @@ static func flush_batch() -> int:
 		count += _commit_batched(_decks[key]["tool"], _decks[key]["mat"], "roads")
 	for key in _marks:
 		count += _commit_batched(_marks[key]["tool"], _marks[key]["mat"], "road_marks")
+	DhuleShadowPolicy.apply_after_roads(_batch_parent)
+	print("ROAD crosswalks placed ", RoadCrosswalk.placed, " skipped_arms ", RoadCrosswalk.skipped)
 	_batch_parent = null
+	_crosswalk_parent = null
 	_decks = {}
 	_marks = {}
 	return count
@@ -64,22 +72,7 @@ static func is_roundabout(road_id: String) -> bool:
 	return road_id == "217392930" or road_id == "883678059" or road_id == "887725187"
 
 
-static var _median_material: StandardMaterial3D
-
-
-static func _median_mat() -> Material:
-	if _median_material == null:
-		_median_material = StandardMaterial3D.new()
-		_median_material.albedo_color = Color(0.95, 0.75, 0.08)
-		_median_material.roughness = 0.42
-	return _median_material
-
-
-static func _is_divided(highway: String, width: float) -> bool:
-	return width >= 8.0 and highway in ["primary", "secondary", "trunk", "trunk_link", "motorway"]
-
-
-static func add_way(parent: Node3D, pts: Array, width: float, y: float, asphalt: Material, paint: Material, highway: String, _road_id: String = "") -> void:
+static func add_way(parent: Node3D, pts: Array, width: float, y: float, asphalt: Material, paint: Material, highway: String) -> void:
 	var closed := false
 	if pts.size() >= 4:
 		var a := Vector2(float(pts[0][0]), float(pts[0][1]))
@@ -130,9 +123,7 @@ static func add_way(parent: Node3D, pts: Array, width: float, y: float, asphalt:
 		if paint != null and width >= 4.5:
 			var marks := _tool_for(_marks, paint)
 			_edge_lines(marks, left, right, sides, closed)
-			if _is_divided(highway, width):
-				_median_strip(_tool_for(_marks, _median_mat()), points, sides, closed)
-			elif _wants_centre(highway, width):
+			if _wants_centre(highway, width):
 				_centre_dashes(marks, points, dist)
 		return
 	var mesh := deck.commit()
@@ -141,13 +132,7 @@ static func add_way(parent: Node3D, pts: Array, width: float, y: float, asphalt:
 		var loose := SurfaceTool.new()
 		loose.begin(Mesh.PRIMITIVE_TRIANGLES)
 		_edge_lines(loose, left, right, sides, closed)
-		if _is_divided(highway, width):
-			var yellow := SurfaceTool.new()
-			yellow.begin(Mesh.PRIMITIVE_TRIANGLES)
-			_median_strip(yellow, points, sides, closed)
-			yellow.commit(mesh)
-			mesh.surface_set_material(mesh.get_surface_count() - 1, _median_mat())
-		elif _wants_centre(highway, width):
+		if _wants_centre(highway, width):
 			_centre_dashes(loose, points, dist)
 		loose.commit(mesh)
 		mesh.surface_set_material(mesh.get_surface_count() - 1, paint)
@@ -199,8 +184,8 @@ static func _join_polygon(parent: Node3D, clip: Dictionary, y: float, asphalt: M
 		st = _tool_for(_decks, asphalt)
 	else:
 		st.begin(Mesh.PRIMITIVE_TRIANGLES)
-	# Sit the join above the road ribbons so the two meshes cannot z-fight.
-	var deck_y := y + 0.012
+	# Sit the join clearly above both residential and major ribbons.
+	var deck_y := y + 0.07
 	var c3 := Vector3(centre.x, deck_y, centre.y)
 	for i in corners.size():
 		var a := corners[i]
@@ -230,36 +215,38 @@ static func _join_polygon(parent: Node3D, clip: Dictionary, y: float, asphalt: M
 
 
 static func _junction_marks(clip: Dictionary, y: float, paint: Material) -> void:
+	## Stop lines on every local arm; selective zebra (gameplay marking, not OSM-verified).
 	var arms: Array = clip["arms"]
-	if arms.size() < 3:
+	if arms.size() < 2:
 		return
 	var st := _tool_for(_marks, paint)
-	var lift := Vector3(0, 0.028, 0)
-	var narrow: Dictionary = arms[0]
+	var zebra_arms := 0
 	for arm_v in arms:
 		var arm: Dictionary = arm_v
 		var dir: Vector2 = arm["dir"]
-		var tip: Vector2 = arm["p"] + dir * (float(arm["pull"]) + 0.85)
 		var side := Vector2(-dir.y, dir.x)
-		var half := float(arm["w"]) * 0.42
-		var a := Vector3(tip.x, y, tip.y) + Vector3(side.x, 0, side.y) * half + lift
-		var b := Vector3(tip.x, y, tip.y) - Vector3(side.x, 0, side.y) * half + lift
-		var fwd := Vector3(dir.x, 0, dir.y) * 0.28
-		_mark(st, a, b, b + fwd, a + fwd)
-		if float(arm["w"]) < float(narrow["w"]):
-			narrow = arm
-	if arms.size() < 4:
-		return
-	var dir_n: Vector2 = narrow["dir"]
-	var side_n := Vector2(-dir_n.y, dir_n.x)
-	var half_n := float(narrow["w"]) * 0.46
-	for stripe in 5:
-		var along := float(narrow["pull"]) + 2.4 + float(stripe) * 0.7
-		var tip_n: Vector2 = narrow["p"] + dir_n * along
-		var mid := Vector3(tip_n.x, y, tip_n.y) + lift
-		var across := Vector3(side_n.x, 0, side_n.y) * half_n
-		var deep := Vector3(dir_n.x, 0, dir_n.y) * 0.36
-		_mark(st, mid - across, mid + across, mid + across + deep, mid - across + deep)
+		var half := float(arm["w"]) * 0.5
+		var tip: Vector2 = arm["p"] + dir * (float(arm["pull"]) + 0.55)
+		var tip3 := Vector3(tip.x, y, tip.y)
+		var across := Vector3(side.x, 0, side.y)
+		var along := Vector3(dir.x, 0, dir.y)
+		RoadCrosswalk.add_stop_line(st, tip3, across, along, half)
+		if not RoadCrosswalk.should_mark_arm(arm, arms):
+			continue
+		if zebra_arms >= 2:
+			continue
+		var zebra_at: Vector2 = tip + dir * 2.1
+		var centre := Vector3(zebra_at.x, y, zebra_at.y)
+		RoadCrosswalk.add_crosswalk(st, centre, across, along, half, 6)
+		zebra_arms += 1
+		# Optional kit plate under the stripes when width is near 5 m.
+		if _crosswalk_parent and absf(float(arm["w"]) - 5.0) < 2.5:
+			RoadCrosswalk.try_place_kit_crossing(
+				_crosswalk_parent,
+				centre,
+				atan2(dir.x, dir.y),
+				float(arm["w"])
+			)
 
 
 static func add_junction(parent: Node3D, pos: Vector2, radius: float, y: float, asphalt: Material) -> void:
@@ -422,12 +409,16 @@ static func _quad(st: SurfaceTool, a: Vector3, b: Vector3, c: Vector3, d: Vector
 
 
 static func _edge_lines(st: SurfaceTool, left: PackedVector3Array, right: PackedVector3Array, sides: Array[Vector3], closed: bool = false) -> void:
-	var lift := Vector3(0, 0.02, 0)
+	## White edge paint stops at junction pads — never draws through the crossing.
+	var lift := Vector3(0, 0.04, 0)
 	var count := left.size() - 1
 	if closed and left.size() >= 3:
 		count = left.size()
 	for i in count:
 		var j := (i + 1) % left.size()
+		var mid := (left[i] + left[j] + right[i] + right[j]) * 0.25
+		if RoadCrosswalk.in_junction_clear(Vector2(mid.x, mid.z), 1.35):
+			continue
 		var inward_a := -sides[i] * 0.42
 		var inward_b := -sides[j] * 0.42
 		var hw := 0.07
@@ -435,32 +426,17 @@ static func _edge_lines(st: SurfaceTool, left: PackedVector3Array, right: Packed
 		_mark(st, right[i] - inward_a - sides[i] * hw + lift, right[i] - inward_a + sides[i] * hw + lift, right[j] - inward_b + sides[j] * hw + lift, right[j] - inward_b - sides[j] * hw + lift)
 
 
-static func _median_strip(st: SurfaceTool, points: Array[Vector3], sides: Array[Vector3], closed: bool) -> void:
-	## Double yellow line down the middle of a wide highway. Paint only, so the car can still turn.
-	var lift := Vector3(0, 0.035, 0)
-	var bar := 0.11
-	var gap := 0.22
-	var count := points.size() - 1
-	if closed and points.size() >= 3:
-		count = points.size()
-	for i in count:
-		var j := (i + 1) % points.size()
-		for sign_v in [-1.0, 1.0]:
-			var sign := float(sign_v)
-			var off_a := sides[i] * gap * sign
-			var off_b := sides[j] * gap * sign
-			var ha := sides[i] * bar
-			var hb := sides[j] * bar
-			_mark(st, points[i] + off_a - ha + lift, points[i] + off_a + ha + lift, points[j] + off_b + hb + lift, points[j] + off_b - hb + lift)
-
-
 static func _centre_dashes(st: SurfaceTool, points: Array[Vector3], dist: PackedFloat32Array) -> void:
-	var lift := Vector3(0, 0.025, 0)
+	var lift := Vector3(0, 0.045, 0)
 	var cursor := 1.2
 	var limit := dist[dist.size() - 1] - 1.2
 	while cursor < limit:
 		var a := _at_dist(points, dist, cursor)
 		var b := _at_dist(points, dist, minf(cursor + 2.4, limit))
+		var mid := (a + b) * 0.5
+		if RoadCrosswalk.in_junction_clear(Vector2(mid.x, mid.z), 1.5):
+			cursor += 6.0
+			continue
 		var delta := b - a
 		if delta.length() > 0.4:
 			var side := Vector3(-delta.z, 0, delta.x).normalized() * 0.08

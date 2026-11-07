@@ -20,7 +20,9 @@ const BRICK := Color(0.58, 0.36, 0.30)
 static func add_neighbourhood(parent: Node3D, specs: Array, _party: Array) -> Dictionary:
 	var plaster := _mat(Color.WHITE, 0.88, true)
 	var roof_m := _mat(Color(0.42, 0.40, 0.38), 0.95, false)
-	var glass := _mat(Color(0.16, 0.22, 0.28), 0.08, false)
+	var glass := _mat(Color(0.22, 0.38, 0.48), 0.06, false)
+	glass.metallic = 0.35
+	glass.roughness = 0.12
 	var dark := _mat(Color(0.16, 0.15, 0.14), 0.8, false)
 	var metal := _mat(Color(0.55, 0.57, 0.60), 0.35, false)
 	metal.metallic = 0.65
@@ -233,11 +235,16 @@ static func _band(pair: Array, a: Vector2, b: Vector2, y: float, outward: Vector
 
 static func _door(pair: Array, a: Vector2, b: Vector2, outward: Vector2, style: String, variant: int) -> void:
 	var along := (b - a).normalized()
-	var mid := (a + b) * 0.5 + outward * 0.045
-	var half_w := 0.4 if style == "row" or style == "cottage" else 0.52
+	var mid := (a + b) * 0.5 + outward * 0.05
+	var half_w := 0.38 if style == "row" or style == "cottage" else 0.5
 	var leaf := Color(0.34, 0.36, 0.38) if variant % 2 == 0 else Color(0.30, 0.17, 0.11)
-	var top := 2.02 if style == "cottage" else 2.2
-	_wall(pair, mid - along * half_w, mid + along * half_w, 0.08, top, outward, leaf)
+	var top := 2.02 if style == "cottage" else 2.18
+	# Frame sits slightly proud; leaf recessed so it reads as a real opening.
+	var frame := Color(0.42, 0.40, 0.36)
+	_wall(pair, mid - along * (half_w + 0.08), mid + along * (half_w + 0.08), 0.04, top + 0.1, outward, frame)
+	_wall(pair, mid - along * half_w, mid + along * half_w, 0.1, top, outward, leaf)
+	# Threshold step sill inside the footprint.
+	_wall(pair, mid - along * (half_w + 0.05), mid + along * (half_w + 0.05), 0.0, 0.1, outward, frame.darkened(0.1))
 
 
 static func _steps(pair: Array, tools: Dictionary, a: Vector2, b: Vector2, outward: Vector2, clear: float, col: Color) -> void:
@@ -283,10 +290,23 @@ static func _windows(
 ) -> void:
 	var along := (b - a).normalized()
 	var length := a.distance_to(b)
+	# Style-tuned openings: cottage smaller, row taller, family wider.
 	var spacing: float = [3.3, 2.45, 4.1, 2.9, 3.6][variant]
 	var half_w: float = [0.46, 0.3, 0.58, 0.38, 0.34][variant]
 	var half_h: float = [0.52, 0.68, 0.42, 0.58, 0.5][variant]
 	var shade: float = [0.16, 0.26, 0.1, 0.2, 0.22][variant]
+	if style == "cottage":
+		spacing *= 1.15
+		half_w *= 0.82
+		half_h *= 0.88
+		shade *= 0.7
+	elif style == "row":
+		spacing *= 0.92
+		half_h *= 1.08
+		shade *= 1.15
+	elif style == "family":
+		half_w *= 1.05
+		shade *= 1.05
 	var count := maxi(1, int(length / spacing))
 	for f in range(first_floor, floors):
 		var y := ground_h * 0.55 if f == 0 else ground_h + (float(f - 1) + 0.42) * upper_h
@@ -294,13 +314,16 @@ static func _windows(
 			var t := (float(c) + 0.5) / float(count)
 			if road_face and f == 0 and absf(t - 0.5) < 0.2:
 				continue
-			var centre := a.lerp(b, t) + outward * 0.05
-			_wall(glass, centre - along * half_w, centre + along * half_w, y - half_h, y + half_h, outward, Color.WHITE)
+			var centre := a.lerp(b, t) + outward * 0.03
+			var frame_col := tint.darkened(0.22)
+			# Recessed reveal: frame, then glass inset.
+			_wall(trim, centre - along * (half_w + 0.07), centre + along * (half_w + 0.07), y - half_h - 0.06, y + half_h + 0.06, outward, frame_col)
+			_wall(glass, centre - along * half_w + outward * 0.03, centre + along * half_w + outward * 0.03, y - half_h, y + half_h, outward, Color(0.55, 0.7, 0.82))
 			var plain := style == "cottage" and variant == 2
 			if not plain:
 				var brow: Vector2 = centre + outward * shade
 				var brow_w: float = half_w + 0.18
-				_wall(trim, brow - along * brow_w, brow + along * brow_w, y + half_h, y + half_h + 0.1, outward, tint.darkened(0.28))
+				_wall(trim, brow - along * brow_w, brow + along * brow_w, y + half_h, y + half_h + 0.12, outward, tint.darkened(0.3))
 
 
 static func _shutter(metal: Array, trim: Array, a: Vector2, b: Vector2, outward: Vector2, ground_h: float, tint: Color) -> void:

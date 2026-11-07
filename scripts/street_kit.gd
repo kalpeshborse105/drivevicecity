@@ -102,7 +102,7 @@ static func flush_box_batch() -> int:
 	var committed := _box_batch_count
 	if _box_batch_parent != null:
 		for material in _box_batches:
-			_commit_batch(_box_batch_parent, _unit_box(), _box_batches[material], [], material)
+			_commit_batch(_box_batch_parent, _unit_box(), _box_batches[material], [], material, false)
 	_box_batches.clear()
 	_box_batch_parent = null
 	_box_batch_count = 0
@@ -481,8 +481,8 @@ static func flush_trees(parent: Node3D) -> void:
 		_tree_canopy_mat.albedo_color = Color.WHITE
 		_tree_canopy_mat.roughness = 0.95
 		_tree_canopy_mat.vertex_color_use_as_albedo = true
-	_commit_batch(parent, _unit_cylinder(), _tree_trunks, [], _tree_trunk_mat)
-	_commit_batch(parent, _unit_ball(), _tree_canopies, _tree_canopy_cols, _tree_canopy_mat)
+	_commit_batch(parent, _unit_cylinder(), _tree_trunks, [], _tree_trunk_mat, true)
+	_commit_batch(parent, _unit_ball(), _tree_canopies, _tree_canopy_cols, _tree_canopy_mat, true)
 	# Thin trunk StaticBodies so cars bump trees (capped for Android).
 	if not _tree_cols.is_empty():
 		var holder := Node3D.new()
@@ -505,7 +505,14 @@ static func flush_trees(parent: Node3D) -> void:
 	_tree_cols.clear()
 
 
-static func _commit_batch(parent: Node3D, mesh: Mesh, xforms: Array, cols: Array, material: Material) -> void:
+static func _commit_batch(
+	parent: Node3D,
+	mesh: Mesh,
+	xforms: Array,
+	cols: Array,
+	material: Material,
+	cast_shadows: bool = true
+) -> void:
 	if xforms.is_empty():
 		return
 	var mm := MultiMesh.new()
@@ -520,6 +527,12 @@ static func _commit_batch(parent: Node3D, mesh: Mesh, xforms: Array, cols: Array
 	var mmi := MultiMeshInstance3D.new()
 	mmi.multimesh = mm
 	mmi.material_override = material
+	# Paint/curb boxes stay shadowless; trees keep attached shadows.
+	mmi.cast_shadow = (
+		GeometryInstance3D.SHADOW_CASTING_SETTING_ON
+		if cast_shadows
+		else GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	)
 	parent.add_child(mmi)
 
 

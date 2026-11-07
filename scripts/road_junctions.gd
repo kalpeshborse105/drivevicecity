@@ -3,7 +3,7 @@ extends RefCounted
 ## Source coordinates are not moved. A disc is added only where two or more
 ## ways already meet at an angle, so straight splits stay as plain ribbons.
 
-const JOIN_M := 3.2
+const JOIN_M := 4.2
 const STRAIGHT_DEG := 18.0
 
 static var clips: Array = []
@@ -92,14 +92,15 @@ static func prepare(roads: Array) -> int:
 			var nxt: Dictionary = arms[(ai + 1) % arms.size()]
 			var gap := minf(_heading_gap(arms[ai]["dir"], prev["dir"]), _heading_gap(arms[ai]["dir"], nxt["dir"]))
 			var half_w := float(arms[ai]["w"]) * 0.5
-			var pull := 0.4
+			# Pull tips farther so ribbons stop under the join pad (kills blink).
+			var pull := 0.7
 			if gap > 2.6:
-				pull = 0.35
+				pull = 0.65
 			elif gap < 0.28:
-				pull = half_w * 0.3
+				pull = half_w * 0.55
 			else:
-				pull = clampf(half_w / tan(gap * 0.5), 0.4, max_half + 0.5)
-			arms[ai]["pull"] = minf(pull, float(arms[ai]["seg"]) * 0.8)
+				pull = clampf(half_w / tan(gap * 0.5) + 0.35, 0.7, max_half + 1.2)
+			arms[ai]["pull"] = minf(pull, float(arms[ai]["seg"]) * 0.85)
 		clips.append({"c": centre, "r": max_half, "major": is_major, "disc": true, "arms": arms})
 		if ids.size() == 2 and max_ang < STRAIGHT_DEG:
 			straight += 1
@@ -191,8 +192,8 @@ static func _trim_end(pts: Array, at_start: bool) -> Array:
 		if j.has("arms"):
 			for arm_v in j["arms"]:
 				var arm: Dictionary = arm_v
-				if flat.distance_to(arm["p"]) <= 1.6:
-					pull = maxf(pull, float(arm["pull"]))
+				if flat.distance_to(arm["p"]) <= 2.4:
+					pull = maxf(pull, float(arm["pull"]) + 0.25)
 					arm_hit = true
 			continue
 		var c: Vector2 = j["c"]
