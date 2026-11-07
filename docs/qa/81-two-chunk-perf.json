@@ -1,0 +1,308 @@
+{
+	"cases": [
+		{
+			"active_chunks": [
+				"pilot_n1"
+			],
+			"case": "A_first_alone",
+			"collision_bodies": 49,
+			"draws_med": 85.0,
+			"fps_med": 33.0,
+			"frame_ms_med": 162.68,
+			"mem_static_mb": 79.7,
+			"objects": 192.0,
+			"surfaces": 7,
+			"timings": [
+				{
+					"buildings": 48,
+					"busy": false,
+					"dist_m": 2.2,
+					"error": "",
+					"id": "pilot_n1",
+					"loaded": true,
+					"origin": {
+						"x": -620.622314453125,
+						"z": 912.721069335938
+					},
+					"timing_ms": {
+						"buildings": 48,
+						"load_ms": 1950,
+						"surfaces": 7,
+						"unload_ms": 0
+					}
+				},
+				{
+					"buildings": 0,
+					"busy": false,
+					"dist_m": 911.5,
+					"error": "",
+					"id": "pilot_n2",
+					"loaded": false,
+					"origin": {
+						"x": -160.920974731445,
+						"z": 1698.19116210938
+					},
+					"timing_ms": {}
+				}
+			]
+		},
+		{
+			"active_chunks": [
+				"pilot_n2"
+			],
+			"case": "B_second_alone",
+			"collision_bodies": 42,
+			"draws_med": 85.0,
+			"fps_med": 20.0,
+			"frame_ms_med": 722.3,
+			"mem_static_mb": 79.5,
+			"objects": 192.0,
+			"surfaces": 7,
+			"timings": [
+				{
+					"buildings": 0,
+					"busy": false,
+					"dist_m": 908.4,
+					"error": "",
+					"id": "pilot_n1",
+					"loaded": false,
+					"origin": {
+						"x": -620.622314453125,
+						"z": 912.721069335938
+					},
+					"timing_ms": {
+						"buildings": 48,
+						"load_ms": 1950,
+						"surfaces": 7,
+						"unload_ms": 0
+					}
+				},
+				{
+					"buildings": 41,
+					"busy": false,
+					"dist_m": 2.0,
+					"error": "",
+					"id": "pilot_n2",
+					"loaded": true,
+					"origin": {
+						"x": -160.920974731445,
+						"z": 1698.19116210938
+					},
+					"timing_ms": {
+						"buildings": 41,
+						"load_ms": 648,
+						"surfaces": 7,
+						"unload_ms": 0
+					}
+				}
+			]
+		},
+		{
+			"active_chunks": [
+				"pilot_n1",
+				"pilot_n2"
+			],
+			"case": "C_both_loaded",
+			"collision_bodies": 91,
+			"draws_med": 16.0,
+			"fps_med": 23.0,
+			"frame_ms_med": 114.33,
+			"mem_static_mb": 80.3,
+			"objects": 135.0,
+			"surfaces": 14,
+			"timings": [
+				{
+					"buildings": 48,
+					"busy": false,
+					"dist_m": 908.4,
+					"error": "",
+					"id": "pilot_n1",
+					"loaded": true,
+					"origin": {
+						"x": -620.622314453125,
+						"z": 912.721069335938
+					},
+					"timing_ms": {
+						"buildings": 48,
+						"load_ms": 2026,
+						"surfaces": 7,
+						"unload_ms": 0
+					}
+				},
+				{
+					"buildings": 41,
+					"busy": false,
+					"dist_m": 2.0,
+					"error": "",
+					"id": "pilot_n2",
+					"loaded": true,
+					"origin": {
+						"x": -160.920974731445,
+						"z": 1698.19116210938
+					},
+					"timing_ms": {
+						"buildings": 41,
+						"load_ms": 648,
+						"surfaces": 7,
+						"unload_ms": 0
+					}
+				}
+			]
+		},
+		{
+			"active_chunks": [
+				"pilot_n1"
+			],
+			"case": "D_A_loaded_B_unloaded",
+			"collision_bodies": 49,
+			"draws_med": 73.0,
+			"fps_med": 59.0,
+			"frame_ms_med": 119.41,
+			"mem_static_mb": 79.8,
+			"objects": 180.0,
+			"surfaces": 7,
+			"timings": [
+				{
+					"buildings": 48,
+					"busy": false,
+					"dist_m": 2.1,
+					"error": "",
+					"id": "pilot_n1",
+					"loaded": true,
+					"origin": {
+						"x": -620.622314453125,
+						"z": 912.721069335938
+					},
+					"timing_ms": {
+						"buildings": 48,
+						"load_ms": 2026,
+						"surfaces": 7,
+						"unload_ms": 0
+					}
+				},
+				{
+					"buildings": 0,
+					"busy": false,
+					"dist_m": 911.5,
+					"error": "",
+					"id": "pilot_n2",
+					"loaded": false,
+					"origin": {
+						"x": -160.920974731445,
+						"z": 1698.19116210938
+					},
+					"timing_ms": {
+						"buildings": 41,
+						"load_ms": 648,
+						"surfaces": 7,
+						"unload_ms": 0
+					}
+				}
+			]
+		},
+		{
+			"active_chunks": [
+				"pilot_n2"
+			],
+			"case": "E_B_loaded_A_unloaded",
+			"collision_bodies": 42,
+			"draws_med": 9.0,
+			"fps_med": 35.0,
+			"frame_ms_med": 684.68,
+			"mem_static_mb": 79.5,
+			"objects": 116.0,
+			"surfaces": 7,
+			"timings": [
+				{
+					"buildings": 0,
+					"busy": false,
+					"dist_m": 908.4,
+					"error": "",
+					"id": "pilot_n1",
+					"loaded": false,
+					"origin": {
+						"x": -620.622314453125,
+						"z": 912.721069335938
+					},
+					"timing_ms": {
+						"buildings": 48,
+						"load_ms": 2026,
+						"surfaces": 7,
+						"unload_ms": 0
+					}
+				},
+				{
+					"buildings": 41,
+					"busy": false,
+					"dist_m": 2.0,
+					"error": "",
+					"id": "pilot_n2",
+					"loaded": true,
+					"origin": {
+						"x": -160.920974731445,
+						"z": 1698.19116210938
+					},
+					"timing_ms": {
+						"buildings": 41,
+						"load_ms": 682,
+						"surfaces": 7,
+						"unload_ms": 0
+					}
+				}
+			]
+		},
+		{
+			"active_chunks": [
+				"pilot_n1",
+				"pilot_n2"
+			],
+			"case": "F_both_far_camera",
+			"collision_bodies": 91,
+			"draws_med": 80.0,
+			"fps_med": 46.0,
+			"frame_ms_med": 193.76,
+			"mem_static_mb": 80.3,
+			"objects": 199.0,
+			"surfaces": 14,
+			"timings": [
+				{
+					"buildings": 48,
+					"busy": false,
+					"dist_m": 500.6,
+					"error": "",
+					"id": "pilot_n1",
+					"loaded": true,
+					"origin": {
+						"x": -620.622314453125,
+						"z": 912.721069335938
+					},
+					"timing_ms": {
+						"buildings": 48,
+						"load_ms": 2255,
+						"surfaces": 7,
+						"unload_ms": 0
+					}
+				},
+				{
+					"buildings": 41,
+					"busy": false,
+					"dist_m": 409.5,
+					"error": "",
+					"id": "pilot_n2",
+					"loaded": true,
+					"origin": {
+						"x": -160.920974731445,
+						"z": 1698.19116210938
+					},
+					"timing_ms": {
+						"buildings": 41,
+						"load_ms": 658,
+						"surfaces": 7
+					}
+				}
+			]
+		}
+	],
+	"gpu": "Intel UHD Graphics 620",
+	"res": "1280x720"
+}

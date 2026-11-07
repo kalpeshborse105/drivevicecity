@@ -23,8 +23,13 @@ const STONE := Color(0.58, 0.54, 0.48)
 const CONCRETE := Color(0.62, 0.60, 0.57)
 
 
-static func add_neighbourhood(parent: Node3D, specs: Array, _party: Array) -> Dictionary:
-	## Seven shared mats keep the neighbourhood as one MeshInstance3D.
+## Process-wide material set so multiple neighbourhood chunks share the same 7 mats.
+static var _SHARED_MATS: Dictionary = {}
+
+
+static func shared_materials() -> Dictionary:
+	if not _SHARED_MATS.is_empty():
+		return _SHARED_MATS
 	var plaster := _mat(Color.WHITE, 0.9, true)
 	plaster.metallic = 0.0
 	var roof_m := _mat(Color.WHITE, 0.96, true)
@@ -41,14 +46,29 @@ static func add_neighbourhood(parent: Node3D, specs: Array, _party: Array) -> Di
 	lamp.emission_enabled = true
 	lamp.emission = Color(1.0, 0.72, 0.38)
 	lamp.emission_energy = 1.15
+	_SHARED_MATS = {
+		"plaster": plaster,
+		"roof": roof_m,
+		"glass": glass,
+		"dark": dark,
+		"metal": metal,
+		"brick": brick,
+		"lamp": lamp,
+	}
+	return _SHARED_MATS
+
+
+static func add_neighbourhood(parent: Node3D, specs: Array, _party: Array) -> Dictionary:
+	## Seven shared mats keep the neighbourhood as one MeshInstance3D.
+	var mats := shared_materials()
 	var tools := {
-		"plaster": _tool(plaster),
-		"roof": _tool(roof_m),
-		"glass": _tool(glass),
-		"dark": _tool(dark),
-		"metal": _tool(metal),
-		"brick": _tool(brick),
-		"lamp": _tool(lamp),
+		"plaster": _tool(mats["plaster"]),
+		"roof": _tool(mats["roof"]),
+		"glass": _tool(mats["glass"]),
+		"dark": _tool(mats["dark"]),
+		"metal": _tool(mats["metal"]),
+		"brick": _tool(mats["brick"]),
+		"lamp": _tool(mats["lamp"]),
 		"col": PackedVector3Array(),
 	}
 	var root := Node3D.new()

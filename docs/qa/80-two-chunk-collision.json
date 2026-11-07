@@ -1,0 +1,90 @@
+{
+	"tests": [
+		{
+			"name": "hit_loaded_A",
+			"ok": true,
+			"osm_id": "1337953920",
+			"peak": 43.2,
+			"speed": 39.1,
+			"traveled_m": 9.0
+		},
+		{
+			"bodies_A": 49,
+			"bodies_B": 0,
+			"loaded": [
+				"pilot_n1"
+			],
+			"name": "bodies_after_B_unload",
+			"ok": true
+		},
+		{
+			"bodies_A": 0,
+			"bodies_B": 42,
+			"loaded": [
+				"pilot_n2"
+			],
+			"name": "bodies_after_A_unload",
+			"ok": true
+		},
+		{
+			"loaded": [
+				"pilot_n1",
+				"pilot_n2"
+			],
+			"name": "load_while_approaching_B",
+			"ok": true,
+			"status": {
+				"active": [
+					"pilot_n1",
+					"pilot_n2"
+				],
+				"chunks": [
+					{
+						"buildings": 48,
+						"busy": false,
+						"dist_m": 500.6,
+						"error": "",
+						"id": "pilot_n1",
+						"loaded": true,
+						"origin": {
+							"x": -620.622314453125,
+							"z": 912.721069335938
+						},
+						"timing_ms": {
+							"buildings": 48,
+							"load_ms": 2255,
+							"surfaces": 7,
+							"unload_ms": 0
+						}
+					},
+					{
+						"buildings": 41,
+						"busy": false,
+						"dist_m": 409.5,
+						"error": "",
+						"id": "pilot_n2",
+						"loaded": true,
+						"origin": {
+							"x": -160.920974731445,
+							"z": 1698.19116210938
+						},
+						"timing_ms": {
+							"buildings": 41,
+							"load_ms": 658,
+							"surfaces": 7
+						}
+					}
+				],
+				"load_radius_m": 480.0,
+				"manual_lock": false,
+				"unload_radius_m": 720.0
+			}
+		},
+		{
+			"bodies_A": 0,
+			"hit_nodes_named_A": 0,
+			"name": "no_ghost_collision_at_unloaded_A",
+			"ok": true
+		}
+	]
+}
