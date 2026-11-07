@@ -1,0 +1,341 @@
+{
+	"decision": "all_procedural_batched_shell",
+	"fitted_geometry_ok": 5,
+	"note": "indian_house only if undistorted; chunk2 keeps single Shell batch.",
+	"procedural": 36,
+	"reports": [
+		{
+			"area_m2": 147.79,
+			"asset": "",
+			"osm_id": "1527760280",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "traditional_compact"
+		},
+		{
+			"area_m2": 268.53,
+			"asset": "",
+			"osm_id": "1527760300",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "traditional_compact"
+		},
+		{
+			"area_m2": 226.08,
+			"asset": "",
+			"osm_id": "1527760278",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "plastered_house"
+		},
+		{
+			"area_m2": 171.4,
+			"asset": "",
+			"osm_id": "1527760295",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "plastered_house"
+		},
+		{
+			"area_m2": 187.72,
+			"asset": "",
+			"osm_id": "1527760299",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "plastered_house"
+		},
+		{
+			"area_m2": 261.04,
+			"asset": "",
+			"osm_id": "1527760294",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "plastered_house"
+		},
+		{
+			"area_m2": 114.71,
+			"asset": "indian_house.glb",
+			"osm_id": "1527760296",
+			"reason": "ok_but_pilot_keeps_procedural",
+			"result": "would_fit_uniform",
+			"scale": 1.7,
+			"style": "traditional_compact"
+		},
+		{
+			"area_m2": 254.54,
+			"asset": "",
+			"osm_id": "1527760276",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "traditional_compact"
+		},
+		{
+			"area_m2": 252.08,
+			"asset": "",
+			"osm_id": "1527760288",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "traditional_compact"
+		},
+		{
+			"area_m2": 222.96,
+			"asset": "",
+			"osm_id": "1527760286",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "plastered_house"
+		},
+		{
+			"area_m2": 257.6,
+			"asset": "",
+			"osm_id": "1527760290",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "plastered_house"
+		},
+		{
+			"area_m2": 254.73,
+			"asset": "",
+			"osm_id": "1527760283",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "plastered_house"
+		},
+		{
+			"area_m2": 220.88,
+			"asset": "",
+			"osm_id": "1527766254",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "plastered_house"
+		},
+		{
+			"area_m2": 223.86,
+			"asset": "",
+			"osm_id": "1527760289",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "plastered_house"
+		},
+		{
+			"area_m2": 97.07,
+			"asset": "indian_house.glb",
+			"osm_id": "1527816126",
+			"reason": "ok_but_pilot_keeps_procedural",
+			"result": "would_fit_uniform",
+			"scale": 1.044,
+			"style": "plastered_house"
+		},
+		{
+			"area_m2": 51.74,
+			"asset": "",
+			"osm_id": "1527766250",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "traditional_compact"
+		},
+		{
+			"area_m2": 226.57,
+			"asset": "",
+			"osm_id": "1527766253",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "plastered_house"
+		},
+		{
+			"area_m2": 56.23,
+			"asset": "indian_house.glb",
+			"osm_id": "1527766249",
+			"reason": "ok_but_pilot_keeps_procedural",
+			"result": "would_fit_uniform",
+			"scale": 0.745,
+			"style": "narrow_urban"
+		},
+		{
+			"area_m2": 222.0,
+			"asset": "",
+			"osm_id": "1527760285",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "plastered_house"
+		},
+		{
+			"area_m2": 153.69,
+			"asset": "",
+			"osm_id": "1527816125",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "plastered_house"
+		},
+		{
+			"area_m2": 232.55,
+			"asset": "",
+			"osm_id": "1527816121",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "plastered_house"
+		},
+		{
+			"area_m2": 117.75,
+			"asset": "indian_house.glb",
+			"osm_id": "1527766247",
+			"reason": "ok_but_pilot_keeps_procedural",
+			"result": "would_fit_uniform",
+			"scale": 1.198,
+			"style": "plastered_house"
+		},
+		{
+			"area_m2": 308.63,
+			"asset": "",
+			"osm_id": "1527807067",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "plastered_house"
+		},
+		{
+			"area_m2": 282.09,
+			"asset": "",
+			"osm_id": "1527760251",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "plastered_house"
+		},
+		{
+			"area_m2": 230.46,
+			"asset": "",
+			"osm_id": "1527760304",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "traditional_compact"
+		},
+		{
+			"area_m2": 145.89,
+			"asset": "",
+			"osm_id": "1527760254",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "plastered_house"
+		},
+		{
+			"area_m2": 155.1,
+			"asset": "",
+			"osm_id": "1527760250",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "plastered_house"
+		},
+		{
+			"area_m2": 171.88,
+			"asset": "",
+			"osm_id": "1527766248",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "traditional_compact"
+		},
+		{
+			"area_m2": 124.48,
+			"asset": "",
+			"osm_id": "1527816122",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "plastered_house"
+		},
+		{
+			"area_m2": 114.85,
+			"asset": "indian_house.glb",
+			"osm_id": "1527760274",
+			"reason": "ok_but_pilot_keeps_procedural",
+			"result": "would_fit_uniform",
+			"scale": 1.191,
+			"style": "plastered_house"
+		},
+		{
+			"area_m2": 159.81,
+			"asset": "",
+			"osm_id": "1527760252",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "traditional_compact"
+		},
+		{
+			"area_m2": 203.0,
+			"asset": "",
+			"osm_id": "1527760253",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "plastered_house"
+		},
+		{
+			"area_m2": 183.84,
+			"asset": "",
+			"osm_id": "1527766252",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "traditional_compact"
+		},
+		{
+			"area_m2": 246.0,
+			"asset": "",
+			"osm_id": "1527766261",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "plastered_house"
+		},
+		{
+			"area_m2": 132.93,
+			"asset": "",
+			"osm_id": "1527760256",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "traditional_compact"
+		},
+		{
+			"area_m2": 220.03,
+			"asset": "",
+			"osm_id": "1527807065",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "plastered_house"
+		},
+		{
+			"area_m2": 269.25,
+			"asset": "",
+			"osm_id": "1527760257",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "plastered_house"
+		},
+		{
+			"area_m2": 188.59,
+			"asset": "",
+			"osm_id": "1527766257",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "plastered_house"
+		},
+		{
+			"area_m2": 209.0,
+			"asset": "",
+			"osm_id": "1527807069",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "plastered_house"
+		},
+		{
+			"area_m2": 203.44,
+			"asset": "",
+			"osm_id": "1527760260",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "traditional_compact"
+		},
+		{
+			"area_m2": 207.64,
+			"asset": "",
+			"osm_id": "1527766256",
+			"reason": "area_or_missing_asset",
+			"result": "procedural",
+			"style": "traditional_compact"
+		}
+	]
+}
