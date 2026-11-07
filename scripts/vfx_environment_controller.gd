@@ -26,13 +26,15 @@ func _ready() -> void:
 	_car = get_node_or_null(player_car_path)
 	if _sun:
 		_sun.shadow_enabled = true
-		_sun.shadow_blur = 0.0
+		# Soft contact shadows — blur 0 made a hard fake stamp under the car.
+		_sun.shadow_blur = 1.5
 		_sun.shadow_bias = 0.06
 		_sun.shadow_normal_bias = 2.0
+		_sun.shadow_opacity = 0.72
 		_sun.directional_shadow_mode = DirectionalLight3D.SHADOW_PARALLEL_2_SPLITS
 		_sun.directional_shadow_blend_splits = true
-		_sun.directional_shadow_fade_start = 0.9
-		_sun.directional_shadow_max_distance = 140.0
+		_sun.directional_shadow_fade_start = 0.85
+		_sun.directional_shadow_max_distance = 90.0
 	_apply_mobile_caps()
 	_apply_base_vfx()
 	_enable_live_ist()

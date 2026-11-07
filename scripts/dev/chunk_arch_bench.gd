@@ -32,9 +32,8 @@ func _initialize() -> void:
 
 	var cam := Camera3D.new()
 	cam.current = true
-	cam.position = Vector3(24, 28, 36)
-	cam.look_at(Vector3(12, 0, 12))
 	root3.add_child(cam)
+	cam.look_at_from_position(Vector3(24, 28, 36), Vector3(12, 0, 12), Vector3.UP)
 
 	var ground := MeshInstance3D.new()
 	var plane := PlaneMesh.new()

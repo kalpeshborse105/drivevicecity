@@ -82,15 +82,20 @@ static func _walk(n: Node, stats: Dictionary) -> void:
 static func _tune_lights(root: Node, stats: Dictionary) -> void:
 	for n in _find_lights(root):
 		var light := n as DirectionalLight3D
+		# Moon stays off for shadows; only tune the active sun.
+		if str(light.name).to_lower().contains("moon"):
+			light.shadow_enabled = false
+			continue
 		light.shadow_enabled = true
-		light.directional_shadow_mode = DirectionalLight3D.SHADOW_PARALLEL_4_SPLITS
-		light.directional_shadow_max_distance = 110.0
-		light.directional_shadow_split_1 = 0.08
-		light.directional_shadow_split_2 = 0.22
-		light.directional_shadow_split_3 = 0.5
-		light.shadow_bias = 0.04
-		light.shadow_normal_bias = 1.2
-		light.directional_shadow_pancake_size = 4.0
+		light.directional_shadow_mode = DirectionalLight3D.SHADOW_PARALLEL_2_SPLITS
+		light.directional_shadow_blend_splits = true
+		light.directional_shadow_max_distance = 90.0
+		light.directional_shadow_fade_start = 0.85
+		light.shadow_bias = 0.06
+		light.shadow_normal_bias = 2.0
+		light.shadow_blur = 1.5
+		light.shadow_opacity = 0.72
+		light.directional_shadow_pancake_size = 2.0
 		stats["lights_tuned"] = int(stats["lights_tuned"]) + 1
 
 

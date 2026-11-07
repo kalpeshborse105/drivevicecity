@@ -498,11 +498,12 @@ func _rebuild_visuals() -> void:
 		if n:
 			_visual_root.add_child(n)
 			_tint_kit_meshes(n, _body_mat.albedo_color)
-			_optimize_kit_shadows(n)
 			var aabb := AssetKit.mesh_aabb(n)
 			# At suspension rest the chassis origin sits ~0.24 m above ground
 			# (wheel y 0.36 − rest 0.22 − radius 0.38) → drop mesh so tyres touch road.
 			n.position = Vector3(0, -0.22, 0)
+			# After scale/pose settle — world AABB rejects kilometre junk casters.
+			_optimize_kit_shadows(n)
 			col_size = Vector3(aabb.size.x, aabb.size.y, aabb.size.z)
 			_set_wheel_meshes_visible(_count_kit_wheels(n) == 0)
 	elif _profile_index == 1:
@@ -522,21 +523,41 @@ func _rebuild_visuals() -> void:
 
 
 func _optimize_kit_shadows(root: Node) -> void:
-	## Kit GLBs explode into hundreds of MeshInstance3D. Only the largest volume
-	## casts a shadow — the rest were the dominant production draw-call source.
-	var best: MeshInstance3D = null
-	var best_vol := -1.0
+	## Kit GLBs explode into hundreds of MeshInstance3D. Prefer a few *car-sized*
+	## world AABBs — never the bogus kilometre-scale Object_* helpers (Carnival
+	## Object_835 cast a giant fake rectangle after local-volume picking).
+	var candidates: Array = []  # {mi, vol}
 	var stack: Array[Node] = [root]
 	while not stack.is_empty():
 		var node: Node = stack.pop_back()
 		for child in node.get_children():
 			stack.append(child)
-		if node is MeshInstance3D and (node as MeshInstance3D).mesh != null:
-			var mi := node as MeshInstance3D
-			var vol := mi.get_aabb().get_volume()
-			if vol > best_vol:
-				best_vol = vol
-				best = mi
+		if not (node is MeshInstance3D) or (node as MeshInstance3D).mesh == null:
+			continue
+		var mi := node as MeshInstance3D
+		var nm := str(mi.name).to_lower()
+		if nm.contains("tire") or nm.contains("rim") or nm.contains("wheel") or nm.contains("glass"):
+			mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+			continue
+		# Carnival GLB stores local AABBs in thousands of units; after kit normalize
+		# only the *world* AABB is meaningful for shadow picking.
+		var world_aabb := _mesh_world_aabb(mi)
+		var plan := maxf(world_aabb.size.x, world_aabb.size.z)
+		var tall := world_aabb.size.y
+		# Real car body after kit normalize: roughly 1–7 m plan, 0.3–2.5 m tall.
+		if plan < 1.2 or plan > 7.5 or tall < 0.35 or tall > 2.8:
+			mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+			continue
+		var vol := world_aabb.get_volume()
+		if vol < 1.0 or vol > 45.0:
+			mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+			continue
+		candidates.append({"mi": mi, "vol": vol})
+	candidates.sort_custom(func(a, b): return float(a["vol"]) > float(b["vol"]))
+	var keep: Dictionary = {}
+	# Two largest car-sized shells — enough silhouette, not 380 casters.
+	for i in mini(2, candidates.size()):
+		keep[(candidates[i]["mi"] as MeshInstance3D).get_instance_id()] = true
 	stack = [root]
 	while not stack.is_empty():
 		var node2: Node = stack.pop_back()
@@ -546,9 +567,15 @@ func _optimize_kit_shadows(root: Node) -> void:
 			var mi2 := node2 as MeshInstance3D
 			mi2.cast_shadow = (
 				GeometryInstance3D.SHADOW_CASTING_SETTING_ON
-				if mi2 == best
+				if keep.has(mi2.get_instance_id())
 				else GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 			)
+
+
+func _mesh_world_aabb(mi: MeshInstance3D) -> AABB:
+	if mi.mesh == null:
+		return AABB()
+	return mi.global_transform * mi.mesh.get_aabb()
 
 
 func _tint_kit_meshes(root: Node, paint: Color) -> void:
