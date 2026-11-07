@@ -27,9 +27,6 @@ func _ready() -> void:
 	_apply_quality_from_settings()
 	_build_smoke()
 	_build_lights()
-	var gs := get_node_or_null("/root/GameSettings")
-	if gs and gs.has_signal("settings_changed"):
-		gs.settings_changed.connect(_apply_quality_from_settings)
 	if _car:
 		_car.body_entered.connect(_on_body_entered)
 		# Also catch StaticBody hits via contact monitor
@@ -49,14 +46,9 @@ func _apply_quality_from_settings() -> void:
 		skid_marks = q >= 2
 		vehicle_lights = q >= 1
 		collision_fx = q >= 1
-		if _smoke_l:
-			_smoke_l.amount = 24 if q >= 2 else 12
-			_smoke_r.amount = 24 if q >= 2 else 12
-			_smoke_l.emitting = false
-			_smoke_r.emitting = false
-		if _head_l:
-			_head_l.visible = vehicle_lights
-			_head_r.visible = vehicle_lights
+		if q <= 1 and _smoke_l:
+			_smoke_l.amount = 12
+			_smoke_r.amount = 12
 
 
 func set_night_mode(night: bool) -> void:

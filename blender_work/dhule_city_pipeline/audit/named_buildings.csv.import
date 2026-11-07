@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://h8hpky0xj6j3"
+
+[deps]
+
+files=["res://blender_work/dhule_city_pipeline/audit/named_buildings.name.translation", "res://blender_work/dhule_city_pipeline/audit/named_buildings.building.translation", "res://blender_work/dhule_city_pipeline/audit/named_buildings.category.translation", "res://blender_work/dhule_city_pipeline/audit/named_buildings.area.translation", "res://blender_work/dhule_city_pipeline/audit/named_buildings.building.translation", "res://blender_work/dhule_city_pipeline/audit/named_buildings.cx.translation", "res://blender_work/dhule_city_pipeline/audit/named_buildings.cz.translation", "res://blender_work/dhule_city_pipeline/audit/named_buildings.dist.translation"]
+
+source_file="res://blender_work/dhule_city_pipeline/audit/named_buildings.csv"
+dest_files=["res://blender_work/dhule_city_pipeline/audit/named_buildings.name.translation", "res://blender_work/dhule_city_pipeline/audit/named_buildings.building.translation", "res://blender_work/dhule_city_pipeline/audit/named_buildings.category.translation", "res://blender_work/dhule_city_pipeline/audit/named_buildings.area.translation", "res://blender_work/dhule_city_pipeline/audit/named_buildings.building.translation", "res://blender_work/dhule_city_pipeline/audit/named_buildings.cx.translation", "res://blender_work/dhule_city_pipeline/audit/named_buildings.cz.translation", "res://blender_work/dhule_city_pipeline/audit/named_buildings.dist.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

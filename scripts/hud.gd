@@ -1,5 +1,5 @@
 extends CanvasLayer
-## Drive HUD + minimap + home dashboard (P3).
+## Production drive HUD — short player info + icons, no debug / OSM credit.
 
 @export var car_path: NodePath
 
@@ -27,13 +27,16 @@ func _ready() -> void:
 		_car = get_node_or_null(car_path) as VehicleBody3D
 	if _settings == null:
 		_settings = get_node_or_null("/root/GameSettings")
-	_title_label.text = "DriveViceCity — Dhule"
-	_hint_label.text = "W drive · S brake · A D steer · Space · G home · R reset"
+	_title_label.text = "DHULE"
+	_hint_label.text = ""
+	_hint_label.visible = false
 	_mission_label.text = ""
-	_stats_label.text = "₹0"
+	_stats_label.text = "₹ 0"
 	_vehicle_label.text = ""
 	_nav_label.text = ""
 	_test_label.text = ""
+	_customize_btn.text = "G"
+	_customize_btn.tooltip_text = "Garage"
 	_customize_btn.focus_mode = Control.FOCUS_NONE
 	_customize_btn.pressed.connect(_toggle_garage)
 	if _settings and _settings.has_signal("settings_changed"):
@@ -47,12 +50,14 @@ func _ready() -> void:
 		_garage.kit_requested.connect(_on_kit_requested)
 	if _garage.has_signal("rim_requested"):
 		_garage.rim_requested.connect(_on_rim_requested)
+	if _garage.has_method("bind_car"):
+		_garage.call("bind_car", _car)
 	_refresh_clock()
 
 
 func _process(delta: float) -> void:
 	_clock_wait += delta
-	if _clock_wait >= 0.25:
+	if _clock_wait >= 0.5:
 		_clock_wait = 0.0
 		_refresh_clock()
 	if Input.is_action_just_pressed("toggle_garage") or Input.is_action_just_pressed("ui_cancel"):
@@ -67,10 +72,10 @@ func _process(delta: float) -> void:
 	var gear := 1
 	if _car.has_method("current_gear"):
 		gear = int(_car.current_gear())
-	_speed_label.text = "%d km/h    G%d" % [int(round(kph)), gear]
+	_speed_label.text = "%d\nG%d" % [int(round(kph)), gear]
 	if _nav_active:
 		var d := _car.global_position.distance_to(_target)
-		_nav_label.text = "Target  %d m" % int(round(d))
+		_nav_label.text = "%d m" % int(round(d))
 	else:
 		_nav_label.text = ""
 
@@ -80,18 +85,25 @@ func sync_player_settings() -> void:
 
 
 func set_mission_text(text: String) -> void:
-	_mission_label.text = text
+	# Keep player-facing mission short.
+	var clean := text.replace("Passenger job @ ", "Pickup · ")
+	clean = clean.replace("Food job @ ", "Food · ")
+	clean = clean.replace("Parcel job @ ", "Parcel · ")
+	clean = clean.replace(" — go to pickup", "")
+	clean = clean.replace(" — go to dropoff", " · deliver")
+	clean = clean.replace("est. ", "")
+	_mission_label.text = clean
 
 
 func set_stats(cash: int, completed: int, carrying: bool, job_type: String = "Parcel") -> void:
 	if carrying:
-		_stats_label.text = "₹%d  ·  %d jobs  ·  %s" % [cash, completed, job_type]
+		_stats_label.text = "₹ %d   ·   %d   ·   %s" % [cash, completed, job_type]
 	else:
-		_stats_label.text = "₹%d  ·  %d jobs" % [cash, completed]
+		_stats_label.text = "₹ %d   ·   %d" % [cash, completed]
 
 
 func set_vehicle_info(profile_name: String, paint_name: String) -> void:
-	_vehicle_label.text = "%s · %s" % [profile_name, paint_name]
+	_vehicle_label.text = profile_name
 	if _garage.has_method("set_info"):
 		_garage.set_info(profile_name, paint_name)
 
@@ -106,8 +118,11 @@ func set_distance_to_target(world_pos: Vector3, active: bool, car: Node3D) -> vo
 
 
 func _refresh_clock() -> void:
-	var now := Time.get_time_dict_from_system()
-	_test_label.text = "%02d:%02d:%02d\n© OpenStreetMap" % [now.hour, now.minute, now.second]
+	# India Standard Time (UTC+5:30), independent of OS display timezone.
+	var unix := Time.get_unix_time_from_system()
+	var ist := int(unix) + int(5.5 * 3600.0)
+	var now := Time.get_datetime_dict_from_unix_time(ist)
+	_test_label.text = "%02d:%02d IST" % [now.hour, now.minute]
 
 
 func set_test_status(_text: String) -> void:
@@ -119,16 +134,10 @@ func _toggle_garage() -> void:
 		return
 	if _garage.has_method("toggle"):
 		_garage.toggle()
-	# Keep panel clickable; only release focus when closing so WASD works again
 	if _garage.visible:
 		_garage.move_to_front()
 		_garage.grab_focus()
-		if _car and _car.has_method("set_showroom"):
-			_car.call("set_showroom", true)
-		_sync_garage_marks()
 	else:
-		if _car and _car.has_method("set_showroom"):
-			_car.call("set_showroom", false)
 		get_viewport().gui_release_focus()
 		var w := get_window()
 		if w:
@@ -144,24 +153,9 @@ func _apply_display_settings() -> void:
 	_minimap.visible = show_map
 
 
-func _sync_garage_marks() -> void:
-	if _garage == null or _car == null or not _garage.has_method("mark"):
-		return
-	if _car.has_method("profile_index"):
-		_garage.mark("profile", int(_car.profile_index()))
-	if _car.has_method("paint_index"):
-		_garage.mark("paint", int(_car.paint_index()))
-	if _car.has_method("kit_index"):
-		_garage.mark("kit", int(_car.kit_index()))
-	if _car.has_method("rim_index"):
-		_garage.mark("rim", int(_car.rim_index()))
-
-
 func _on_paint_requested(index: int) -> void:
 	if _car and _car.has_method("apply_paint_index"):
 		_car.apply_paint_index(index)
-	if _garage and _garage.has_method("mark"):
-		_garage.mark("paint", index)
 	if _settings and _settings.has_method("record_paint"):
 		_settings.call("record_paint", index)
 
@@ -169,8 +163,6 @@ func _on_paint_requested(index: int) -> void:
 func _on_profile_requested(index: int) -> void:
 	if _car and _car.has_method("apply_profile_index"):
 		_car.apply_profile_index(index)
-	if _garage and _garage.has_method("mark"):
-		_garage.mark("profile", index)
 	if _settings and _settings.has_method("record_profile"):
 		_settings.call("record_profile", index)
 
@@ -178,8 +170,6 @@ func _on_profile_requested(index: int) -> void:
 func _on_kit_requested(index: int) -> void:
 	if _car and _car.has_method("apply_kit_index"):
 		_car.apply_kit_index(index)
-	if _garage and _garage.has_method("mark"):
-		_garage.mark("kit", index)
 	if _settings and _settings.has_method("record_kit"):
 		_settings.call("record_kit", index)
 
@@ -187,7 +177,5 @@ func _on_kit_requested(index: int) -> void:
 func _on_rim_requested(index: int) -> void:
 	if _car and _car.has_method("apply_rim_index"):
 		_car.apply_rim_index(index)
-	if _garage and _garage.has_method("mark"):
-		_garage.mark("rim", index)
 	if _settings and _settings.has_method("record_rim"):
 		_settings.call("record_rim", index)

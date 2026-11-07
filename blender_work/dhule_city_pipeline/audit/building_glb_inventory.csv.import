@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b07udgpi1qxbq"
+
+[deps]
+
+files=["res://blender_work/dhule_city_pipeline/audit/building_glb_inventory.path.translation", "res://blender_work/dhule_city_pipeline/audit/building_glb_inventory.bytes.translation", "res://blender_work/dhule_city_pipeline/audit/building_glb_inventory.asset.translation", "res://blender_work/dhule_city_pipeline/audit/building_glb_inventory.asset.translation", "res://blender_work/dhule_city_pipeline/audit/building_glb_inventory.complete.translation", "res://blender_work/dhule_city_pipeline/audit/building_glb_inventory.suitable.translation", "res://blender_work/dhule_city_pipeline/audit/building_glb_inventory.meshes.translation", "res://blender_work/dhule_city_pipeline/audit/building_glb_inventory.materials.translation", "res://blender_work/dhule_city_pipeline/audit/building_glb_inventory.textures.translation", "res://blender_work/dhule_city_pipeline/audit/building_glb_inventory.images.translation", "res://blender_work/dhule_city_pipeline/audit/building_glb_inventory.size.translation", "res://blender_work/dhule_city_pipeline/audit/building_glb_inventory.generator.translation", "res://blender_work/dhule_city_pipeline/audit/building_glb_inventory.title.translation", "res://blender_work/dhule_city_pipeline/audit/building_glb_inventory.notes.translation"]
+
+source_file="res://blender_work/dhule_city_pipeline/audit/building_glb_inventory.csv"
+dest_files=["res://blender_work/dhule_city_pipeline/audit/building_glb_inventory.path.translation", "res://blender_work/dhule_city_pipeline/audit/building_glb_inventory.bytes.translation", "res://blender_work/dhule_city_pipeline/audit/building_glb_inventory.asset.translation", "res://blender_work/dhule_city_pipeline/audit/building_glb_inventory.asset.translation", "res://blender_work/dhule_city_pipeline/audit/building_glb_inventory.complete.translation", "res://blender_work/dhule_city_pipeline/audit/building_glb_inventory.suitable.translation", "res://blender_work/dhule_city_pipeline/audit/building_glb_inventory.meshes.translation", "res://blender_work/dhule_city_pipeline/audit/building_glb_inventory.materials.translation", "res://blender_work/dhule_city_pipeline/audit/building_glb_inventory.textures.translation", "res://blender_work/dhule_city_pipeline/audit/building_glb_inventory.images.translation", "res://blender_work/dhule_city_pipeline/audit/building_glb_inventory.size.translation", "res://blender_work/dhule_city_pipeline/audit/building_glb_inventory.generator.translation", "res://blender_work/dhule_city_pipeline/audit/building_glb_inventory.title.translation", "res://blender_work/dhule_city_pipeline/audit/building_glb_inventory.notes.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

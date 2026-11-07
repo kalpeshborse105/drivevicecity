@@ -21,7 +21,6 @@ const SIDEWALKS := {
 const BUILDINGS := {
 	## Street-food cart (small) — sidewalk prop, not a full footprint.
 	"bhelpuri": "res://assets/kit/buildings/bhelpuri_shop.glb",
-	"indian_house": "res://assets/kit/buildings/indian_house.glb",
 	## Optional OSM commercial shopfront (same mesh, footprint-scaled). Prefer models/ path.
 	"shop": "res://assets/models/buildings/shops/bhelpuri_shop.glb",
 	"shop_kit": "res://assets/kit/buildings/bhelpuri_shop.glb",
@@ -68,7 +67,6 @@ const SCENERY := {
 const NORMALIZE := {
 	# Cart prop (~2.6 m). Full shop footprints use place_shop_footprint() instead.
 	"res://assets/kit/buildings/bhelpuri_shop.glb": {"len": 2.6, "yaw": 0.0},
-	"res://assets/kit/buildings/indian_house.glb": {"len": 8.0, "yaw": 0.0},
 	"res://assets/models/buildings/shops/bhelpuri_shop.glb": {"len": 10.0, "yaw": 0.0},
 	# VehicleBody3D / glTF front = MODEL_FRONT (+Z). Longest axis → Z, then yaw PI
 	# turns kit noses to +Z so the chase camera sees the rear, matching travel.

@@ -70,7 +70,7 @@ func _build_chrome() -> void:
 	_coord_label.offset_right = -6.0
 	_coord_label.add_theme_font_size_override("font_size", 10)
 	_coord_label.add_theme_color_override("font_color", Color(0.95, 0.98, 1.0, 0.95))
-	_coord_label.text = "DHULE GPS · 20.9020°N 74.7770°E"
+	_coord_label.text = "MAP"
 	add_child(_coord_label)
 
 	var row := HBoxContainer.new()
@@ -190,17 +190,11 @@ func _process(_delta: float) -> void:
 	_cam.global_position = pos + Vector3(0, 220, 0)
 	_cam.look_at(pos, Vector3(0, 0, -1))
 	if _coord_label:
-		var lat := ORIGIN_LAT - (pos.z / 111320.0)
-		var lon := ORIGIN_LON + (pos.x / (111320.0 * cos(deg_to_rad(ORIGIN_LAT))))
-		var gps := "DHULE GPS · %.4f°N %.4f°E" % [lat, lon]
 		var road_name := ""
 		var roads := get_tree().get_first_node_in_group("dhule_roads")
 		if roads and roads.has_method("nearest_road_name"):
 			road_name = str(roads.call("nearest_road_name", pos))
-		if road_name.is_empty():
-			_coord_label.text = gps
-		else:
-			_coord_label.text = "%s   %s" % [road_name, gps]
+		_coord_label.text = road_name if not road_name.is_empty() else "MAP"
 	_marker.queue_redraw()
 
 

@@ -1,0 +1,416 @@
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #94, invalid UID: 'uid://dqh7nlbvv2ekk' - using text path instead: 'res://assets/kit/props/street_asset_pack_94.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _place_street_sample (res://scripts/dev/dhule_asset_placement_audit.gd:229)
+       [2] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:91)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #104, invalid UID: 'uid://pdm0745fno04' - using text path instead: 'res://assets/kit/props/street_asset_pack_104.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _place_street_sample (res://scripts/dev/dhule_asset_placement_audit.gd:229)
+       [2] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:91)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #107, invalid UID: 'uid://dwc25jfvx1a2m' - using text path instead: 'res://assets/kit/props/street_asset_pack_107.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _place_street_sample (res://scripts/dev/dhule_asset_placement_audit.gd:229)
+       [2] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:91)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #119, invalid UID: 'uid://cm53lmi3n42i4' - using text path instead: 'res://assets/kit/props/street_asset_pack_119.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _place_street_sample (res://scripts/dev/dhule_asset_placement_audit.gd:229)
+       [2] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:91)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #123, invalid UID: 'uid://crsdmp2pabstu' - using text path instead: 'res://assets/kit/props/street_asset_pack_123.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _place_street_sample (res://scripts/dev/dhule_asset_placement_audit.gd:229)
+       [2] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:91)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #128, invalid UID: 'uid://docwxw3er6f' - using text path instead: 'res://assets/kit/props/street_asset_pack_128.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _place_street_sample (res://scripts/dev/dhule_asset_placement_audit.gd:229)
+       [2] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:91)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #132, invalid UID: 'uid://dg7otxjq5knma' - using text path instead: 'res://assets/kit/props/street_asset_pack_132.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _place_street_sample (res://scripts/dev/dhule_asset_placement_audit.gd:229)
+       [2] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:91)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #133, invalid UID: 'uid://c88nykqgpixsc' - using text path instead: 'res://assets/kit/props/street_asset_pack_133.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _place_street_sample (res://scripts/dev/dhule_asset_placement_audit.gd:229)
+       [2] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:91)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #134, invalid UID: 'uid://43y8y7dgd8g8' - using text path instead: 'res://assets/kit/props/street_asset_pack_134.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _place_street_sample (res://scripts/dev/dhule_asset_placement_audit.gd:229)
+       [2] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:91)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #135, invalid UID: 'uid://bem5qajf5xdu4' - using text path instead: 'res://assets/kit/props/street_asset_pack_135.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _place_street_sample (res://scripts/dev/dhule_asset_placement_audit.gd:229)
+       [2] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:91)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #136, invalid UID: 'uid://b44rcmdlisn62' - using text path instead: 'res://assets/kit/props/street_asset_pack_136.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _place_street_sample (res://scripts/dev/dhule_asset_placement_audit.gd:229)
+       [2] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:91)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #137, invalid UID: 'uid://jti0jboynhw2' - using text path instead: 'res://assets/kit/props/street_asset_pack_137.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _place_street_sample (res://scripts/dev/dhule_asset_placement_audit.gd:229)
+       [2] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:91)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #94, invalid UID: 'uid://dqh7nlbvv2ekk' - using text path instead: 'res://assets/kit/props/street_asset_pack_94.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _place_street_sample (res://scripts/dev/dhule_asset_placement_audit.gd:229)
+       [2] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:92)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #104, invalid UID: 'uid://pdm0745fno04' - using text path instead: 'res://assets/kit/props/street_asset_pack_104.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _place_street_sample (res://scripts/dev/dhule_asset_placement_audit.gd:229)
+       [2] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:92)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #107, invalid UID: 'uid://dwc25jfvx1a2m' - using text path instead: 'res://assets/kit/props/street_asset_pack_107.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _place_street_sample (res://scripts/dev/dhule_asset_placement_audit.gd:229)
+       [2] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:92)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #119, invalid UID: 'uid://cm53lmi3n42i4' - using text path instead: 'res://assets/kit/props/street_asset_pack_119.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _place_street_sample (res://scripts/dev/dhule_asset_placement_audit.gd:229)
+       [2] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:92)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #123, invalid UID: 'uid://crsdmp2pabstu' - using text path instead: 'res://assets/kit/props/street_asset_pack_123.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _place_street_sample (res://scripts/dev/dhule_asset_placement_audit.gd:229)
+       [2] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:92)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #128, invalid UID: 'uid://docwxw3er6f' - using text path instead: 'res://assets/kit/props/street_asset_pack_128.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _place_street_sample (res://scripts/dev/dhule_asset_placement_audit.gd:229)
+       [2] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:92)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #132, invalid UID: 'uid://dg7otxjq5knma' - using text path instead: 'res://assets/kit/props/street_asset_pack_132.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _place_street_sample (res://scripts/dev/dhule_asset_placement_audit.gd:229)
+       [2] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:92)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #133, invalid UID: 'uid://c88nykqgpixsc' - using text path instead: 'res://assets/kit/props/street_asset_pack_133.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _place_street_sample (res://scripts/dev/dhule_asset_placement_audit.gd:229)
+       [2] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:92)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #134, invalid UID: 'uid://43y8y7dgd8g8' - using text path instead: 'res://assets/kit/props/street_asset_pack_134.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _place_street_sample (res://scripts/dev/dhule_asset_placement_audit.gd:229)
+       [2] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:92)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #135, invalid UID: 'uid://bem5qajf5xdu4' - using text path instead: 'res://assets/kit/props/street_asset_pack_135.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _place_street_sample (res://scripts/dev/dhule_asset_placement_audit.gd:229)
+       [2] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:92)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #136, invalid UID: 'uid://b44rcmdlisn62' - using text path instead: 'res://assets/kit/props/street_asset_pack_136.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _place_street_sample (res://scripts/dev/dhule_asset_placement_audit.gd:229)
+       [2] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:92)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #137, invalid UID: 'uid://jti0jboynhw2' - using text path instead: 'res://assets/kit/props/street_asset_pack_137.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _place_street_sample (res://scripts/dev/dhule_asset_placement_audit.gd:229)
+       [2] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:92)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #94, invalid UID: 'uid://dqh7nlbvv2ekk' - using text path instead: 'res://assets/kit/props/street_asset_pack_94.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _place_street_bad_example (res://scripts/dev/dhule_asset_placement_audit.gd:243)
+       [1] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:94)
+       [2] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #104, invalid UID: 'uid://pdm0745fno04' - using text path instead: 'res://assets/kit/props/street_asset_pack_104.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _place_street_bad_example (res://scripts/dev/dhule_asset_placement_audit.gd:243)
+       [1] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:94)
+       [2] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #107, invalid UID: 'uid://dwc25jfvx1a2m' - using text path instead: 'res://assets/kit/props/street_asset_pack_107.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _place_street_bad_example (res://scripts/dev/dhule_asset_placement_audit.gd:243)
+       [1] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:94)
+       [2] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #119, invalid UID: 'uid://cm53lmi3n42i4' - using text path instead: 'res://assets/kit/props/street_asset_pack_119.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _place_street_bad_example (res://scripts/dev/dhule_asset_placement_audit.gd:243)
+       [1] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:94)
+       [2] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #123, invalid UID: 'uid://crsdmp2pabstu' - using text path instead: 'res://assets/kit/props/street_asset_pack_123.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _place_street_bad_example (res://scripts/dev/dhule_asset_placement_audit.gd:243)
+       [1] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:94)
+       [2] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #128, invalid UID: 'uid://docwxw3er6f' - using text path instead: 'res://assets/kit/props/street_asset_pack_128.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _place_street_bad_example (res://scripts/dev/dhule_asset_placement_audit.gd:243)
+       [1] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:94)
+       [2] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #132, invalid UID: 'uid://dg7otxjq5knma' - using text path instead: 'res://assets/kit/props/street_asset_pack_132.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _place_street_bad_example (res://scripts/dev/dhule_asset_placement_audit.gd:243)
+       [1] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:94)
+       [2] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #133, invalid UID: 'uid://c88nykqgpixsc' - using text path instead: 'res://assets/kit/props/street_asset_pack_133.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _place_street_bad_example (res://scripts/dev/dhule_asset_placement_audit.gd:243)
+       [1] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:94)
+       [2] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #134, invalid UID: 'uid://43y8y7dgd8g8' - using text path instead: 'res://assets/kit/props/street_asset_pack_134.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _place_street_bad_example (res://scripts/dev/dhule_asset_placement_audit.gd:243)
+       [1] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:94)
+       [2] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #135, invalid UID: 'uid://bem5qajf5xdu4' - using text path instead: 'res://assets/kit/props/street_asset_pack_135.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _place_street_bad_example (res://scripts/dev/dhule_asset_placement_audit.gd:243)
+       [1] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:94)
+       [2] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #136, invalid UID: 'uid://b44rcmdlisn62' - using text path instead: 'res://assets/kit/props/street_asset_pack_136.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _place_street_bad_example (res://scripts/dev/dhule_asset_placement_audit.gd:243)
+       [1] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:94)
+       [2] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #137, invalid UID: 'uid://jti0jboynhw2' - using text path instead: 'res://assets/kit/props/street_asset_pack_137.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _place_street_bad_example (res://scripts/dev/dhule_asset_placement_audit.gd:243)
+       [1] _shelf (res://scripts/dev/dhule_asset_placement_audit.gd:94)
+       [2] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:35)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #94, invalid UID: 'uid://dqh7nlbvv2ekk' - using text path instead: 'res://assets/kit/props/street_asset_pack_94.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _try_place_street (res://scripts/dev/dhule_asset_placement_audit.gd:150)
+       [2] _approved_course (res://scripts/dev/dhule_asset_placement_audit.gd:105)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:36)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #104, invalid UID: 'uid://pdm0745fno04' - using text path instead: 'res://assets/kit/props/street_asset_pack_104.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _try_place_street (res://scripts/dev/dhule_asset_placement_audit.gd:150)
+       [2] _approved_course (res://scripts/dev/dhule_asset_placement_audit.gd:105)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:36)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #107, invalid UID: 'uid://dwc25jfvx1a2m' - using text path instead: 'res://assets/kit/props/street_asset_pack_107.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _try_place_street (res://scripts/dev/dhule_asset_placement_audit.gd:150)
+       [2] _approved_course (res://scripts/dev/dhule_asset_placement_audit.gd:105)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:36)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #119, invalid UID: 'uid://cm53lmi3n42i4' - using text path instead: 'res://assets/kit/props/street_asset_pack_119.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _try_place_street (res://scripts/dev/dhule_asset_placement_audit.gd:150)
+       [2] _approved_course (res://scripts/dev/dhule_asset_placement_audit.gd:105)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:36)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #123, invalid UID: 'uid://crsdmp2pabstu' - using text path instead: 'res://assets/kit/props/street_asset_pack_123.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _try_place_street (res://scripts/dev/dhule_asset_placement_audit.gd:150)
+       [2] _approved_course (res://scripts/dev/dhule_asset_placement_audit.gd:105)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:36)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #128, invalid UID: 'uid://docwxw3er6f' - using text path instead: 'res://assets/kit/props/street_asset_pack_128.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _try_place_street (res://scripts/dev/dhule_asset_placement_audit.gd:150)
+       [2] _approved_course (res://scripts/dev/dhule_asset_placement_audit.gd:105)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:36)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #132, invalid UID: 'uid://dg7otxjq5knma' - using text path instead: 'res://assets/kit/props/street_asset_pack_132.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _try_place_street (res://scripts/dev/dhule_asset_placement_audit.gd:150)
+       [2] _approved_course (res://scripts/dev/dhule_asset_placement_audit.gd:105)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:36)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #133, invalid UID: 'uid://c88nykqgpixsc' - using text path instead: 'res://assets/kit/props/street_asset_pack_133.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _try_place_street (res://scripts/dev/dhule_asset_placement_audit.gd:150)
+       [2] _approved_course (res://scripts/dev/dhule_asset_placement_audit.gd:105)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:36)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #134, invalid UID: 'uid://43y8y7dgd8g8' - using text path instead: 'res://assets/kit/props/street_asset_pack_134.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _try_place_street (res://scripts/dev/dhule_asset_placement_audit.gd:150)
+       [2] _approved_course (res://scripts/dev/dhule_asset_placement_audit.gd:105)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:36)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #135, invalid UID: 'uid://bem5qajf5xdu4' - using text path instead: 'res://assets/kit/props/street_asset_pack_135.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _try_place_street (res://scripts/dev/dhule_asset_placement_audit.gd:150)
+       [2] _approved_course (res://scripts/dev/dhule_asset_placement_audit.gd:105)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:36)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #136, invalid UID: 'uid://b44rcmdlisn62' - using text path instead: 'res://assets/kit/props/street_asset_pack_136.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _try_place_street (res://scripts/dev/dhule_asset_placement_audit.gd:150)
+       [2] _approved_course (res://scripts/dev/dhule_asset_placement_audit.gd:105)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:36)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #137, invalid UID: 'uid://jti0jboynhw2' - using text path instead: 'res://assets/kit/props/street_asset_pack_137.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _try_place_street (res://scripts/dev/dhule_asset_placement_audit.gd:150)
+       [2] _approved_course (res://scripts/dev/dhule_asset_placement_audit.gd:105)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:36)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #94, invalid UID: 'uid://dqh7nlbvv2ekk' - using text path instead: 'res://assets/kit/props/street_asset_pack_94.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _try_place_street (res://scripts/dev/dhule_asset_placement_audit.gd:150)
+       [2] _approved_course (res://scripts/dev/dhule_asset_placement_audit.gd:106)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:36)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #104, invalid UID: 'uid://pdm0745fno04' - using text path instead: 'res://assets/kit/props/street_asset_pack_104.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _try_place_street (res://scripts/dev/dhule_asset_placement_audit.gd:150)
+       [2] _approved_course (res://scripts/dev/dhule_asset_placement_audit.gd:106)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:36)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #107, invalid UID: 'uid://dwc25jfvx1a2m' - using text path instead: 'res://assets/kit/props/street_asset_pack_107.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _try_place_street (res://scripts/dev/dhule_asset_placement_audit.gd:150)
+       [2] _approved_course (res://scripts/dev/dhule_asset_placement_audit.gd:106)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:36)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #119, invalid UID: 'uid://cm53lmi3n42i4' - using text path instead: 'res://assets/kit/props/street_asset_pack_119.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _try_place_street (res://scripts/dev/dhule_asset_placement_audit.gd:150)
+       [2] _approved_course (res://scripts/dev/dhule_asset_placement_audit.gd:106)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:36)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #123, invalid UID: 'uid://crsdmp2pabstu' - using text path instead: 'res://assets/kit/props/street_asset_pack_123.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _try_place_street (res://scripts/dev/dhule_asset_placement_audit.gd:150)
+       [2] _approved_course (res://scripts/dev/dhule_asset_placement_audit.gd:106)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:36)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #128, invalid UID: 'uid://docwxw3er6f' - using text path instead: 'res://assets/kit/props/street_asset_pack_128.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _try_place_street (res://scripts/dev/dhule_asset_placement_audit.gd:150)
+       [2] _approved_course (res://scripts/dev/dhule_asset_placement_audit.gd:106)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:36)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #132, invalid UID: 'uid://dg7otxjq5knma' - using text path instead: 'res://assets/kit/props/street_asset_pack_132.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _try_place_street (res://scripts/dev/dhule_asset_placement_audit.gd:150)
+       [2] _approved_course (res://scripts/dev/dhule_asset_placement_audit.gd:106)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:36)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #133, invalid UID: 'uid://c88nykqgpixsc' - using text path instead: 'res://assets/kit/props/street_asset_pack_133.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _try_place_street (res://scripts/dev/dhule_asset_placement_audit.gd:150)
+       [2] _approved_course (res://scripts/dev/dhule_asset_placement_audit.gd:106)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:36)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #134, invalid UID: 'uid://43y8y7dgd8g8' - using text path instead: 'res://assets/kit/props/street_asset_pack_134.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _try_place_street (res://scripts/dev/dhule_asset_placement_audit.gd:150)
+       [2] _approved_course (res://scripts/dev/dhule_asset_placement_audit.gd:106)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:36)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #135, invalid UID: 'uid://bem5qajf5xdu4' - using text path instead: 'res://assets/kit/props/street_asset_pack_135.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _try_place_street (res://scripts/dev/dhule_asset_placement_audit.gd:150)
+       [2] _approved_course (res://scripts/dev/dhule_asset_placement_audit.gd:106)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:36)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #136, invalid UID: 'uid://b44rcmdlisn62' - using text path instead: 'res://assets/kit/props/street_asset_pack_136.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _try_place_street (res://scripts/dev/dhule_asset_placement_audit.gd:150)
+       [2] _approved_course (res://scripts/dev/dhule_asset_placement_audit.gd:106)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:36)
+WARNING: 'res://assets/kit/props/street_asset_pack.glb': In external resource #137, invalid UID: 'uid://jti0jboynhw2' - using text path instead: 'res://assets/kit/props/street_asset_pack_137.png'.
+   at: open (core/io/resource_format_binary.cpp:1025)
+   GDScript backtrace (most recent call first):
+       [0] _make_street_piece (res://scripts/dev/dhule_asset_placement_audit.gd:180)
+       [1] _try_place_street (res://scripts/dev/dhule_asset_placement_audit.gd:150)
+       [2] _approved_course (res://scripts/dev/dhule_asset_placement_audit.gd:106)
+       [3] _ready (res://scripts/dev/dhule_asset_placement_audit.gd:36)
+ERROR: Parameter "material" is null.
+   at: material_casts_shadows (servers/rendering/renderer_rd/storage_rd/material_storage.cpp:2610)
+ERROR: Parameter "material" is null.
+   at: material_is_animated (servers/rendering/renderer_rd/storage_rd/material_storage.cpp:2597)
+ERROR: Parameter "material" is null.
+   at: material_get_instance_shader_parameters (servers/rendering/renderer_rd/storage_rd/material_storage.cpp:2641)
+ERROR: Parameter "material" is null.
+   at: material_update_dependency (servers/rendering/renderer_rd/storage_rd/material_storage.cpp:2653)

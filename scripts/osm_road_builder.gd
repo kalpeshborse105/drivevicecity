@@ -9,15 +9,11 @@ const RoadJunctions = preload("res://scripts/road_junctions.gd")
 const StreetKit = preload("res://scripts/street_kit.gd")
 const AssetKit = preload("res://scripts/asset_kit.gd")
 const BuildingKit = preload("res://scripts/building_kit.gd")
-const DhuleAssetCatalog = preload("res://scripts/dhule_asset_catalog.gd")
-const AssetPlacementValidator = preload("res://scripts/asset_placement_validator.gd")
 
 const GROUND_ALBEDO := "res://demo/assets/textures/ground037_alb_ht.png"
 const GROUND_NORMAL := "res://demo/assets/textures/ground037_nrm_rgh.png"
 const PARKED_HEAVY_MAX := 14
 const NAMED_LABEL_CAP := 40  ## max real OSM building-name labels (perf guard)
-## Phase 2G: no RNG street-pack / statue / unverified house scatter in production.
-const ALLOW_UNVERIFIED_WORLD_PROPS := false
 
 @export_file("*.json") var map_json_path: String = "res://assets/maps/dhule_roads_game.json"
 @export var road_y: float = 0.04
@@ -39,9 +35,6 @@ var _road_samples: Array[Vector3] = []
 var _named_roads: Array = []
 var _buildings: Array = []
 var _parked_heavy := 0
-var _street_pack_n := 0
-var _street_lib: Node3D
-var _street_missing: Dictionary = {}
 var _named_labels := 0  ## real OSM building names drawn this map build
 var _has_blosm := false
 
@@ -90,12 +83,13 @@ func _road_mat(color: Color, rough: float, noise_seed: int) -> StandardMaterial3
 	return m
 
 
-func _kit_road_mat(kit_key: String, tint: Color, rough: float) -> StandardMaterial3D:
+func _kit_road_mat(kit_key: String, tint: Color, rough: float, priority: int = 0) -> StandardMaterial3D:
 	## Indian asphalt from kit PNGs. UVs come from add_road_deck (along-road), not triplanar.
 	var m := StandardMaterial3D.new()
 	m.albedo_color = tint
 	m.roughness = rough
 	m.metallic = 0.0
+	m.render_priority = priority
 	var tex := AssetKit.road_albedo_clean(kit_key)
 	if tex:
 		m.albedo_texture = tex
@@ -120,9 +114,12 @@ func _build(data: Dictionary) -> void:
 	_buildings = data.get("buildings", [])
 	var clip: float = float(data.get("clip_radius_m", 900.0))
 	# Strict 2 kit sources: street_road = sub, avenue_street = main (asphalt crop, no yellow gutter)
-	_asphalt = _kit_road_mat("street_road", Color(0.86, 0.86, 0.89), 0.9)
-	_major = _kit_road_mat("avenue_street", Color(0.83, 0.83, 0.87), 0.84)
+	_asphalt = _kit_road_mat("street_road", Color(0.86, 0.86, 0.89), 0.9, 0)
+	_major = _kit_road_mat("avenue_street", Color(0.83, 0.83, 0.87), 0.84, 1)
 	_paint = _mat(Color(0.93, 0.93, 0.9), 0.55)
+	_paint.render_priority = 3
+	_paint.grow = true
+	_paint.grow_amount = 0.012
 	_edge = _paint
 	_curb = _mat(Color(0.6, 0.58, 0.54), 0.95)
 	_sidewalk = _road_mat(Color(0.62, 0.58, 0.5), 0.92, 33)
@@ -163,7 +160,6 @@ func _build(data: Dictionary) -> void:
 	var shops := 0
 	var props := 0
 	var dress: Array = []
-	var drawn_decks: Array = []
 
 	for road_v in roads:
 		var road: Dictionary = road_v
@@ -174,11 +170,9 @@ func _build(data: Dictionary) -> void:
 		var hw: String = str(road.get("highway", "residential"))
 		var is_major := hw in ["primary", "secondary", "trunk", "motorway", "tertiary"]
 		# Strict 2 kit looks only: avenue_street (main) / street_road (sub). No zebra/wear/mesh stack.
-		if _stacked_on_drawn_road(pts, width, drawn_decks):
-			continue
-		drawn_decks.append({"pts": pts, "width": width})
 		var mat := _major if is_major else _asphalt
-		_build_road_strip(pts, width, mat, hw, str(road.get("id", "")))
+		# Major decks sit a hair higher so they do not z-fight residential joins.
+		_build_road_strip(pts, width, mat, hw, str(road.get("id", "")), 0.014 if is_major else 0.0)
 		if is_major and not _has_blosm:
 			_build_curbs(pts, width)
 		_sample_road(pts, width)
@@ -190,6 +184,7 @@ func _build(data: Dictionary) -> void:
 	var drawn := RoadSurface.draw_prepared_junctions(self, road_y, _asphalt, _major, _paint)
 	var road_batches := RoadSurface.flush_batch()
 	print("ROAD batches ", road_batches, " junctions ", drawn, " ", RoadJunctions.summary)
+	print("ROAD join fix: pad +0.07 · major +0.014 · paint grow · stronger tip pull")
 
 	# Props run after every road is sampled, so a tree beside one way cannot sit on another.
 	for job in dress:
@@ -200,11 +195,6 @@ func _build(data: Dictionary) -> void:
 		if not _has_blosm:
 			shops += _dress_road_sides(dress_pts, dress_width, dress_dens, dress_hw, rng)
 		props += _dress_road_props(dress_pts, dress_width, dress_dens, dress_hw, rng)
-	if ALLOW_UNVERIFIED_WORLD_PROPS:
-		_seed_street_pack(roads)
-	else:
-		print("STREET pack props disabled (unverified scale/placement)")
-	print("STREET pack props ", _street_pack_n)
 
 	delivery_anchors.clear()
 	for a_v in data.get("delivery_anchors", []):
@@ -431,8 +421,7 @@ func _dress_road_props(pts: Array, width: float, dens: float, hw: String, rng: R
 			if not _near_road(bpos, maxf(4.0, width * 0.35)):
 				var bn := AssetKit.place_at(self, barrier_path, bpos, yaw, 1.0)
 				if bn:
-					# Barriers must stop the car — do not strip collision.
-					DhuleAssetCatalog.add_collision(bn, barrier_path)
+					_strip_physics(bn)
 					n += 1
 		if not _has_blosm and dens > 0.85 and rng.randf() < 0.06 and not spawn_soft:
 			var bb := _ground_pos(p0 + outward * (width * 0.5 + 11.0))
@@ -460,150 +449,6 @@ func _dress_road_props(pts: Array, width: float, dens: float, hw: String, rng: R
 						n += 1
 				n += 1
 	return n
-
-
-func _seed_street_pack(roads: Array) -> void:
-	## A short run of real street-pack props beside the spawn roads. Not the whole diorama.
-	## Disabled unless ALLOW_UNVERIFIED_WORLD_PROPS — height-only scale on Z-long poles made giants.
-	if not ALLOW_UNVERIFIED_WORLD_PROPS:
-		return
-	if not ResourceLoader.exists("res://assets/kit/props/street_asset_pack.glb"):
-		return
-	var spawn_xz := Vector3(spawn_position.x, 0.0, spawn_position.z)
-	var names: Array[String] = ["concrete_barrier", "cone", "give_way"]
-	var heights: Array[float] = [0.9, 0.72, 3.4]
-	for road_v in roads:
-		if _street_pack_n >= 12:
-			return
-		var road: Dictionary = road_v
-		var pts: Array = road.get("points", [])
-		if pts.size() < 2:
-			continue
-		for i in range(0, pts.size() - 1, 3):
-			if _street_pack_n >= 12:
-				return
-			var a: Array = pts[i]
-			var b: Array = pts[mini(i + 1, pts.size() - 1)]
-			var p0 := Vector3(float(a[0]), 0.0, float(a[1]))
-			var from_spawn := p0.distance_to(spawn_xz)
-			if from_spawn < 28.0 or from_spawn > 160.0:
-				continue
-			var along := Vector3(float(b[0]) - float(a[0]), 0.0, float(b[1]) - float(a[1]))
-			if along.length() < 2.0:
-				continue
-			along = along.normalized()
-			var side_sign := 1.0 if (_street_pack_n % 2 == 0) else -1.0
-			var sp := _off_carriageway(p0, along, side_sign, 2.5)
-			if sp.distance_to(spawn_xz) < 22.0:
-				continue
-			var which := _street_pack_n % 3
-			_place_street_piece(names[which], sp, atan2(along.x, along.z), heights[which])
-
-
-func _place_street_piece(prefix: String, pos: Vector3, yaw: float, target_h: float) -> bool:
-	## Mesh-only rebuild + upright before scale. Seed stays gated by ALLOW_UNVERIFIED_WORLD_PROPS.
-	if bool(_street_missing.get(prefix, false)):
-		return false
-	if _street_lib == null:
-		var packed: PackedScene = load("res://assets/kit/props/street_asset_pack.glb")
-		if packed == null:
-			_street_missing[prefix] = true
-			return false
-		_street_lib = packed.instantiate() as Node3D
-		_street_lib.name = "StreetPackLibrary"
-		_street_lib.visible = false
-		add_child(_street_lib)
-	var src := _shallow_named(_street_lib, prefix)
-	if src == null:
-		_street_missing[prefix] = true
-		return false
-	var wrap := Node3D.new()
-	wrap.name = "street_" + prefix
-	add_child(wrap)
-	var meshes: Array = []
-	_collect_street_meshes(src, meshes)
-	if meshes.is_empty():
-		wrap.queue_free()
-		_street_missing[prefix] = true
-		return false
-	for mi_v in meshes:
-		var src_mi := mi_v as MeshInstance3D
-		var inst := MeshInstance3D.new()
-		inst.mesh = src_mi.mesh
-		inst.name = src_mi.name
-		wrap.add_child(inst)
-	var box := AssetKit.mesh_aabb(wrap)
-	if box.size.z > box.size.y * 1.4 and box.size.z > box.size.x * 1.4:
-		for c in wrap.get_children():
-			if c is Node3D:
-				(c as Node3D).rotation.x = -PI * 0.5
-		box = AssetKit.mesh_aabb(wrap)
-	var catalog_key := "street_pack:%s" % prefix
-	var catalog := DhuleAssetCatalog.entry(catalog_key)
-	var want_h := target_h
-	if not catalog.is_empty():
-		var exp: Dictionary = catalog.get("expected", {})
-		want_h = float(exp.get("height", target_h))
-	if box.size.y > 0.05 and want_h > 0.05:
-		var plan := maxf(box.size.x, box.size.z)
-		var s := want_h / box.size.y
-		if plan * s > 8.0:
-			s = 8.0 / maxf(plan, 0.01)
-		wrap.scale = Vector3.ONE * clampf(s, 0.15, 1.25)
-	wrap.rotation.y = yaw
-	wrap.position = pos
-	var box2 := AssetKit.mesh_aabb(wrap)
-	if box2.size.y > 0.01:
-		wrap.position.y = pos.y - box2.position.y
-	# Reject rather than hop 12 m when the footprint still overlaps asphalt.
-	if _footprint_on_road(box2, 0.5) or maxf(box2.size.x, box2.size.z) > 8.0 or box2.size.y > 6.0:
-		wrap.queue_free()
-		print("STREET reject ", prefix, " road_or_size")
-		return false
-	if DhuleAssetCatalog.blocks_vehicle(catalog_key):
-		DhuleAssetCatalog.add_collision(wrap, catalog_key)
-	else:
-		_strip_physics(wrap)
-	_street_pack_n += 1
-	return true
-
-
-func _footprint_on_road(aabb: AABB, margin: float) -> bool:
-	var corners := [
-		Vector3(aabb.position.x, 0, aabb.position.z),
-		Vector3(aabb.position.x + aabb.size.x, 0, aabb.position.z),
-		Vector3(aabb.position.x + aabb.size.x, 0, aabb.position.z + aabb.size.z),
-		Vector3(aabb.position.x, 0, aabb.position.z + aabb.size.z),
-		Vector3(aabb.position.x + aabb.size.x * 0.5, 0, aabb.position.z + aabb.size.z * 0.5),
-	]
-	for c in corners:
-		if _near_road(c, margin):
-			return true
-	return false
-
-
-func _collect_street_meshes(n: Node, out: Array) -> void:
-	if n is MeshInstance3D and (n as MeshInstance3D).mesh:
-		out.append(n)
-	for c in n.get_children():
-		_collect_street_meshes(c, out)
-
-
-func _shallow_named(root: Node, prefix: String) -> Node:
-	var want := prefix.to_lower()
-	var best: Node = null
-	var best_depth := 999
-	var stack: Array = [[root, 0]]
-	while not stack.is_empty():
-		var item: Array = stack.pop_back()
-		var n: Node = item[0]
-		var depth: int = item[1]
-		if n != root and str(n.name).to_lower().begins_with(want) and depth < best_depth:
-			best = n
-			best_depth = depth
-		for c in n.get_children():
-			stack.append([c, depth + 1])
-	return best
 
 
 func _add_ground(clip: float) -> void:
@@ -717,9 +562,6 @@ func _add_osm_context(data: Dictionary, rng: RandomNumberGenerator) -> int:
 	var has_shop := AssetKit.exists(AssetKit.building_path("shop"))
 	var b_placed := 0
 	var shop_placed := 0
-	var house_placed := 0
-	var house_path := AssetKit.building_path("indian_house")
-	var has_house := AssetKit.exists(house_path)
 	var b_cap := 460
 	var shop_cap := 22
 	var collide_radius := dense_radius * 1.15
@@ -755,24 +597,7 @@ func _add_osm_context(data: Dictionary, rng: RandomNumberGenerator) -> int:
 		# Optional shop GLB on a few commercial footprints (materials reused from one PackedScene)
 		var used_shop := false
 		if (
-			ALLOW_UNVERIFIED_WORLD_PROPS
-			and has_house
-			and house_placed < 8
-			and kind == "residential"
-			and dist_spawn > 36.0
-			and dist_spawn < 220.0
-			and fw >= 7.0
-			and fd >= 7.0
-		):
-			# AABB JSON footprints are not OSM rings — keep this off until the footprint fitter is production-ready.
-			var house := AssetKit.place_at(self, house_path, pos, yaw, 1.0)
-			if house:
-				house_placed += 1
-				used_shop = true
-				DhuleAssetCatalog.add_collision(house, house_path)
-		if (
-			not used_shop
-			and not _has_blosm
+			not _has_blosm
 			and has_shop
 			and shop_placed < shop_cap
 			and kind in ["commercial", "retail", "shop"]
@@ -830,7 +655,6 @@ func _add_osm_context(data: Dictionary, rng: RandomNumberGenerator) -> int:
 		add_child(label)
 		poi_n += 1
 		n += 1
-	print("HOUSES indian ", house_placed)
 	return n
 
 
@@ -1017,8 +841,6 @@ func _strip_physics(root: Node) -> void:
 
 func _add_demo_scenery(rng: RandomNumberGenerator) -> int:
 	if _has_blosm:
-		return 0
-	if not ALLOW_UNVERIFIED_WORLD_PROPS:
 		return 0
 	## Terrain3D demo rocks + Road Generator edge barriers (off spawn / off lane).
 	var n := 0
@@ -1215,46 +1037,8 @@ func _add_roundabouts(roads: Array) -> void:
 	print("ROAD roundabouts ", n)
 
 
-func _stacked_on_drawn_road(pts: Array, width: float, kept: Array) -> bool:
-	## Skip a second deck that runs along one already drawn (the blink at duplicates).
-	if pts.size() < 2 or kept.is_empty():
-		return false
-	var mid_i := int(pts.size() / 2)
-	var samples: Array[int] = [0, mid_i, pts.size() - 1]
-	var mid_inside := false
-	var end_inside := 0
-	for idx in samples:
-		var p := Vector2(float(pts[idx][0]), float(pts[idx][1]))
-		var near := false
-		for prev_v in kept:
-			var prev: Dictionary = prev_v
-			var reach := maxf(float(prev["width"]), width) * 0.32
-			if _point_near_polyline(p, prev["pts"], reach):
-				near = true
-				break
-		if not near:
-			continue
-		if idx == mid_i:
-			mid_inside = true
-		else:
-			end_inside += 1
-	# Midpoint must lie on the earlier deck. A street that only touches at its ends stays.
-	return mid_inside and end_inside >= 1
-
-
-func _point_near_polyline(p: Vector2, pts: Array, reach: float) -> bool:
-	for i in pts.size() - 1:
-		var a := Vector2(float(pts[i][0]), float(pts[i][1]))
-		var b := Vector2(float(pts[i + 1][0]), float(pts[i + 1][1]))
-		if a.distance_squared_to(p) > 40000.0 and b.distance_squared_to(p) > 40000.0:
-			continue
-		if _point_segment(p, a, b) <= reach:
-			return true
-	return false
-
-
-func _build_road_strip(pts: Array, width: float, mat: Material, hw: String = "residential", road_id: String = "") -> void:
-	RoadSurface.add_way(self, pts, width, road_y, mat, _paint, hw, road_id)
+func _build_road_strip(pts: Array, width: float, mat: Material, hw: String = "residential", road_id: String = "", y_lift: float = 0.0) -> void:
+	RoadSurface.add_way(self, pts, width, road_y + y_lift, mat, _paint, hw)
 	if _has_blosm or road_id.is_empty():
 		return
 	# Barriers stay off the carriageway. They are not a second road deck.
@@ -1347,9 +1131,6 @@ func _dress_spawn_street(_roads: Array, rng: RandomNumberGenerator) -> int:
 func _add_landmarks(rng: RandomNumberGenerator) -> int:
 	## Sidewalk scenery only — never on the carriageway (fixes stall/bus-stop-in-road bug).
 	if _has_blosm:
-		return 0
-	## Phase 2G: no unverified statue/temple/shop/junction scatter or 12 m road-escape hops.
-	if not ALLOW_UNVERIFIED_WORLD_PROPS:
 		return 0
 	var n := 0
 	var forward := Vector3(spawn_heading.x, 0.0, spawn_heading.y).normalized()
@@ -1472,9 +1253,6 @@ func _latlon_to_xz(lat: float, lon: float) -> Vector3:
 
 
 func _add_real_spots() -> int:
-	## Disabled: unverified statues/temples/bridges and 12 m escape hops onto new ground.
-	if not ALLOW_UNVERIFIED_WORLD_PROPS:
-		return 0
 	## Real Dhule places from OpenStreetMap coordinates. The statue mesh is original.
 	var spots: Array[Dictionary] = [
 		{"name": "Shivaji Maharaj, Fulwala Chowk", "lat": 20.90225, "lon": 74.77485, "kind": "statue"},

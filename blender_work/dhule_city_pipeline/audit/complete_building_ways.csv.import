@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bcdj6ldxb4uc3"
+
+[deps]
+
+files=["res://blender_work/dhule_city_pipeline/audit/complete_building_ways.source.translation", "res://blender_work/dhule_city_pipeline/audit/complete_building_ways.vertices.translation", "res://blender_work/dhule_city_pipeline/audit/complete_building_ways.area.translation", "res://blender_work/dhule_city_pipeline/audit/complete_building_ways.span.translation", "res://blender_work/dhule_city_pipeline/audit/complete_building_ways.span.translation", "res://blender_work/dhule_city_pipeline/audit/complete_building_ways.cx.translation", "res://blender_work/dhule_city_pipeline/audit/complete_building_ways.cz.translation", "res://blender_work/dhule_city_pipeline/audit/complete_building_ways.building.translation", "res://blender_work/dhule_city_pipeline/audit/complete_building_ways.building.translation", "res://blender_work/dhule_city_pipeline/audit/complete_building_ways.name.translation", "res://blender_work/dhule_city_pipeline/audit/complete_building_ways.category.translation", "res://blender_work/dhule_city_pipeline/audit/complete_building_ways.area.translation", "res://blender_work/dhule_city_pipeline/audit/complete_building_ways.geom.translation", "res://blender_work/dhule_city_pipeline/audit/complete_building_ways.dist.translation"]
+
+source_file="res://blender_work/dhule_city_pipeline/audit/complete_building_ways.csv"
+dest_files=["res://blender_work/dhule_city_pipeline/audit/complete_building_ways.source.translation", "res://blender_work/dhule_city_pipeline/audit/complete_building_ways.vertices.translation", "res://blender_work/dhule_city_pipeline/audit/complete_building_ways.area.translation", "res://blender_work/dhule_city_pipeline/audit/complete_building_ways.span.translation", "res://blender_work/dhule_city_pipeline/audit/complete_building_ways.span.translation", "res://blender_work/dhule_city_pipeline/audit/complete_building_ways.cx.translation", "res://blender_work/dhule_city_pipeline/audit/complete_building_ways.cz.translation", "res://blender_work/dhule_city_pipeline/audit/complete_building_ways.building.translation", "res://blender_work/dhule_city_pipeline/audit/complete_building_ways.building.translation", "res://blender_work/dhule_city_pipeline/audit/complete_building_ways.name.translation", "res://blender_work/dhule_city_pipeline/audit/complete_building_ways.category.translation", "res://blender_work/dhule_city_pipeline/audit/complete_building_ways.area.translation", "res://blender_work/dhule_city_pipeline/audit/complete_building_ways.geom.translation", "res://blender_work/dhule_city_pipeline/audit/complete_building_ways.dist.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true
