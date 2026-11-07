@@ -1,0 +1,5885 @@
+{
+	"mode": "drive",
+	"rows": [
+		{
+			"aabb_m": [
+				0.29,
+				0.6,
+				0.3
+			],
+			"cast": true,
+			"dist_m": 56.6,
+			"kind": "other",
+			"mat": "alb=(0.42, 0.43, 0.46, 1.0) rough=0.50 tex=false",
+			"name": "@MeshInstance3D@51",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@51",
+			"pos": [
+				-589.09,
+				0.3,
+				912.67
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.15,
+				6.0,
+				0.16
+			],
+			"cast": true,
+			"dist_m": 56.7,
+			"kind": "other",
+			"mat": "alb=(0.42, 0.43, 0.46, 1.0) rough=0.50 tex=false",
+			"name": "@MeshInstance3D@50",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@50",
+			"pos": [
+				-589.09,
+				3.0,
+				912.67
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.15,
+				6.0,
+				0.16
+			],
+			"cast": true,
+			"dist_m": 72.5,
+			"kind": "other",
+			"mat": "alb=(0.42, 0.43, 0.46, 1.0) rough=0.50 tex=false",
+			"name": "@MeshInstance3D@48",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@48",
+			"pos": [
+				-572.93,
+				3.0,
+				916.59
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.29,
+				0.6,
+				0.3
+			],
+			"cast": true,
+			"dist_m": 72.5,
+			"kind": "other",
+			"mat": "alb=(0.42, 0.43, 0.46, 1.0) rough=0.50 tex=false",
+			"name": "@MeshInstance3D@49",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@49",
+			"pos": [
+				-572.93,
+				0.3,
+				916.59
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 270.6,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@146",
+			"path": "/root/Main/DhuleMap/@Label3D@146",
+			"pos": [
+				-883.56,
+				0.08,
+				771.37
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.15,
+				6.0,
+				0.16
+			],
+			"cast": true,
+			"dist_m": 284.9,
+			"kind": "other",
+			"mat": "alb=(0.42, 0.43, 0.46, 1.0) rough=0.50 tex=false",
+			"name": "@MeshInstance3D@54",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@54",
+			"pos": [
+				-793.24,
+				3.0,
+				643.91
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.29,
+				0.6,
+				0.3
+			],
+			"cast": true,
+			"dist_m": 284.9,
+			"kind": "other",
+			"mat": "alb=(0.42, 0.43, 0.46, 1.0) rough=0.50 tex=false",
+			"name": "@MeshInstance3D@55",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@55",
+			"pos": [
+				-793.24,
+				0.3,
+				643.91
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.15,
+				6.0,
+				0.16
+			],
+			"cast": true,
+			"dist_m": 324.6,
+			"kind": "other",
+			"mat": "alb=(0.42, 0.43, 0.46, 1.0) rough=0.50 tex=false",
+			"name": "@MeshInstance3D@40",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@40",
+			"pos": [
+				-836.63,
+				3.0,
+				1137.4
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.29,
+				0.6,
+				0.3
+			],
+			"cast": true,
+			"dist_m": 324.6,
+			"kind": "other",
+			"mat": "alb=(0.42, 0.43, 0.46, 1.0) rough=0.50 tex=false",
+			"name": "@MeshInstance3D@41",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@41",
+			"pos": [
+				-836.63,
+				0.3,
+				1137.4
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 325.6,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@147",
+			"path": "/root/Main/DhuleMap/@Label3D@147",
+			"pos": [
+				-658.3,
+				0.08,
+				556.99
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				34.64,
+				0.04,
+				34.31
+			],
+			"cast": false,
+			"dist_m": 349.8,
+			"kind": "ground_overlay",
+			"mat": "alb=(0.5, 0.46, 0.4, 1.0) rough=1.00 tex=true",
+			"name": "@MeshInstance3D@16",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@16",
+			"pos": [
+				-542.81,
+				0.01,
+				1218.8
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.29,
+				0.6,
+				0.3
+			],
+			"cast": true,
+			"dist_m": 360.9,
+			"kind": "other",
+			"mat": "alb=(0.42, 0.43, 0.46, 1.0) rough=0.50 tex=false",
+			"name": "@MeshInstance3D@53",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@53",
+			"pos": [
+				-984.78,
+				0.3,
+				787.22
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.15,
+				6.0,
+				0.16
+			],
+			"cast": true,
+			"dist_m": 360.9,
+			"kind": "other",
+			"mat": "alb=(0.42, 0.43, 0.46, 1.0) rough=0.50 tex=false",
+			"name": "@MeshInstance3D@52",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@52",
+			"pos": [
+				-984.78,
+				3.0,
+				787.22
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 364.2,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@148",
+			"path": "/root/Main/DhuleMap/@Label3D@148",
+			"pos": [
+				-1000.71,
+				0.08,
+				874.92
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 375.3,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@149",
+			"path": "/root/Main/DhuleMap/@Label3D@149",
+			"pos": [
+				-283.77,
+				0.08,
+				1009.98
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 376.7,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@150",
+			"path": "/root/Main/DhuleMap/@Label3D@150",
+			"pos": [
+				-509.4,
+				0.08,
+				527.25
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 378.8,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@98",
+			"path": "/root/Main/DhuleMap/@Label3D@98",
+			"pos": [
+				-876.78,
+				9.5,
+				1174.58
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 385.9,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@99",
+			"path": "/root/Main/DhuleMap/@Label3D@99",
+			"pos": [
+				-842.3,
+				9.5,
+				1208.14
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 408.4,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@122",
+			"path": "/root/Main/DhuleMap/@Label3D@122",
+			"pos": [
+				-913.86,
+				9.5,
+				1181.47
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 414.6,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@151",
+			"path": "/root/Main/DhuleMap/@Label3D@151",
+			"pos": [
+				-1035.61,
+				0.08,
+				994.36
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 423.3,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@152",
+			"path": "/root/Main/DhuleMap/@Label3D@152",
+			"pos": [
+				-319.29,
+				0.08,
+				1162.04
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 437.9,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@106",
+			"path": "/root/Main/DhuleMap/@Label3D@106",
+			"pos": [
+				-284.42,
+				9.5,
+				1142.03
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 437.9,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@153",
+			"path": "/root/Main/DhuleMap/@Label3D@153",
+			"pos": [
+				-1000.94,
+				0.08,
+				1124.7
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 440.8,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@102",
+			"path": "/root/Main/DhuleMap/@Label3D@102",
+			"pos": [
+				-853.74,
+				9.5,
+				1265.29
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 447.4,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@101",
+			"path": "/root/Main/DhuleMap/@Label3D@101",
+			"pos": [
+				-257.24,
+				9.5,
+				1118.93
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 454.6,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@154",
+			"path": "/root/Main/DhuleMap/@Label3D@154",
+			"pos": [
+				-1090.95,
+				0.08,
+				869.88
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 462.3,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@155",
+			"path": "/root/Main/DhuleMap/@Label3D@155",
+			"pos": [
+				-353.37,
+				0.08,
+				516.46
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 462.9,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@103",
+			"path": "/root/Main/DhuleMap/@Label3D@103",
+			"pos": [
+				-1098.94,
+				9.5,
+				900.63
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 474.6,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@156",
+			"path": "/root/Main/DhuleMap/@Label3D@156",
+			"pos": [
+				-1067.18,
+				0.08,
+				682.26
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 498.5,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@157",
+			"path": "/root/Main/DhuleMap/@Label3D@157",
+			"pos": [
+				-959.03,
+				0.08,
+				1261.91
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 498.9,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@79",
+			"path": "/root/Main/DhuleMap/@Label3D@79",
+			"pos": [
+				-395.18,
+				9.5,
+				445.28
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 499.2,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@137",
+			"path": "/root/Main/DhuleMap/@Label3D@137",
+			"pos": [
+				-866.03,
+				9.5,
+				1325.04
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 501.0,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@90",
+			"path": "/root/Main/DhuleMap/@Label3D@90",
+			"pos": [
+				-867.0,
+				9.5,
+				1326.53
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 502.8,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@110",
+			"path": "/root/Main/DhuleMap/@Label3D@110",
+			"pos": [
+				-906.47,
+				9.5,
+				1305.92
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 506.1,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@158",
+			"path": "/root/Main/DhuleMap/@Label3D@158",
+			"pos": [
+				-1057.0,
+				0.08,
+				600.14
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 508.3,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@159",
+			"path": "/root/Main/DhuleMap/@Label3D@159",
+			"pos": [
+				-128.43,
+				0.08,
+				893.94
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 509.8,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@111",
+			"path": "/root/Main/DhuleMap/@Label3D@111",
+			"pos": [
+				-1143.66,
+				9.5,
+				830.61
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 512.1,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@160",
+			"path": "/root/Main/DhuleMap/@Label3D@160",
+			"pos": [
+				-349.85,
+				0.08,
+				1306.14
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 519.8,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@161",
+			"path": "/root/Main/DhuleMap/@Label3D@161",
+			"pos": [
+				-1147.03,
+				0.08,
+				979.59
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.29,
+				0.6,
+				0.3
+			],
+			"cast": true,
+			"dist_m": 524.8,
+			"kind": "other",
+			"mat": "alb=(0.42, 0.43, 0.46, 1.0) rough=0.50 tex=false",
+			"name": "@MeshInstance3D@59",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@59",
+			"pos": [
+				-709.04,
+				0.3,
+				362.05
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.15,
+				6.0,
+				0.16
+			],
+			"cast": true,
+			"dist_m": 524.8,
+			"kind": "other",
+			"mat": "alb=(0.42, 0.43, 0.46, 1.0) rough=0.50 tex=false",
+			"name": "@MeshInstance3D@58",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@58",
+			"pos": [
+				-709.04,
+				3.0,
+				362.05
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 529.7,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@162",
+			"path": "/root/Main/DhuleMap/@Label3D@162",
+			"pos": [
+				-1024.6,
+				0.08,
+				521.35
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.15,
+				6.0,
+				0.16
+			],
+			"cast": true,
+			"dist_m": 531.8,
+			"kind": "other",
+			"mat": "alb=(0.42, 0.43, 0.46, 1.0) rough=0.50 tex=false",
+			"name": "@MeshInstance3D@44",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@44",
+			"pos": [
+				-105.27,
+				3.0,
+				904.49
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.29,
+				0.6,
+				0.3
+			],
+			"cast": true,
+			"dist_m": 531.8,
+			"kind": "other",
+			"mat": "alb=(0.42, 0.43, 0.46, 1.0) rough=0.50 tex=false",
+			"name": "@MeshInstance3D@45",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@45",
+			"pos": [
+				-105.27,
+				0.3,
+				904.49
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 538.6,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@163",
+			"path": "/root/Main/DhuleMap/@Label3D@163",
+			"pos": [
+				-255.77,
+				0.08,
+				1262.78
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 542.1,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@96",
+			"path": "/root/Main/DhuleMap/@Label3D@96",
+			"pos": [
+				-181.66,
+				9.5,
+				1176.6
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 546.3,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@164",
+			"path": "/root/Main/DhuleMap/@Label3D@164",
+			"pos": [
+				-502.05,
+				0.08,
+				1411.31
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 555.5,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@105",
+			"path": "/root/Main/DhuleMap/@Label3D@105",
+			"pos": [
+				-1191.77,
+				9.5,
+				867.18
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 574.0,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@104",
+			"path": "/root/Main/DhuleMap/@Label3D@104",
+			"pos": [
+				-1203.48,
+				9.5,
+				792.59
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 577.7,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@165",
+			"path": "/root/Main/DhuleMap/@Label3D@165",
+			"pos": [
+				-903.63,
+				0.08,
+				1394.06
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 579.8,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@166",
+			"path": "/root/Main/DhuleMap/@Label3D@166",
+			"pos": [
+				-932.69,
+				0.08,
+				383.39
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 581.5,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@107",
+			"path": "/root/Main/DhuleMap/@Label3D@107",
+			"pos": [
+				-1201.88,
+				9.5,
+				746.07
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 582.6,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@167",
+			"path": "/root/Main/DhuleMap/@Label3D@167",
+			"pos": [
+				-136.98,
+				0.08,
+				1181.55
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 599.4,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@168",
+			"path": "/root/Main/DhuleMap/@Label3D@168",
+			"pos": [
+				-627.87,
+				0.08,
+				1481.17
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 610.8,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@108",
+			"path": "/root/Main/DhuleMap/@Label3D@108",
+			"pos": [
+				-1246.42,
+				9.5,
+				914.62
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.81,
+				0.88,
+				0.61
+			],
+			"cast": true,
+			"dist_m": 612.4,
+			"kind": "other",
+			"mat": "",
+			"name": "Spare___04",
+			"path": "/root/Main/DhuleMap/bhelpuri_shop/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_08/Spare4/Spare___04/Spare___04",
+			"pos": [
+				-64.56,
+				0.44,
+				1100.62
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 613.1,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@61",
+			"path": "/root/Main/DhuleMap/@Label3D@61",
+			"pos": [
+				-63.8,
+				3.2,
+				1100.58
+			],
+			"surface_y": 3.2,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.74,
+				0.8,
+				0.57
+			],
+			"cast": true,
+			"dist_m": 613.2,
+			"kind": "other",
+			"mat": "",
+			"name": "Spare___03",
+			"path": "/root/Main/DhuleMap/bhelpuri_shop/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_06/Spare3/Spare___03/Spare___03",
+			"pos": [
+				-63.45,
+				0.44,
+				1099.84
+			],
+			"surface_y": 0.04,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 613.2,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@95",
+			"path": "/root/Main/DhuleMap/@Label3D@95",
+			"pos": [
+				-63.8,
+				9.5,
+				1100.58
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.76,
+				0.04,
+				1.09
+			],
+			"cast": true,
+			"dist_m": 613.3,
+			"kind": "other",
+			"mat": "",
+			"name": "Cylinder001__1_Default_02",
+			"path": "/root/Main/DhuleMap/bhelpuri_shop/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_012/Cylinder0012/Cylinder001__1_Default_02",
+			"pos": [
+				-63.9,
+				0.44,
+				1101.56
+			],
+			"surface_y": 0.42,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.74,
+				0.8,
+				0.57
+			],
+			"cast": true,
+			"dist_m": 613.3,
+			"kind": "other",
+			"mat": "",
+			"name": "Spare___0",
+			"path": "/root/Main/DhuleMap/bhelpuri_shop/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_02/Spare/Spare___0/Spare___0",
+			"pos": [
+				-63.95,
+				0.44,
+				1101.53
+			],
+			"surface_y": 0.04,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.74,
+				0.8,
+				0.57
+			],
+			"cast": true,
+			"dist_m": 614.1,
+			"kind": "other",
+			"mat": "",
+			"name": "Spare___02",
+			"path": "/root/Main/DhuleMap/bhelpuri_shop/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_04/Spare2/Spare___02/Spare___02",
+			"pos": [
+				-62.82,
+				0.44,
+				1100.78
+			],
+			"surface_y": 0.04,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.76,
+				0.04,
+				1.09
+			],
+			"cast": true,
+			"dist_m": 614.1,
+			"kind": "other",
+			"mat": "",
+			"name": "Cylinder001__1_Default_0",
+			"path": "/root/Main/DhuleMap/bhelpuri_shop/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_010/Cylinder001/Cylinder001__1_Default_0",
+			"pos": [
+				-62.8,
+				0.44,
+				1100.82
+			],
+			"surface_y": 0.42,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				2.72,
+				2.57,
+				2.49
+			],
+			"cast": true,
+			"dist_m": 615.9,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Bhel_puri_PNG_png_0",
+			"path": "/root/Main/DhuleMap/bhelpuri_shop/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Bhel_puri_PNG_png_0",
+			"pos": [
+				-62.69,
+				0.42,
+				1105.64
+			],
+			"surface_y": 0.42,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				2.46,
+				1.47,
+				2.24
+			],
+			"cast": true,
+			"dist_m": 615.9,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Granite_01_jpg_0",
+			"path": "/root/Main/DhuleMap/bhelpuri_shop/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Granite_01_jpg_0",
+			"pos": [
+				-62.69,
+				0.42,
+				1105.64
+			],
+			"surface_y": 1.11,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.9,
+				0.19,
+				1.36
+			],
+			"cast": true,
+			"dist_m": 615.9,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Granite_02_jpg_0",
+			"path": "/root/Main/DhuleMap/bhelpuri_shop/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Granite_02_jpg_0",
+			"pos": [
+				-62.69,
+				0.42,
+				1105.64
+			],
+			"surface_y": 2.39,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				3.2,
+				2.57,
+				3.01
+			],
+			"cast": true,
+			"dist_m": 615.9,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Metal_Corrogated_Shiny_jpg_0",
+			"path": "/root/Main/DhuleMap/bhelpuri_shop/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Metal_Corrogated_Shiny_jpg_0",
+			"pos": [
+				-62.69,
+				0.42,
+				1105.64
+			],
+			"surface_y": 0.42,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.17,
+				0.01,
+				0.12
+			],
+			"cast": true,
+			"dist_m": 615.9,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Metal_Steel_Textured_jpg_0",
+			"path": "/root/Main/DhuleMap/bhelpuri_shop/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Metal_Steel_Textured_jpg_0",
+			"pos": [
+				-62.69,
+				0.42,
+				1105.64
+			],
+			"surface_y": 2.61,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				2.71,
+				1.44,
+				2.53
+			],
+			"cast": true,
+			"dist_m": 615.9,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Color_Material_0",
+			"path": "/root/Main/DhuleMap/bhelpuri_shop/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Color_Material_0",
+			"pos": [
+				-62.69,
+				0.42,
+				1105.64
+			],
+			"surface_y": 1.15,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.11,
+				0.19,
+				0.16
+			],
+			"cast": true,
+			"dist_m": 615.9,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Back_Side__Granite_02_jpg_0",
+			"path": "/root/Main/DhuleMap/bhelpuri_shop/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Back_Side_/MAIN_Back_Side__Granite_02_jpg_0",
+			"pos": [
+				-62.69,
+				0.42,
+				1105.64
+			],
+			"surface_y": 2.39,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				3.2,
+				2.57,
+				3.01
+			],
+			"cast": true,
+			"dist_m": 615.9,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Back_Side__Color_Material_0",
+			"path": "/root/Main/DhuleMap/bhelpuri_shop/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Back_Side_/MAIN_Back_Side__Color_Material_0",
+			"pos": [
+				-62.69,
+				0.42,
+				1105.64
+			],
+			"surface_y": 0.42,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.15,
+				6.0,
+				0.16
+			],
+			"cast": true,
+			"dist_m": 619.7,
+			"kind": "other",
+			"mat": "alb=(0.42, 0.43, 0.46, 1.0) rough=0.50 tex=false",
+			"name": "@MeshInstance3D@46",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@46",
+			"pos": [
+				-31.9,
+				3.0,
+				1017.76
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.29,
+				0.6,
+				0.3
+			],
+			"cast": true,
+			"dist_m": 619.7,
+			"kind": "other",
+			"mat": "alb=(0.42, 0.43, 0.46, 1.0) rough=0.50 tex=false",
+			"name": "@MeshInstance3D@47",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@47",
+			"pos": [
+				-31.9,
+				0.3,
+				1017.76
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 620.4,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@169",
+			"path": "/root/Main/DhuleMap/@Label3D@169",
+			"pos": [
+				-385.35,
+				0.08,
+				1449.08
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.15,
+				6.0,
+				0.16
+			],
+			"cast": true,
+			"dist_m": 624.2,
+			"kind": "other",
+			"mat": "alb=(0.42, 0.43, 0.46, 1.0) rough=0.50 tex=false",
+			"name": "@MeshInstance3D@38",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@38",
+			"pos": [
+				-68.53,
+				3.0,
+				1140.55
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.29,
+				0.6,
+				0.3
+			],
+			"cast": true,
+			"dist_m": 624.2,
+			"kind": "other",
+			"mat": "alb=(0.42, 0.43, 0.46, 1.0) rough=0.50 tex=false",
+			"name": "@MeshInstance3D@39",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@39",
+			"pos": [
+				-68.53,
+				0.3,
+				1140.55
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 625.9,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@138",
+			"path": "/root/Main/DhuleMap/@Label3D@138",
+			"pos": [
+				-1231.85,
+				9.5,
+				688.91
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 626.9,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@91",
+			"path": "/root/Main/DhuleMap/@Label3D@91",
+			"pos": [
+				-1233.24,
+				9.5,
+				689.68
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 630.7,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@82",
+			"path": "/root/Main/DhuleMap/@Label3D@82",
+			"pos": [
+				-160.73,
+				9.5,
+				467.92
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 631.2,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@126",
+			"path": "/root/Main/DhuleMap/@Label3D@126",
+			"pos": [
+				-160.55,
+				9.5,
+				467.4
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 631.3,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@170",
+			"path": "/root/Main/DhuleMap/@Label3D@170",
+			"pos": [
+				-1243.92,
+				0.08,
+				1054.08
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 647.9,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@171",
+			"path": "/root/Main/DhuleMap/@Label3D@171",
+			"pos": [
+				-904.07,
+				0.08,
+				291.77
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 651.7,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@172",
+			"path": "/root/Main/DhuleMap/@Label3D@172",
+			"pos": [
+				13.94,
+				0.08,
+				921.85
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 655.5,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@133",
+			"path": "/root/Main/DhuleMap/@Label3D@133",
+			"pos": [
+				-334.0,
+				9.5,
+				1463.25
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 661.5,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@123",
+			"path": "/root/Main/DhuleMap/@Label3D@123",
+			"pos": [
+				-326.42,
+				9.5,
+				1466.01
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				32.88,
+				0.04,
+				33.14
+			],
+			"cast": false,
+			"dist_m": 663.8,
+			"kind": "ground_overlay",
+			"mat": "alb=(0.5, 0.46, 0.4, 1.0) rough=1.00 tex=true",
+			"name": "@MeshInstance3D@18",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@18",
+			"pos": [
+				-1225.54,
+				0.01,
+				575.81
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 675.7,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@173",
+			"path": "/root/Main/DhuleMap/@Label3D@173",
+			"pos": [
+				-844.47,
+				0.08,
+				1524.78
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 676.7,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@127",
+			"path": "/root/Main/DhuleMap/@Label3D@127",
+			"pos": [
+				-25.28,
+				9.5,
+				1171.99
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 677.2,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@83",
+			"path": "/root/Main/DhuleMap/@Label3D@83",
+			"pos": [
+				-25.31,
+				9.5,
+				1173.31
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 679.4,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@174",
+			"path": "/root/Main/DhuleMap/@Label3D@174",
+			"pos": [
+				-753.69,
+				0.08,
+				1551.03
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 681.4,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@80",
+			"path": "/root/Main/DhuleMap/@Label3D@80",
+			"pos": [
+				-325.45,
+				9.5,
+				275.63
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 681.9,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@124",
+			"path": "/root/Main/DhuleMap/@Label3D@124",
+			"pos": [
+				-325.08,
+				9.5,
+				275.32
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.29,
+				0.6,
+				0.3
+			],
+			"cast": true,
+			"dist_m": 683.9,
+			"kind": "other",
+			"mat": "alb=(0.42, 0.43, 0.46, 1.0) rough=0.50 tex=false",
+			"name": "@MeshInstance3D@57",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@57",
+			"pos": [
+				11.95,
+				0.3,
+				664.7
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.15,
+				6.0,
+				0.16
+			],
+			"cast": true,
+			"dist_m": 683.9,
+			"kind": "other",
+			"mat": "alb=(0.42, 0.43, 0.46, 1.0) rough=0.50 tex=false",
+			"name": "@MeshInstance3D@56",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@56",
+			"pos": [
+				11.95,
+				3.0,
+				664.7
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 689.5,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@175",
+			"path": "/root/Main/DhuleMap/@Label3D@175",
+			"pos": [
+				30.47,
+				0.08,
+				1056.31
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.29,
+				0.6,
+				0.3
+			],
+			"cast": true,
+			"dist_m": 710.3,
+			"kind": "other",
+			"mat": "alb=(0.42, 0.43, 0.46, 1.0) rough=0.50 tex=false",
+			"name": "@MeshInstance3D@43",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@43",
+			"pos": [
+				-1203.61,
+				0.3,
+				1309.53
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.15,
+				6.0,
+				0.16
+			],
+			"cast": true,
+			"dist_m": 710.3,
+			"kind": "other",
+			"mat": "alb=(0.42, 0.43, 0.46, 1.0) rough=0.50 tex=false",
+			"name": "@MeshInstance3D@42",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@42",
+			"pos": [
+				-1203.61,
+				3.0,
+				1309.53
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 740.7,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@176",
+			"path": "/root/Main/DhuleMap/@Label3D@176",
+			"pos": [
+				-423.79,
+				0.08,
+				1591.29
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 760.3,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@177",
+			"path": "/root/Main/DhuleMap/@Label3D@177",
+			"pos": [
+				115.13,
+				0.08,
+				996.21
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 765.5,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@178",
+			"path": "/root/Main/DhuleMap/@Label3D@178",
+			"pos": [
+				-1357.33,
+				0.08,
+				1139.76
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 775.8,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@179",
+			"path": "/root/Main/DhuleMap/@Label3D@179",
+			"pos": [
+				-460.37,
+				0.08,
+				126.34
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.88,
+				0.88,
+				0.21
+			],
+			"cast": true,
+			"dist_m": 780.3,
+			"kind": "other",
+			"mat": "",
+			"name": "Spare___04",
+			"path": "/root/Main/DhuleMap/@Node3D@71/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_08/Spare4/Spare___04/Spare___04",
+			"pos": [
+				-1312.83,
+				0.44,
+				492.59
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.14,
+				0.04,
+				1.28
+			],
+			"cast": true,
+			"dist_m": 780.8,
+			"kind": "other",
+			"mat": "",
+			"name": "Cylinder001__1_Default_02",
+			"path": "/root/Main/DhuleMap/@Node3D@71/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_012/Cylinder0012/Cylinder001__1_Default_02",
+			"pos": [
+				-1312.76,
+				0.44,
+				491.44
+			],
+			"surface_y": 0.42,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.81,
+				0.8,
+				0.2
+			],
+			"cast": true,
+			"dist_m": 780.8,
+			"kind": "other",
+			"mat": "",
+			"name": "Spare___0",
+			"path": "/root/Main/DhuleMap/@Node3D@71/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_02/Spare/Spare___0/Spare___0",
+			"pos": [
+				-1312.74,
+				0.44,
+				491.49
+			],
+			"surface_y": 0.04,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 781.1,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@73",
+			"path": "/root/Main/DhuleMap/@Label3D@73",
+			"pos": [
+				-1313.45,
+				3.2,
+				492.15
+			],
+			"surface_y": 3.2,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 781.1,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@113",
+			"path": "/root/Main/DhuleMap/@Label3D@113",
+			"pos": [
+				-1313.45,
+				9.5,
+				492.15
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.21,
+				0.01,
+				0.02
+			],
+			"cast": true,
+			"dist_m": 781.4,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Metal_Steel_Textured_jpg_0",
+			"path": "/root/Main/DhuleMap/@Node3D@71/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Metal_Steel_Textured_jpg_0",
+			"pos": [
+				-1311.19,
+				0.42,
+				487.49
+			],
+			"surface_y": 2.61,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				2.73,
+				2.57,
+				2.06
+			],
+			"cast": true,
+			"dist_m": 781.4,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Metal_Corrogated_Shiny_jpg_0",
+			"path": "/root/Main/DhuleMap/@Node3D@71/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Metal_Corrogated_Shiny_jpg_0",
+			"pos": [
+				-1311.19,
+				0.42,
+				487.49
+			],
+			"surface_y": 0.42,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				2.17,
+				0.19,
+				0.35
+			],
+			"cast": true,
+			"dist_m": 781.4,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Granite_02_jpg_0",
+			"path": "/root/Main/DhuleMap/@Node3D@71/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Granite_02_jpg_0",
+			"pos": [
+				-1311.19,
+				0.42,
+				487.49
+			],
+			"surface_y": 2.39,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				2.17,
+				1.47,
+				1.45
+			],
+			"cast": true,
+			"dist_m": 781.4,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Granite_01_jpg_0",
+			"path": "/root/Main/DhuleMap/@Node3D@71/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Granite_01_jpg_0",
+			"pos": [
+				-1311.19,
+				0.42,
+				487.49
+			],
+			"surface_y": 1.11,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				2.41,
+				2.57,
+				1.61
+			],
+			"cast": true,
+			"dist_m": 781.4,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Bhel_puri_PNG_png_0",
+			"path": "/root/Main/DhuleMap/@Node3D@71/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Bhel_puri_PNG_png_0",
+			"pos": [
+				-1311.19,
+				0.42,
+				487.49
+			],
+			"surface_y": 0.42,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				2.32,
+				1.44,
+				1.71
+			],
+			"cast": true,
+			"dist_m": 781.4,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Color_Material_0",
+			"path": "/root/Main/DhuleMap/@Node3D@71/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Color_Material_0",
+			"pos": [
+				-1311.19,
+				0.42,
+				487.49
+			],
+			"surface_y": 1.15,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.01,
+				0.19,
+				0.19
+			],
+			"cast": true,
+			"dist_m": 781.4,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Back_Side__Granite_02_jpg_0",
+			"path": "/root/Main/DhuleMap/@Node3D@71/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Back_Side_/MAIN_Back_Side__Granite_02_jpg_0",
+			"pos": [
+				-1311.19,
+				0.42,
+				487.49
+			],
+			"surface_y": 2.39,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				2.73,
+				2.57,
+				2.06
+			],
+			"cast": true,
+			"dist_m": 781.4,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Back_Side__Color_Material_0",
+			"path": "/root/Main/DhuleMap/@Node3D@71/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Back_Side_/MAIN_Back_Side__Color_Material_0",
+			"pos": [
+				-1311.19,
+				0.42,
+				487.49
+			],
+			"surface_y": 0.42,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.81,
+				0.8,
+				0.2
+			],
+			"cast": true,
+			"dist_m": 781.5,
+			"kind": "other",
+			"mat": "",
+			"name": "Spare___03",
+			"path": "/root/Main/DhuleMap/@Node3D@71/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_06/Spare3/Spare___03/Spare___03",
+			"pos": [
+				-1314.18,
+				0.44,
+				492.52
+			],
+			"surface_y": 0.04,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.14,
+				0.04,
+				1.28
+			],
+			"cast": true,
+			"dist_m": 782.0,
+			"kind": "other",
+			"mat": "",
+			"name": "Cylinder001__1_Default_0",
+			"path": "/root/Main/DhuleMap/@Node3D@71/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_010/Cylinder001/Cylinder001__1_Default_0",
+			"pos": [
+				-1314.09,
+				0.44,
+				491.34
+			],
+			"surface_y": 0.42,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.81,
+				0.8,
+				0.2
+			],
+			"cast": true,
+			"dist_m": 782.0,
+			"kind": "other",
+			"mat": "",
+			"name": "Spare___02",
+			"path": "/root/Main/DhuleMap/@Node3D@71/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_04/Spare2/Spare___02/Spare___02",
+			"pos": [
+				-1314.1,
+				0.44,
+				491.39
+			],
+			"surface_y": 0.04,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 788.0,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@180",
+			"path": "/root/Main/DhuleMap/@Label3D@180",
+			"pos": [
+				-785.56,
+				0.08,
+				1655.61
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 797.5,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@112",
+			"path": "/root/Main/DhuleMap/@Label3D@112",
+			"pos": [
+				-1064.63,
+				9.5,
+				209.07
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 842.4,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@94",
+			"path": "/root/Main/DhuleMap/@Label3D@94",
+			"pos": [
+				-610.66,
+				9.5,
+				39.9
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 863.7,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@Label3D@181",
+			"path": "/root/Main/DhuleMap/@Label3D@181",
+			"pos": [
+				-922.94,
+				0.08,
+				66.94
+			],
+			"surface_y": 0.08,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				35.97,
+				0.04,
+				36.55
+			],
+			"cast": false,
+			"dist_m": 926.6,
+			"kind": "ground_overlay",
+			"mat": "alb=(0.5, 0.46, 0.4, 1.0) rough=1.00 tex=true",
+			"name": "@MeshInstance3D@20",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@20",
+			"pos": [
+				289.93,
+				0.01,
+				899.76
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				32.82,
+				0.04,
+				33.1
+			],
+			"cast": false,
+			"dist_m": 956.0,
+			"kind": "ground_overlay",
+			"mat": "alb=(0.48, 0.5, 0.36, 1.0) rough=1.00 tex=true",
+			"name": "@MeshInstance3D@7",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@7",
+			"pos": [
+				-144.31,
+				0.01,
+				62.31
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.8,
+				2.57,
+				2.51
+			],
+			"cast": true,
+			"dist_m": 964.1,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Bhel_puri_PNG_png_0",
+			"path": "/root/Main/DhuleMap/@Node3D@65/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Bhel_puri_PNG_png_0",
+			"pos": [
+				-910.34,
+				0.42,
+				-42.55
+			],
+			"surface_y": 0.42,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.62,
+				1.47,
+				2.27
+			],
+			"cast": true,
+			"dist_m": 964.1,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Granite_01_jpg_0",
+			"path": "/root/Main/DhuleMap/@Node3D@65/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Granite_01_jpg_0",
+			"pos": [
+				-910.34,
+				0.42,
+				-42.55
+			],
+			"surface_y": 1.11,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				2.27,
+				2.57,
+				2.87
+			],
+			"cast": true,
+			"dist_m": 964.1,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Back_Side__Color_Material_0",
+			"path": "/root/Main/DhuleMap/@Node3D@65/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Back_Side_/MAIN_Back_Side__Color_Material_0",
+			"pos": [
+				-910.34,
+				0.42,
+				-42.55
+			],
+			"surface_y": 0.42,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.19,
+				0.19,
+				0.03
+			],
+			"cast": true,
+			"dist_m": 964.1,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Back_Side__Granite_02_jpg_0",
+			"path": "/root/Main/DhuleMap/@Node3D@65/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Back_Side_/MAIN_Back_Side__Granite_02_jpg_0",
+			"pos": [
+				-910.34,
+				0.42,
+				-42.55
+			],
+			"surface_y": 2.39,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.89,
+				1.44,
+				2.44
+			],
+			"cast": true,
+			"dist_m": 964.1,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Color_Material_0",
+			"path": "/root/Main/DhuleMap/@Node3D@65/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Color_Material_0",
+			"pos": [
+				-910.34,
+				0.42,
+				-42.55
+			],
+			"surface_y": 1.15,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.03,
+				0.01,
+				0.21
+			],
+			"cast": true,
+			"dist_m": 964.1,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Metal_Steel_Textured_jpg_0",
+			"path": "/root/Main/DhuleMap/@Node3D@65/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Metal_Steel_Textured_jpg_0",
+			"pos": [
+				-910.34,
+				0.42,
+				-42.55
+			],
+			"surface_y": 2.61,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				2.27,
+				2.57,
+				2.87
+			],
+			"cast": true,
+			"dist_m": 964.1,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Metal_Corrogated_Shiny_jpg_0",
+			"path": "/root/Main/DhuleMap/@Node3D@65/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Metal_Corrogated_Shiny_jpg_0",
+			"pos": [
+				-910.34,
+				0.42,
+				-42.55
+			],
+			"surface_y": 0.42,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.54,
+				0.19,
+				2.16
+			],
+			"cast": true,
+			"dist_m": 964.1,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Granite_02_jpg_0",
+			"path": "/root/Main/DhuleMap/@Node3D@65/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Granite_02_jpg_0",
+			"pos": [
+				-910.34,
+				0.42,
+				-42.55
+			],
+			"surface_y": 2.39,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.27,
+				0.8,
+				0.81
+			],
+			"cast": true,
+			"dist_m": 965.8,
+			"kind": "other",
+			"mat": "",
+			"name": "Spare___0",
+			"path": "/root/Main/DhuleMap/@Node3D@65/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_02/Spare/Spare___0/Spare___0",
+			"pos": [
+				-914.59,
+				0.44,
+				-43.12
+			],
+			"surface_y": 0.04,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.27,
+				0.04,
+				0.26
+			],
+			"cast": true,
+			"dist_m": 965.9,
+			"kind": "other",
+			"mat": "",
+			"name": "Cylinder001__1_Default_02",
+			"path": "/root/Main/DhuleMap/@Node3D@65/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_012/Cylinder0012/Cylinder001__1_Default_02",
+			"pos": [
+				-914.55,
+				0.44,
+				-43.15
+			],
+			"surface_y": 0.42,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.29,
+				0.88,
+				0.89
+			],
+			"cast": true,
+			"dist_m": 966.0,
+			"kind": "other",
+			"mat": "",
+			"name": "Spare___04",
+			"path": "/root/Main/DhuleMap/@Node3D@65/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_08/Spare4/Spare___04/Spare___04",
+			"pos": [
+				-915.68,
+				0.44,
+				-42.94
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 966.6,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@67",
+			"path": "/root/Main/DhuleMap/@Label3D@67",
+			"pos": [
+				-915.4,
+				3.2,
+				-43.65
+			],
+			"surface_y": 3.2,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.27,
+				0.04,
+				0.26
+			],
+			"cast": true,
+			"dist_m": 967.2,
+			"kind": "other",
+			"mat": "",
+			"name": "Cylinder001__1_Default_0",
+			"path": "/root/Main/DhuleMap/@Node3D@65/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_010/Cylinder001/Cylinder001__1_Default_0",
+			"pos": [
+				-914.77,
+				0.44,
+				-44.46
+			],
+			"surface_y": 0.42,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.27,
+				0.8,
+				0.81
+			],
+			"cast": true,
+			"dist_m": 967.2,
+			"kind": "other",
+			"mat": "",
+			"name": "Spare___02",
+			"path": "/root/Main/DhuleMap/@Node3D@65/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_04/Spare2/Spare___02/Spare___02",
+			"pos": [
+				-914.81,
+				0.44,
+				-44.46
+			],
+			"surface_y": 0.04,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.27,
+				0.8,
+				0.81
+			],
+			"cast": true,
+			"dist_m": 967.3,
+			"kind": "other",
+			"mat": "",
+			"name": "Spare___03",
+			"path": "/root/Main/DhuleMap/@Node3D@65/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_06/Spare3/Spare___03/Spare___03",
+			"pos": [
+				-915.93,
+				0.44,
+				-44.27
+			],
+			"surface_y": 0.04,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				9.53,
+				0.0,
+				9.53
+			],
+			"cast": false,
+			"dist_m": 982.5,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"path": "/root/Main/DhuleMap/@Node3D@26/Sketchfab_Scene/Sketchfab_model/SM_Env_Road_Crossing_01_fbx/RootNode/SM_Env_Road_Crossing_01/SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"pos": [
+				-1617.66,
+				0.09,
+				830.44
+			],
+			"surface_y": 0.09,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				8.96,
+				0.0,
+				8.96
+			],
+			"cast": false,
+			"dist_m": 985.0,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"path": "/root/Main/DhuleMap/@Node3D@25/Sketchfab_Scene/Sketchfab_model/SM_Env_Road_Crossing_01_fbx/RootNode/SM_Env_Road_Crossing_01/SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"pos": [
+				-1620.1,
+				0.09,
+				828.62
+			],
+			"surface_y": 0.09,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				25.58,
+				0.04,
+				28.75
+			],
+			"cast": false,
+			"dist_m": 991.5,
+			"kind": "ground_overlay",
+			"mat": "alb=(0.5, 0.46, 0.4, 1.0) rough=1.00 tex=true",
+			"name": "@MeshInstance3D@11",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@11",
+			"pos": [
+				337.94,
+				0.01,
+				698.77
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				20.53,
+				0.04,
+				15.32
+			],
+			"cast": false,
+			"dist_m": 998.7,
+			"kind": "ground_overlay",
+			"mat": "alb=(0.48, 0.5, 0.36, 1.0) rough=1.00 tex=true",
+			"name": "@MeshInstance3D@13",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@13",
+			"pos": [
+				249.2,
+				0.01,
+				420.4
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1047.4,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@97",
+			"path": "/root/Main/DhuleMap/@Label3D@97",
+			"pos": [
+				-494.06,
+				9.5,
+				-155.78
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1087.5,
+			"kind": "other",
+			"mat": "",
+			"name": "Label",
+			"path": "/root/Main/DhuleMap/@Node3D@139/Label",
+			"pos": [
+				0.0,
+				1.62,
+				0.09
+			],
+			"surface_y": 1.62,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1087.5,
+			"kind": "other",
+			"mat": "",
+			"name": "Label",
+			"path": "/root/Main/DhuleMap/@Node3D@140/Label",
+			"pos": [
+				0.0,
+				1.62,
+				0.09
+			],
+			"surface_y": 1.62,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1087.5,
+			"kind": "other",
+			"mat": "",
+			"name": "Label",
+			"path": "/root/Main/DhuleMap/RoadSign/Label",
+			"pos": [
+				0.0,
+				1.62,
+				0.09
+			],
+			"surface_y": 1.62,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1087.5,
+			"kind": "other",
+			"mat": "",
+			"name": "Label",
+			"path": "/root/Main/DhuleMap/@Node3D@141/Label",
+			"pos": [
+				0.0,
+				1.62,
+				0.09
+			],
+			"surface_y": 1.62,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1087.5,
+			"kind": "other",
+			"mat": "",
+			"name": "Label",
+			"path": "/root/Main/DhuleMap/@Node3D@142/Label",
+			"pos": [
+				0.0,
+				1.62,
+				0.09
+			],
+			"surface_y": 1.62,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1087.5,
+			"kind": "other",
+			"mat": "",
+			"name": "Label",
+			"path": "/root/Main/DhuleMap/@Node3D@143/Label",
+			"pos": [
+				0.0,
+				1.62,
+				0.09
+			],
+			"surface_y": 1.62,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1087.5,
+			"kind": "other",
+			"mat": "",
+			"name": "Label",
+			"path": "/root/Main/DhuleMap/@Node3D@144/Label",
+			"pos": [
+				0.0,
+				1.62,
+				0.09
+			],
+			"surface_y": 1.62,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1087.5,
+			"kind": "other",
+			"mat": "",
+			"name": "Label",
+			"path": "/root/Main/DhuleMap/@Node3D@145/Label",
+			"pos": [
+				0.0,
+				1.62,
+				0.09
+			],
+			"surface_y": 1.62,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.0,
+				1.0,
+				1.0
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "multimesh_box_batch",
+			"mat": "alb=(0.28, 0.28, 0.3, 1.0) rough=0.50 tex=false",
+			"name": "@MultiMeshInstance3D@213",
+			"path": "/root/Main/DhuleMap/@MultiMeshInstance3D@213",
+			"pos": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"surface_y": 0.0,
+			"type": "MultiMeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.0,
+				1.0,
+				1.0
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "multimesh_box_batch",
+			"mat": "alb=(0.98, 0.94, 0.78, 1.0) rough=0.30 tex=false",
+			"name": "@MultiMeshInstance3D@214",
+			"path": "/root/Main/DhuleMap/@MultiMeshInstance3D@214",
+			"pos": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"surface_y": 0.0,
+			"type": "MultiMeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.11,
+				1.7,
+				0.11
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "other",
+			"mat": "alb=(0.32, 0.33, 0.35, 1.0) rough=0.62 tex=false",
+			"name": "Post",
+			"path": "/root/Main/DhuleMap/@Node3D@140/Post",
+			"pos": [
+				0.0,
+				0.85,
+				0.0
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.0,
+				1.0,
+				1.0
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "multimesh_box_batch",
+			"mat": "alb=(0.42, 0.43, 0.46, 1.0) rough=0.50 tex=false",
+			"name": "@MultiMeshInstance3D@212",
+			"path": "/root/Main/DhuleMap/@MultiMeshInstance3D@212",
+			"pos": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"surface_y": 0.0,
+			"type": "MultiMeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.95,
+				2.0,
+				1.95
+			],
+			"cast": true,
+			"dist_m": 1087.6,
+			"kind": "multimesh_box_batch",
+			"mat": "alb=(1.0, 1.0, 1.0, 1.0) rough=0.95 tex=false",
+			"name": "@MultiMeshInstance3D@187",
+			"path": "/root/Main/DhuleMap/@MultiMeshInstance3D@187",
+			"pos": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"surface_y": 0.0,
+			"type": "MultiMeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.0,
+				1.0,
+				1.0
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "multimesh_box_batch",
+			"mat": "alb=(0.54, 0.5, 0.44, 1.0) rough=0.90 tex=false",
+			"name": "@MultiMeshInstance3D@215",
+			"path": "/root/Main/DhuleMap/@MultiMeshInstance3D@215",
+			"pos": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"surface_y": 0.0,
+			"type": "MultiMeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.9,
+				1.0,
+				2.0
+			],
+			"cast": true,
+			"dist_m": 1087.6,
+			"kind": "multimesh_box_batch",
+			"mat": "alb=(0.36, 0.24, 0.14, 1.0) rough=0.95 tex=false",
+			"name": "@MultiMeshInstance3D@186",
+			"path": "/root/Main/DhuleMap/@MultiMeshInstance3D@186",
+			"pos": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"surface_y": 0.0,
+			"type": "MultiMeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.8,
+				0.42,
+				0.05
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "other",
+			"mat": "alb=(0.09, 0.24, 0.48, 1.0) rough=0.55 tex=false",
+			"name": "Board",
+			"path": "/root/Main/DhuleMap/@Node3D@139/Board",
+			"pos": [
+				0.0,
+				1.62,
+				0.02
+			],
+			"surface_y": 1.41,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.11,
+				1.7,
+				0.11
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "other",
+			"mat": "alb=(0.32, 0.33, 0.35, 1.0) rough=0.62 tex=false",
+			"name": "Post",
+			"path": "/root/Main/DhuleMap/@Node3D@139/Post",
+			"pos": [
+				0.0,
+				0.85,
+				0.0
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.8,
+				0.42,
+				0.05
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "other",
+			"mat": "alb=(0.09, 0.24, 0.48, 1.0) rough=0.55 tex=false",
+			"name": "Board",
+			"path": "/root/Main/DhuleMap/RoadSign/Board",
+			"pos": [
+				0.0,
+				1.62,
+				0.02
+			],
+			"surface_y": 1.41,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.11,
+				1.7,
+				0.11
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "other",
+			"mat": "alb=(0.32, 0.33, 0.35, 1.0) rough=0.62 tex=false",
+			"name": "Post",
+			"path": "/root/Main/DhuleMap/RoadSign/Post",
+			"pos": [
+				0.0,
+				0.85,
+				0.0
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.0,
+				1.0,
+				1.0
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "multimesh_box_batch",
+			"mat": "alb=(0.52, 0.46, 0.38, 1.0) rough=0.90 tex=false",
+			"name": "@MultiMeshInstance3D@216",
+			"path": "/root/Main/DhuleMap/@MultiMeshInstance3D@216",
+			"pos": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"surface_y": 0.0,
+			"type": "MultiMeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.0,
+				1.0,
+				1.0
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "multimesh_box_batch",
+			"mat": "alb=(0.46, 0.5, 0.38, 1.0) rough=0.90 tex=false",
+			"name": "@MultiMeshInstance3D@217",
+			"path": "/root/Main/DhuleMap/@MultiMeshInstance3D@217",
+			"pos": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"surface_y": 0.0,
+			"type": "MultiMeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.0,
+				1.0,
+				1.0
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "multimesh_box_batch",
+			"mat": "alb=(0.38, 0.34, 0.26, 1.0) rough=0.92 tex=false",
+			"name": "@MultiMeshInstance3D@218",
+			"path": "/root/Main/DhuleMap/@MultiMeshInstance3D@218",
+			"pos": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"surface_y": 0.0,
+			"type": "MultiMeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.0,
+				1.0,
+				1.0
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "multimesh_box_batch",
+			"mat": "alb=(0.18, 0.32, 0.38, 0.88) rough=0.22 tex=false",
+			"name": "@MultiMeshInstance3D@219",
+			"path": "/root/Main/DhuleMap/@MultiMeshInstance3D@219",
+			"pos": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"surface_y": 0.0,
+			"type": "MultiMeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.0,
+				1.0,
+				1.0
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "multimesh_box_batch",
+			"mat": "alb=(0.12, 0.24, 0.3, 0.92) rough=0.18 tex=false",
+			"name": "@MultiMeshInstance3D@220",
+			"path": "/root/Main/DhuleMap/@MultiMeshInstance3D@220",
+			"pos": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"surface_y": 0.0,
+			"type": "MultiMeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				4400.0,
+				1.0,
+				4400.0
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "ground_slab",
+			"mat": "alb=(0.62, 0.56, 0.44, 1.0) rough=1.00 tex=true",
+			"name": "@MeshInstance3D@2",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@2",
+			"pos": [
+				0.0,
+				-0.5,
+				0.0
+			],
+			"surface_y": -1.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.0,
+				1.0,
+				1.0
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "multimesh_box_batch",
+			"mat": "alb=(0.28, 0.38, 0.2, 1.0) rough=0.90 tex=false",
+			"name": "@MultiMeshInstance3D@221",
+			"path": "/root/Main/DhuleMap/@MultiMeshInstance3D@221",
+			"pos": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"surface_y": 0.0,
+			"type": "MultiMeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.8,
+				0.42,
+				0.05
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "other",
+			"mat": "alb=(0.09, 0.24, 0.48, 1.0) rough=0.55 tex=false",
+			"name": "Board",
+			"path": "/root/Main/DhuleMap/@Node3D@145/Board",
+			"pos": [
+				0.0,
+				1.62,
+				0.02
+			],
+			"surface_y": 1.41,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.11,
+				1.7,
+				0.11
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "other",
+			"mat": "alb=(0.32, 0.33, 0.35, 1.0) rough=0.62 tex=false",
+			"name": "Post",
+			"path": "/root/Main/DhuleMap/@Node3D@145/Post",
+			"pos": [
+				0.0,
+				0.85,
+				0.0
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.8,
+				0.42,
+				0.05
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "other",
+			"mat": "alb=(0.09, 0.24, 0.48, 1.0) rough=0.55 tex=false",
+			"name": "Board",
+			"path": "/root/Main/DhuleMap/@Node3D@144/Board",
+			"pos": [
+				0.0,
+				1.62,
+				0.02
+			],
+			"surface_y": 1.41,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.11,
+				1.7,
+				0.11
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "other",
+			"mat": "alb=(0.32, 0.33, 0.35, 1.0) rough=0.62 tex=false",
+			"name": "Post",
+			"path": "/root/Main/DhuleMap/@Node3D@144/Post",
+			"pos": [
+				0.0,
+				0.85,
+				0.0
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.8,
+				0.42,
+				0.05
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "other",
+			"mat": "alb=(0.09, 0.24, 0.48, 1.0) rough=0.55 tex=false",
+			"name": "Board",
+			"path": "/root/Main/DhuleMap/@Node3D@143/Board",
+			"pos": [
+				0.0,
+				1.62,
+				0.02
+			],
+			"surface_y": 1.41,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				16734.61,
+				0.0,
+				23064.07
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "ground_slab",
+			"mat": "",
+			"name": "dhule_city_osm_water",
+			"path": "/root/Main/DhuleMap/DhuleBlosmCity/dhule_city_osm_water",
+			"pos": [
+				0.0,
+				0.2,
+				0.0
+			],
+			"surface_y": 0.2,
+			"type": "MeshInstance3D",
+			"visible": false
+		},
+		{
+			"aabb_m": [
+				0.11,
+				1.7,
+				0.11
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "other",
+			"mat": "alb=(0.32, 0.33, 0.35, 1.0) rough=0.62 tex=false",
+			"name": "Post",
+			"path": "/root/Main/DhuleMap/@Node3D@143/Post",
+			"pos": [
+				0.0,
+				0.85,
+				0.0
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.8,
+				0.42,
+				0.05
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "other",
+			"mat": "alb=(0.09, 0.24, 0.48, 1.0) rough=0.55 tex=false",
+			"name": "Board",
+			"path": "/root/Main/DhuleMap/@Node3D@142/Board",
+			"pos": [
+				0.0,
+				1.62,
+				0.02
+			],
+			"surface_y": 1.41,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.11,
+				1.7,
+				0.11
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "other",
+			"mat": "alb=(0.32, 0.33, 0.35, 1.0) rough=0.62 tex=false",
+			"name": "Post",
+			"path": "/root/Main/DhuleMap/@Node3D@142/Post",
+			"pos": [
+				0.0,
+				0.85,
+				0.0
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.8,
+				0.42,
+				0.05
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "other",
+			"mat": "alb=(0.09, 0.24, 0.48, 1.0) rough=0.55 tex=false",
+			"name": "Board",
+			"path": "/root/Main/DhuleMap/@Node3D@141/Board",
+			"pos": [
+				0.0,
+				1.62,
+				0.02
+			],
+			"surface_y": 1.41,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				7010.04,
+				13.78,
+				7120.95
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "ground_slab",
+			"mat": "",
+			"name": "dhule_city_osm_buildings",
+			"path": "/root/Main/DhuleMap/DhuleBlosmCity/dhule_city_osm_buildings",
+			"pos": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				6146.6,
+				0.02,
+				5051.75
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "ground_slab",
+			"mat": "",
+			"name": "road_marks",
+			"path": "/root/Main/DhuleMap/road_marks",
+			"pos": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"surface_y": 0.08,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.11,
+				1.7,
+				0.11
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "other",
+			"mat": "alb=(0.32, 0.33, 0.35, 1.0) rough=0.62 tex=false",
+			"name": "Post",
+			"path": "/root/Main/DhuleMap/@Node3D@141/Post",
+			"pos": [
+				0.0,
+				0.85,
+				0.0
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				6146.84,
+				0.06,
+				5052.21
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "ground_slab",
+			"mat": "",
+			"name": "@MeshInstance3D@37",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@37",
+			"pos": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"surface_y": 0.05,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				4330.26,
+				0.07,
+				3690.99
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "ground_slab",
+			"mat": "",
+			"name": "roads",
+			"path": "/root/Main/DhuleMap/roads",
+			"pos": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"surface_y": 0.04,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				13.2,
+				0.0,
+				13.2
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "roundabout_island",
+			"path": "/root/Main/DhuleMap/roundabout_island",
+			"pos": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"surface_y": 0.05,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				14.1,
+				0.0,
+				14.1
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "roundabout_kerb",
+			"path": "/root/Main/DhuleMap/roundabout_kerb",
+			"pos": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"surface_y": 0.06,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.8,
+				0.42,
+				0.05
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "other",
+			"mat": "alb=(0.09, 0.24, 0.48, 1.0) rough=0.55 tex=false",
+			"name": "Board",
+			"path": "/root/Main/DhuleMap/@Node3D@140/Board",
+			"pos": [
+				0.0,
+				1.62,
+				0.02
+			],
+			"surface_y": 1.41,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				2.75,
+				0.0,
+				2.75
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@MeshInstance3D@182",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@182",
+			"pos": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"surface_y": 0.05,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				3.65,
+				0.0,
+				3.65
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@MeshInstance3D@183",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@183",
+			"pos": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"surface_y": 0.06,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				8.06,
+				0.0,
+				8.06
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@MeshInstance3D@184",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@184",
+			"pos": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"surface_y": 0.05,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				8.96,
+				0.0,
+				8.96
+			],
+			"cast": false,
+			"dist_m": 1087.6,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "@MeshInstance3D@185",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@185",
+			"pos": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"surface_y": 0.06,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.1,
+				0.1,
+				0.0
+			],
+			"cast": true,
+			"dist_m": 1088.0,
+			"kind": "terrain3d",
+			"mat": "",
+			"name": "MouseQuad",
+			"path": "/root/Main/DhuleHorizon/Terrain3D/MouseViewport/MouseCamera/MouseQuad",
+			"pos": [
+				0.0,
+				0.0,
+				-0.5
+			],
+			"surface_y": -0.05,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1091.2,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@93",
+			"path": "/root/Main/DhuleMap/@Label3D@93",
+			"pos": [
+				304.29,
+				9.5,
+				329.06
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1110.5,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@125",
+			"path": "/root/Main/DhuleMap/@Label3D@125",
+			"pos": [
+				-984.23,
+				9.5,
+				-172.81
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1111.0,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@81",
+			"path": "/root/Main/DhuleMap/@Label3D@81",
+			"pos": [
+				-985.34,
+				9.5,
+				-173.0
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				31.17,
+				0.04,
+				27.33
+			],
+			"cast": false,
+			"dist_m": 1133.3,
+			"kind": "ground_overlay",
+			"mat": "alb=(0.5, 0.46, 0.4, 1.0) rough=1.00 tex=true",
+			"name": "@MeshInstance3D@12",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@12",
+			"pos": [
+				-1021.51,
+				0.01,
+				-184.04
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1151.1,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@75",
+			"path": "/root/Main/DhuleMap/@Label3D@75",
+			"pos": [
+				-194.89,
+				5.6,
+				-181.14
+			],
+			"surface_y": 5.6,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1151.8,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@131",
+			"path": "/root/Main/DhuleMap/@Label3D@131",
+			"pos": [
+				-1270.16,
+				9.5,
+				-79.96
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1152.6,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@86",
+			"path": "/root/Main/DhuleMap/@Label3D@86",
+			"pos": [
+				-1271.59,
+				9.5,
+				-80.05
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1158.0,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@114",
+			"path": "/root/Main/DhuleMap/@Label3D@114",
+			"pos": [
+				-566.3,
+				9.5,
+				-274.05
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				24.61,
+				0.04,
+				30.39
+			],
+			"cast": false,
+			"dist_m": 1159.1,
+			"kind": "ground_overlay",
+			"mat": "alb=(0.48, 0.5, 0.36, 1.0) rough=1.00 tex=true",
+			"name": "@MeshInstance3D@6",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@6",
+			"pos": [
+				-13.42,
+				0.01,
+				-95.48
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1159.4,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@117",
+			"path": "/root/Main/DhuleMap/@Label3D@117",
+			"pos": [
+				-615.95,
+				9.5,
+				-277.39
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				6.92,
+				0.0,
+				6.92
+			],
+			"cast": false,
+			"dist_m": 1174.9,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"path": "/root/Main/DhuleMap/@Node3D@24/Sketchfab_Scene/Sketchfab_model/SM_Env_Road_Crossing_01_fbx/RootNode/SM_Env_Road_Crossing_01/SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"pos": [
+				302.53,
+				0.09,
+				175.7
+			],
+			"surface_y": 0.09,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1176.4,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@132",
+			"path": "/root/Main/DhuleMap/@Label3D@132",
+			"pos": [
+				-1238.11,
+				9.5,
+				-129.13
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1177.3,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@87",
+			"path": "/root/Main/DhuleMap/@Label3D@87",
+			"pos": [
+				-1239.51,
+				9.5,
+				-129.28
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1242.4,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@118",
+			"path": "/root/Main/DhuleMap/@Label3D@118",
+			"pos": [
+				-637.15,
+				9.5,
+				-360.51
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1245.3,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@76",
+			"path": "/root/Main/DhuleMap/@Label3D@76",
+			"pos": [
+				-178.45,
+				5.6,
+				-276.15
+			],
+			"surface_y": 5.6,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				6.99,
+				0.0,
+				6.99
+			],
+			"cast": false,
+			"dist_m": 1264.2,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"path": "/root/Main/DhuleMap/kit_road_crossing/Sketchfab_Scene/Sketchfab_model/SM_Env_Road_Crossing_01_fbx/RootNode/SM_Env_Road_Crossing_01/SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"pos": [
+				626.19,
+				0.09,
+				942.22
+			],
+			"surface_y": 0.09,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1272.4,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@77",
+			"path": "/root/Main/DhuleMap/@Label3D@77",
+			"pos": [
+				-207.63,
+				5.6,
+				-316.07
+			],
+			"surface_y": 5.6,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				9.2,
+				0.0,
+				9.2
+			],
+			"cast": false,
+			"dist_m": 1276.7,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"path": "/root/Main/DhuleMap/@Node3D@23/Sketchfab_Scene/Sketchfab_model/SM_Env_Road_Crossing_01_fbx/RootNode/SM_Env_Road_Crossing_01/SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"pos": [
+				639.09,
+				0.09,
+				935.05
+			],
+			"surface_y": 0.09,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				8.2,
+				0.0,
+				8.2
+			],
+			"cast": false,
+			"dist_m": 1281.2,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"path": "/root/Main/DhuleMap/@Node3D@35/Sketchfab_Scene/Sketchfab_model/SM_Env_Road_Crossing_01_fbx/RootNode/SM_Env_Road_Crossing_01/SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"pos": [
+				-93.38,
+				0.09,
+				-278.5
+			],
+			"surface_y": 0.09,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				7.43,
+				0.0,
+				7.43
+			],
+			"cast": false,
+			"dist_m": 1283.7,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"path": "/root/Main/DhuleMap/@Node3D@36/Sketchfab_Scene/Sketchfab_model/SM_Env_Road_Crossing_01_fbx/RootNode/SM_Env_Road_Crossing_01/SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"pos": [
+				-82.97,
+				0.09,
+				-276.35
+			],
+			"surface_y": 0.09,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1284.6,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@109",
+			"path": "/root/Main/DhuleMap/@Label3D@109",
+			"pos": [
+				-1492.01,
+				9.5,
+				-76.44
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1303.7,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@78",
+			"path": "/root/Main/DhuleMap/@Label3D@78",
+			"pos": [
+				-198.2,
+				5.6,
+				-345.99
+			],
+			"surface_y": 5.6,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1340.8,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@130",
+			"path": "/root/Main/DhuleMap/@Label3D@130",
+			"pos": [
+				-1501.56,
+				9.5,
+				-142.57
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1342.0,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@85",
+			"path": "/root/Main/DhuleMap/@Label3D@85",
+			"pos": [
+				-1503.25,
+				9.5,
+				-142.73
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1371.9,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@135",
+			"path": "/root/Main/DhuleMap/@Label3D@135",
+			"pos": [
+				596.11,
+				9.5,
+				279.74
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1372.3,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@88",
+			"path": "/root/Main/DhuleMap/@Label3D@88",
+			"pos": [
+				596.78,
+				9.5,
+				280.06
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1433.4,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@115",
+			"path": "/root/Main/DhuleMap/@Label3D@115",
+			"pos": [
+				-350.97,
+				9.5,
+				-522.85
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1440.3,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@120",
+			"path": "/root/Main/DhuleMap/@Label3D@120",
+			"pos": [
+				-599.78,
+				9.5,
+				-557.99
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				7.64,
+				0.0,
+				7.64
+			],
+			"cast": false,
+			"dist_m": 1446.1,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"path": "/root/Main/DhuleMap/@Node3D@34/Sketchfab_Scene/Sketchfab_model/SM_Env_Road_Crossing_01_fbx/RootNode/SM_Env_Road_Crossing_01/SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"pos": [
+				-1694.34,
+				0.09,
+				-104.18
+			],
+			"surface_y": 0.09,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				7.04,
+				0.0,
+				7.04
+			],
+			"cast": false,
+			"dist_m": 1453.6,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"path": "/root/Main/DhuleMap/@Node3D@33/Sketchfab_Scene/Sketchfab_model/SM_Env_Road_Crossing_01_fbx/RootNode/SM_Env_Road_Crossing_01/SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"pos": [
+				-1693.11,
+				0.09,
+				-116.53
+			],
+			"surface_y": 0.09,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1492.5,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@116",
+			"path": "/root/Main/DhuleMap/@Label3D@116",
+			"pos": [
+				-303.55,
+				9.5,
+				-573.06
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1512.8,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@74",
+			"path": "/root/Main/DhuleMap/@Label3D@74",
+			"pos": [
+				481.89,
+				5.6,
+				-136.86
+			],
+			"surface_y": 5.6,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1532.7,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@128",
+			"path": "/root/Main/DhuleMap/@Label3D@128",
+			"pos": [
+				608.31,
+				9.5,
+				-12.25
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1533.2,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@84",
+			"path": "/root/Main/DhuleMap/@Label3D@84",
+			"pos": [
+				608.99,
+				9.5,
+				-12.27
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1578.9,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@92",
+			"path": "/root/Main/DhuleMap/@Label3D@92",
+			"pos": [
+				-870.34,
+				9.5,
+				-679.61
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				7.37,
+				0.0,
+				7.37
+			],
+			"cast": false,
+			"dist_m": 1585.1,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"path": "/root/Main/DhuleMap/@Node3D@30/Sketchfab_Scene/Sketchfab_model/SM_Env_Road_Crossing_01_fbx/RootNode/SM_Env_Road_Crossing_01/SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"pos": [
+				-1453.25,
+				0.09,
+				-476.66
+			],
+			"surface_y": 0.09,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				7.47,
+				0.0,
+				7.47
+			],
+			"cast": false,
+			"dist_m": 1593.0,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"path": "/root/Main/DhuleMap/@Node3D@29/Sketchfab_Scene/Sketchfab_model/SM_Env_Road_Crossing_01_fbx/RootNode/SM_Env_Road_Crossing_01/SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"pos": [
+				-1466.17,
+				0.09,
+				-478.04
+			],
+			"surface_y": 0.09,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1646.9,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@136",
+			"path": "/root/Main/DhuleMap/@Label3D@136",
+			"pos": [
+				-652.88,
+				9.5,
+				-765.0
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1647.8,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@89",
+			"path": "/root/Main/DhuleMap/@Label3D@89",
+			"pos": [
+				-653.61,
+				9.5,
+				-765.86
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				32.96,
+				0.04,
+				31.92
+			],
+			"cast": false,
+			"dist_m": 1658.0,
+			"kind": "ground_overlay",
+			"mat": "alb=(0.5, 0.46, 0.4, 1.0) rough=1.00 tex=true",
+			"name": "@MeshInstance3D@22",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@22",
+			"pos": [
+				866.2,
+				0.01,
+				181.38
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1676.6,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@100",
+			"path": "/root/Main/DhuleMap/@Label3D@100",
+			"pos": [
+				-1609.37,
+				9.5,
+				-483.67
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1703.3,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@119",
+			"path": "/root/Main/DhuleMap/@Label3D@119",
+			"pos": [
+				-108.85,
+				9.5,
+				-737.62
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				16.07,
+				0.04,
+				25.94
+			],
+			"cast": false,
+			"dist_m": 1706.5,
+			"kind": "ground_overlay",
+			"mat": "alb=(0.55, 0.48, 0.38, 1.0) rough=1.00 tex=true",
+			"name": "@MeshInstance3D@5",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@5",
+			"pos": [
+				1064.49,
+				0.01,
+				745.67
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				28.05,
+				0.04,
+				26.8
+			],
+			"cast": false,
+			"dist_m": 1715.0,
+			"kind": "ground_overlay",
+			"mat": "alb=(0.48, 0.5, 0.36, 1.0) rough=1.00 tex=true",
+			"name": "@MeshInstance3D@14",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@14",
+			"pos": [
+				591.05,
+				0.01,
+				-315.7
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				7.1,
+				0.0,
+				7.1
+			],
+			"cast": false,
+			"dist_m": 1755.2,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"path": "/root/Main/DhuleMap/@Node3D@32/Sketchfab_Scene/Sketchfab_model/SM_Env_Road_Crossing_01_fbx/RootNode/SM_Env_Road_Crossing_01/SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"pos": [
+				-1634.41,
+				0.09,
+				-562.12
+			],
+			"surface_y": 0.09,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				7.29,
+				0.0,
+				7.29
+			],
+			"cast": false,
+			"dist_m": 1763.3,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"path": "/root/Main/DhuleMap/@Node3D@31/Sketchfab_Scene/Sketchfab_model/SM_Env_Road_Crossing_01_fbx/RootNode/SM_Env_Road_Crossing_01/SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"pos": [
+				-1647.28,
+				0.09,
+				-563.01
+			],
+			"surface_y": 0.09,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 1803.3,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@121",
+			"path": "/root/Main/DhuleMap/@Label3D@121",
+			"pos": [
+				-313.03,
+				9.5,
+				-892.14
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				8.7,
+				0.0,
+				8.7
+			],
+			"cast": false,
+			"dist_m": 1865.3,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"path": "/root/Main/DhuleMap/@Node3D@27/Sketchfab_Scene/Sketchfab_model/SM_Env_Road_Crossing_01_fbx/RootNode/SM_Env_Road_Crossing_01/SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"pos": [
+				1210.7,
+				0.09,
+				1140.56
+			],
+			"surface_y": 0.09,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				8.23,
+				0.0,
+				8.23
+			],
+			"cast": false,
+			"dist_m": 1871.2,
+			"kind": "ground_overlay",
+			"mat": "",
+			"name": "SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"path": "/root/Main/DhuleMap/@Node3D@28/Sketchfab_Scene/Sketchfab_model/SM_Env_Road_Crossing_01_fbx/RootNode/SM_Env_Road_Crossing_01/SM_Env_Road_Crossing_01_SM_Env_Road_Crossing_01_PolygonTown_Road_0",
+			"pos": [
+				1214.84,
+				0.09,
+				1153.38
+			],
+			"surface_y": 0.09,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				34.12,
+				0.04,
+				34.05
+			],
+			"cast": false,
+			"dist_m": 1887.3,
+			"kind": "ground_overlay",
+			"mat": "alb=(0.48, 0.5, 0.36, 1.0) rough=1.00 tex=true",
+			"name": "@MeshInstance3D@10",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@10",
+			"pos": [
+				-62.06,
+				0.01,
+				-915.96
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				28.84,
+				0.04,
+				31.72
+			],
+			"cast": false,
+			"dist_m": 1906.1,
+			"kind": "ground_overlay",
+			"mat": "alb=(0.48, 0.5, 0.36, 1.0) rough=1.00 tex=true",
+			"name": "@MeshInstance3D@19",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@19",
+			"pos": [
+				1003.56,
+				0.01,
+				-89.33
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				25.67,
+				0.04,
+				21.59
+			],
+			"cast": false,
+			"dist_m": 2018.3,
+			"kind": "ground_overlay",
+			"mat": "alb=(0.5, 0.46, 0.4, 1.0) rough=1.00 tex=true",
+			"name": "@MeshInstance3D@17",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@17",
+			"pos": [
+				-190.72,
+				0.01,
+				-1086.66
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 2069.7,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@134",
+			"path": "/root/Main/DhuleMap/@Label3D@134",
+			"pos": [
+				-181.87,
+				9.5,
+				-1137.29
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				31.35,
+				0.04,
+				26.73
+			],
+			"cast": false,
+			"dist_m": 2090.2,
+			"kind": "ground_overlay",
+			"mat": "alb=(0.5, 0.46, 0.4, 1.0) rough=1.00 tex=true",
+			"name": "@MeshInstance3D@21",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@21",
+			"pos": [
+				-138.16,
+				0.01,
+				-1148.07
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.06,
+				0.19,
+				0.18
+			],
+			"cast": true,
+			"dist_m": 2130.6,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Back_Side__Granite_02_jpg_0",
+			"path": "/root/Main/DhuleMap/@Node3D@62/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Back_Side_/MAIN_Back_Side__Granite_02_jpg_0",
+			"pos": [
+				-602.92,
+				0.42,
+				-1248.52
+			],
+			"surface_y": 2.39,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				2.58,
+				1.44,
+				2.15
+			],
+			"cast": true,
+			"dist_m": 2130.6,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Color_Material_0",
+			"path": "/root/Main/DhuleMap/@Node3D@62/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Color_Material_0",
+			"pos": [
+				-602.92,
+				0.42,
+				-1248.52
+			],
+			"surface_y": 1.15,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.2,
+				0.01,
+				0.06
+			],
+			"cast": true,
+			"dist_m": 2130.6,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Metal_Steel_Textured_jpg_0",
+			"path": "/root/Main/DhuleMap/@Node3D@62/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Metal_Steel_Textured_jpg_0",
+			"pos": [
+				-602.92,
+				0.42,
+				-1248.52
+			],
+			"surface_y": 2.61,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				3.05,
+				2.57,
+				2.57
+			],
+			"cast": true,
+			"dist_m": 2130.6,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Metal_Corrogated_Shiny_jpg_0",
+			"path": "/root/Main/DhuleMap/@Node3D@62/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Metal_Corrogated_Shiny_jpg_0",
+			"pos": [
+				-602.92,
+				0.42,
+				-1248.52
+			],
+			"surface_y": 0.42,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				2.12,
+				0.19,
+				0.83
+			],
+			"cast": true,
+			"dist_m": 2130.6,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Granite_02_jpg_0",
+			"path": "/root/Main/DhuleMap/@Node3D@62/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Granite_02_jpg_0",
+			"pos": [
+				-602.92,
+				0.42,
+				-1248.52
+			],
+			"surface_y": 2.39,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				2.38,
+				1.47,
+				1.87
+			],
+			"cast": true,
+			"dist_m": 2130.6,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Granite_01_jpg_0",
+			"path": "/root/Main/DhuleMap/@Node3D@62/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Granite_01_jpg_0",
+			"pos": [
+				-602.92,
+				0.42,
+				-1248.52
+			],
+			"surface_y": 1.11,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				2.64,
+				2.57,
+				2.07
+			],
+			"cast": true,
+			"dist_m": 2130.6,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Bhel_puri_PNG_png_0",
+			"path": "/root/Main/DhuleMap/@Node3D@62/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Bhel_puri_PNG_png_0",
+			"pos": [
+				-602.92,
+				0.42,
+				-1248.52
+			],
+			"surface_y": 0.42,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				3.05,
+				2.57,
+				2.57
+			],
+			"cast": true,
+			"dist_m": 2130.6,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Back_Side__Color_Material_0",
+			"path": "/root/Main/DhuleMap/@Node3D@62/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Back_Side_/MAIN_Back_Side__Color_Material_0",
+			"pos": [
+				-602.92,
+				0.42,
+				-1248.52
+			],
+			"surface_y": 0.42,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.81,
+				0.8,
+				0.38
+			],
+			"cast": true,
+			"dist_m": 2133.8,
+			"kind": "other",
+			"mat": "",
+			"name": "Spare___02",
+			"path": "/root/Main/DhuleMap/@Node3D@62/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_04/Spare2/Spare___02/Spare___02",
+			"pos": [
+				-599.19,
+				0.44,
+				-1251.64
+			],
+			"surface_y": 0.04,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.43,
+				0.04,
+				1.24
+			],
+			"cast": true,
+			"dist_m": 2133.8,
+			"kind": "other",
+			"mat": "",
+			"name": "Cylinder001__1_Default_0",
+			"path": "/root/Main/DhuleMap/@Node3D@62/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_010/Cylinder001/Cylinder001__1_Default_0",
+			"pos": [
+				-599.21,
+				0.44,
+				-1251.6
+			],
+			"surface_y": 0.42,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.43,
+				0.04,
+				1.24
+			],
+			"cast": true,
+			"dist_m": 2134.1,
+			"kind": "other",
+			"mat": "",
+			"name": "Cylinder001__1_Default_02",
+			"path": "/root/Main/DhuleMap/@Node3D@62/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_012/Cylinder0012/Cylinder001__1_Default_02",
+			"pos": [
+				-600.47,
+				0.44,
+				-1252.0
+			],
+			"surface_y": 0.42,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.81,
+				0.8,
+				0.38
+			],
+			"cast": true,
+			"dist_m": 2134.2,
+			"kind": "other",
+			"mat": "",
+			"name": "Spare___0",
+			"path": "/root/Main/DhuleMap/@Node3D@62/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_02/Spare/Spare___0/Spare___0",
+			"pos": [
+				-600.48,
+				0.44,
+				-1252.05
+			],
+			"surface_y": 0.04,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 2134.7,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@64",
+			"path": "/root/Main/DhuleMap/@Label3D@64",
+			"pos": [
+				-599.64,
+				3.2,
+				-1252.53
+			],
+			"surface_y": 3.2,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.81,
+				0.8,
+				0.38
+			],
+			"cast": true,
+			"dist_m": 2134.9,
+			"kind": "other",
+			"mat": "",
+			"name": "Spare___03",
+			"path": "/root/Main/DhuleMap/@Node3D@62/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_06/Spare3/Spare___03/Spare___03",
+			"pos": [
+				-598.85,
+				0.44,
+				-1252.72
+			],
+			"surface_y": 0.04,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.88,
+				0.88,
+				0.4
+			],
+			"cast": true,
+			"dist_m": 2135.2,
+			"kind": "other",
+			"mat": "",
+			"name": "Spare___04",
+			"path": "/root/Main/DhuleMap/@Node3D@62/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_08/Spare4/Spare___04/Spare___04",
+			"pos": [
+				-600.15,
+				0.44,
+				-1253.1
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 2206.5,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@129",
+			"path": "/root/Main/DhuleMap/@Label3D@129",
+			"pos": [
+				1375.48,
+				9.5,
+				-23.82
+			],
+			"surface_y": 9.5,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				27.6,
+				0.04,
+				24.34
+			],
+			"cast": false,
+			"dist_m": 2261.3,
+			"kind": "ground_overlay",
+			"mat": "alb=(0.5, 0.46, 0.4, 1.0) rough=1.00 tex=true",
+			"name": "@MeshInstance3D@8",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@8",
+			"pos": [
+				1624.55,
+				0.01,
+				852.34
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				22.35,
+				0.04,
+				23.4
+			],
+			"cast": false,
+			"dist_m": 2266.8,
+			"kind": "ground_overlay",
+			"mat": "alb=(0.5, 0.46, 0.4, 1.0) rough=1.00 tex=true",
+			"name": "@MeshInstance3D@9",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@9",
+			"pos": [
+				-1353.56,
+				0.01,
+				-1268.57
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				30.89,
+				0.04,
+				29.31
+			],
+			"cast": false,
+			"dist_m": 2696.2,
+			"kind": "ground_overlay",
+			"mat": "alb=(0.5, 0.46, 0.4, 1.0) rough=1.00 tex=true",
+			"name": "@MeshInstance3D@15",
+			"path": "/root/Main/DhuleMap/@MeshInstance3D@15",
+			"pos": [
+				158.21,
+				0.01,
+				-1694.6
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				2.12,
+				2.57,
+				2.77
+			],
+			"cast": true,
+			"dist_m": 2965.4,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Back_Side__Color_Material_0",
+			"path": "/root/Main/DhuleMap/@Node3D@68/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Back_Side_/MAIN_Back_Side__Color_Material_0",
+			"pos": [
+				-1116.35,
+				0.42,
+				-2044.46
+			],
+			"surface_y": 0.42,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.19,
+				0.19,
+				0.02
+			],
+			"cast": true,
+			"dist_m": 2965.4,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Back_Side__Granite_02_jpg_0",
+			"path": "/root/Main/DhuleMap/@Node3D@68/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Back_Side_/MAIN_Back_Side__Granite_02_jpg_0",
+			"pos": [
+				-1116.35,
+				0.42,
+				-2044.46
+			],
+			"surface_y": 2.39,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.76,
+				1.44,
+				2.36
+			],
+			"cast": true,
+			"dist_m": 2965.4,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Color_Material_0",
+			"path": "/root/Main/DhuleMap/@Node3D@68/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Color_Material_0",
+			"pos": [
+				-1116.35,
+				0.42,
+				-2044.46
+			],
+			"surface_y": 1.15,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.02,
+				0.01,
+				0.21
+			],
+			"cast": true,
+			"dist_m": 2965.4,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Metal_Steel_Textured_jpg_0",
+			"path": "/root/Main/DhuleMap/@Node3D@68/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Metal_Steel_Textured_jpg_0",
+			"pos": [
+				-1116.35,
+				0.42,
+				-2044.46
+			],
+			"surface_y": 2.61,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				2.12,
+				2.57,
+				2.77
+			],
+			"cast": true,
+			"dist_m": 2965.4,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Metal_Corrogated_Shiny_jpg_0",
+			"path": "/root/Main/DhuleMap/@Node3D@68/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Metal_Corrogated_Shiny_jpg_0",
+			"pos": [
+				-1116.35,
+				0.42,
+				-2044.46
+			],
+			"surface_y": 0.42,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.4,
+				0.19,
+				2.17
+			],
+			"cast": true,
+			"dist_m": 2965.4,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Granite_02_jpg_0",
+			"path": "/root/Main/DhuleMap/@Node3D@68/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Granite_02_jpg_0",
+			"pos": [
+				-1116.35,
+				0.42,
+				-2044.46
+			],
+			"surface_y": 2.39,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.5,
+				1.47,
+				2.2
+			],
+			"cast": true,
+			"dist_m": 2965.4,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Granite_01_jpg_0",
+			"path": "/root/Main/DhuleMap/@Node3D@68/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Granite_01_jpg_0",
+			"pos": [
+				-1116.35,
+				0.42,
+				-2044.46
+			],
+			"surface_y": 1.11,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.66,
+				2.57,
+				2.44
+			],
+			"cast": true,
+			"dist_m": 2965.4,
+			"kind": "other",
+			"mat": "",
+			"name": "MAIN_Front_Side__Bhel_puri_PNG_png_0",
+			"path": "/root/Main/DhuleMap/@Node3D@68/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/BHELPURI_2K5_00/MAIN_Front_Side_/MAIN_Front_Side__Bhel_puri_PNG_png_0",
+			"pos": [
+				-1116.35,
+				0.42,
+				-2044.46
+			],
+			"surface_y": 0.42,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.28,
+				0.04,
+				0.17
+			],
+			"cast": true,
+			"dist_m": 2967.6,
+			"kind": "other",
+			"mat": "",
+			"name": "Cylinder001__1_Default_02",
+			"path": "/root/Main/DhuleMap/@Node3D@68/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_012/Cylinder0012/Cylinder001__1_Default_02",
+			"pos": [
+				-1120.27,
+				0.44,
+				-2046.13
+			],
+			"surface_y": 0.42,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.22,
+				0.8,
+				0.81
+			],
+			"cast": true,
+			"dist_m": 2967.6,
+			"kind": "other",
+			"mat": "",
+			"name": "Spare___0",
+			"path": "/root/Main/DhuleMap/@Node3D@68/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_02/Spare/Spare___0/Spare___0",
+			"pos": [
+				-1120.32,
+				0.44,
+				-2046.11
+			],
+			"surface_y": 0.04,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.23,
+				0.88,
+				0.89
+			],
+			"cast": true,
+			"dist_m": 2967.9,
+			"kind": "other",
+			"mat": "",
+			"name": "Spare___04",
+			"path": "/root/Main/DhuleMap/@Node3D@68/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_08/Spare4/Spare___04/Spare___04",
+			"pos": [
+				-1121.41,
+				0.44,
+				-2046.22
+			],
+			"surface_y": 0.0,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"cast": false,
+			"dist_m": 2968.5,
+			"kind": "other",
+			"mat": "",
+			"name": "@Label3D@70",
+			"path": "/root/Main/DhuleMap/@Label3D@70",
+			"pos": [
+				-1120.96,
+				3.2,
+				-2046.83
+			],
+			"surface_y": 3.2,
+			"type": "Label3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				1.28,
+				0.04,
+				0.17
+			],
+			"cast": true,
+			"dist_m": 2968.9,
+			"kind": "other",
+			"mat": "",
+			"name": "Cylinder001__1_Default_0",
+			"path": "/root/Main/DhuleMap/@Node3D@68/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_010/Cylinder001/Cylinder001__1_Default_0",
+			"pos": [
+				-1120.14,
+				0.44,
+				-2047.45
+			],
+			"surface_y": 0.42,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.22,
+				0.8,
+				0.81
+			],
+			"cast": true,
+			"dist_m": 2968.9,
+			"kind": "other",
+			"mat": "",
+			"name": "Spare___02",
+			"path": "/root/Main/DhuleMap/@Node3D@68/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_04/Spare2/Spare___02/Spare___02",
+			"pos": [
+				-1120.19,
+				0.44,
+				-2047.46
+			],
+			"surface_y": 0.04,
+			"type": "MeshInstance3D",
+			"visible": true
+		},
+		{
+			"aabb_m": [
+				0.22,
+				0.8,
+				0.81
+			],
+			"cast": true,
+			"dist_m": 2969.2,
+			"kind": "other",
+			"mat": "",
+			"name": "Spare___03",
+			"path": "/root/Main/DhuleMap/@Node3D@68/Sketchfab_Scene/Sketchfab_model/73f96c84637d4a12b573e8e2af517564_fbx/Object_2/RootNode/Object_4/Skeleton3D/CC_Base_Pivot_06/Spare3/Spare___03/Spare___03",
+			"pos": [
+				-1121.31,
+				0.44,
+				-2047.57
+			],
+			"surface_y": 0.04,
+			"type": "MeshInstance3D",
+			"visible": true
+		}
+	]
+}

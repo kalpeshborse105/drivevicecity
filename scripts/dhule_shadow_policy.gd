@@ -83,6 +83,22 @@ static func _is_invalid_helper(nm: String) -> bool:
 	return false
 
 
+static func _is_ground_slab_or_overlay(n: Node, gi: GeometryInstance3D) -> bool:
+	## Catch unnamed MeshInstance3D ground boxes created before StreetKit batching.
+	if not (n is MeshInstance3D):
+		return false
+	var mi := n as MeshInstance3D
+	if mi.mesh == null or not (mi.mesh is BoxMesh):
+		return false
+	var sz: Vector3 = (mi.mesh as BoxMesh).size
+	# City drive slab (~kilometres) or thin soil overlay cards.
+	if sz.x >= 500.0 and sz.z >= 500.0 and sz.y <= 2.5:
+		return true
+	if sz.y <= 0.2 and maxf(sz.x, sz.z) >= 8.0 and absf(mi.position.y) < 0.35:
+		return true
+	return false
+
+
 static func _walk(n: Node, stats: Dictionary) -> void:
 	var nm := str(n.name).to_lower()
 	if n is MeshInstance3D or n is MultiMeshInstance3D or n is GPUParticles3D:
@@ -99,6 +115,10 @@ static func _walk(n: Node, stats: Dictionary) -> void:
 		elif _is_invalid_helper(nm):
 			gi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 			stats["invalid_off"] = int(stats["invalid_off"]) + 1
+		elif _is_ground_slab_or_overlay(n, gi):
+			# Giant drive slab + thin dirt/scrub overlays must never cast.
+			gi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+			stats["terrain_off"] = int(stats["terrain_off"]) + 1
 		elif _is_blosm_buildings(n, nm):
 			stats["blosm_buildings"] = int(stats["blosm_buildings"]) + 1
 			var aabb := (n as MeshInstance3D).get_aabb() if n is MeshInstance3D else AABB()

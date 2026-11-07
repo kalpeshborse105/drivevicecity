@@ -456,7 +456,8 @@ func _dress_road_props(pts: Array, width: float, dens: float, hw: String, rng: R
 
 func _add_ground(clip: float) -> void:
 	var size := clip * 2.2
-	# Dusty Maharashtra base — CC0 ground037 (triplanar, ~12 m tiles), collision kept
+	# Dusty Maharashtra base — CC0 ground037 (triplanar). Collision kept.
+	# Phase 2H.4B.3: slab must not cast — 4 km AABB stamped fake terrain shadows.
 	var ground := StandardMaterial3D.new()
 	ground.albedo_color = Color(0.62, 0.56, 0.44)
 	ground.roughness = 1.0
@@ -468,42 +469,55 @@ func _add_ground(clip: float) -> void:
 		if nrm:
 			ground.normal_enabled = true
 			ground.normal_texture = nrm
-			ground.normal_scale = 0.6
+			ground.normal_scale = 0.55
 	ground.uv1_triplanar = true
-	ground.uv1_scale = Vector3(0.08, 0.08, 0.08)
+	ground.uv1_triplanar_sharpness = 4.0
+	ground.uv1_scale = Vector3(0.065, 0.065, 0.065)
 	ground.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS_ANISOTROPIC
-	StreetKit.add_box(self, Vector3(size, 1.0, size), Vector3(0, -0.5, 0), ground, true)
+	StreetKit.add_box(self, Vector3(size, 1.0, size), Vector3(0, -0.5, 0), ground, true, 0.0, false)
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 55
-	# Mixed dirt / scrub / packed earth patches (fewer now that the base is textured)
-	for _i in 32:
-		var px := rng.randf_range(-clip, clip)
-		var pz := rng.randf_range(-clip, clip)
-		if Vector2(px, pz).length() < 35.0:
+	# Soft soil/scrub tints (textured) — no hard flat dark rectangles. Cast off.
+	for _i in 18:
+		var px := rng.randf_range(-clip * 0.85, clip * 0.85)
+		var pz := rng.randf_range(-clip * 0.85, clip * 0.85)
+		if Vector2(px, pz).length() < 55.0:
 			continue
 		var tone := rng.randi_range(0, 2)
-		var col := Color(0.28, 0.38, 0.22) # scrub
+		var col := Color(0.48, 0.50, 0.36) # soft scrub
 		if tone == 1:
-			col = Color(0.45, 0.38, 0.28) # packed earth
+			col = Color(0.55, 0.48, 0.38) # packed earth
 		elif tone == 2:
-			col = Color(0.32, 0.3, 0.28) # dusty lot
+			col = Color(0.50, 0.46, 0.40) # dusty lot
+		var patch := StandardMaterial3D.new()
+		patch.albedo_color = col
+		patch.roughness = 1.0
+		if ResourceLoader.exists(GROUND_ALBEDO):
+			patch.albedo_texture = load(GROUND_ALBEDO) as Texture2D
+		patch.uv1_triplanar = true
+		patch.uv1_scale = Vector3(0.07, 0.07, 0.07)
+		patch.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS_ANISOTROPIC
 		StreetKit.add_box(
 			self,
-			Vector3(rng.randf_range(16, 42), 0.07, rng.randf_range(16, 42)),
-			Vector3(px, 0.02, pz),
-			_mat(col)
+			Vector3(rng.randf_range(14, 28), 0.04, rng.randf_range(14, 28)),
+			Vector3(px, 0.015, pz),
+			patch,
+			false,
+			rng.randf() * TAU,
+			false
 		)
 
 
 func _add_osm_context(data: Dictionary, rng: RandomNumberGenerator) -> int:
 	## Real OSM footprints / water / landuse inside the Dhule clip. Not all of India.
 	var n := 0
+	# Landuse tints stay close to the dusty base — avoid dark flat green stamps.
 	var land_cols := {
-		"residential": _mat(Color(0.45, 0.4, 0.32)),
-		"commercial": _mat(Color(0.5, 0.46, 0.4)),
-		"retail": _mat(Color(0.52, 0.44, 0.36)),
-		"grass": _mat(Color(0.32, 0.42, 0.26)),
-		"farmland": _mat(Color(0.48, 0.42, 0.24)),
+		"residential": _mat(Color(0.52, 0.46, 0.38)),
+		"commercial": _mat(Color(0.54, 0.50, 0.44)),
+		"retail": _mat(Color(0.55, 0.48, 0.40)),
+		"grass": _mat(Color(0.46, 0.50, 0.38)),
+		"farmland": _mat(Color(0.54, 0.48, 0.36)),
 	}
 	for lu_v in data.get("landuse", []):
 		var lu: Dictionary = lu_v
@@ -963,11 +977,21 @@ func _fill_empty_lots(clip: float, rng: RandomNumberGenerator) -> int:
 				break
 		if not scrub_ok:
 			continue
+		# Soft textured scrub — cast off (batched path also shadowless).
+		var scrub_mat := StandardMaterial3D.new()
+		scrub_mat.albedo_color = col.lightened(0.18)
+		scrub_mat.roughness = 1.0
+		if ResourceLoader.exists(GROUND_ALBEDO):
+			scrub_mat.albedo_texture = load(GROUND_ALBEDO) as Texture2D
+		scrub_mat.uv1_triplanar = true
+		scrub_mat.uv1_scale = Vector3(0.08, 0.08, 0.08)
 		StreetKit.add_box(
 			self,
-			Vector3(scrub_w, 0.05, scrub_d),
-			p2 + Vector3(0, 0.02, 0),
-			_mat(col),
+			Vector3(scrub_w, 0.04, scrub_d),
+			p2 + Vector3(0, 0.015, 0),
+			scrub_mat,
+			false,
+			0.0,
 			false
 		)
 		n += 1

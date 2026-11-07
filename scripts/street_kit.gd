@@ -116,9 +116,18 @@ static func _unit_box() -> BoxMesh:
 	return _unit_box_mesh
 
 
-static func add_box(parent: Node3D, size: Vector3, pos: Vector3, material: Material, with_collision: bool = false, yaw: float = 0.0) -> void:
+static func add_box(
+	parent: Node3D,
+	size: Vector3,
+	pos: Vector3,
+	material: Material,
+	with_collision: bool = false,
+	yaw: float = 0.0,
+	cast_shadows: bool = true
+) -> void:
 	if _box_batch_parent != null and not with_collision:
 		# Visual-only box → record a scaled unit-box instance; no node per box.
+		# Batches always flush with cast off (see flush_box_batch).
 		var xf := Transform3D(Basis(Vector3.UP, yaw).scaled(size), pos)
 		if not _box_batches.has(material):
 			_box_batches[material] = []
@@ -132,6 +141,11 @@ static func add_box(parent: Node3D, size: Vector3, pos: Vector3, material: Mater
 	mi.material_override = material
 	mi.position = pos
 	mi.rotation.y = yaw
+	mi.cast_shadow = (
+		GeometryInstance3D.SHADOW_CASTING_SETTING_ON
+		if cast_shadows
+		else GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	)
 	parent.add_child(mi)
 	if with_collision:
 		var body := StaticBody3D.new()
