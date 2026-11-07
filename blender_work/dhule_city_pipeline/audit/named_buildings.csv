@@ -1,0 +1,23 @@
+osm_id,name,building,category,area_m2,building_levels,shop,amenity,office,cx,cz,dist_spawn_m
+1276029311,Adivasi Vikas Prakalpa Office,commercial,commercial_building,112.694,,,,,597.806,135.165,1442.61
+1276034799,Apala Maharashtra Paper Office,yes,unknown_or_unclassified,168.432,,,,,-148.428,-403.765,1375.14
+482794524,Dhule District & Sessions Court,yes,unknown_or_unclassified,17177.822,,,,,-745.301,945.892,126.23
+1193593171,"Dr Babasaheb Ambedkar High School, Dhule",school,school,2260.932,2,,,,-377.476,-1034.75,1934.01
+1193592151,"Dr Babasaheb Ambedkar Memorial College of Law, Deopur",college,school,1406.527,,,,,-272.935,-914.008,1832.28
+1340697207,Gajanan Maharaj Mandir,yes,unknown_or_unclassified,368.951,,,,,-1633.867,-2275.731,3311.32
+1162012870,Ganesh Temple,yes,unknown_or_unclassified,975.524,,,,,-979.168,-2731.339,3629.38
+548119409,Gurudwara,yes,unknown_or_unclassified,3730.478,,,,,-611.012,3494.945,2613.24
+1249399822,Hanuman mandir,yes,unknown_or_unclassified,111.369,,,,,125.188,4279.377,3481.89
+482797271,Jai Hind College,college,school,8769.118,4,,,,-531.75,-1530.425,2414.53
+482794972,Malhar Bhaskar Deshpande,yes,unknown_or_unclassified,713.184,,,,,-846.04,1055.411,272.07
+1276031266,Muncipal corporation Dhule,yes,unknown_or_unclassified,3623.387,,,,,-192.153,-172.407,1144.07
+1276032689,New City High School,school,school,146.567,,,,,-204.9,-314.919,1272.21
+1276126020,New City High School,school,school,146.618,,,,,-195.473,-344.842,1303.56
+1098919784,North Point School,school,school,3384.249,,,,,244.39,-2128.364,3136.45
+1276027884,Pitru Chhaya Apartment,residential,family_house,368.847,,,,,660.068,323.151,1411.85
+1276030150,Prakash Cinema Theatre,yes,unknown_or_unclassified,649.334,,,,,483.672,-133.437,1511.83
+1276028477,Rachana Hall,commercial,commercial_building,375.269,2,,,,625.222,-64.303,1577.09
+1276027539,Radhey Apartment,residential,family_house,157.085,,,,,621.488,298.031,1386.89
+1162006784,Sai Ganesh Temple,yes,unknown_or_unclassified,1901.908,,,,,-1174.987,-2812.817,3733.68
+1276032398,Swastik Theatre,yes,unknown_or_unclassified,840.115,,,,,-176.204,-275.066,1245.12
+1098919783,Universal Fitness Club,yes,unknown_or_unclassified,212.169,,,,,-523.555,2033.605,1157.3

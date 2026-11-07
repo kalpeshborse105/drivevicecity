@@ -1,0 +1,1420 @@
+{
+  "phase": "2H.1",
+  "projection": {
+    "lat0": 20.902,
+    "lon0": 74.777,
+    "m_per_deg_lat": 111320.0,
+    "m_per_deg_lon": 103994.255805,
+    "x": "east",
+    "z": "south",
+    "spawn_xz": [
+      -636.54,
+      881.83
+    ]
+  },
+  "sources": {
+    "dhule_city.osm": {
+      "sha256": "a6e346aac42bc677374aecb895121f227c75f9f29000bb14635d5a851754b97c",
+      "node_count": 11278,
+      "building_count": 1866,
+      "duplicate_way_ids": [],
+      "missing_node_refs": 0,
+      "invalid_rings": 0,
+      "building_tag_values": {
+        "yes": 1850,
+        "school": 4,
+        "apartments": 3,
+        "college": 2,
+        "residential": 2,
+        "commercial": 2,
+        "house": 2,
+        "hospital": 1
+      },
+      "tag_keys_on_buildings": {
+        "building": 1866,
+        "name": 22,
+        "building:levels": 3
+      }
+    },
+    "dhulemap.osm": {
+      "sha256": "dea334e2015f24f582101e55faa61a7d2c7d30827db306708448153492e80c7b",
+      "node_count": 6979,
+      "building_count": 254,
+      "duplicate_way_ids": [],
+      "missing_node_refs": 0,
+      "invalid_rings": 0,
+      "building_tag_values": {
+        "yes": 248,
+        "residential": 2,
+        "commercial": 2,
+        "school": 2
+      },
+      "tag_keys_on_buildings": {
+        "building": 254,
+        "addr:city": 12,
+        "addr:street": 12,
+        "name": 12,
+        "addr:district": 10,
+        "amenity": 3,
+        "office": 3,
+        "addr:postcode": 2,
+        "addr:housenumber": 1,
+        "opening_hours": 1,
+        "phone": 1,
+        "building:levels": 1,
+        "government": 1
+      },
+      "ids_also_in_city": 254,
+      "ids_only_in_map": 0,
+      "ids_only_in_city": 1612
+    },
+    "dhule_roads_game.json_buildings": {
+      "count": 780,
+      "kinds": {
+        "yes": 765,
+        "school": 7,
+        "residential": 4,
+        "commercial": 4
+      },
+      "named_count": 26,
+      "format": "axis-aligned boxes {id,kind,name,x,z,w,d,h} \u2014 not OSM rings",
+      "origin_lat": 20.902,
+      "origin_lon": 74.777,
+      "spawn": {
+        "x": -636.54,
+        "z": 881.83,
+        "hx": -0.72,
+        "hz": -0.694,
+        "road": "887431550",
+        "highway": "residential"
+      },
+      "note": "Playable JSON boxes cannot drive irregular footprints; prototypes read OSM rings."
+    },
+    "dhule_blosm_city.glb": {
+      "sha256": "fe778f2ebfab9bad67e43027e488b7b15dcc817c62cc572d1b66725d1bd7393d",
+      "bytes": 1338668
+    }
+  },
+  "dhule_city_geometry": {
+    "geom_ok": 1866,
+    "geom_invalid": 0,
+    "area_min": 20.83,
+    "area_max": 17177.822,
+    "area_mean": 214.54,
+    "area_median": 156.22,
+    "area_p10": 84.38,
+    "area_p25": 114.7,
+    "area_p75": 223.08,
+    "area_p90": 326.07,
+    "typical_span_x_median": 16.24,
+    "typical_span_z_median": 15.12,
+    "vertex_histogram": {
+      "4": 1514,
+      "5": 9,
+      "6": 126,
+      "7": 3,
+      "8": 57,
+      "9": 1,
+      "10": 22,
+      "11": 1,
+      "12": 37,
+      "13": 1,
+      "14": 1,
+      "16": 26,
+      "17": 18,
+      "18": 47,
+      "19": 1,
+      "24": 1,
+      "32": 1
+    },
+    "quad_count": 1514,
+    "non_quad_count": 352,
+    "named_count": 22,
+    "levels_count": 3,
+    "levels_pct": 0.161,
+    "height_count": 0,
+    "height_pct": 0.0,
+    "unknown_height_pct": 100.0,
+    "roof_tag_count": 0,
+    "level_values": {
+      "4": 1,
+      "2": 2
+    },
+    "categories": {
+      "unknown_or_unclassified": 1850,
+      "school": 6,
+      "apartment": 3,
+      "family_house": 2,
+      "commercial_building": 2,
+      "small_residential_house": 2,
+      "hospital": 1
+    },
+    "area_bands": {
+      "72_to_180_family": 1090,
+      "180_to_500": 652,
+      "40_to_72_small_house": 62,
+      "500_to_2000": 47,
+      "over_2000": 9,
+      "under_40": 6
+    },
+    "named_buildings": [
+      {
+        "osm_id": "1276029311",
+        "name": "Adivasi Vikas Prakalpa Office",
+        "building": "commercial",
+        "category": "commercial_building",
+        "area_m2": 112.694,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "",
+        "office": "",
+        "cx": 597.806,
+        "cz": 135.165,
+        "dist_spawn_m": 1442.61
+      },
+      {
+        "osm_id": "1276034799",
+        "name": "Apala Maharashtra Paper Office",
+        "building": "yes",
+        "category": "unknown_or_unclassified",
+        "area_m2": 168.432,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "",
+        "office": "",
+        "cx": -148.428,
+        "cz": -403.765,
+        "dist_spawn_m": 1375.14
+      },
+      {
+        "osm_id": "482794524",
+        "name": "Dhule District & Sessions Court",
+        "building": "yes",
+        "category": "unknown_or_unclassified",
+        "area_m2": 17177.822,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "",
+        "office": "",
+        "cx": -745.301,
+        "cz": 945.892,
+        "dist_spawn_m": 126.23
+      },
+      {
+        "osm_id": "1193593171",
+        "name": "Dr Babasaheb Ambedkar High School, Dhule",
+        "building": "school",
+        "category": "school",
+        "area_m2": 2260.932,
+        "building_levels": "2",
+        "shop": "",
+        "amenity": "",
+        "office": "",
+        "cx": -377.476,
+        "cz": -1034.75,
+        "dist_spawn_m": 1934.01
+      },
+      {
+        "osm_id": "1193592151",
+        "name": "Dr Babasaheb Ambedkar Memorial College of Law, Deopur",
+        "building": "college",
+        "category": "school",
+        "area_m2": 1406.527,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "",
+        "office": "",
+        "cx": -272.935,
+        "cz": -914.008,
+        "dist_spawn_m": 1832.28
+      },
+      {
+        "osm_id": "1340697207",
+        "name": "Gajanan Maharaj Mandir",
+        "building": "yes",
+        "category": "unknown_or_unclassified",
+        "area_m2": 368.951,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "",
+        "office": "",
+        "cx": -1633.867,
+        "cz": -2275.731,
+        "dist_spawn_m": 3311.32
+      },
+      {
+        "osm_id": "1162012870",
+        "name": "Ganesh Temple",
+        "building": "yes",
+        "category": "unknown_or_unclassified",
+        "area_m2": 975.524,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "",
+        "office": "",
+        "cx": -979.168,
+        "cz": -2731.339,
+        "dist_spawn_m": 3629.38
+      },
+      {
+        "osm_id": "548119409",
+        "name": "Gurudwara",
+        "building": "yes",
+        "category": "unknown_or_unclassified",
+        "area_m2": 3730.478,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "",
+        "office": "",
+        "cx": -611.012,
+        "cz": 3494.945,
+        "dist_spawn_m": 2613.24
+      },
+      {
+        "osm_id": "1249399822",
+        "name": "Hanuman mandir",
+        "building": "yes",
+        "category": "unknown_or_unclassified",
+        "area_m2": 111.369,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "",
+        "office": "",
+        "cx": 125.188,
+        "cz": 4279.377,
+        "dist_spawn_m": 3481.89
+      },
+      {
+        "osm_id": "482797271",
+        "name": "Jai Hind College",
+        "building": "college",
+        "category": "school",
+        "area_m2": 8769.118,
+        "building_levels": "4",
+        "shop": "",
+        "amenity": "",
+        "office": "",
+        "cx": -531.75,
+        "cz": -1530.425,
+        "dist_spawn_m": 2414.53
+      },
+      {
+        "osm_id": "482794972",
+        "name": "Malhar Bhaskar Deshpande",
+        "building": "yes",
+        "category": "unknown_or_unclassified",
+        "area_m2": 713.184,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "",
+        "office": "",
+        "cx": -846.04,
+        "cz": 1055.411,
+        "dist_spawn_m": 272.07
+      },
+      {
+        "osm_id": "1276031266",
+        "name": "Muncipal corporation Dhule",
+        "building": "yes",
+        "category": "unknown_or_unclassified",
+        "area_m2": 3623.387,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "",
+        "office": "",
+        "cx": -192.153,
+        "cz": -172.407,
+        "dist_spawn_m": 1144.07
+      },
+      {
+        "osm_id": "1276032689",
+        "name": "New City High School",
+        "building": "school",
+        "category": "school",
+        "area_m2": 146.567,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "",
+        "office": "",
+        "cx": -204.9,
+        "cz": -314.919,
+        "dist_spawn_m": 1272.21
+      },
+      {
+        "osm_id": "1276126020",
+        "name": "New City High School",
+        "building": "school",
+        "category": "school",
+        "area_m2": 146.618,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "",
+        "office": "",
+        "cx": -195.473,
+        "cz": -344.842,
+        "dist_spawn_m": 1303.56
+      },
+      {
+        "osm_id": "1098919784",
+        "name": "North Point School",
+        "building": "school",
+        "category": "school",
+        "area_m2": 3384.249,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "",
+        "office": "",
+        "cx": 244.39,
+        "cz": -2128.364,
+        "dist_spawn_m": 3136.45
+      },
+      {
+        "osm_id": "1276027884",
+        "name": "Pitru Chhaya Apartment",
+        "building": "residential",
+        "category": "family_house",
+        "area_m2": 368.847,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "",
+        "office": "",
+        "cx": 660.068,
+        "cz": 323.151,
+        "dist_spawn_m": 1411.85
+      },
+      {
+        "osm_id": "1276030150",
+        "name": "Prakash Cinema Theatre",
+        "building": "yes",
+        "category": "unknown_or_unclassified",
+        "area_m2": 649.334,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "",
+        "office": "",
+        "cx": 483.672,
+        "cz": -133.437,
+        "dist_spawn_m": 1511.83
+      },
+      {
+        "osm_id": "1276028477",
+        "name": "Rachana Hall",
+        "building": "commercial",
+        "category": "commercial_building",
+        "area_m2": 375.269,
+        "building_levels": "2",
+        "shop": "",
+        "amenity": "",
+        "office": "",
+        "cx": 625.222,
+        "cz": -64.303,
+        "dist_spawn_m": 1577.09
+      },
+      {
+        "osm_id": "1276027539",
+        "name": "Radhey Apartment",
+        "building": "residential",
+        "category": "family_house",
+        "area_m2": 157.085,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "",
+        "office": "",
+        "cx": 621.488,
+        "cz": 298.031,
+        "dist_spawn_m": 1386.89
+      },
+      {
+        "osm_id": "1162006784",
+        "name": "Sai Ganesh Temple",
+        "building": "yes",
+        "category": "unknown_or_unclassified",
+        "area_m2": 1901.908,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "",
+        "office": "",
+        "cx": -1174.987,
+        "cz": -2812.817,
+        "dist_spawn_m": 3733.68
+      },
+      {
+        "osm_id": "1276032398",
+        "name": "Swastik Theatre",
+        "building": "yes",
+        "category": "unknown_or_unclassified",
+        "area_m2": 840.115,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "",
+        "office": "",
+        "cx": -176.204,
+        "cz": -275.066,
+        "dist_spawn_m": 1245.12
+      },
+      {
+        "osm_id": "1098919783",
+        "name": "Universal Fitness Club",
+        "building": "yes",
+        "category": "unknown_or_unclassified",
+        "area_m2": 212.169,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "",
+        "office": "",
+        "cx": -523.555,
+        "cz": 2033.605,
+        "dist_spawn_m": 1157.3
+      }
+    ],
+    "levels_buildings": [
+      {
+        "osm_id": "482797271",
+        "name": "Jai Hind College",
+        "building": "college",
+        "building_levels": "4",
+        "area_m2": 8769.118,
+        "category": "school"
+      },
+      {
+        "osm_id": "1193593171",
+        "name": "Dr Babasaheb Ambedkar High School, Dhule",
+        "building": "school",
+        "building_levels": "2",
+        "area_m2": 2260.932,
+        "category": "school"
+      },
+      {
+        "osm_id": "1276028477",
+        "name": "Rachana Hall",
+        "building": "commercial",
+        "building_levels": "2",
+        "area_m2": 375.269,
+        "category": "commercial_building"
+      }
+    ]
+  },
+  "dhulemap_geometry": {
+    "geom_ok": 254,
+    "geom_invalid": 0,
+    "area_min": 20.83,
+    "area_max": 17177.822,
+    "area_mean": 329.52,
+    "area_median": 162.29,
+    "area_p10": 75.38,
+    "area_p25": 83.99,
+    "area_p75": 303.64,
+    "area_p90": 447.27,
+    "typical_span_x_median": 16.07,
+    "typical_span_z_median": 14.71,
+    "vertex_histogram": {
+      "4": 142,
+      "5": 2,
+      "6": 12,
+      "7": 2,
+      "8": 16,
+      "10": 2,
+      "11": 1,
+      "12": 32,
+      "14": 1,
+      "16": 24,
+      "17": 17,
+      "19": 1,
+      "24": 1,
+      "32": 1
+    },
+    "quad_count": 142,
+    "non_quad_count": 112,
+    "named_count": 12,
+    "levels_count": 1,
+    "levels_pct": 0.394,
+    "height_count": 0,
+    "height_pct": 0.0,
+    "unknown_height_pct": 100.0,
+    "roof_tag_count": 0,
+    "level_values": {
+      "2": 1
+    },
+    "categories": {
+      "unknown_or_unclassified": 242,
+      "other_public": 3,
+      "office": 3,
+      "family_house": 2,
+      "commercial_building": 2,
+      "school": 2
+    },
+    "area_bands": {
+      "72_to_180_family": 121,
+      "180_to_500": 91,
+      "500_to_2000": 20,
+      "40_to_72_small_house": 17,
+      "over_2000": 3,
+      "under_40": 2
+    },
+    "named_buildings": [
+      {
+        "osm_id": "1276029311",
+        "name": "Adivasi Vikas Prakalpa Office",
+        "building": "commercial",
+        "category": "commercial_building",
+        "area_m2": 112.694,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "",
+        "office": "",
+        "cx": 597.806,
+        "cz": 135.165,
+        "dist_spawn_m": 1442.61
+      },
+      {
+        "osm_id": "1276034799",
+        "name": "Apala Maharashtra Paper Office",
+        "building": "yes",
+        "category": "office",
+        "area_m2": 168.432,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "",
+        "office": "newspaper",
+        "cx": -148.428,
+        "cz": -403.765,
+        "dist_spawn_m": 1375.14
+      },
+      {
+        "osm_id": "482794524",
+        "name": "Dhule District & Sessions Court",
+        "building": "yes",
+        "category": "other_public",
+        "area_m2": 17177.822,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "courthouse",
+        "office": "",
+        "cx": -745.301,
+        "cz": 945.892,
+        "dist_spawn_m": 126.23
+      },
+      {
+        "osm_id": "482794972",
+        "name": "Malhar Bhaskar Deshpande",
+        "building": "yes",
+        "category": "office",
+        "area_m2": 713.184,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "",
+        "office": "lawyer",
+        "cx": -846.04,
+        "cz": 1055.411,
+        "dist_spawn_m": 272.07
+      },
+      {
+        "osm_id": "1276031266",
+        "name": "Muncipal corporation Dhule",
+        "building": "yes",
+        "category": "office",
+        "area_m2": 3623.387,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "",
+        "office": "government",
+        "cx": -192.153,
+        "cz": -172.407,
+        "dist_spawn_m": 1144.07
+      },
+      {
+        "osm_id": "1276032689",
+        "name": "New City High School",
+        "building": "school",
+        "category": "school",
+        "area_m2": 146.567,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "",
+        "office": "",
+        "cx": -204.9,
+        "cz": -314.919,
+        "dist_spawn_m": 1272.21
+      },
+      {
+        "osm_id": "1276126020",
+        "name": "New City High School",
+        "building": "school",
+        "category": "school",
+        "area_m2": 146.618,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "",
+        "office": "",
+        "cx": -195.473,
+        "cz": -344.842,
+        "dist_spawn_m": 1303.56
+      },
+      {
+        "osm_id": "1276027884",
+        "name": "Pitru Chhaya Apartment",
+        "building": "residential",
+        "category": "family_house",
+        "area_m2": 368.847,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "",
+        "office": "",
+        "cx": 660.068,
+        "cz": 323.151,
+        "dist_spawn_m": 1411.85
+      },
+      {
+        "osm_id": "1276030150",
+        "name": "Prakash Cinema Theatre",
+        "building": "yes",
+        "category": "other_public",
+        "area_m2": 649.334,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "cinema",
+        "office": "",
+        "cx": 483.672,
+        "cz": -133.437,
+        "dist_spawn_m": 1511.83
+      },
+      {
+        "osm_id": "1276028477",
+        "name": "Rachana Hall",
+        "building": "commercial",
+        "category": "commercial_building",
+        "area_m2": 375.269,
+        "building_levels": "2",
+        "shop": "",
+        "amenity": "",
+        "office": "",
+        "cx": 625.222,
+        "cz": -64.303,
+        "dist_spawn_m": 1577.09
+      },
+      {
+        "osm_id": "1276027539",
+        "name": "Radhey Apartment",
+        "building": "residential",
+        "category": "family_house",
+        "area_m2": 157.085,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "",
+        "office": "",
+        "cx": 621.488,
+        "cz": 298.031,
+        "dist_spawn_m": 1386.89
+      },
+      {
+        "osm_id": "1276032398",
+        "name": "Swastik Theatre",
+        "building": "yes",
+        "category": "other_public",
+        "area_m2": 840.115,
+        "building_levels": "",
+        "shop": "",
+        "amenity": "cinema",
+        "office": "",
+        "cx": -176.204,
+        "cz": -275.066,
+        "dist_spawn_m": 1245.12
+      }
+    ],
+    "levels_buildings": [
+      {
+        "osm_id": "1276028477",
+        "name": "Rachana Hall",
+        "building": "commercial",
+        "building_levels": "2",
+        "area_m2": 375.269,
+        "category": "commercial_building"
+      }
+    ]
+  },
+  "blosm_correspondence": {
+    "manifest_rows": 1866,
+    "status_counts": {
+      "exported": 1730,
+      "no_confident_triangles": 136
+    },
+    "matched_exported": 1730,
+    "no_confident_triangles": 136,
+    "ids_in_osm_not_manifest": [],
+    "ids_in_manifest_not_osm": [],
+    "osm_manifest_id_sets_equal": true,
+    "production_glb_has_way_ids": false,
+    "production_glb_nodes": [
+      "dhule_city.osm_buildings",
+      "dhule_city.osm_water"
+    ],
+    "note": "Correspondence comes from partition rule (0.20 m). Production GLB stores no per-building extras.",
+    "export_manifest_keys": [
+      "assigned_triangles",
+      "assignment",
+      "duplicate_exported_ids",
+      "duplicate_osm_ids_in_source",
+      "exported_building_ids",
+      "footprints",
+      "footprints_without_confident_triangles",
+      "neighbour_of_1337953905",
+      "projection",
+      "reason_counts",
+      "runtime_note",
+      "source_building_triangles",
+      "source_glb",
+      "source_sha256",
+      "split_policy",
+      "triangle_sum_matches_source",
+      "unresolved_reasons",
+      "unresolved_triangles",
+      "water_triangles"
+    ],
+    "export_manifest_summary": {
+      "assigned_triangles": 20329,
+      "unresolved_triangles": 4922,
+      "source_building_triangles": 25251
+    },
+    "no_confident_sample": [
+      {
+        "osm_id": "829189455",
+        "godot_x": 2682.86,
+        "godot_z": 4074.16
+      },
+      {
+        "osm_id": "1373107785",
+        "godot_x": -4279.89,
+        "godot_z": 1333.47
+      },
+      {
+        "osm_id": "1373107786",
+        "godot_x": -4313.11,
+        "godot_z": 1328.53
+      },
+      {
+        "osm_id": "1381581399",
+        "godot_x": -2844.11,
+        "godot_z": -1425.03
+      },
+      {
+        "osm_id": "1381581400",
+        "godot_x": -2831.93,
+        "godot_z": -1424.81
+      },
+      {
+        "osm_id": "1381581401",
+        "godot_x": -2819.18,
+        "godot_z": -1424.45
+      },
+      {
+        "osm_id": "1381581402",
+        "godot_x": -2807.66,
+        "godot_z": -1423.56
+      },
+      {
+        "osm_id": "1381581403",
+        "godot_x": -2844.28,
+        "godot_z": -1405.28
+      },
+      {
+        "osm_id": "1381581404",
+        "godot_x": -2844.15,
+        "godot_z": -1392.75
+      },
+      {
+        "osm_id": "1381581405",
+        "godot_x": -2845.03,
+        "godot_z": -1380.53
+      },
+      {
+        "osm_id": "1381581406",
+        "godot_x": -2845.56,
+        "godot_z": -1368.66
+      },
+      {
+        "osm_id": "1381581407",
+        "godot_x": -2845.78,
+        "godot_z": -1353.83
+      }
+    ],
+    "prior_docs": {
+      "assigned_triangles": 20329,
+      "unresolved_triangles": 4922,
+      "source_building_triangles": 25251,
+      "matched_ids": 1730,
+      "no_confident_ids": 136
+    }
+  },
+  "partition_archive_glb_count": 1730,
+  "asset_inventory": [
+    {
+      "path": "assets/kit/buildings/bhelpuri_shop.glb",
+      "bytes": 3293704,
+      "ok": true,
+      "meshes": 14,
+      "nodes": 41,
+      "materials": 13,
+      "textures": 11,
+      "images": 11,
+      "size_m": [
+        623.739,
+        1170.1145,
+        564.6899
+      ],
+      "origin": {
+        "min": [
+          -12.9134,
+          -75.0988,
+          -75.1049
+        ],
+        "max": [
+          610.8256,
+          1095.0157,
+          489.585
+        ],
+        "center": [
+          298.9561,
+          509.9585,
+          207.24
+        ]
+      },
+      "generator": "Sketchfab-12.64.0",
+      "title": "Bhelpuri Shop By Ajay |indian local shop",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "error": "",
+      "filename": "bhelpuri_shop.glb",
+      "asset_category": "commercial_shop_prop",
+      "asset_role": "complete_shop_cart_or_stall",
+      "complete_building": true,
+      "suitable_for_osm_footprints": "limited_small_footprints_only",
+      "notes": "Normalized as cart/stall, not a full plot building.; Plan span large vs typical Dhule house (~8\u201312 m); check scale."
+    },
+    {
+      "path": "assets/kit/buildings/indian_house.glb",
+      "bytes": 658848,
+      "ok": true,
+      "meshes": 2,
+      "nodes": 7,
+      "materials": 2,
+      "textures": 2,
+      "images": 2,
+      "size_m": [
+        5.0,
+        5.0,
+        5.1598
+      ],
+      "origin": {
+        "min": [
+          -2.5,
+          -2.5,
+          -2.5
+        ],
+        "max": [
+          2.5,
+          2.5,
+          2.6598
+        ],
+        "center": [
+          0.0,
+          0.0,
+          0.0799
+        ]
+      },
+      "generator": "Sketchfab-0.3.0",
+      "title": "Indian House",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "error": "",
+      "filename": "indian_house.glb",
+      "asset_category": "residential_house",
+      "asset_role": "complete_building",
+      "complete_building": true,
+      "suitable_for_osm_footprints": "candidate_with_fitter",
+      "notes": "Requires footprint fitter + road clearance (Phase 2F)."
+    },
+    {
+      "path": "assets/models/buildings/shops/bhelpuri_shop.glb",
+      "bytes": 3293704,
+      "ok": true,
+      "meshes": 14,
+      "nodes": 41,
+      "materials": 13,
+      "textures": 11,
+      "images": 11,
+      "size_m": [
+        623.739,
+        1170.1145,
+        564.6899
+      ],
+      "origin": {
+        "min": [
+          -12.9134,
+          -75.0988,
+          -75.1049
+        ],
+        "max": [
+          610.8256,
+          1095.0157,
+          489.585
+        ],
+        "center": [
+          298.9561,
+          509.9585,
+          207.24
+        ]
+      },
+      "generator": "Sketchfab-12.64.0",
+      "title": "Bhelpuri Shop By Ajay |indian local shop",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "error": "",
+      "filename": "bhelpuri_shop.glb",
+      "asset_category": "commercial_shop_prop",
+      "asset_role": "complete_shop_cart_or_stall",
+      "complete_building": true,
+      "suitable_for_osm_footprints": "limited_small_footprints_only",
+      "notes": "Normalized as cart/stall, not a full plot building.; Plan span large vs typical Dhule house (~8\u201312 m); check scale."
+    },
+    {
+      "path": "assets/models/environments/dhule_blosm_city.glb",
+      "bytes": 1338668,
+      "ok": true,
+      "meshes": 2,
+      "nodes": 2,
+      "materials": 3,
+      "textures": 0,
+      "images": 0,
+      "size_m": [
+        16734.6069,
+        13.7814,
+        23064.0688
+      ],
+      "origin": {
+        "min": [
+          -6706.3872,
+          0,
+          -17514.0684
+        ],
+        "max": [
+          10028.2197,
+          13.7814,
+          5550.0005
+        ],
+        "center": [
+          1660.9163,
+          6.8907,
+          -5982.0339
+        ]
+      },
+      "generator": "Khronos glTF Blender I/O v4.5.49",
+      "title": "",
+      "license": "",
+      "error": "",
+      "filename": "dhule_blosm_city.glb",
+      "asset_category": "city_mesh",
+      "asset_role": "production_joined_city",
+      "complete_building": false,
+      "suitable_for_osm_footprints": "no",
+      "notes": "Joined Blosm walls+roofs; no per-way ids."
+    },
+    {
+      "path": "assets/models/environments/dhule_junction_streetscape.glb",
+      "bytes": 482504,
+      "ok": true,
+      "meshes": 55,
+      "nodes": 57,
+      "materials": 30,
+      "textures": 0,
+      "images": 0,
+      "size_m": [
+        48.0,
+        14.5,
+        48.0
+      ],
+      "origin": {
+        "min": [
+          -24.0,
+          -2.6,
+          -24.0
+        ],
+        "max": [
+          24.0,
+          11.9,
+          24.0
+        ],
+        "center": [
+          0.0,
+          4.65,
+          0.0
+        ]
+      },
+      "generator": "Godot Engine v4.7.2.stable.official@ed1daf0bf001b61586d9930840f2f1394092c079",
+      "title": "",
+      "license": "",
+      "error": "",
+      "filename": "dhule_junction_streetscape.glb",
+      "asset_category": "streetscape",
+      "asset_role": "environment_set",
+      "complete_building": false,
+      "suitable_for_osm_footprints": "no",
+      "notes": ""
+    },
+    {
+      "path": "assets/prototypes/dhule_block/dhule_block.glb",
+      "bytes": 893716,
+      "ok": true,
+      "meshes": 67,
+      "nodes": 67,
+      "materials": 18,
+      "textures": 0,
+      "images": 0,
+      "size_m": [
+        874.1504,
+        10.85,
+        1156.9091
+      ],
+      "origin": {
+        "min": [
+          -823.8996,
+          0,
+          -93.8242
+        ],
+        "max": [
+          50.2508,
+          10.85,
+          1063.085
+        ],
+        "center": [
+          -386.8244,
+          5.425,
+          484.6304
+        ]
+      },
+      "generator": "Khronos glTF Blender I/O v4.5.49",
+      "title": "",
+      "license": "",
+      "error": "",
+      "filename": "dhule_block.glb",
+      "asset_category": "city_or_block_mesh",
+      "asset_role": "reference_or_incoming",
+      "complete_building": false,
+      "suitable_for_osm_footprints": "no",
+      "notes": "Not a single OSM footprint asset."
+    },
+    {
+      "path": "assets/incoming/bhelpuri_shop_by_ajay_indian_local_shop.glb",
+      "bytes": 3293704,
+      "ok": true,
+      "meshes": 14,
+      "nodes": 41,
+      "materials": 13,
+      "textures": 11,
+      "images": 11,
+      "size_m": [
+        623.739,
+        1170.1145,
+        564.6899
+      ],
+      "origin": {
+        "min": [
+          -12.9134,
+          -75.0988,
+          -75.1049
+        ],
+        "max": [
+          610.8256,
+          1095.0157,
+          489.585
+        ],
+        "center": [
+          298.9561,
+          509.9585,
+          207.24
+        ]
+      },
+      "generator": "Sketchfab-12.64.0",
+      "title": "Bhelpuri Shop By Ajay |indian local shop",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "error": "",
+      "filename": "bhelpuri_shop_by_ajay_indian_local_shop.glb",
+      "asset_category": "commercial_shop_prop",
+      "asset_role": "complete_shop_cart_or_stall",
+      "complete_building": true,
+      "suitable_for_osm_footprints": "limited_small_footprints_only",
+      "notes": "Normalized as cart/stall, not a full plot building.; Plan span large vs typical Dhule house (~8\u201312 m); check scale."
+    },
+    {
+      "path": "assets/incoming/city_map_free.glb",
+      "bytes": 31196480,
+      "ok": true,
+      "meshes": 30,
+      "nodes": 35,
+      "materials": 26,
+      "textures": 26,
+      "images": 26,
+      "size_m": [
+        410.793,
+        373.6984,
+        46.8959
+      ],
+      "origin": {
+        "min": [
+          -121.4442,
+          -176.5728,
+          92.2231
+        ],
+        "max": [
+          289.3488,
+          197.1256,
+          139.119
+        ],
+        "center": [
+          83.9523,
+          10.2764,
+          115.6711
+        ]
+      },
+      "generator": "Sketchfab-16.95.0",
+      "title": "City map free",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "error": "",
+      "filename": "city_map_free.glb",
+      "asset_category": "city_or_block_mesh",
+      "asset_role": "reference_or_incoming",
+      "complete_building": false,
+      "suitable_for_osm_footprints": "no",
+      "notes": "Not a single OSM footprint asset."
+    },
+    {
+      "path": "assets/incoming/mumbai_city.glb",
+      "bytes": 47097464,
+      "ok": true,
+      "meshes": 651,
+      "nodes": 867,
+      "materials": 60,
+      "textures": 0,
+      "images": 0,
+      "size_m": [
+        825.6409,
+        122.5792,
+        445.7282
+      ],
+      "origin": {
+        "min": [
+          -153.9454,
+          -4.2489,
+          -364.1065
+        ],
+        "max": [
+          671.6954,
+          118.3303,
+          81.6217
+        ],
+        "center": [
+          258.875,
+          57.0407,
+          -141.2424
+        ]
+      },
+      "generator": "Sketchfab-15.24.0",
+      "title": "mumbai city",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "error": "",
+      "filename": "mumbai_city.glb",
+      "asset_category": "city_or_block_mesh",
+      "asset_role": "reference_or_incoming",
+      "complete_building": false,
+      "suitable_for_osm_footprints": "no",
+      "notes": "Not a single OSM footprint asset."
+    },
+    {
+      "path": "assets/incoming/old_city.glb",
+      "bytes": 279577776,
+      "ok": true,
+      "meshes": 128,
+      "nodes": 213,
+      "materials": 30,
+      "textures": 25,
+      "images": 25,
+      "size_m": [
+        67716.4766,
+        67716.4746,
+        22061.5935
+      ],
+      "origin": {
+        "min": [
+          -19630.2305,
+          -35711.1289,
+          -2598.2029
+        ],
+        "max": [
+          48086.2461,
+          32005.3457,
+          19463.3906
+        ],
+        "center": [
+          14228.0078,
+          -1852.8916,
+          8432.5939
+        ]
+      },
+      "generator": "Sketchfab-16.95.0",
+      "title": "Old city",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "error": "",
+      "filename": "old_city.glb",
+      "asset_category": "other_asset",
+      "asset_role": "review",
+      "complete_building": false,
+      "suitable_for_osm_footprints": "no",
+      "notes": ""
+    },
+    {
+      "path": "assets/incoming/props/bhelpuri_shop_by_ajay_indian_local_shop.glb",
+      "bytes": 3293704,
+      "ok": true,
+      "meshes": 14,
+      "nodes": 41,
+      "materials": 13,
+      "textures": 11,
+      "images": 11,
+      "size_m": [
+        623.739,
+        1170.1145,
+        564.6899
+      ],
+      "origin": {
+        "min": [
+          -12.9134,
+          -75.0988,
+          -75.1049
+        ],
+        "max": [
+          610.8256,
+          1095.0157,
+          489.585
+        ],
+        "center": [
+          298.9561,
+          509.9585,
+          207.24
+        ]
+      },
+      "generator": "Sketchfab-12.64.0",
+      "title": "Bhelpuri Shop By Ajay |indian local shop",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "error": "",
+      "filename": "bhelpuri_shop_by_ajay_indian_local_shop.glb",
+      "asset_category": "commercial_shop_prop",
+      "asset_role": "complete_shop_cart_or_stall",
+      "complete_building": true,
+      "suitable_for_osm_footprints": "limited_small_footprints_only",
+      "notes": "Normalized as cart/stall, not a full plot building.; Plan span large vs typical Dhule house (~8\u201312 m); check scale."
+    },
+    {
+      "path": "assets/maps/dhule_blosm.glb",
+      "bytes": 1338668,
+      "ok": true,
+      "meshes": 2,
+      "nodes": 2,
+      "materials": 3,
+      "textures": 0,
+      "images": 0,
+      "size_m": [
+        16734.6069,
+        13.7814,
+        23064.0688
+      ],
+      "origin": {
+        "min": [
+          -6706.3872,
+          0,
+          -17514.0684
+        ],
+        "max": [
+          10028.2197,
+          13.7814,
+          5550.0005
+        ],
+        "center": [
+          1660.9163,
+          6.8907,
+          -5982.0339
+        ]
+      },
+      "generator": "Khronos glTF Blender I/O v4.5.49",
+      "title": "",
+      "license": "",
+      "error": "",
+      "filename": "dhule_blosm.glb",
+      "asset_category": "city_or_block_mesh",
+      "asset_role": "reference_or_incoming",
+      "complete_building": false,
+      "suitable_for_osm_footprints": "no",
+      "notes": "Not a single OSM footprint asset."
+    },
+    {
+      "path": "blender_work/dhule_architecture/export/dhule_architecture_test.glb",
+      "bytes": 2749012,
+      "ok": true,
+      "meshes": 26,
+      "nodes": 26,
+      "materials": 9,
+      "textures": 0,
+      "images": 0,
+      "size_m": [
+        178.4454,
+        8.91,
+        2013.4903
+      ],
+      "origin": {
+        "min": [
+          -799.0886,
+          0,
+          -973.8596
+        ],
+        "max": [
+          -620.6432,
+          8.91,
+          1039.6307
+        ],
+        "center": [
+          -709.8659,
+          4.455,
+          32.8856
+        ]
+      },
+      "generator": "Khronos glTF Blender I/O v5.2.41",
+      "title": "",
+      "license": "",
+      "error": "",
+      "filename": "dhule_architecture_test.glb",
+      "asset_category": "architecture_prototype",
+      "asset_role": "detailed_replacement_mesh",
+      "complete_building": true,
+      "suitable_for_osm_footprints": "matched_ids_only",
+      "notes": "Plan span large vs typical Dhule house (~8\u201312 m); check scale."
+    }
+  ],
+  "asset_summary": {
+    "count": 13,
+    "by_category": {
+      "commercial_shop_prop": 4,
+      "city_or_block_mesh": 4,
+      "residential_house": 1,
+      "city_mesh": 1,
+      "streetscape": 1,
+      "other_asset": 1,
+      "architecture_prototype": 1
+    },
+    "complete_buildings": 6,
+    "candidate_fitters": 2
+  },
+  "validation": {
+    "city_building_count_reproducible_expected": 1866,
+    "city_building_count_actual": 1866,
+    "duplicate_ids_city": 0,
+    "missing_nodes_city": 0,
+    "invalid_rings_city": 0,
+    "manifest_matches_city_ids": true,
+    "source_files_unchanged_policy": "audit read-only; no writes to OSM/GLB/JSON production paths"
+  }
+}
